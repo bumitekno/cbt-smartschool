@@ -1,0 +1,1 @@
+<?php $konek = mysqli_connect('localhost', 'root', '', 'cbt_eschool'); ?>

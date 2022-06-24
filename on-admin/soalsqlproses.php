@@ -1,0 +1,66 @@
+<?php
+session_start();
+include ('../koneksi/koneksi.php');
+include ('conn/cek.php');
+include ('conn/fungsi.php');
+
+$connect = mysql_connect('localhost','root','');
+if (!$connect) {
+die('Could not connect to MySQL: ' . mysql_error());
+}
+//nama database
+$cid =mysql_select_db('cbt_eschool',$connect);
+
+
+
+$zip = new ZipArchive;
+$zip->open('soal.zip');
+$zip->extractTo('./');
+$zip->close();
+// Name of the file
+$filename = 'soal.sql';
+// MySQL host
+$mysql_host = 'localhost';
+// MySQL username
+$mysql_username = 'root';
+// MySQL password
+$mysql_password = '';
+// Database name
+$mysql_database = 'cbt_eschool';
+
+// Connect to MySQL server
+$con = @new mysqli($mysql_host,$mysql_username,$mysql_password,$mysql_database);
+
+// Check connection
+if ($con->connect_errno) {
+    echo "Failed to connect to MySQL: " . $con->connect_errno;
+    echo "<br/>Error: " . $con->connect_error;
+}
+
+// Temporary variable, used to store current query
+$templine = '';
+// Read in entire file
+$lines = file($filename);
+// Loop through each line
+foreach ($lines as $line) {
+// Skip it if it's a comment
+    if (substr($line, 0, 2) == '--' || $line == '')
+        continue;
+
+// Add this line to the current segment
+    $templine .= $line;
+// If it has a semicolon at the end, it's the end of the query
+    if (substr(trim($line), -1, 1) == ';') {
+        // Perform the query
+        $con->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . $con->error() . '<br /><br />');
+        // Reset temp variable to empty
+        $templine = '';
+    }
+}
+echo "Tables imported successfully";
+
+unlink('soal.zip');
+unlink('soal.sql');
+header("location:syncupload.php?pesan=sukses");
+exit();
+?>

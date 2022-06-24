@@ -1,0 +1,17 @@
+ONLINE
+Buat database lalu import database 'cbt_eschool.sql'
+Setting database pada tiap file di folder Koneksi dan sesuaikan dengan pembuatan nama database, 
+Username, dan Password
+
+MANUAL
+
+cukup:
+:Terinstall Aplikasi Web Server(Apache,Nginx) yang didukung PHP dan MySQL (menggunakan XAMPP 5.6.33-0-VC11)
+
+cara:
+;extract project "CBT.zip" ke folder host (htdocs,www,atau lainnya)
+;jalankan melalui browser (http://localhost/CBT)
+;import database cbt_eschool.sql di phpmyadmin 
+;untuk masuk dashboard admin masukan alamat URL :(http://localhost/CBT/admin)
+;user default : admin pass: admin12345
+:demi keamanan diharap merubah password default
