@@ -118,7 +118,8 @@ if(!$show=='')
                                                     <table width='100%' class='kartu'>
                                                         <tr>
                                                             <td align='center' style='padding: 4px'><img src='../aset/foto/$xx[logo]' height='40'></td>
-                                                           <td id='cilik' align='center' style='font-weight:bold; padding: 4px;'>KARTU PESERTA <BR> UJIAN SEKOLAH BERBASIS KOMPUTER<BR>SMA DEMO SMARTSCHOOL<BR>TAHUN AJARAN 2022/2023 </td>
+                                                           <td id='cilik' align='center' style='font-weight:bold; padding: 4px; text-transform: uppercase;'>KARTU PESERTA <BR> UJIAN SEKOLAH BERBASIS KOMPUTER<BR>
+                                                           $xx[n_sekolah]<BR>TAHUN AJARAN 2022/2023 </td>
                                                             <td align='center' style='padding: 4px'><img src='../aset/foto/$xx[logo_kota]' height='45'></td>
                                                         </tr>
                                                     </table>
@@ -128,7 +129,7 @@ if(!$show=='')
 <tr><td id='cilik'><b>Sesi / Ruang</b></td><td id='cilik'> :</td><td id='cilik'><b>&emsp;$ar[sesi] / $ar[ruang]</b></td></tr>
 <tr><td></td><td></td><td id='cilik'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temanggung, 20 Juni 2022</td></tr>
 <tr><td></td><td></td><td id='cilik' width='290'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kepala Sekolah</td></tr>
-<tr><td></td><td></td><td id='cilik' height='40' width='115'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../aset/foto/ttd.png' width=70px height=auto/></td></tr>
+<tr><td></td><td></td><td id='cilik' height='40' width='115'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../images/$xx[bg_login]' width=70px height=auto/></td></tr>
 <tr><td></td><td></td><td id='cilik' width='290'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Dangun, S.Pd</u></td></tr>
 <tr><td></td><td></td><td id='cilik' width='290'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NIP.197004061997031005</td></tr>
                                         </table>
