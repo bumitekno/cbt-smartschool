@@ -311,12 +311,34 @@ box-shadow: -15px 0 15px -15px inset;
 									</div>
 							</div>
 					</div>
+          <div class="col-md-6">
+        					<div class="form-group">
+								<label>Kepala Sekolah</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-user" aria-hidden="true"></i>
+										</div>
+										<input name="kepsek" type="text" class="form-control" value="<?php echo $r['kepsek'];?>" required />
+									</div>
+							</div>
+					</div>
+          <div class="col-md-6">
+        					<div class="form-group">
+								<label>NIP Kepala Sekolah</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-id-card" aria-hidden="true"></i>
+										</div>
+										<input name="nip" type="text" class="form-control" value="<?php echo $r['nip'];?>" required />
+									</div>
+							</div>
+					</div>
 					<div class="col-md-6">
         					<div class="form-group">
 								<label>Nama Server</label>
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-address-card"></i>
+											<i class="fa fa-server"></i>
 										</div>
 										<input name="kode_sekolah" type="text" class="form-control" value="<?php echo $r['kode_sekolah'];?>" required />
 									</div>

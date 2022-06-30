@@ -30,8 +30,8 @@
 <tr><td></td><td></td><td id="cilik">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Temanggung, 20 Juni 2022</td></tr>
 <tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kepala Sekolah</td></tr>
 <tr><td></td><td></td><td id="cilik" height="40" width="115">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../images/<?php echo $xx['bg_login'];?>' width=70px height=auto/></td></tr>
-<tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>Dangun, S.Pd</u></td></tr>
-<tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NIP.197004061997031005</td></tr>
+<tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u><?php echo $xx['kepsek'];?></u></td></tr>
+<tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NIP.<?php echo $xx['nip'];?></td></tr>
 	            </table>
 	            <img id='plotro' src='../aset/foto_siswa/<?php echo $ar[foto]; ?>' width=70px height=auto/>
 </div>
