@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 06:53 AM
+-- Generation Time: Jul 01, 2022 at 10:39 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -35,13 +35,6 @@ CREATE TABLE `article` (
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `article`
---
-
-INSERT INTO `article` (`id`, `content`, `author`, `tanggal`, `date`) VALUES
-(1, '<p>yayaya</p>\r\n', 'Administrator', '2022-06-16 04:56:21', '');
 
 -- --------------------------------------------------------
 
@@ -147,22 +140,25 @@ INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal
 CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
   `n_sekolah` varchar(30) NOT NULL,
-  `sub_n_sekolah` varchar(50) NOT NULL,
+  `sub_n_sekolah` varchar(100) NOT NULL,
   `kode_sekolah` varchar(30) NOT NULL,
   `logo` varchar(30) NOT NULL,
   `logo_ujian` varchar(30) NOT NULL,
   `kota` varchar(30) NOT NULL,
+  `tanggal` text NOT NULL,
   `logo_kota` varchar(30) NOT NULL,
   `web` varchar(30) NOT NULL,
-  `bg_login` varchar(30) NOT NULL
+  `bg_login` varchar(30) NOT NULL,
+  `kepsek` varchar(50) NOT NULL,
+  `nip` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `profil`
 --
 
-INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `logo_kota`, `web`, `bg_login`) VALUES
-(1, 'Sekolah Demo Smartschool', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen, K', 'sekolah', 'logo kecil.png', 'myschid.png', 'kota', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png');
+INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `tanggal`, `logo_kota`, `web`, `bg_login`, `kepsek`, `nip`) VALUES
+(1, 'Sekolah Demo Smartschool', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen,', 'sekolah', 'logo kecil.png', 'myschid.png', 'Temanggung', '26 Juni 2020', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png', 'Dadang S. Pd', '19755551997031005');
 
 -- --------------------------------------------------------
 
@@ -196,7 +192,7 @@ INSERT INTO `siswa` (`id`, `nis`, `nama`, `kelas`, `pass`, `Id_User`, `Id_Usergr
 (6, '124', 'Jinyoung', '9B', '12345', 1, 1, NULL, 2, 'Ruang-4', '0', NULL),
 (7, '125', 'Haechan', '9C', '12345', 1, 1, NULL, 3, 'Ruang-5', '0', NULL),
 (12, '11234', 'Bima', '9H', '12345', 1, 1, NULL, 1, 'Ruang-5', '0', NULL),
-(13, '11235', 'Sakti', '7F', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', NULL),
+(13, '11235', 'Sakti', '7F', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', '2'),
 (14, '11236', 'Cakra', '12A', '12345', 1, 1, NULL, 1, 'Ruang-2', '0', NULL),
 (15, '1', 'Nanda', '2A', '12345', 1, 1, NULL, 0, 'Ruang-1', '0', NULL),
 (16, '321', 'ade', '3B', '12345', 1, 1, NULL, 1, 'Ruang-16', '0', NULL),
@@ -230,98 +226,6 @@ CREATE TABLE `soal` (
   `audio` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `soal`
---
-
-INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `soal`, `gambarsoal`, `pilihan1`, `pilihan2`, `pilihan3`, `pilihan4`, `pilihan5`, `gambar_a`, `gambar_b`, `gambar_c`, `gambar_d`, `gambar_e`, `kunci`, `audio`, `status`) VALUES
-(4, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 3, 'Ceramah bertujuan untuk memberikan &hellip;.', '', 'nasihat baik', 'kebencian', 'keburukan', 'kejahatan', '', '', '', '', '', '', 'A', '', 1),
-(2, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 2, 'Kata &ldquo;atau&rdquo; merupakan konjungsi &hellip;.', '', 'syarat', 'kesimpulan', 'pilihan', 'tujuan', '', '', '', '', '', '', 'C', '', 1),
-(3, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 1, 'Dibawah ini yang bukan merupakan kata-kata persuasif pada teks ceramah adalah...', '', 'Hendaklah', 'Sebaiknya', 'Diharapkan', 'Baiklah', '', '', '', '', '', '', 'D', '', 1),
-(5, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 4, 'Nilai yang menjelaskan baik dan buruk seseorang dalam cerita adalah nilai &hellip;.', '', 'agama', 'moral', 'budaya', 'sosial', '', '', '', '', '', '', 'B', '', 1),
-(6, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 5, 'Salah satu jenis karya sastra yang memaparkan kisah atau cerita mengenai manusia beserta seluk-beluknya lewat tulisan pendek dan singkat disebut &hellip;.', '', 'cerita pendek', 'prosedur', 'deskripsi', 'eksplanasi', '', '', '', '', '', '', 'A', '', 1),
-(7, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 1, 'Sekumpulan data atau fakta yang diorganisasi atau diolah dengan cara tertentu, sehingga mempunyai arti bagi penerima disebut &hellip;.', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
-(8, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 2, 'Tujuan teks prosedur adalah &hellip;.', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
-(9, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 3, 'Semua fenomena tersebut memiliki hubungan &hellip;.', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
-(55, 'Mapel samak', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(11, 'SIMULASI', 'BAHASA INDONESIA', '1234', 1, 'saya bertanya', '', 'A', 'B', 'C', 'D', '', '', '', '', '', '', 'B', '', 1),
-(12, 'SIMULASI', 'BAHASA INDONESIA', '1234', 2, 'Kamu menjawab', '', 'A', 'B', 'C', 'D', '', '', '', '', '', '', 'B', '', 1),
-(13, 'SIMULASI', 'BAHASA INDONESIA', '1234', 1, 'Jelaskan jawabannya', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
-(14, 'PAS', 'INDO', 'INDO-1', 1, 'Pertanyaan 1', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
-(15, 'PAS', 'INDO', 'INDO-1', 2, 'Pertanyaan 2', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(16, 'PAS', 'INDO', 'INDO-1', 3, 'Pertanyaan uraian', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 2),
-(18, 'UH', 'MTK', 'MTK-1', 1, 'Apa yang di maksud dengan integral ?', '', 'suatu', 'qaaa', 'aa', 'aa', 'aaa', '', '', '', '', '', 'A', NULL, 1),
-(19, 'UH', 'MTK', 'MTK-1', 2, '15999 + 390291 = ', '', '406,290', '406,293', '406,299', '406,280', '406,299', '', '', '', '', '', 'A', NULL, 1),
-(20, 'UH', 'MTK', 'MTK1', 3, 'Apa yang di maksud dengan bilangan ?', '', 'aka', 'dd', 'angka', 'ddee', 'cc', '', '', '', '', '', 'C', NULL, 2),
-(21, 'UH', 'MTK', 'MTK-1', 1, 'Apa yang di maksud dengan integral ?', '', 'suatu', 'qaaa', 'aa', 'aa', 'aaa', '', '', '', '', '', 'A', NULL, 1),
-(22, 'UH', 'MTK', 'MTK-1', 2, '15999 + 390291 = ', '', '406,290', '406,293', '406,299', '406,280', '406,299', '', '', '', '', '', 'A', NULL, 1),
-(23, 'UH', 'MTK', 'MTK1', 3, 'Apa yang di maksud dengan bilangan ?', '', 'aka', 'dd', 'angka', 'ddee', 'cc', '', '', '', '', '', 'C', NULL, 2),
-(24, 'UH', 'MTK', 'MTK-1', 1, 'Apa yang di maksud dengan integral ?', '', 'suatu', 'qaaa', 'aa', 'aa', 'aaa', '', '', '', '', '', 'A', NULL, 1),
-(25, 'UH', 'MTK', 'MTK-1', 2, '15999 + 390291 = ', '', '406290', '406293', '406299', '406280', '406299', '', '', '', '', '', 'A', NULL, 1),
-(26, 'UH', 'MTK', 'MTK1', 3, 'Apa yang di maksud dengan bilangan ?', '', 'aka', 'dd', 'angka', 'ddee', 'cc', '', '', '', '', '', 'C', NULL, 2),
-(27, 'UH', 'Matematika', '005-MTK', 1, 'Apa yang dimaksud dengan bilangan?', '', 'berisi angka angkaaaa', 'angka', 'huruf', 'kuadrat', 'opsi E', '', '', '', '', '', 'C', '', 1),
-(28, 'UH', 'Matematika', '005-MTK', 2, 'Apa yang dimaksud dengan Integral?', '', 'pecahan', 'kuadrat', 'angka', 'pangkat', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(29, 'UH', 'Matematika', '005-MTK', 3, '3999+4999', '', '8998', '8989', '9898', '9678', '', '', '', '', '', '', 'A', NULL, 1),
-(30, 'UH', 'Matematika', '005-MTK', 4, '4 + 5?', '', '10', '9', '7', '8', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(31, 'UH', 'Matematika', '005-MTK', 5, '160 + 550?', '', '770', '670', '710', '610', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(32, 'UH', 'Matematika', '005-MTK', 6, '3999+4999', '', '8998', '8989', '9898', '9678', '', '', '', '', '', '', 'A', '', 1),
-(33, 'Mapel samak', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(34, 'Kode Soal s', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(35, 'Gambar Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(36, 'Gambar Opsi', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(37, 'Kunci Pasti', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(38, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(39, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(40, 'jenis ujian', 'mapel', 'kode soal', 0, 'Soal / Pertanyaan', 'gambar soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(81, 'Gambar Opsi', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(82, 'Kunci Pasti', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(79, 'Kode Soal H', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(80, 'Gambar Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(77, 'Jenis Ujian', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(78, 'Mapel HARUS', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(44, 'Mapel samak', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(45, 'Kode Soal s', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(46, 'Gambar Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(47, 'Gambar Opsi', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(48, 'Kunci Pasti', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(49, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(50, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(51, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(52, 'SIMULASI', 'bahasa indonesia', '12345', 1, 'Apa yang di maksud Cerpen', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
-(53, 'SIMULASI', 'BAHASA INDONESIA', '12345', 2, 'Apa yang dimaksud Pargraf?', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(54, 'SIMULASI', 'BAHASA INDONESIA', '12345', 3, 'Apa yah?', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(56, 'Kode Soal s', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(57, 'Gambar Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(58, 'Gambar Opsi', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(59, 'Kunci Pasti', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(60, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(61, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(62, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(63, 'SIMULASI', 'bahasa indonesia', '1234', 1, 'Apa yang di maksud Cerpen', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
-(64, 'SIMULASI', 'BAHASA INDONESIA', '1234', 2, 'Apa yang dimaksud Pargraf?', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(65, 'SIMULASI', 'BAHASA INDONESIA', '1234', 3, 'Apa yah?', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(66, 'Mapel HARUS', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(67, 'Kode Soal H', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(68, 'Gambar Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(69, 'Gambar Opsi', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(70, 'Kunci Pasti', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(71, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(72, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(73, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(74, 'UH', 'Matematika', '005-MTK', 10, 'aassssaaa', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', '', 1),
-(75, 'UH', 'Matematika', '005-MTK', 11, 'Pertanyaan 2', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(76, 'UH', 'Matematika', '005-MTK', 12, 'Pertanyaan 3', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(83, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(84, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(85, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(86, 'UH', 'Matematika', '005-MTK', 13, 'Pertanyaan 1', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
-(87, 'UH', 'Matematika', '005-MTK', 14, 'Pertanyaan 2', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(88, 'UH', 'Matematika', '005-MTK', 15, 'Pertanyaan 3', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(89, 'UH', 'Matematika', '005-MTK', 16, 'Pertanyaan 4', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(90, 'UH', 'Matematika', '005-MTK', 17, 'Pertanyaan 5', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(91, 'UH', 'Matematika', '005-MTK', 18, 'Pertanyaan 6', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(92, 'UH', 'Matematika', '005-MTK', 19, 'Pertanyaan 7', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -372,7 +276,6 @@ CREATE TABLE `ujian` (
 
 INSERT INTO `ujian` (`Urut`, `jenis`, `mapel`, `kodesoal`, `waktu`, `lamaujian`, `kunci`, `aktif`, `acak`, `opsi`, `kelas`, `nilai`) VALUES
 (1, 'SIMULASI', 'BIND-11IPA-SIM1', '001', '30', '00:30:00', 'BA', 1, '1', 'hidden', '7', '100'),
-(2, 'SIMULASI', 'BAHASA INDONESIA', '1234', '60', '01:00:00', 'B', 0, '1', 'hidden', '7', '10'),
 (3, 'UH', 'Matematika', '005-MTK', '30', '00:30:00', 'CBABCACBCABCCCCC', 1, '1', 'hidden', '7', '100');
 
 -- --------------------------------------------------------
@@ -482,7 +385,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nilaihasil`
