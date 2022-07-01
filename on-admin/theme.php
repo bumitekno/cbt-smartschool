@@ -335,6 +335,28 @@ box-shadow: -15px 0 15px -15px inset;
 					</div>
 					<div class="col-md-6">
         					<div class="form-group">
+								<label>Kota</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-building-o" aria-hidden="true"></i>
+										</div>
+										<input name="kota" type="text" class="form-control" value="<?php echo $r['kota'];?>" required />
+									</div>
+							</div>
+					</div>
+          <div class="col-md-6">
+        					<div class="form-group">
+								<label>Tanggal</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input name="tanggal" type="text" class="form-control" value="<?php echo $r['tanggal'];?>" required />
+									</div>
+							</div>
+					</div>
+          <div class="col-md-6">
+        					<div class="form-group">
 								<label>Nama Server</label>
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -345,17 +367,6 @@ box-shadow: -15px 0 15px -15px inset;
 							</div>
 					</div>
 					<div class="col-md-6">
-        					<div class="form-group">
-								<label>Kota</label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-building-o" aria-hidden="true"></i>
-										</div>
-										<input name="kota" type="text" class="form-control" value="<?php echo $r['kota'];?>" required />
-									</div>
-							</div>
-					</div>
-					<div class="col-md-12">
         					<div class="form-group">
 								<label>Website</label>
 									<div class="input-group">
