@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 06:53 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
+-- Host: localhost:3306
+-- Generation Time: Jul 01, 2022 at 03:43 PM
+-- Server version: 10.1.48-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -148,10 +148,13 @@ CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
   `n_sekolah` varchar(30) NOT NULL,
   `sub_n_sekolah` varchar(50) NOT NULL,
+  `kepsek` varchar(50) NOT NULL,
+  `nip` varchar(20) NOT NULL,
   `kode_sekolah` varchar(30) NOT NULL,
   `logo` varchar(30) NOT NULL,
   `logo_ujian` varchar(30) NOT NULL,
   `kota` varchar(30) NOT NULL,
+  `tanggal` text NOT NULL,
   `logo_kota` varchar(30) NOT NULL,
   `web` varchar(30) NOT NULL,
   `bg_login` varchar(30) NOT NULL
@@ -161,8 +164,8 @@ CREATE TABLE `profil` (
 -- Dumping data for table `profil`
 --
 
-INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `logo_kota`, `web`, `bg_login`) VALUES
-(1, 'Sekolah Demo Smartschool', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen, K', 'sekolah', 'logo kecil.png', 'myschid.png', 'kota', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png');
+INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kepsek`, `nip`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `tanggal`, `logo_kota`, `web`, `bg_login`) VALUES
+(1, 'Sekolah Demo Smartschool', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen, K', 'Darmawan.,S. Pd, M. Pd', '1891982919153612', 'sekolah', 'logo kecil.png', 'myschid.png', 'Temanggung', '20 Juni 2020', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png');
 
 -- --------------------------------------------------------
 
@@ -190,17 +193,12 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nis`, `nama`, `kelas`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `statuslogin`, `online`) VALUES
-(1, '0012345', 'Dian', '11dua', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '2'),
+(1, '0012345', 'Dian', '11dua', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
 (2, '0012346', 'Andi', '11dua', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
-(5, '123', 'Eunwo', '7A', '12345', 1, 1, NULL, 1, 'Ruang-4', '0', '1'),
-(6, '124', 'Jinyoung', '9B', '12345', 1, 1, NULL, 2, 'Ruang-4', '0', NULL),
-(7, '125', 'Haechan', '9C', '12345', 1, 1, NULL, 3, 'Ruang-5', '0', NULL),
-(12, '11234', 'Bima', '9H', '12345', 1, 1, NULL, 1, 'Ruang-5', '0', NULL),
-(13, '11235', 'Sakti', '7F', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', NULL),
+(12, '11234', 'Bima', '7H', '12345', 1, 1, NULL, 1, 'Ruang-5', '0', '2'),
+(13, '11235', 'Sakti', '7F', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', '2'),
 (14, '11236', 'Cakra', '12A', '12345', 1, 1, NULL, 1, 'Ruang-2', '0', NULL),
-(15, '1', 'Nanda', '2A', '12345', 1, 1, NULL, 0, 'Ruang-1', '0', NULL),
-(16, '321', 'ade', '3B', '12345', 1, 1, NULL, 1, 'Ruang-16', '0', NULL),
-(17, '334', 'arga', 'A', '12345', 1, 1, NULL, 0, '', '0', NULL);
+(16, '321', 'ade', '3B', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -245,9 +243,6 @@ INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `so
 (8, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 2, 'Tujuan teks prosedur adalah &hellip;.', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
 (9, 'SIMULASI', 'BIND-11IPA-SIM1', '001', 3, 'Semua fenomena tersebut memiliki hubungan &hellip;.', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
 (55, 'Mapel samak', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(11, 'SIMULASI', 'BAHASA INDONESIA', '1234', 1, 'saya bertanya', '', 'A', 'B', 'C', 'D', '', '', '', '', '', '', 'B', '', 1),
-(12, 'SIMULASI', 'BAHASA INDONESIA', '1234', 2, 'Kamu menjawab', '', 'A', 'B', 'C', 'D', '', '', '', '', '', '', 'B', '', 1),
-(13, 'SIMULASI', 'BAHASA INDONESIA', '1234', 1, 'Jelaskan jawabannya', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
 (14, 'PAS', 'INDO', 'INDO-1', 1, 'Pertanyaan 1', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
 (15, 'PAS', 'INDO', 'INDO-1', 2, 'Pertanyaan 2', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
 (16, 'PAS', 'INDO', 'INDO-1', 3, 'Pertanyaan uraian', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 2),
@@ -298,9 +293,6 @@ INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `so
 (60, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (61, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (62, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(63, 'SIMULASI', 'bahasa indonesia', '1234', 1, 'Apa yang di maksud Cerpen', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
-(64, 'SIMULASI', 'BAHASA INDONESIA', '1234', 2, 'Apa yang dimaksud Pargraf?', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(65, 'SIMULASI', 'BAHASA INDONESIA', '1234', 3, 'Apa yah?', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
 (66, 'Mapel HARUS', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (67, 'Kode Soal H', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (68, 'Gambar Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
@@ -309,19 +301,9 @@ INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `so
 (71, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (72, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (73, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(74, 'UH', 'Matematika', '005-MTK', 10, 'aassssaaa', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', '', 1),
-(75, 'UH', 'Matematika', '005-MTK', 11, 'Pertanyaan 2', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(76, 'UH', 'Matematika', '005-MTK', 12, 'Pertanyaan 3', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
 (83, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (84, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(85, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
-(86, 'UH', 'Matematika', '005-MTK', 13, 'Pertanyaan 1', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'A', NULL, 1),
-(87, 'UH', 'Matematika', '005-MTK', 14, 'Pertanyaan 2', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'B', NULL, 1),
-(88, 'UH', 'Matematika', '005-MTK', 15, 'Pertanyaan 3', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(89, 'UH', 'Matematika', '005-MTK', 16, 'Pertanyaan 4', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(90, 'UH', 'Matematika', '005-MTK', 17, 'Pertanyaan 5', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(91, 'UH', 'Matematika', '005-MTK', 18, 'Pertanyaan 6', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1),
-(92, 'UH', 'Matematika', '005-MTK', 19, 'Pertanyaan 7', '', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', '', '', '', '', '', 'C', NULL, 1);
+(85, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -371,9 +353,8 @@ CREATE TABLE `ujian` (
 --
 
 INSERT INTO `ujian` (`Urut`, `jenis`, `mapel`, `kodesoal`, `waktu`, `lamaujian`, `kunci`, `aktif`, `acak`, `opsi`, `kelas`, `nilai`) VALUES
-(1, 'SIMULASI', 'BIND-11IPA-SIM1', '001', '30', '00:30:00', 'BA', 1, '1', 'hidden', '7', '100'),
-(2, 'SIMULASI', 'BAHASA INDONESIA', '1234', '60', '01:00:00', 'B', 0, '1', 'hidden', '7', '10'),
-(3, 'UH', 'Matematika', '005-MTK', '30', '00:30:00', 'CBABCACBCABCCCCC', 1, '1', 'hidden', '7', '100');
+(1, 'SIMULASI', 'BIND-11IPA-SIM1', '001', '30', '00:30:00', 'BA', 0, '1', 'hidden', '7', '100'),
+(3, 'UH', 'Matematika', '005-MTK', '30', '00:30:00', 'CBABCA', 1, '1', 'hidden', '7', '100');
 
 -- --------------------------------------------------------
 
@@ -488,7 +469,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `nilaihasil`
 --
 ALTER TABLE `nilaihasil`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `siswa`
