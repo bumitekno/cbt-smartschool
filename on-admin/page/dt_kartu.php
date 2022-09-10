@@ -27,6 +27,8 @@
 <tr><td id="cilik"><b>Nama</b></td><td id="cilik" width="1"> :</td><td id="cilik" width="290"> <b>&emsp;<?php echo $ar[nama]; ?></b></td></tr>
 <tr><td id="cilik"><b>Kelas</b></td><td id="cilik"> :</td><td id="cilik">&emsp;<b><?php echo $ar[kelas]; ?></b></td></tr>
 <tr><td id="cilik"><b>Sesi / Ruang</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[sesi]; ?> / <?php echo $ar[ruang]; ?></b></td></tr>
+<tr><td id="cilik"><b>Username</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[nis]; ?></b></td></tr>
+<tr><td id="cilik"><b>Password</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[pass]; ?></b></td></tr>
 <tr><td></td><td></td><td id="cilik">&nbsp;&nbsp;&nbsp;<?php echo $xx['kota'];?>, <?php echo $xx['tanggal'];?></td></tr>
 <tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;Kepala Sekolah</td></tr>
 <tr><td></td><td></td><td id="cilik" height="40" width="115">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../images/<?php echo $xx['bg_login'];?>' width=70px height=auto/></td></tr>

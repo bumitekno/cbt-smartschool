@@ -112,7 +112,7 @@ if(!$show=='')
                         }
                         while ($xx = mysqli_fetch_array ($qq)){ 
                                 echo "
-                                <div id='border' class='col-sm-6 col-xs-8' style='max-width:430px;'>
+                                <div id='border' class='col-sm-6 col-xs-8' style='max-width:450px;'>
                                         <table>
                                                 <td colspan='3' style='border-bottom:1px solid #666; padding: 0;'>
                                                     <table width='100%' class='kartu'>
@@ -127,6 +127,8 @@ if(!$show=='')
 <tr><td id='cilik'><b>Nama</b></td><td id='cilik' width='1'> :</td><td id='cilik' width='290'> <b>&emsp;$ar[nama]</b></td></tr>
 <tr><td id='cilik'><b>Kelas</b></td><td id='cilik'> :</td><td id='cilik'>&emsp;<b>$ar[kelas]</b></td></tr>
 <tr><td id='cilik'><b>Sesi / Ruang</b></td><td id='cilik'> :</td><td id='cilik'><b>&emsp;$ar[sesi] / $ar[ruang]</b></td></tr>
+<tr><td id='cilik'><b>Username</b></td><td id='cilik'> :</td><td id='cilik'><b>&emsp;$ar[nis]</b></td></tr>
+<tr><td id='cilik'><b>Password</b></td><td id='cilik'> :</td><td id='cilik'><b>&emsp;$ar[pass]</b></td></tr>
 <tr><td></td><td></td><td id='cilik'>&nbsp;&nbsp;&nbsp;$xx[kota], $xx[tanggal]</td></tr>
 <tr><td></td><td></td><td id='cilik' width='290'>&nbsp;&nbsp;&nbsp;Kepala Sekolah</td></tr>
 <tr><td></td><td></td><td id='cilik' height='40' width='115'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../images/$xx[bg_login]' width=70px height=auto/></td></tr>
