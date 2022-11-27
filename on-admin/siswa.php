@@ -156,7 +156,7 @@ include "tema/tema.php";
 					<div class="modal-body">
 						<form action="page/siswa_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
 							<div class="form-group col-sm-6">
-								<label>No. Peserta</label>
+								<label>No. Peserta / NIS</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-info"></i>

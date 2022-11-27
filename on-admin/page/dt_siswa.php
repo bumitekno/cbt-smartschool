@@ -1,7 +1,7 @@
 				<thead>
 					<tr>
 						<th width="4%">No</th>
-						<th width="15%">No Peserta</th>
+						<th width="15%">No Peserta / NIS</th>
 						<th width="25%">Nama</th>
 						<th width="4%">Kelas</th>
 						<th width="10%">Password</th>

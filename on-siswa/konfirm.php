@@ -214,7 +214,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
                 </div>
                  <div id="garis" class="list-group-item">
                     <label class="list-group-item-heading">SYARAT PENGERJAAN SOAL :</label>
-                    <p class="list-group-item-text"><h6><i>Baca dan centang beberapa syarat dibawah ini lalu klik mulai untuk mengerjakan soal !!!</i></h6></p>
+                    <p class="list-group-item-text"><h6><i>Baca dan ceklis beberapa syarat dibawah ini lalu klik mulai untuk mengerjakan soal !!!</i></h6></p>
                 </div> 
                 <div id="garis" class="list-group-item top-heading">
                     <button id="doa" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">DOA Menghadapi ujian</button>
@@ -225,6 +225,10 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
                     </label>
                     <label class="container">&emsp; Jujur dalam mengerjakan soal ujian
                       <input id="input4" type="checkbox" name="completed4" value="35" required >
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">&emsp; Apabila saat tes berlangsung anda meninggalkan halaman ujian, maka tes dianggap selesai
+                      <input id="input5" type="checkbox" name="completed5" value="30" required >
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">&emsp; Teliti
