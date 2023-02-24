@@ -11,7 +11,7 @@ $ur = mysqli_fetch_array ($query2);
 	</script>
 <div class="btn-group" role="group" aria-label="Basic example">
 <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Soal PG</button>
-<!-- <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd2" data-toggle="modal"><i class="fa fa-plus"></i> Soal Uraian</button> -->
+<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd2" data-toggle="modal"><i class="fa fa-plus"></i> Soal Uraian</button>
 <a href="soal-import.php"><button id="clot2" type="button" class="btn btn-warning"><i class="fa fa-upload"></i> Import Butir Soal</button></a>
 <a class='open_modal1' style='font-decoration:none;color:#222;' hidden><button id="clot" type='button' class='btn btn-danger' ><i class='fa fa-picture-o'></i> Database | Upload gambar soal</button></a>
 </div>

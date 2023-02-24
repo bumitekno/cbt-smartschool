@@ -2,8 +2,8 @@
 					<tr>
 						<th width="5%">No</th>
 						<th width="20%">Mapel</th>
-						<th width="10%">Jumlah Soal</th>
-						<!-- <th width="3%">Jumlah Soal Uraian</th> -->
+						<th width="10%">Jumlah Soal PG</th>
+						<th width="5%">Jumlah Soal Uraian</th>
 						<th width="10%">Waktu</th>
 						<!-- <th width="5%">opsi jwb</th>
 						<th width="5%">tampil soal</th> -->
@@ -82,7 +82,7 @@
 		<td align=left>$ar[jenissoal]<br>$ar[kodemapel]<br>
 		$ar[kodesoal]</td>
 		<td align=center>$num_rows</td>
-		
+		<td align=center>$num_rows2</td>
 		<td align=center>$ar[waktu]'</td>
 		
 		<td align=center>$ar[kelas]</td>

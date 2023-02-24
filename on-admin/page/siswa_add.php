@@ -5,7 +5,7 @@ include ('../../koneksi/koneksi.php');
 $nis			= $_POST['nis'];
 $nama			= $_POST['nama'];
 $kelas 			= $_POST['kelas'];
-$rombel 			= $_POST['rombel'];
+$rombel 		= $_POST['rombel'];
 $pass			= $_POST['pass'];
 $sesi			= $_POST['sesi'];
 $ruang			= $_POST['ruang'];

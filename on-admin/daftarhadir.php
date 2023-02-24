@@ -150,7 +150,7 @@ include "tema/tema.php";
             				    </div>
             				    <h4><font color="#FF0000">&emsp; Keterangan: *</font></h4>
                                 <ul>
-								<li>Pilih Ruang, mapel ,Sesi dan tanggal pelaksanaan ujian lalu klik proses untuk menampilkan daftar hadir </li>
+								<li>Pilih Kelas, Ruang, Sesi, Mapel dan tanggal pelaksanaan ujian lalu klik proses untuk menampilkan daftar hadir </li>
                                 </ul>  
             				</div>
         			    </div>

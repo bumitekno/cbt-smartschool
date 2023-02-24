@@ -12,7 +12,7 @@
 						while ($xx = mysqli_fetch_array ($qq)){	
 
 						?>
-<div id='border' class="col-xs-6" style='max-width:450px;'>
+<div id='border' class="col-xs-6" style='max-width:430px;'>
 	            <table>
 		                <td colspan="3" style="border-bottom:1px solid #666; padding: 0;">
                 			<table width="100%" class="kartu">
@@ -26,6 +26,7 @@
                 		</td>
 <tr><td id="cilik"><b>Nama</b></td><td id="cilik" width="1"> :</td><td id="cilik" width="290"> <b>&emsp;<?php echo $ar[nama]; ?></b></td></tr>
 <tr><td id="cilik"><b>Kelas</b></td><td id="cilik"> :</td><td id="cilik">&emsp;<b><?php echo $ar[kelas]; ?></b></td></tr>
+<!-- <tr><td id="cilik"><b>Program Keahlian</b></td><td id="cilik"> :</td><td id="cilik">&emsp;<b><?php echo $ar[kelas]; ?></b></td></tr> -->
 <tr><td id="cilik"><b>Sesi / Ruang</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[sesi]; ?> / <?php echo $ar[ruang]; ?></b></td></tr>
 <tr><td id="cilik"><b>Username</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[nis]; ?></b></td></tr>
 <tr><td id="cilik"><b>Password</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[pass]; ?></b></td></tr>

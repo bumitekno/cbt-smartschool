@@ -19,7 +19,7 @@ if($admin_su == 1)
 				        }
 $jenissoal			= $_POST['jenissoal'];
 $kodemapel			= $_POST['kodemapel'];
-$kelas			= $_POST['kelas'];
+$kelas				= $_POST['kelas'];
 $kodesoal			= $_POST['kodesoal'];
 $waktu			    = $_POST['waktu'];
 $acak			    = $_POST['acak'];
