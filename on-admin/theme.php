@@ -379,12 +379,12 @@ box-shadow: -15px 0 15px -15px inset;
 					</div>
           <div class="col-md-6">
         					<div class="form-group">
-								<label>Nama Server</label>
+								<label>Nama Server*(Jangan diubah)</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-server"></i>
 										</div>
-										<input name="kode_sekolah" type="hidden" class="form-control" value="<?php echo $r['kode_sekolah'];?>" required />
+										<input name="kode_sekolah" type="text" class="form-control" value="<?php echo $r['kode_sekolah'];?>" required />
 									</div>
 							</div>
 					</div>
