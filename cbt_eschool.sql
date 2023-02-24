@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 01, 2022 at 03:43 PM
--- Server version: 10.1.48-MariaDB
--- PHP Version: 7.4.29
+-- Host: 127.0.0.1
+-- Generation Time: Feb 24, 2023 at 08:36 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,13 +36,6 @@ CREATE TABLE `article` (
   `date` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `article`
---
-
-INSERT INTO `article` (`id`, `content`, `author`, `tanggal`, `date`) VALUES
-(1, '<p>yayaya</p>\r\n', 'Administrator', '2022-06-16 04:56:21', '');
-
 -- --------------------------------------------------------
 
 --
@@ -68,6 +61,14 @@ CREATE TABLE `jawaban` (
   `waktuselesai` varchar(12) NOT NULL,
   `sisawaktu` varchar(8) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jawaban`
+--
+
+INSERT INTO `jawaban` (`nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal`, `kodesoal`, `aktif`, `waktu`, `jawabansiswa`, `benar`, `salah`, `nilai`, `kuncisoal`, `mulaiujian`, `lamaujian`, `waktuselesai`, `sisawaktu`) VALUES
+('0012346', 'Andi', '11dua', 'Matematika', 6, '005-MTK', 'Aktif', '30', NULL, NULL, NULL, NULL, NULL, '11:11:12', '00:30:00', '11:42:12', '1860'),
+('11236', 'Cakra', '7A', 'BIND-11IPA-SIM1', 8, '001', 'Aktif', '30', NULL, NULL, NULL, NULL, NULL, '13:54:25', '00:30:00', '14:24:25', '1860');
 
 -- --------------------------------------------------------
 
@@ -136,7 +137,10 @@ INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal
 (46, '0012345001', 'Dian', '11dua', 'BIND-11IPA-SIM1', 8, '001', '1', 'DCABA', '10:16:23am', '08-06-2022', '37.5', '0', 'BA', 2),
 (47, '00012223331234', 'Jaemin', '7A', 'BAHASA INDONESIA', 4, '1234', '1', 'AC', '03:43:05pm', '09-06-2022', '5', '', 'B', 0),
 (48, '123001', 'Eunwo', '7A', 'BIND-11IPA-SIM1', 8, '001', '1', 'BBDXA', '01:26:55pm', '21-06-2022', '50', '', 'BA', 0),
-(49, '123005-MTK', 'Eunwo', '7A', 'Matematika', 16, '005-MTK', '1', 'XCCXBXCXCXXXCXCC', '02:06:53pm', '21-06-2022', '31.25', '', 'CBABCACBCABCCCCC', 0);
+(49, '123005-MTK', 'Eunwo', '7A', 'Matematika', 16, '005-MTK', '1', 'XCCXBXCXCXXXCXCC', '02:06:53pm', '21-06-2022', '31.25', '', 'CBABCACBCABCCCCC', 0),
+(50, '0012345005-MTK', 'Dian', '11dua', 'Matematika', 6, '005-MTK', '1', 'XXXXXX', '09:52:37am', '25-11-2022', '0', '', 'CBABCA', 0),
+(51, '11236005-MTK', 'Cakra', '11A', 'Matematika', 6, '005-MTK', '1', 'XBBXXC', '01:44:29pm', '25-11-2022', '16.66', '', 'CBABCA', 0),
+(66, '124001', 'Jinyoung', '7B', 'BIND-11IPA-SIM1', 8, '001', '1', 'ADBCB', '10:35:44am', '27-11-2022', '37.5', '', 'BA', 0);
 
 -- --------------------------------------------------------
 
@@ -147,25 +151,26 @@ INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal
 CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
   `n_sekolah` varchar(30) NOT NULL,
-  `sub_n_sekolah` varchar(50) NOT NULL,
-  `kepsek` varchar(50) NOT NULL,
-  `nip` varchar(20) NOT NULL,
+  `sub_n_sekolah` varchar(100) NOT NULL,
   `kode_sekolah` varchar(30) NOT NULL,
   `logo` varchar(30) NOT NULL,
   `logo_ujian` varchar(30) NOT NULL,
+  `jenis_ujian` text NOT NULL,
   `kota` varchar(30) NOT NULL,
   `tanggal` text NOT NULL,
   `logo_kota` varchar(30) NOT NULL,
   `web` varchar(30) NOT NULL,
-  `bg_login` varchar(30) NOT NULL
+  `bg_login` varchar(30) NOT NULL,
+  `kepsek` varchar(50) NOT NULL,
+  `nip` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `profil`
 --
 
-INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kepsek`, `nip`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `tanggal`, `logo_kota`, `web`, `bg_login`) VALUES
-(1, 'Sekolah Demo Smartschool', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen, K', 'Darmawan.,S. Pd, M. Pd', '1891982919153612', 'sekolah', 'logo kecil.png', 'myschid.png', 'Temanggung', '20 Juni 2020', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png');
+INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `jenis_ujian`, `kota`, `tanggal`, `logo_kota`, `web`, `bg_login`, `kepsek`, `nip`) VALUES
+(1, 'Sekolah Demo sssss', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen,', 'sekolah', 'mysch.png', 'myschid.png', 'Ujian Akhir Semester', 'Temanggung', '26 Juni 2020', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png', 'Dadang S. Pd', '19755551997031005');
 
 -- --------------------------------------------------------
 
@@ -177,7 +182,9 @@ CREATE TABLE `siswa` (
   `id` int(10) NOT NULL,
   `nis` varchar(100) NOT NULL,
   `nama` varchar(200) NOT NULL,
+  `jurusan` text NOT NULL,
   `kelas` text NOT NULL,
+  `rombel` text NOT NULL,
   `pass` varchar(255) NOT NULL,
   `Id_User` int(11) NOT NULL DEFAULT '1',
   `Id_Usergroup_User` int(11) NOT NULL DEFAULT '1',
@@ -192,13 +199,19 @@ CREATE TABLE `siswa` (
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`id`, `nis`, `nama`, `kelas`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `statuslogin`, `online`) VALUES
-(1, '0012345', 'Dian', '11dua', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
-(2, '0012346', 'Andi', '11dua', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
-(12, '11234', 'Bima', '7H', '12345', 1, 1, NULL, 1, 'Ruang-5', '0', '2'),
-(13, '11235', 'Sakti', '7F', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', '2'),
-(14, '11236', 'Cakra', '12A', '12345', 1, 1, NULL, 1, 'Ruang-2', '0', NULL),
-(16, '321', 'ade', '3B', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', NULL);
+INSERT INTO `siswa` (`id`, `nis`, `nama`, `jurusan`, `kelas`, `rombel`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `statuslogin`, `online`) VALUES
+(1, '0012345', 'Dian', '', '10IPA', 'IPS', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '2'),
+(2, '0012346', 'Andi', '', '11IPA', 'BAHASA', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
+(5, '123', 'Eunwo', '', '10IPA', 'A', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
+(6, '124', 'Jinyoung', '', '7B', '', '12345', 1, 1, NULL, 2, 'Ruang-4', '0', '1'),
+(7, '125', 'Haechan', '', '9C', '', '12345', 1, 1, NULL, 3, 'Ruang-5', '0', NULL),
+(12, '11234', 'Bima', '', '9H', '', '12345', 1, 1, NULL, 1, 'Ruang-5', '0', NULL),
+(13, '11235', 'Sakti', '', '7F', '', '12345', 1, 1, NULL, 1, 'Ruang-3', '0', '1'),
+(14, '11236', 'Cakra', '', '7A', '', '12345', 1, 1, NULL, 1, 'Ruang-2', '0', '1'),
+(15, '1', 'Nanda', '', '10IPA', 'A', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL),
+(17, '334', 'arga', '', '10IPA', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL),
+(18, '054321', 'Aqil', '', '10IPA', 'IPA', '12345', 1, 1, NULL, 1, 'Ruang-2', '0', NULL),
+(20, '12321', 'Bayu', '', '10IPS', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -303,7 +316,8 @@ INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `so
 (73, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
 (83, 'Status Soal', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
 (84, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 0),
-(85, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0);
+(85, 'Jenis Ujian', 'Mapel', 'Kode Soal', 0, 'Soal / Pertanyaan', 'Gambar Soal', 'opsi A', 'opsi B', 'opsi C', 'opsi D', 'opsi E', 'gbr opsi A', 'gbr opsi B', 'gbr opsi C', 'gbr opsi D', 'gbr opsi E', 'K', NULL, 0),
+(93, 'UH', 'Matematika', '005-MTK', 7, 'jsjjsjs', '', '', '', '', '', '', '', '', '', '', '', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -354,7 +368,7 @@ CREATE TABLE `ujian` (
 
 INSERT INTO `ujian` (`Urut`, `jenis`, `mapel`, `kodesoal`, `waktu`, `lamaujian`, `kunci`, `aktif`, `acak`, `opsi`, `kelas`, `nilai`) VALUES
 (1, 'SIMULASI', 'BIND-11IPA-SIM1', '001', '30', '00:30:00', 'BA', 0, '1', 'hidden', '7', '100'),
-(3, 'UH', 'Matematika', '005-MTK', '30', '00:30:00', 'CBABCA', 1, '1', 'hidden', '7', '100');
+(3, 'UH', 'Matematika', '005-MTK', '30', '00:30:00', 'CBABCA', 0, '1', 'hidden', '11', '100');
 
 -- --------------------------------------------------------
 
@@ -463,25 +477,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nilaihasil`
 --
 ALTER TABLE `nilaihasil`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `ujian`
