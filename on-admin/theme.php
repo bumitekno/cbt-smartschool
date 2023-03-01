@@ -338,7 +338,7 @@ box-shadow: -15px 0 15px -15px inset;
 								<label>Jenis Ujian</label>
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-server" aria-hidden="true"></i>
+											<i class="fa fa-file-text" aria-hidden="true"></i>
 										</div>
 										<input name="jenis_ujian" type="text" class="form-control" value="<?php echo $r['jenis_ujian'];?>" required />
 									</div>
