@@ -115,7 +115,7 @@
                                                     <table width='100%' class='kartu'>
                                                         <tr>
                                                             <td align='center' style='padding: 4px'><img src='../aset/foto/$xx[logo]' height='40'></td>
-                                                           <td id='cilik' align='center' style='font-weight:bold; padding: 4px; text-transform: uppercase;'>KARTU PESERTA <BR> UJIAN SEKOLAH BERBASIS KOMPUTER<BR>
+                                                           <td id='cilik' align='center' style='font-weight:bold; padding: 4px; text-transform: uppercase;'>KARTU PESERTA<BR>$xx[jenis_ujian] BERBASIS KOMPUTER<BR>
                                                            $xx[n_sekolah]<BR>TAHUN AJARAN 2022/2023 </td>
                                                             <td align='center' style='padding: 4px'><img src='../aset/foto/$xx[logo_kota]' height='45'></td>
                                                         </tr>
