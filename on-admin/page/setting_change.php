@@ -10,11 +10,12 @@ $nip				= $_POST['nip'];
 $jenis_ujian		= $_POST['jenis_ujian'];
 $kota			    = $_POST['kota'];
 $tanggal			= $_POST['tanggal'];
+$th_ajaran			= $_POST['th_ajaran'];
 $kode_sekolah		= $_POST['kode_sekolah'];
 $web			    = $_POST['web'];
 
 
-	if ($edit = mysqli_query($konek, "UPDATE profil SET n_sekolah='$n_sekolah', sub_n_sekolah='$sub_n_sekolah', kepsek='$kepsek', nip='$nip', jenis_ujian='$jenis_ujian', kota='$kota', tanggal='$tanggal', kode_sekolah='$kode_sekolah', web='$web'  WHERE id='$id'")){
+	if ($edit = mysqli_query($konek, "UPDATE profil SET n_sekolah='$n_sekolah', sub_n_sekolah='$sub_n_sekolah', kepsek='$kepsek', nip='$nip', jenis_ujian='$jenis_ujian', kota='$kota', tanggal='$tanggal', th_ajaran='$th_ajaran', kode_sekolah='$kode_sekolah', web='$web'  WHERE id='$id'")){
 		header("Location:../theme.php?sukses=1");
 		exit();
 	}

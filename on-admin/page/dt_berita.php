@@ -99,7 +99,7 @@
                             					<tr>
                             						<td style="padding: 4px"><img src="../aset/foto/<?php echo $xx['logo']; ?>" height="90"></td>
                             						<td align="center" style="font-weight:bold; padding: 4px;">
-                            							<h3>BERITA ACARA UJIAN BERBASIS KOMPUTER <br> <u><?php echo $xx['n_sekolah']; ?> <?php echo date('Y') ?></u></h3>
+                            							<h3>BERITA ACARA UJIAN BERBASIS KOMPUTER <br> <u><?php echo $xx['n_sekolah']; ?> <?php echo $xx['th_ajaran'];?></u></h3>
                             						</td>
                             						<td style="padding: 0px"><img src="../aset/foto/<?php echo $xx['logo_kota']; ?>" height="94"></td>
                             					</tr>
