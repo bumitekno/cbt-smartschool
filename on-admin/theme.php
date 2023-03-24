@@ -355,7 +355,7 @@ box-shadow: -15px 0 15px -15px inset;
 									</div>
 							</div>
 					</div>
-          <div class="col-md-6">
+          			<div class="col-md-6">
         					<div class="form-group">
 								<label>Tanggal Kartu Ujian</label>
 									<div class="input-group">
@@ -363,6 +363,17 @@ box-shadow: -15px 0 15px -15px inset;
 											<i class="fa fa-calendar"></i>
 										</div>
 										<input name="tanggal" type="text" class="form-control" value="<?php echo $r['tanggal'];?>" required />
+									</div>
+							</div>
+					</div>
+					<div class="col-md-6">
+        					<div class="form-group">
+								<label>Tahun Ajaran</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input name="th_ajaran" type="text" class="form-control" value="<?php echo $r['th_ajaran'];?>" required />
 									</div>
 							</div>
 					</div>
