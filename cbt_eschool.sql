@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2023 at 08:36 AM
+-- Generation Time: Mar 28, 2023 at 02:19 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -158,6 +158,7 @@ CREATE TABLE `profil` (
   `jenis_ujian` text NOT NULL,
   `kota` varchar(30) NOT NULL,
   `tanggal` text NOT NULL,
+  `th_ajaran` varchar(15) NOT NULL,
   `logo_kota` varchar(30) NOT NULL,
   `web` varchar(30) NOT NULL,
   `bg_login` varchar(30) NOT NULL,
@@ -169,8 +170,8 @@ CREATE TABLE `profil` (
 -- Dumping data for table `profil`
 --
 
-INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `jenis_ujian`, `kota`, `tanggal`, `logo_kota`, `web`, `bg_login`, `kepsek`, `nip`) VALUES
-(1, 'Sekolah Demo sssss', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen,', 'sekolah', 'mysch.png', 'myschid.png', 'Ujian Akhir Semester', 'Temanggung', '26 Juni 2020', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png', 'Dadang S. Pd', '19755551997031005');
+INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `jenis_ujian`, `kota`, `tanggal`, `th_ajaran`, `logo_kota`, `web`, `bg_login`, `kepsek`, `nip`) VALUES
+(1, 'Sekolah Demo sssss', 'Jl. Raya Krangan - Pringsurat, Kenteng, Kebumen,', 'sekolah', 'mysch.png', 'myschid.png', 'Ujian Akhir Semester', 'Temanggung', '26 Juni 2020', '2023/2024', 'sma.png', 'https://mysch.web.id/', 'Tanda_Tangan.png', 'Dadang S. Pd', '19755551997031005');
 
 -- --------------------------------------------------------
 
@@ -200,7 +201,7 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nis`, `nama`, `jurusan`, `kelas`, `rombel`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `statuslogin`, `online`) VALUES
-(1, '0012345', 'Dian', '', '10IPA', 'IPS', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '2'),
+(1, '0012345', 'Dian', '', '10IPA', 'IPS', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
 (2, '0012346', 'Andi', '', '11IPA', 'BAHASA', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
 (5, '123', 'Eunwo', '', '10IPA', 'A', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
 (6, '124', 'Jinyoung', '', '7B', '', '12345', 1, 1, NULL, 2, 'Ruang-4', '0', '1'),
@@ -211,7 +212,10 @@ INSERT INTO `siswa` (`id`, `nis`, `nama`, `jurusan`, `kelas`, `rombel`, `pass`, 
 (15, '1', 'Nanda', '', '10IPA', 'A', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL),
 (17, '334', 'arga', '', '10IPA', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL),
 (18, '054321', 'Aqil', '', '10IPA', 'IPA', '12345', 1, 1, NULL, 1, 'Ruang-2', '0', NULL),
-(20, '12321', 'Bayu', '', '10IPS', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL);
+(20, '12321', 'Bayu', '', '10IPS', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', NULL),
+(21, '0089887864', 'WD. ARDINA PUTRI', '', '9K', '', '12345', 1, 1, NULL, 3, 'Ruang-3', '0', NULL),
+(22, '9583678', 'Madun .dksl.', '', '9H', '', '12345', 1, 1, NULL, 1, 'Ruang-4', '0', NULL),
+(23, '9658647', 'Sari', '', '9H', '', '12345', 1, 1, NULL, 1, 'Ruang-4', '0', NULL);
 
 -- --------------------------------------------------------
 
@@ -489,7 +493,7 @@ ALTER TABLE `nilaihasil`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `soal`
