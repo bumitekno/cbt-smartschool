@@ -5,10 +5,10 @@ session_start();
 $username 	= $_POST['username'];
 $password	= $_POST['password'];
 
-$username = mysql_real_escape_string($username);
-$password = mysql_real_escape_string($password);
-$q = mysql_query("select nip,pass,nama from users where nip='$username' and pass='$password'");
-if (mysql_num_rows($q) == 1) {
+$username = mysqli_real_escape_string($connsite, $username);
+$password = mysqli_real_escape_string($connsite, $password);
+$q = mysqli_query($connsite, "select nip,pass,nama from users where nip='$username' and pass='$password'");
+if (mysqli_num_rows($q) == 1) {
 $_SESSION['admin'] = $username;
 $_SESSION['nama'] = $nama;
 header('location:../on-admin/index.php');
