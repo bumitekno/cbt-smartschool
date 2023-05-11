@@ -10,23 +10,23 @@ include ('conn/fungsi.php');
 						}
 						$i=1;
 						while ($ar = mysqli_fetch_array ($querydosen)){
-						$result = mysql_query("SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
-						$num_rows = mysql_num_rows($result);
-						$hm = mysql_query("SELECT * FROM jawaban WHERE kodesoal='$ar[kodesoal]'");
-						$num = mysql_num_rows($hm);
+						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
+						$num_rows = mysqli_num_rows($result);
+						$hm = mysqli_query($konek, "SELECT * FROM jawaban WHERE kodesoal='$ar[kodesoal]'");
+						$num = mysqli_num_rows($hm);
                                 						if ($num > 0)
                                 						{
-                                						$hasil=mysql_num_rows($hm);
+                                						$hasil=mysqli_num_rows($hm);
                                 						}
                                 						else
                                 						{
                                 						$hasil="0";    
                                 						}
-                        $hs = mysql_query("SELECT * FROM nilaihasil WHERE kodesoal='$ar[kodesoal]'");
-						$nm = mysql_num_rows($hs);
+                        $hs = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE kodesoal='$ar[kodesoal]'");
+						$nm = mysqli_num_rows($hs);
 						if ($nm > 0)
                                 						{
-                                						$hsil=mysql_num_rows($hs);
+                                						$hsil=mysqli_num_rows($hs);
                                 						}
                                 						else
                                 						{

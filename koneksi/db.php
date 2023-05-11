@@ -1,5 +1,5 @@
 <?php 
 error_reporting(E_ALL ^ E_DEPRECATED);
-mysql_connect('localhost', 'root', '');
-mysql_select_db('cbt_eschool');
+$connsite= mysqli_connect('localhost', 'root', '');
+mysqli_select_db($connsite, 'cbt_eschool');
 ?>

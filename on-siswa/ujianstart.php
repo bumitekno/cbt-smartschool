@@ -5,7 +5,7 @@ include('conn/cek.php');
 include('../koneksi/koneksi.php');
 include('conn/fungsi.php');
 
-mysql_query("update siswa set statuslogin='1'where nis='$nis'");
+mysqli_query($konek, "update siswa set statuslogin='1'where nis='$nis'");
 $query = mysqli_query($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$nis' ORDER by RAND ()");
 if ($query == false) {
   die("Terjadi Kesalahan : " . mysqli_error($konek));

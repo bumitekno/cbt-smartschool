@@ -9,14 +9,14 @@ $file = fopen("on-siswa/token.txt","r");
 $token=fread($file,filesize("on-siswa/token.txt"));
 if  ($token == $inputtoken){
     
-$username = mysql_real_escape_string($username);
-$password = mysql_real_escape_string($password);
-$q = mysql_query("select nis,pass,nama,statuslogin from siswa where BINARY nis='$username' and pass='$password'");
-if (mysql_num_rows($q) == 1) {
+$username = mysqli_real_escape_string($connsite, $username);
+$password = mysqli_real_escape_string($connsite, $password);
+$q = mysqli_query($connsite, "select nis,pass,nama,statuslogin from siswa where BINARY nis='$username' and pass='$password'");
+if (mysqli_num_rows($q) == 1) {
 
 $_SESSION['siswa'] = $username;
 $_SESSION['nama'] = $nama;
-mysql_query("update siswa set online='1'where nis='$username'");
+mysqli_query($connsite, "update siswa set online='1'where nis='$username'");
 header('location:on-siswa/index.php');
 
 
