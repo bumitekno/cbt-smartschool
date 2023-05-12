@@ -157,7 +157,7 @@ if(isset($_POST['submit'])){
     if($drop == 1){
 //             kosongkan tabel pegawai
              $truncate ="TRUNCATE TABLE soal";
-             mysql_query($truncate);
+             mysqli_query($connsite, $truncate);
     };
     
 //    import data excel mulai baris ke-2 (karena tabel xls ada header pada baris 1)
@@ -190,12 +190,12 @@ $pilihan4d=addslashes($pilihan4);
 $pilihan5e=addslashes($pilihan5);
 //      setelah data dibaca, masukkan ke tabel pegawai sql
       $query = "INSERT into soal (jenissoal,kodemapel,kodesoal,nomersoal,soal,gambarsoal,pilihan1,pilihan2,pilihan3,pilihan4,pilihan5,gambar_a,gambar_b,gambar_c,gambar_d,gambar_e,kunci,status)values('$jenissoal','$kodemapel','$kodesoal','$nomersoal','$soal1','$gambarsoal','$pilihan1a','$pilihan2b','$pilihan3c','$pilihan4d','$pilihan5e','$gambar_a','$gambar_b','$gambar_c','$gambar_d','$gambar_e','$kunci','$status')";
-      $hasil = mysql_query($query);
+      $hasil = mysqli_query($connsite, $query);
     }
     
     if(!$hasil){
 //          jika import gagal
-          die(mysql_error());
+          die(mysqli_error($connsite));
       }else{
 //          jika impor berhasil
           echo "

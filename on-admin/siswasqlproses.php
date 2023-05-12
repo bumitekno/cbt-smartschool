@@ -4,12 +4,12 @@ include ('../koneksi/koneksi.php');
 include ('conn/cek.php');
 include ('conn/fungsi.php');
 
-$connect = mysql_connect('localhost','root','');
+$connect = mysqli_connect('localhost','root','');
 if (!$connect) {
-die('Could not connect to MySQL: ' . mysql_error());
+die('Could not connect to MySQL: ' . mysqli_error($konek));
 }
 //nama database
-$cid =mysql_select_db('cbt_eschool',$connect);
+$cid =mysqli_select_db($connsite, 'cbt_eschool', $connect);
 
 
 
@@ -20,16 +20,16 @@ $zip->close();
 // Name of the file
 $filename = 'siswa.sql';
 // MySQL host
-$mysql_host = 'localhost';
+$mysqli_host = 'localhost';
 // MySQL username
-$mysql_username = 'root';
+$mysqli_username = 'root';
 // MySQL password
-$mysql_password = '';
+$mysqli_password = '';
 // Database name
-$mysql_database = 'cbt_eschool';
+$mysqli_database = 'cbt_eschool';
 
 // Connect to MySQL server
-$con = @new mysqli($mysql_host,$mysql_username,$mysql_password,$mysql_database);
+$con = @new mysqli($mysqli_host,$mysqli_username,$mysqli_password,$mysqli_database);
 
 // Check connection
 if ($con->connect_errno) {

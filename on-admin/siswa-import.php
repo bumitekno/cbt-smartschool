@@ -187,7 +187,7 @@ if(isset($_POST['submit'])){
     if($drop == 1){
 //             kosongkan tabel pegawai
              $truncate ="TRUNCATE TABLE siswa";
-             mysql_query($truncate);
+             mysqli_query($connsite, $truncate);
     };
     
 //    import data excel mulai baris ke-2 (karena tabel xls ada header pada baris 1)
@@ -203,12 +203,12 @@ if(isset($_POST['submit'])){
 
 //      setelah data dibaca, masukkan ke tabel pegawai sql
       $query = "INSERT into siswa (nis,nama,kelas,pass,sesi,ruang)values('$nis','$nama','$kelas','$pass','$sesi','$ruang')";
-      $hasil = mysql_query($query);
+      $hasil = mysqli_query($connsite, $query);
     }
     
     if(!$hasil){
 //          jika import gagal
-          die(mysql_error());
+          die(mysqli_error($connsite));
       }else{
 //          jika impor berhasil
           echo "
