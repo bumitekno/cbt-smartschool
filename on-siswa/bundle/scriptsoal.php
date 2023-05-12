@@ -13,8 +13,8 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
 						$o=1;
 						}
 						while ($ar = mysqli_fetch_array ($query)){
-						$result = mysql_query("SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
-						$rows = mysql_num_rows($result);
+						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
+						$rows = mysqli_num_rows($result);
 						$ks=$ar["kodesoal"];
 						$km=$ar["kodemapel"];
 						$ip=$ar["kunci"];
