@@ -6,8 +6,8 @@
 						}
 						$i=1;
 						while ($ar = mysqli_fetch_array ($querydosen)){
-						$result = mysql_query("SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
-						$num_rows = mysql_num_rows($result);
+						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
+						$num_rows = mysqli_num_rows($result);
 							echo "
 							
 								<tr>

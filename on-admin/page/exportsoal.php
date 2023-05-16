@@ -24,13 +24,13 @@ include ('../../koneksi/db.php');
 $SQL = "SELECT * from soal where kodemapel='$mapel' and jenissoal='$jenis' and kodesoal='$kode'";
 $header = '';
 $result ='';
-$exportData = mysql_query ($SQL ) or die ( "Sql error : " . mysql_error( ) );
-$fields = mysql_num_fields ( $exportData );
+$exportData = mysqli_query ($connsite, $SQL ) or die ( "Sql error : " . mysqli_error($connsite) );
+$fields = mysqli_num_fields ( $exportData );
 for ( $i = 0; $i < $fields; $i++ )
 {
-    $header .= mysql_field_name( $exportData , $i ) . "\t";
+    $header .= mysqli_field_name( $exportData , $i ) . "\t";
 }
-while( $row = mysql_fetch_row( $exportData ) )
+while( $row = mysqli_fetch_row( $exportData ) )
 {
     $line = '';
     foreach( $row as $value )
