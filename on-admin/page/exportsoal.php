@@ -25,7 +25,7 @@ $SQL = "SELECT * from soal where kodemapel='$mapel' and jenissoal='$jenis' and k
 $header = '';
 $result ='';
 $exportData = mysqli_query ($connsite, $SQL ) or die ( "Sql error : " . mysqli_error($connsite) );
-$fields = mysqli_num_fields ( $exportData );
+$fields = mysqli_num_fields ($connsite, $exportData );
 for ( $i = 0; $i < $fields; $i++ )
 {
     $header .= mysqli_field_name( $exportData , $i ) . "\t";
