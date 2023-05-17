@@ -145,7 +145,7 @@ box-shadow: -15px 0 15px -15px inset;
                  
 				<li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
 				<li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>		
-				<li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>
+				<!-- <li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li> -->
           </ul>
         </section>
         <!-- /.sidebar -->
