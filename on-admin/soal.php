@@ -282,8 +282,8 @@ include "tema/tema.php";
 							 <form action="" method="post">   
                                  <select class="form-control" name="opsi" required >  
                                      <option value="">Pilih</option>
-                                         <option value="hidden">4 Opsi jawaban</option>
-                                         <option value="show">5 Opsi jawaban</option>  
+                                        <option value="hidden">4 Opsi Jawaban</option>
+                                        <option value="show">5 Opsi Jawaban</option>  
                                      </select> 
                              </div>
                              <div class="form-group">
@@ -321,7 +321,6 @@ include "tema/tema.php";
 			</div>
 		</div>
 
-		
 		
 		<!-- Modal Popup siswa Edit -->
 		<div id="ModalEditDosen2" class="modal" tabindex="-1" role="dialog"></div>

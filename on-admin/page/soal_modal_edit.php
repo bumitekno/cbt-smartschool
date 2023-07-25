@@ -71,7 +71,74 @@ $ur = mysqli_fetch_array ($query2);
 				        }  
 						if($ar['status']>1)
 				        {
-					    $statussoal = "<div class='modal-dialog'>
+
+					// 		$statussoal = "<div class='modal-dialog'>
+					// 		<div class='modal-content'>
+					// 			<div class='modal-header'>
+					// 				<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+					// 				<h4 class='modal-title'>Edit Butir Soal</h4>
+					// 			</div>
+					// 			<div class='modal-body'>
+					// 				<form action='page/butirsoal_edit.php' name='modal_popup' enctype='multipart/form-data' method='post'>
+					// 					<input name='id' type='hidden' value='$ar[id]'/>
+					// 					<input name='jenissoal' type='hidden' class='form-control' value='$ar[jenissoal]'/>
+					// 					<input name='kodemapel' type='hidden' class='form-control' value='$ar[kodemapel]'/>
+					// 					<input name='kodesoal' type='hidden' class='form-control' value='$ar[kodesoal]'/>
+					// 					<div class='form-group'>
+					// 						<label>No. Soal</label> : $ar[nomersoal]
+					// 							<div class='input-group col-xs-2'>
+					// 								<input name='nomersoal' type='hidden' class='form-control input-sm' value='$ar[nomersoal]' required />
+					// 							</div>
+					// 					</div>
+										
+					// 					<div id='formgroup' class='form-group'>
+					// 						<div class='col-xs-12' style='background-color:#222d32;color:white;'>
+					// 						<label>SOAL</label>
+					// 						</div>
+					// 						<div class='input-group'>
+					// 								<div class='input-group-addon'>
+					// 									Link audio. <i class='fa fa-audio-o'></i>
+					// 								</div>
+					// 								<input name='audio' type='text' class='form-control' value='$ar[audio]' />
+					// 							</div>
+					// 						$audio
+					// 							<div class='input-group'>
+					// 								<textarea id='editor2' name='soal' rows='10' cols='90' class='form-control'>$ar[soal]</textarea>
+					// 								<script>
+					// 									CKEDITOR.replace( 'editor2',
+					// 									{
+					// 									enterMode : CKEDITOR.ENTER_BR
+					// 									});
+					// 								</script>
+					// 							</div>
+					// 							<div class='input-group'>
+					// 								<div class='input-group-addon'>
+					// 									Link gambar <i class='fa fa-picture-o'></i>
+					// 								</div>
+					// 								<input name='gambarsoal' type='text' class='form-control' value='$ar[gambarsoal]' />
+					// 							</div>
+					// 						$gambarsoal	
+											
+					// 					</div>
+			
+					// 					<div class='modal-footer'>
+					// 						<button class='btn btn-success' type='submit'>
+					// 							Save
+					// 						</button>
+					// 						<button type='reset' class='btn btn-danger'  data-dismiss='modal' aria-hidden='true'>
+					// 							Cancel
+					// 						</button>
+					// 					</div>
+					// 				</form>
+					// 			</div>
+					// 		</div>
+					// 	</div>";
+
+					// }
+					// ifelse
+					// {
+					$statussoal = "
+				<div class='modal-dialog'>
 				<div class='modal-content'>
 					<div class='modal-header'>
 						<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -120,7 +187,6 @@ $ur = mysqli_fetch_array ($query2);
 							    
 							</div>
 
-
 							<div class='modal-footer'>
 								<button class='btn btn-success' type='submit'>
 									Save
@@ -137,7 +203,7 @@ $ur = mysqli_fetch_array ($query2);
 				        else
 				        {
 					    $statussoal = "
-<div class='modal-dialog'>
+				<div class='modal-dialog'>
 				<div class='modal-content'>
 					<div class='modal-header'>
 						<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -294,7 +360,7 @@ $ur = mysqli_fetch_array ($query2);
 									</div>
 								$gambar_b
 							</div>	
-							<div id='formgroup' class='form-group'>
+							<div id='formgroupop$ur[opsi]' class='form-group'>
 								<div class='col-xs-12' style='background-color:#222d32;color:white;'>
 								<label>Pilihan C</label>
 								</div>
@@ -348,7 +414,7 @@ $ur = mysqli_fetch_array ($query2);
 									</div>
 								$gambar_c
 							</div>
-							<div id='formgroup' class='form-group'>
+							<div id='formgroupop$ur[opsi]' class='form-group'>
 							    <div class='col-xs-12' style='background-color:#222d32;color:white;'>
 								<label>Pilihan D</label>
 								</div>
@@ -456,6 +522,7 @@ $ur = mysqli_fetch_array ($query2);
 									</div>
 								$gambar_e
 							</div>
+
 							<div id='formgroup' class='form-group'>
                         	<div class='col-xs-12' style='background-color:#222d32;color:white;'>
 								<label>Kunci Jawaban</label>
@@ -481,7 +548,11 @@ $ur = mysqli_fetch_array ($query2);
 						</form>
 					</div>
 				</div>
-			</div>";
+			</div>
+			
+			
+
+			";
 				        }
 ?>
 	

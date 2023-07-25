@@ -9,7 +9,7 @@ if (!$connect) {
 die('Could not connect to MySQL: ' . mysqli_error());
 }
 //nama database
-$cid =mysqli_select_db($konek, 'cbt_eschool', $connect);
+$cid =mysqli_select_db($konek, 'test', $connect);
 
 
 
@@ -26,7 +26,7 @@ $mysqli_username = 'root';
 // MySQL password
 $mysqli_password = '';
 // Database name
-$mysqli_database = 'cbt_eschool';
+$mysqli_database = 'test';
 
 // Connect to MySQL server
 $con = @new mysqli($mysqli_host,$mysqli_username,$mysqli_password,$mysqli_database);

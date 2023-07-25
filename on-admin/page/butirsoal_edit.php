@@ -1,7 +1,7 @@
 <?php
 include ('../../koneksi/koneksi.php');
 
-$id			= $_POST['id'];
+$id					= $_POST['id'];
 $jenissoal			= $_POST['jenissoal'];
 $kodemapel			= $_POST['kodemapel'];
 $kodesoal			= $_POST['kodesoal'];
@@ -19,7 +19,7 @@ $gambar_b   		= $_POST['gambar_b'];
 $gambar_c 			= $_POST['gambar_c'];
 $gambar_d 			= $_POST['gambar_d'];
 $gambar_e 			= $_POST['gambar_e'];
-$audio 			= $_POST['audio'];
+$audio 				= $_POST['audio'];
 
 if ($edit = mysqli_query($konek, "UPDATE soal SET jenissoal='$jenissoal', kodemapel='$kodemapel', kodesoal='$kodesoal', soal='$soal', pilihan1='$pilihan1', pilihan2='$pilihan2', pilihan3='$pilihan3', pilihan4='$pilihan4', pilihan5='$pilihan5', kunci='$kunci', gambarsoal='$gambarsoal', gambar_a='$gambar_a', gambar_b='$gambar_b', gambar_c='$gambar_c', gambar_d='$gambar_d', gambar_e='$gambar_e', audio='$audio' WHERE id='$id'")){
 		header('Location: ' . $_SERVER['HTTP_REFERER']);

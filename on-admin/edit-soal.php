@@ -117,7 +117,7 @@ include "tema/tema.php";
                         </span>
                   </a>
                   <ul class="treeview-menu">
-                            <li class="active"><a href="soal.php"><i class="fa fa-book"></i> Bank Soal</a></li>
+                <li class="active"><a href="soal.php"><i class="fa fa-book"></i> Bank Soal</a></li>
     						<li id="sub"><a href="kartuujian.php"><i class="fa fa-print"></i><span> Kartu Peserta</span></a></li>
     						<li id="sub"><a href="daftarhadir.php"><i class="fa fa-print"></i><span> Daftar Hadir</span></a></li>
     						<li id="sub"><a href="beritaacara.php"><i class="fa fa-print"></i><span> Berita Acara</span></a></li>
