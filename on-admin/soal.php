@@ -83,7 +83,8 @@ include ('conn/fungsi.php');
         border-color:grey;
         -moz-box-shadow:    inset 0 0 10px #000000;
         -webkit-box-shadow: inset 0 0 10px #000000;
-        box-shadow:  
+        box-shadow:  0px 5px 15px green;
+
 }
  #clot3d2 {
         border-radius:0;

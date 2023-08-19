@@ -511,25 +511,18 @@ $ur = mysqli_fetch_array($query2);
 					<form action="" method="post">
 					<div name="kunci" required>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" value="t" name="kunci" id="id_true">
+							<input class="form-check-input" type="radio" value="T" name="kunci" id="id_true">
 							<label class="form-check-label" for="id_true">
 								Benar
 							</label>
 						</div>
 						<div class="form-check">
-  							<input class="form-check-input" type="radio" value="f" name="kunci" id="id_false">
+  							<input class="form-check-input" type="radio" value="F" name="kunci" id="id_false">
   							<label class="form-check-label" for="id_false">
     							Salah
   							</label>
 						</div>
-						<!-- <select class="form-control" name="kunci" required>
-							<option value="">Pilih Kunci Jawaban</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-							<option value="D">D</option>
-							<option id="formgroupop" value="E">E</option>
-						</select> -->
+						
 					</div>
 			</div>
 
