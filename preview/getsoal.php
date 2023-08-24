@@ -29,7 +29,9 @@ while ($rr = mysqli_fetch_array($qu)) {
 		$ks = $ar["kodesoal"];
 		$km = $ar["kodemapel"];
 		$ip = $ar["kunci"];
+		$status = $ar["status"];
 	
+	// Untuk Soal
 	if (!$ar['audio'] == '') {
 		$audio = "<audio src='../gbr/$ar[audio]' controls controlsList='nodownload'></audio>";
 	} else {
@@ -41,8 +43,8 @@ while ($rr = mysqli_fetch_array($qu)) {
 	} else {
 		$gambarsoal = "";
 	}
-
-	//PG
+// =====================================================================================================================================
+	// Untuk PG
 
 	if (!$ar['gambar_a'] == '') {
 		$gambar_a = "<img src='../gbr/$ar[gambar_a]' class='responsive' align=center style='max-width:200px;height:auto' >";
@@ -101,6 +103,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 	$i++;
 
+	// Button sampun
 	if ($i == $rows) {
 		$sampun = "<button id='done' type='button' class='btn btn-success' data-target='#ModalImport' data-toggle='modal'>
 					                <span class='hidden-lg hidden-md'><i class='fa fa-check'></i> FINISH</span>
@@ -109,57 +112,47 @@ while ($rr = mysqli_fetch_array($qu)) {
 	} else {
 		$sampun = "";
 	}
-	//essay
-	if ($ar['status'] > 1) {
-		$statussoal = "hidden";
-		$simpanjawab = "jawabanuraian";
-		$statussoalurai = "show";
-	} else {
-		$statussoal = "show";
-		$simpanjawab = "jawabansiswa";
-		$statussoalurai = "hidden";
-	}
-	
-	if ($ar['status'] > 1) {
-		$area = "
-			<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text' onchange='return nilaiUH$ar[nomersoal]()'></textarea>
-						";
-	}
 
-	if ($ar['status'] > 2) {
-		$statussoal = "hidden";
-	} else {
-		$statussoal = "show";
-	}
-	if ($ar['status'] > 2) {
-		$simpanjawab = "jawabanbenarsalah";
-	} else {
-		$simpanjawab = "jawabansiswa";
-	}
-	if ($ar['status'] > 2) {
+
+	//Condition Soal dan Jawaban
+	if ($status == 3 ) {
+		$statussoal = 'hidden';
+		$simpanjawab = "jawabbenarsalah";
 		$statussoalbenarsalah = "show";
-	} else {
-		$statussoalbenarsalah = "hidden";
-	}
-	if ($ar['status'] > 2) {
 		$area = "
-						<div class='form-check'>
-						<input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1' checked>
-						<label class='form-check-label' for='flexRadioDefault1'>
+						<div class='form-check' name='token$ar[nomersoal]'>
+						<input class='form-check-input' type='radio' name='token$ar[nomersoal]' id='jawabbenar$i'>
+						<label class='form-check-label' for='tokenbenar$ar[nomersoal]'>
 						  Benar
 						</label>
 					  </div>
 					  <div class='form-check'>
-						<input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault2'>
-						<label class='form-check-label' for='flexRadioDefault2'>
+						<input class='form-check-input' type='radio' name='token$ar[nomersoal]' id='jawabsalah$i'>
+						<label class='form-check-label' for='tokensalah$ar[nomersoal]'>
 						  Salah
 						</label>
 					  </div>
 						";
-	} else {
+	}
+	
+	if ($status == 2) {
+		$statussoal = "hidden";
+		$simpanjawab = "jawabanuraian";
+		$statussoalurai = "show";
+		$area = "
+			<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text' onchange='return nilaiUH$ar[nomersoal]()'></textarea>
+						";
+	}
+	
+	if ($status == 1){
+		$statussoal = "show";
+		$simpanjawab = "jawabansiswa";
+		$statussoalurai = "hidden";
 		$area = "<div class='col-xs-12' id='opsi$statussoal'>
                                 <input  hidden type='radio' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
 	}
+
+
 ?>
 
 <div class="soalnye cls<?php echo $i; ?>">
@@ -181,6 +174,8 @@ while ($rr = mysqli_fetch_array($qu)) {
 		<input type="hidden" name="ks<?php echo "$ar[nomersoal]"; ?>" id="ks<?php echo "$ar[nomersoal]"; ?>" value="<?php echo $ks; ?>">
 
 		<?php echo "$area"; ?>
+
+		<!-- Buat PG -->
 		<label class="custom-radio-button">
 			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
 				<input type="radio" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaA<?php echo "$i"; ?>' value="A" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'A') ? 'checked="checked"' : '' ?> />
@@ -225,6 +220,8 @@ while ($rr = mysqli_fetch_array($qu)) {
 				<p id="cho"><?php echo "$pilihan_e"; ?><?php echo "$gambar_e"; ?></p>
 			</div>
 		</label>
+
+		<!-- Footer Soal -->
 		<br><br>
 		<label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
 			<span class='hidden-lg hidden-md'><b>RAGU</b></span>

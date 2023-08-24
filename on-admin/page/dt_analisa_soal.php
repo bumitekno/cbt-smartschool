@@ -65,24 +65,24 @@ $urai=$cc['nilaiurai'];
             				<td width="30px" rowspan="4" valign="top"></td>
             				<td width="200px">NAMA</td>
             				<td width="10px">:</td>
-            				<td><span class="full"><?php echo $cc[nama];?></span></td>
+            				<td><span class="full"><?php echo $cc['nama'];?></span></td>
             			</tr>
             			<tr>
             				<td>KELAS</td>
             				<td>:</td>
-            				<td><span class="full"><?php echo $cc[kelas];?></span></td>
+            				<td><span class="full"><?php echo $cc['kelas'];?></span></td>
             			</tr>
             			<tr>
             				<td>MATA PELAJARAN</td>
             				<td>:</td>
             				<td>
-            				<span style="width:250px"><?php echo $cc[kodemapel];?></span></td>
+            				<span style="width:250px"><?php echo $cc['kodemapel'];?></span></td>
             			</tr>
             			<tr>
             				<td>KODE SOAL</td>
             				<td>:</td>
             				<td>
-            				<span style="width:250px"><?php echo $cc[kodesoal];?></span></td>
+            				<span style="width:250px"><?php echo $cc['kodesoal'];?></span></td>
             			</tr>
                 	</table>
                 </div>
@@ -116,14 +116,14 @@ $urai=$cc['nilaiurai'];
 					    $audio = "";
 				        }	
 						$query3 = mysqli_query ($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='2'");
-						$kuncis1=$ar[kunci];
+						$kuncis1=$ar['kunci'];
 						$kuncis2=strtoupper($kuncis1);
 $rows = mysqli_num_rows($query3);
 $nilaimaxurai=100-$rr['nilai'];
 $nilaipersoal=$nilaimaxurai/$rows ;
 $nilaiperbiji=$nilaipersoal/5;						
 $skorurai=$ur['nilai']*$nilaiperbiji;		
-						if($ur[jawaban]=="")
+						if($ur['jawaban']=="")
 				        {
 					    $nillai = "";
 				        }
@@ -139,7 +139,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        {
 					    $soal = "";
 				        }
-						$jwbsis=$ar[jawabansiswa][($ar[nomersoal]-1)];
+						$jwbsis=$ar['jawabansiswa'][($ar['nomersoal']-1)];
 				        if(!$ar['gambarsoal']=='')
 				        {
 					    $gambarsoal = "<img class='max' src='../gbr/$ar[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";

@@ -109,5 +109,26 @@ $query = mysqli_query ($konek, "SELECT * FROM soal WHERE kodemapel='$mapel' and 
 
   });
 </script> 
+<script>
+                if (document.getElementById('jawabbenar<?php echo $o; ?>').checked) {
+                        $('#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
+                                .css("color", "white");
+                } else if (document.getElementById('jawabsalah<?php echo $o; ?>').checked) {
+                        $('#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
+                                .css("color", "white");
+                }
+
+                $('.cls<?php echo $o; ?> input').click(function() {
+
+                        if ($(this).attr("id") == "jawabbenar<?php echo $o; ?>")
+                                $('a#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
+                                .css("color", "white");
+                        else if ($(this).attr("id") == "jawabsalah<?php echo $o; ?>")
+                                $('a#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
+                                .css("color", "white");
+
+
+                });
+</script>
 <?php
 } ?>

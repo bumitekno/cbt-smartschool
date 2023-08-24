@@ -18,23 +18,23 @@ while ($ar = mysqli_fetch_array($query)) {
   $lama       = time();
   $saikii     = date("H:i:s", $lama);
   $awal       = strtotime($saikii);
-  $mulai      = $ar[mulaiujian];
-  $last       = $ar[waktuselesai];
+  $mulai      = $ar['mulaiujian'];
+  $last       = $ar['waktuselesai'];
   $mulailah   = $saikii - $mulai;
-  $akhir      = strtotime($ar[waktuselesai]);
+  $akhir      = strtotime($ar['waktuselesai']);
   $awalah     = $awal + $mulailah;
   $akhirlah   = $akhir + $mulailah;
   $sisa       = $akhirlah - $awalah;
-  $selisih    = ($ar[waktu] * 60) - $ar[sisawaktu];
+  $selisih    = ($ar['waktu'] * 60) - $ar['sisawaktu'];
   $sisanya    = $sisa - $selisih;
-  $wkt        = $ar[waktu] * 60;
+  $wkt        = $ar['waktu'] * 60;
   $lama       = time();
   $buyar = $wkt + $lama;
-  $waktune = $ar[sisawaktu];
+  $waktune = $ar['sisawaktu'];
   $result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
   $rows = mysqli_num_rows($result);
-  $code = $ar[kodemapel];
-  $codesoal = $ar[kodesoal];
+  $code = $ar['kodemapel'];
+  $codesoal = $ar['kodesoal'];
 }
 ?>
 
@@ -434,7 +434,7 @@ while ($xx = mysqli_fetch_array($qq)) {
         var waktuselesai = $("#waktuselesai").val();
         var mulaiujian = $("#mulaiujian").val();
         var sisawaktu = $("#sisawaktu").val();
-        var jawabansiswa<?php echo $ar[nomersoal]; ?> = $("#jawabansiswa<?php echo $ar[nomersoal]; ?>").val();
+        var jawabansiswa<?php echo $ar['nomersoal']; ?> = $("#jawabansiswa<?php echo $ar['nomersoal']; ?>").val();
 
         if (waktuselesai != '' && mulaiujian != '' && sisawaktu != '') {
           $.ajax({

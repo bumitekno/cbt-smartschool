@@ -42,7 +42,7 @@ $ur = mysqli_fetch_array($query2);
 
 <!-- Modal Popup Import Soal -->
 
-<!-- Modal Popup Tambah Soal -->
+<!-- Modal Popup Tambah Soal PG-->
 <div id="ModalAdd" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -381,6 +381,8 @@ $ur = mysqli_fetch_array($query2);
 		</div>
 	</div>
 </div>
+
+<!-- Modal Popup Tambah Soal Uraian -->
 <div id="ModalAdd2" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -450,6 +452,7 @@ $ur = mysqli_fetch_array($query2);
 	</div>
 </div>
 
+<!-- Modal Popup Tambah Soal Benar/Salah -->
 <div id="ModalAdd3" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -508,7 +511,6 @@ $ur = mysqli_fetch_array($query2);
 					<div class="col-xs-12" style="background-color:#222d32;color:white;">
 						<label>Kunci Jawaban</label>
 					</div>
-					<form action="" method="post">
 					<div name="kunci" required>
 						<div class="form-check">
 							<input class="form-check-input" type="radio" value="T" name="kunci" id="id_true">
@@ -557,9 +559,11 @@ $ur = mysqli_fetch_array($query2);
 <tbody>
 	<?php
 	$querydosen = mysqli_query($konek, "SELECT * FROM soal where kodemapel='$mapel' and jenissoal='$jenis' and kodesoal='$kode'");
+	// Cek jika query soal benar
 	if ($querydosen == false) {
 		die("Terjadi Kesalahan : " . mysqli_error($konek));
 	}
+	// Untuk menampilkan isi soal
 	while ($ar = mysqli_fetch_array($querydosen)) {
 		$hello = strip_tags("$ar[soal]");
 		$trimmarker = '...';
