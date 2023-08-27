@@ -246,7 +246,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 						<div class="col-xs-12" id="opsi<?php echo $statussoalbs; ?>">
 							<input type="radio" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaT<?php echo "$i"; ?>' value="T" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'T') ? 'checked="checked"' : '' ?> />
 							<span class="helping-el"></span>
-							<span class="label-text">T</span>
+							<span class="label-text"></span>
 							<p id="cho">Benar</p>
 						</div>
 					</label>
@@ -255,7 +255,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 						<div class="col-xs-12" id="opsi<?php echo $statussoalbs; ?>">
 							<input type="radio" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaF<?php echo "$i"; ?>' value="F" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'F') ? 'checked="checked"' : '' ?> />
 							<span class="helping-el"></span>
-							<span class="label-text">F</span>
+							<span class="label-text"></span>
 							<p id="cho">Salah</p>
 						</div>
 					</label>
