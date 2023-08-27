@@ -45,6 +45,9 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
     var z = document.getElementById("jawabansiswaD<?php echo $o; ?>");
     var e = document.getElementById("jawabansiswaE<?php echo $o; ?>");
 
+    var k = document.getElementById("jawabansiswaT<?php echo $o; ?>");
+    var l = document.getElementById("jawabansiswaF<?php echo $o; ?>");
+ 
     if(w.checked) {
          $('#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanA.jpg')").css("background-size","cover")
             .css("color","white");
@@ -65,6 +68,14 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
         $('#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanE.jpg')").css("background-size","cover")
             .css("color","white");
     }
+    else if (k.checked) {
+        $('#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanU.jpg')").css("background-size","cover")
+            .css("color","white");
+    }
+    else if (l.checked) {
+        $('#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanU.jpg')").css("background-size","cover")
+            .css("color","white");
+    }
 	
     $('.cls<?php echo $o; ?> input').click(function(){
    
@@ -82,6 +93,12 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
             .css("color","white");
     else if($(this).attr("id") == "jawabansiswaE<?php echo $o; ?>")
             $('a#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanE.jpg')").css("background-size","cover")
+            .css("color","white");
+        else if($(this).attr("id") == "jawabansiswaT<?php echo $o; ?>")
+            $('a#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanU.jpg')").css("background-size","cover")
+            .css("color","white");
+        else if($(this).attr("id") == "jawabansiswaF<?php echo $o; ?>")
+            $('a#navsoal<?php echo $o; ?>').css("background-image","url('mesin/pilihanU.jpg')").css("background-size","cover")
             .css("color","white");
 
   });
@@ -107,27 +124,6 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
 			
 
   });
-</script> 
-<script>
-if (document.getElementById('jawabbenar<?php echo $o; ?>').checked) {
-                        $('#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
-                                .css("color", "white");
-                } else if (document.getElementById('jawabsalah<?php echo $o; ?>').checked) {
-                        $('#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
-                                .css("color", "white");
-                }
-
-                $('.cls<?php echo $o; ?> input').click(function() {
-
-                        if ($(this).attr("id") == "jawabbenar<?php echo $o; ?>")
-                                $('a#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
-                                .css("color", "white");
-                        else if ($(this).attr("id") == "jawabsalah<?php echo $o; ?>")
-                                $('a#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanU.jpg')").css("background-size", "cover")
-                                .css("color", "white");
-
-
-                });
 </script>
 <?php
 } ?>

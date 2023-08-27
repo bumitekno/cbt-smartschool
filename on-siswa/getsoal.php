@@ -161,27 +161,31 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 			//Condition Soal dan Jawaban
 			if ($ar['status'] == 3) {
-				$statussoal = 'hidden';
-				$simpanjawab = "jawabbenarsalah";
-				$statussoalbenarsalah = "show";
-				$area = "
-						<div class='form-check' name='token$ar[nomersoal]'>
-						<input class='form-check-input' type='radio' name='token$ar[nomersoal]' id='jawabbenar$i'>
-						<label class='form-check-label' for='tokenbenar$ar[nomersoal]'>
-						  Benar
-						</label>
-					  </div>
-					  <div class='form-check'>
-						<input class='form-check-input' type='radio' name='token$ar[nomersoal]' id='jawabsalah$i'>
-						<label class='form-check-label' for='tokensalah$ar[nomersoal]'>
-						  Salah
-						</label>
-					  </div>
-						";
+				$statussoal = "hidden";
+				$statussoalbs = "show";
+				$simpanjawab = "jawabansiswa";
+				$statussoalurai = "hidden";
+				$area = "<div class='col-xs-12' id='opsi$statussoal'>
+                                <input  hidden type='radio' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
+				// $area = "
+				// 		<div class='form-check' name='token$ar[nomersoal]'>
+				// 		<input class='form-check-input' type='radio' name='$simpanjawab$ar[nomersoal]' id='jawabansiswaT$i' value='T'>
+				// 		<label class='form-check-label' for='tokenbenar$ar[nomersoal]'>
+				// 		  Benar
+				// 		</label>
+				// 	  </div>
+				// 	  <div class='form-check'>
+				// 		<input class='form-check-input' type='radio' name='$simpanjawab$ar[nomersoal]' id='jawabansiswaF$i' value='F'>
+				// 		<label class='form-check-label' for='tokensalah$ar[nomersoal]'>
+				// 		  Salah
+				// 		</label>
+				// 	  </div>
+				// 		";
 			}
 
 			if ($ar['status'] == 2) {
 				$statussoal = "hidden";
+				$statussoalbs = "hidden";
 				$simpanjawab = "jawabanuraian";
 				$statussoalurai = "show";
 				$area = "
@@ -205,10 +209,11 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				";
 			}
 
-			if ($status == 1) {
+			if ($ar['status'] == 1) {
 				$statussoal = "show";
-				$simpanjawab = "jawabansiswa";
+				$statussoalbs = "hidden";
 				$statussoalurai = "hidden";
+				$simpanjawab = "jawabansiswa";
 				$area = "<div class='col-xs-12' id='opsi$statussoal'>
                                 <input  hidden type='radio' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
 			}
@@ -236,6 +241,27 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 					<input type="hidden" name="ks<?php echo "$ar[nomersoal]"; ?>" id="ks<?php echo "$ar[nomersoal]"; ?>" value="<?php echo $ks; ?>">
 
 					<?php echo "$area"; ?>
+					<!-- BenarSalah -->
+					<label class="custom-radio-button">
+						<div class="col-xs-12" id="opsi<?php echo $statussoalbs; ?>">
+							<input type="radio" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaT<?php echo "$i"; ?>' value="T" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'T') ? 'checked="checked"' : '' ?> />
+							<span class="helping-el"></span>
+							<span class="label-text">T</span>
+							<p id="cho">Benar</p>
+						</div>
+					</label>
+					<br>
+					<label class="custom-radio-button">
+						<div class="col-xs-12" id="opsi<?php echo $statussoalbs; ?>">
+							<input type="radio" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaF<?php echo "$i"; ?>' value="F" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'F') ? 'checked="checked"' : '' ?> />
+							<span class="helping-el"></span>
+							<span class="label-text">F</span>
+							<p id="cho">Salah</p>
+						</div>
+					</label>
+					<br>
+
+					<!-- PG -->
 					<label class="custom-radio-button">
 						<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
 							<input type="radio" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaA<?php echo "$i"; ?>' value="A" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'A') ? 'checked="checked"' : '' ?> />
