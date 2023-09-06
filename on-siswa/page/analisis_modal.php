@@ -116,7 +116,7 @@ $pg=number_format($score,2);
 						while ($ar = mysqli_fetch_array ($query)){
 						$query2 = mysqli_query ($konek, "SELECT * FROM jawaburaian WHERE nama='$r[nama]' AND nomersoal='$ar[nomersoal]' AND kodesoal='$ar[kodesoal]'");
 						$ur = mysqli_fetch_array ($query2);
-$kuncis1=$ar[kunci];
+$kuncis1=$ar['kunci'];
 						$kuncis2=strtoupper($kuncis1);						
 $query3 = mysqli_query ($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status='2'");
 $rows = mysqli_num_rows($query3);
@@ -141,7 +141,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        {
 					    $soal = "";
 				        }
-						$jwbsis=$r[jawabansiswa][($ar[nomersoal]-1)];
+						$jwbsis=$r['jawabansiswa'][($ar['nomersoal']-1)];
 				        if(!$ar['gambarsoal']=='')
 				        {
 					    $gambarsoal = "<img class='max' src='../gbr/$ar[gambarsoal]' align=center style='max-width:300px;height:auto' ><br>";
@@ -231,14 +231,19 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        {
 					    $pilihan_e = "";
 				        }
-						if($ar['status']>1)
-				        {
-					    $statussoal = "hidden";
-				        }
-				        else
-				        {
-					    $statussoal = "show";
-				        }
+
+						if ($ar['status'] == 3) {
+							$statussoalbs = "show";
+							$statussoal = "hidden";
+						}
+						else if ($ar['status'] == 2) {
+							$statussoal = "hidden";
+							$statussoalbs = "hidden";
+						} else {
+							$statussoal = "show";
+							$statussoalbs = "hidden";
+						}
+
 				        if($jwbsis==$kuncis2)
 				        {
 					    $benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
@@ -247,7 +252,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        {
 					    $benar = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
 				        }
-						if($ur[jawaban]=="")
+						if($ur['jawaban']=="")
 				        {
 					    $nillai = "";
 				        }
@@ -306,6 +311,25 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
     								&emsp;<p>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
 				        }
 
+						if($kuncis2=="T")
+						{
+						$pilihan = "<br>
+						<div class='$statussoalbs'>
+									&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+									&emsp;<p> &emsp;Salah </p>
+									</div>";
+						$jawabansiswabs = "<div><i><u>Jawaban siswa</u></i> : <i class='$statussoalbs'>$jwbsis $benar </i> $nillai</div>";
+						}
+						else if($kuncis2=="F")
+						{
+						$pilihan = "<br>
+						<div class='$statussoalbs'>
+									&emsp;<p> &emsp;Benar </p>
+									&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+									</div>";
+									$jawabansiswabs = "<i class='$statussoalbs'>$jwbsis $benar </i> $nillai";
+						}
+
 							echo "
 
 								<tr>
@@ -314,7 +338,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 								&emsp;$gambarsoal<br>$audio
 								$pilihan
 								<br>
-								 <div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai</div>
+								 <div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai $jawabansiswabs</div>
                                 <br>
                                 <hr class='style1'>
 								</tr>";

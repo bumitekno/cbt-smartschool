@@ -17,7 +17,7 @@
 				</thead>
 				<tbody>
 					<?php
-					$querydosen = mysqli_query($konek, "SELECT DISTINCT jenissoal, kodemapel, soal.kodesoal, aktif, /*opsi, acak,*/ kelas, nilai, waktu FROM soal CROSS JOIN ujian USING (kodesoal) ORDER by id DESC");
+					$querydosen = mysqli_query($konek, "SELECT DISTINCT jenissoal, kodemapel, soal.kodesoal, aktif, /*opsi, acak,*/ kelas, nilai, waktu FROM soal CROSS JOIN ujian USING (kodesoal)");
 					if ($querydosen == false) {
 						die("Terjadi Kesalahan : " . mysqli_error($konek));
 					}

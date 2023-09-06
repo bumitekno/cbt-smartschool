@@ -170,7 +170,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
     	<div class="right">
 			<table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">   
 				<tbody><tr><td rowspan="3" width="100px" align="center"><img src="mesin/avatar.gif" style=" margin-left:0px; margin-top:5px" class="foto"></td>
-				</tr><tr><td><span class="user"><?php echo $nama; ?><br><?php echo $ar[kelas]; ?></span></td></tr>
+				</tr><tr><td><span class="user"><?php echo $nama; ?><br><?php echo $ar['kelas']; ?></span></td></tr>
 				<tr><td><span class="log"><a href="logout.php">Logout</a><span></span></span></td></tr>
 			</tbody></table>
         </div>
