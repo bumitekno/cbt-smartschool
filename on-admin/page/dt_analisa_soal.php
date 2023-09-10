@@ -192,22 +192,23 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$pilihan_e = "";
 							}
 
-							if ($ar['status'] == 3) {
-								$statussoalbs = "show";
+							
+							if ($ar['status'] == 2) {
 								$statussoal = "hidden";
-							}
-							else if ($ar['status'] == 2) {
-								$statussoal = "hidden";
-								$statussoalbs = "hidden";
 							} else {
 								$statussoal = "show";
-								$statussoalbs = "hidden";
 							}
 
 							if ($jwbsis == $kuncis2) {
 								$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 							} else {
 								$benar = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
+							}
+
+							if ($jwbsis == "T") {
+								$jwbsis = "Benar";
+							} else if ($jwbsis == "F") {
+								$jwbsis = "Salah";
 							}
 							
 							if ($kuncis2 == "A") {
@@ -242,6 +243,20 @@ while ($xx = mysqli_fetch_array($qq)) {
                                     &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
                                     &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
     								&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
+							} else if ($kuncis2 == "T") {
+								$pilihan = "<br>
+							<div class='$statussoal'>
+										&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+										&emsp;<p> &emsp;Salah </p>
+										</div>";
+							
+							} else if($kuncis2=="F") {
+							$pilihan = "<br>
+							<div class='$statussoal'>
+										&emsp;<p> &emsp;Benar </p>
+										&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+										</div>";	
+						
 							} else {
 								$pilihan = "<br>
 						<div class='$statussoal'>
@@ -252,24 +267,24 @@ while ($xx = mysqli_fetch_array($qq)) {
     								&emsp;<p>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
 							}
 
-							if($kuncis2=="T")
-							{
-							$pilihan = "<br>
-							<div class='$statussoalbs'>
-										&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-										&emsp;<p> &emsp;Salah </p>
-										</div>";
-							$jawabansiswabs = "<div><i><u>Jawaban siswa</u></i> : <i class='$statussoalbs'>$jwbsis $benar </i> $nillai</div>";
-							}
-							else if($kuncis2=="F")
-							{
-							$pilihan = "<br>
-							<div class='$statussoalbs'>
-										&emsp;<p> &emsp;Benar </p>
-										&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-										</div>";
-										$jawabansiswabs = "<i class='$statussoalbs'>$jwbsis $benar </i> $nillai";
-							}
+							// if($kuncis2=="T")
+							// {
+							// $pilihan = "<br>
+							// <div class='$statussoalbs'>
+							// 			&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+							// 			&emsp;<p> &emsp;Salah </p>
+							// 			</div>";
+							// $jawabansiswabs = "<div><i><u>Jawaban siswa</u></i> : <i class='$statussoalbs'>$jwbsis $benar </i> $nillai</div>";
+							// }
+							// else if($kuncis2=="F")
+							// {
+							// $pilihan = "<br>
+							// <div class='$statussoalbs'>
+							// 			&emsp;<p> &emsp;Benar </p>
+							// 			&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+							// 			</div>";
+							// 			$jawabansiswabs = "<i class='$statussoalbs'>$jwbsis $benar </i> $nillai";
+							// }
 
 							echo "
 
@@ -280,7 +295,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								&emsp;$gambarsoal<br>$audio
 								$pilihan
 								<br><br>
-                                <div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai $jawabansiswabs</div>
+                                <div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai</div>
                                 <br>
                                 <hr class='style1'>
 								</tr>";
