@@ -12,7 +12,7 @@
 				</thead>
 				<tbody>
 					<?php
-						$querydosen = mysqli_query ($konek, "SELECT * FROM siswa ORDER by kelas ASC");
+						$querydosen = mysqli_query ($konek, "SELECT * FROM siswa ORDER BY kelas ASC, nama ASC");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}

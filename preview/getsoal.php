@@ -115,6 +115,15 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 
 	//Condition Soal dan Jawaban
+	if ($status == 5){
+		$statussoal = "show";
+		$simpanjawab = "jawabansiswa";
+		$statussoalbs = "hidden";
+		$statussoalurai = "hidden";
+		$area = "<div class='col-xs-12' id='opsi$statussoal'>
+                                <input  hidden type='checkbox' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
+	}
+
 	if ($status == 3 ) {
 		$simpanjawab = "jawabansiswa";
 		$statussoalbs = "show";
@@ -165,6 +174,53 @@ while ($rr = mysqli_fetch_array($qu)) {
 		<input type="hidden" name="ks<?php echo "$ar[nomersoal]"; ?>" id="ks<?php echo "$ar[nomersoal]"; ?>" value="<?php echo $ks; ?>">
 
 		<?php echo "$area"; ?>
+
+		<!-- PG Kompleks -->
+		<label class="custom-checkbox-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaA<?php echo "$i"; ?>' value="A" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'A') ? 'checked="checked"' : '' ?> />
+				<span class="helping-el"></span>
+				<span class="label-text">a</span>
+				<p id="cho"><?php echo "$pilihan_a"; ?><?php echo "$gambar_a"; ?></p>
+			</div>
+		</label>
+		<br>
+		<label class="custom-checkbox-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaB<?php echo "$i"; ?>' value="B" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'B') ? 'checked="checked"' : '' ?> />
+				<span class="helping-el"></span>
+				<span class="label-text">b</span>
+				<p id="cho"><?php echo "$pilihan_b"; ?><?php echo "$gambar_b"; ?></p>
+			</div>
+		</label>
+		<br>
+		<label class="custom-checkbox-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaC<?php echo "$i"; ?>' value="C" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'C') ? 'checked="checked"' : '' ?> />
+				<span class="helping-el"></span>
+				<span class="label-text">c</span>
+				<p id="cho"><?php echo "$pilihan_c"; ?><?php echo "$gambar_c"; ?></p>
+			</div>
+		</label>
+		<br>
+		<label class="custom-checkbox-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaD<?php echo "$i"; ?>' value="D" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'D') ? 'checked="checked"' : '' ?> />
+				<span class="helping-el"></span>
+				<span class="label-text">d</span>
+				<p id="cho"><?php echo "$pilihan_d"; ?><?php echo "$gambar_d"; ?></p>
+			</div>
+		</label>
+		<br>
+		<label id="opsi<?php echo $rr['opsi']; ?>" class="custom-checkbox-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaE<?php echo "$i"; ?>' value="E" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'E') ? 'checked="checked"' : '' ?> />
+				<span class="helping-el"></span>
+				<span class="label-text">e</span>
+				<p id="cho"><?php echo "$pilihan_e"; ?><?php echo "$gambar_e"; ?></p>
+			</div>
+		</label>
+		<br>	
 
 		<!-- BenarSalah -->
 		<label class="custom-radio-button">

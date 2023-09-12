@@ -2,13 +2,16 @@
 					<tr>
 						<th width="5%">No</th>
 						<th width="20%">Mapel</th>
-						<th width="10%">Jumlah Soal PG</th>
+						<th width="5%">Jumlah Soal PG</th>
 						<th width="5%">Jumlah Soal Uraian</th>
-						<th width="10%">Waktu</th>
+						<th width="5%">Jumlah Soal Benar Salah</th>
+						<th width="5%">Jumlah Soal Menjodohkan</th>
+						<th width="5%">Jumlah Soal PG Kompleks</th>
+						<th width="5%">Waktu</th>
 						<!-- <th width="5%">opsi jwb</th>
 						<th width="5%">tampil soal</th> -->
-						<th width="10%">Kelas</th>
-						<th width="10%">Bobot Nilai</th>
+						<th width="5%">Kelas</th>
+						<th width="5%">Bobot Nilai</th>
 						<!-- <th width="5%">bobot nilai uraian</th> -->
 						<th width="20%">Editor Soal</th>
 						<th width="30%">Status Soal</th>
@@ -33,6 +36,12 @@
 						$num_rows = mysqli_num_rows($result);
 						$result2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='2'");
 						$num_rows2 = mysqli_num_rows($result2);
+						$result3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='3'");
+						$num_rows3 = mysqli_num_rows($result3);
+						$result4 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='4'");
+						$num_rows4 = mysqli_num_rows($result4);
+						$result5 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='5'");
+						$num_rows5 = mysqli_num_rows($result5);
 						if (!$ar['aktif'] == '1') {
 							$aktif = "<span style=color:red>Non Aktif</span>";
 						} else {
@@ -68,6 +77,9 @@
 		$ar[kodesoal]</td>
 		<td align=center>$num_rows</td>
 		<td align=center>$num_rows2</td>
+		<td align=center>$num_rows3</td>
+		<td align=center>$num_rows4</td>
+		<td align=center>$num_rows5</td>
 		<td align=center>$ar[waktu]'</td>
 		
 		<td align=center>$ar[kelas]</td>

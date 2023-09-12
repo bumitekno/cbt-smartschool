@@ -147,6 +147,7 @@ if($admin_su == 1)
                 <div class="box-body">
 <div class="btn-group" role="group" aria-label="...">
   <button type="button" class="btn bg-navy btn-flat " data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-user-plus"></i> Tambah User</button>
+  <a href="superadmin-import.php"><button id="clot" type="button" class="btn btn-warning"><i class="fa fa-upload"></i> Import User</button></a>
 </div>
 
 				<div style="overflow-x:auto;" id="printableArea">
@@ -191,8 +192,8 @@ if($admin_su == 1)
 							 <form action="" method="post">   
                                  <select class="form-control" name="jabatan"> 
                                      <option value="">Jabatan</option> 
-                                         <option value="0">Editor</option>
-                                         <option value="2">Proktor</option>  
+                                         <option value="0">Guru</option>
+                                         <option value="2">Pengawas</option>  
                                      </select> 
 							</div>
 							<div class="form-group">

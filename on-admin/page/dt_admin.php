@@ -1,12 +1,12 @@
 				<thead>
 					<tr>
-						<th width="4%">No</th>
-						<th width="15%">Username </th>
-						<th width="25%">Nama</th>
-						<th width="4%">Jabatan</th>
-						<th width="4%">phone</th>
+						<th width="5%">No</th>
+						<th width="10%">Username </th>
+						<th width="20%">Nama</th>
+						<th width="10%">Jabatan</th>
+						<th width="5%">phone</th>
 						<th width="10%">Password</th>
-						<th width="30%">Action</th>
+						<th width="15%">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -18,8 +18,8 @@
 						$i=1;
 						while ($ar = mysqli_fetch_array ($querydosen)){
 						$adminsu =$ar['admin_su'];
-						    $adminsu = str_replace("0", "Editor", $adminsu);
-                            $adminsu = str_replace("2", "Proktor", $adminsu);	
+						    $adminsu = str_replace("0", "Guru", $adminsu);
+                            $adminsu = str_replace("2", "Pengawas", $adminsu);	
 							echo "
 								<tr>
 									<td align=center>$i</td>

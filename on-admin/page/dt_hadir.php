@@ -146,9 +146,10 @@
                             						<th id="garis">Ket</th>
                             					</tr>
                             					<?php
+												$kelas = $_POST['kelas'];
 												$ruang = $_POST['ruang'];
 												$sesi = $_POST['sesi'];
-												$querydosen = mysqli_query($konek, "SELECT * FROM siswa WHERE ruang='$ruang' and sesi='$sesi' ORDER by nis ASC");
+												$querydosen = mysqli_query($konek, "SELECT * FROM siswa WHERE kelas='$kelas' && ruang='$ruang' && sesi='$sesi' ORDER by nis ASC");
 												if ($querydosen == false) {
 													die("Terjadi Kesalahan : " . mysqli_error($konek));
 												}
