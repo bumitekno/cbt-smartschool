@@ -146,7 +146,7 @@ INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal
 
 CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
-  `n_sekolah` varchar(30) NOT NULL,
+  `n_sekolah` varchar(100) NOT NULL,
   `sub_n_sekolah` varchar(100) NOT NULL,
   `kode_sekolah` varchar(30) NOT NULL,
   `logo` varchar(30) NOT NULL,
@@ -156,9 +156,9 @@ CREATE TABLE `profil` (
   `tanggal` text NOT NULL,
   `th_ajaran` varchar(15) NOT NULL,
   `logo_kota` varchar(30) NOT NULL,
-  `web` varchar(30) NOT NULL,
+  `web` varchar(50) NOT NULL,
   `bg_login` varchar(30) NOT NULL,
-  `kepsek` varchar(50) NOT NULL,
+  `kepsek` varchar(100) NOT NULL,
   `nip` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
