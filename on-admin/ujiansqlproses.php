@@ -4,12 +4,12 @@ include ('../koneksi/koneksi.php');
 include ('conn/cek.php');
 include ('conn/fungsi.php');
 
-$connect = mysql_connect('localhost','root','');
+$connect = mysqli_connect('localhost','root','');
 if (!$connect) {
-die('Could not connect to MySQL: ' . mysql_error());
+die('Could not connect to MySQL: ' . mysqli_error());
 }
 //nama database
-$cid =mysql_select_db('cbt',$connect);
+$cid =mysqli_select_db($connect, 'cbt');
 
 
 

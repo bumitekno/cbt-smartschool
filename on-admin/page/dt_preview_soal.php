@@ -131,6 +131,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 							$statussoal = "show";
 						}
 
+						//PG
+
 						if ($ar['kunci'] == "A") {
 							$pilihan = "<br>
 						<div class='$statussoal'>
@@ -172,6 +174,8 @@ while ($xx = mysqli_fetch_array($qq)) {
                                     &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>   
     								&emsp;<p>e. &emsp;$pilihan_e $gambar_e  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div>";
 						}
+
+						//Benar Salah
 
 								if ($ar['kunci'] == "T") {
 									$pilihan = "<br>

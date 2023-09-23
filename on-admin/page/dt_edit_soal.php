@@ -542,8 +542,6 @@ $ur = mysqli_fetch_array($query2);
 		</div>
 	</div>
 </div>
-</div>
-</div>
 
 <!-- /*---INI UNTUK SOAL MENJODOHKAN---*/ -->
 
@@ -574,63 +572,69 @@ $ur = mysqli_fetch_array($query2);
 							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal" required />
 						</div>
 					</div>
+
 					<div class="form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>Soal Pernyataan 1</label>
-						</div>
-						<div class="input-group">
-							<textarea id="editorA" name="pilihan1" cols="80" class="form-control"></textarea>
-							<script>
-								CKEDITOR.replace('editorA', {
-									enterMode: CKEDITOR.ENTER_BR,
-									height: ['50px'],
-									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
+							<label>SOAL</label>
 						</div>
 						<div class="input-group">
 							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gbr A
+								<i class="fa fa-file-audio-o"></i> Audio. Soal
 							</div>
-							<input class="form-control" name="gambar_a" type="file" accept=".jpg , .png" />
+							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
 						</div>
+						<div class="input-group">
+							<textarea id="editor2" name="soal" rows="10" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<script>
+								CKEDITOR.replace('editor2', {
+									enterMode: CKEDITOR.ENTER_BR
+								});
+							</script>
+						</div>
+
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-camera"></i> Gambar Soal
+							</div>
+							<input class="form-control" name="gambarsoal" type="file" accept=".jpg , .png" />
+						</div>
+
 					</div>
+
+					<div class="form-group">
+						<div class="col-xs-12" style="background-color:#222d32;color:white;">
+							<label>SOAL PERNYATAAN 1</label>
+						</div>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-file-audio-o"></i> Audio. Soal
+							</div>
+							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
+						</div>
+						<div class="input-group">
+							<textarea id="editorA" name="pernyataan1" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<script>
+								CKEDITOR.replace('editorA', {
+									enterMode: CKEDITOR.ENTER_BR
+								});
+							</script>
+						</div>
+
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-camera"></i> Gambar Soal
+							</div>
+							<input class="form-control" name="gambarsoal" type="file" accept=".jpg , .png" />
+						</div>
+
+					</div>
+
 					<div class="form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
 							<label>Soal Pernyataan 2</label>
 						</div>
 						<div class="input-group">
-							<textarea id="editorB" name="pilihan2" cols="80" class="form-control"></textarea>
+							<textarea id="editorB" name="pernyataan2" cols="80" class="form-control"></textarea>
 							<script>
 								CKEDITOR.replace('editorB', {
 									enterMode: CKEDITOR.ENTER_BR,
@@ -677,12 +681,13 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="gambar_b" type="file" accept=".jpg , .png" />
 						</div>
 					</div>
-					<div id="formgroupop<?php echo $ur['opsi']; ?> class=" form-group">
+
+					<div class="form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
 							<label>Soal Pernyataan 3</label>
 						</div>
 						<div class="input-group">
-							<textarea id="editorC" name="pilihan3" cols="80" class="form-control"></textarea>
+							<textarea id="editorC" name="pernyataan3" cols="80" class="form-control"></textarea>
 							<script>
 								CKEDITOR.replace('editorC', {
 									enterMode: CKEDITOR.ENTER_BR,
@@ -730,64 +735,171 @@ $ur = mysqli_fetch_array($query2);
 						</div>
 					</div>
 
-					<div class="container">
-						<div class="question-column">
-							<div class="question">
-								<p><strong>Pernyataan 1:</strong> Ini adalah pernyataan pertama.</p>
-								<select name="jawaban1" onchange="updateOptions('jawaban1', this)">
-									<option value="" disabled>Pilih Jawaban</option>
-									<option value="jawaban1">Jawaban 1</option>
-									<option value="jawaban2">Jawaban 2</option>
-									<option value="jawaban3">Jawaban 3</option>
-								</select>
+					<form action='' method='post'>
+						<div name="kunci" required>
+							<div class="col-xs-12" style="background-color:#222d32;color:white;">
+								<label>Jawaban Pernyataan 1</label>
 							</div>
-							<div class="question">
-								<p><strong>Pernyataan 2:</strong> Ini adalah pernyataan kedua.</p>
-								<select name="jawaban2" onchange="updateOptions('jawaban2', this)">
-									<option value="" disabled>Pilih Jawaban</option>
-									<option value="jawaban1">Jawaban 1</option>
-									<option value="jawaban2">Jawaban 2</option>
-									<option value="jawaban3">Jawaban 3</option>
-								</select>
+							<div class="input-group">
+								<textarea id="editorA" name="pilihan1" cols="80" class="form-control"></textarea>
+								<script>
+									CKEDITOR.replace('editorA', {
+										enterMode: CKEDITOR.ENTER_BR,
+										height: ['50px'],
+										toolbarGroups: [{
+												"name": "basicstyles",
+												"groups": ["basicstyles"]
+											},
+											{
+												"name": "links",
+												"groups": ["links"]
+											},
+											{
+												"name": "paragraph",
+												"groups": ["list", "blocks"]
+											},
+											{
+												"name": "document",
+												"groups": ["mode"]
+											},
+											{
+												"name": "insert",
+												"groups": ["insert"]
+											},
+											{
+												"name": "styles",
+												"groups": ["styles"]
+											},
+											{
+												"name": "about",
+												"groups": ["about"]
+											}
+										],
+										// Remove the redundant buttons from toolbar groups defined above.
+										removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+									});
+								</script>
 							</div>
-							<div class="question">
-								<p><strong>Pernyataan 3:</strong> Ini adalah pernyataan ketiga.</p>
-								<select name="jawaban3" onchange="updateOptions('jawaban3', this)">
-									<option value="" disabled>Pilih Jawaban</option>
-									<option value="jawaban1">Jawaban 1</option>
-									<option value="jawaban2">Jawaban 2</option>
-									<option value="jawaban3">Jawaban 3</option>
-								</select>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-camera"></i> Gbr A
+								</div>
+								<input class="form-control" name="gambar_a" type="file" accept=".jpg , .png" />
+							</div><br>
+
+							<div class="col-xs-12" style="background-color:#222d32;color:white;">
+								<label>Jawaban Pernyataan 2</label>
+							</div>
+							<div class="input-group">
+								<textarea id="editorB" name="pilihan2" cols="80" class="form-control"></textarea>
+								<script>
+									CKEDITOR.replace('editorB', {
+										enterMode: CKEDITOR.ENTER_BR,
+										height: ['50px'],
+										toolbarGroups: [{
+												"name": "basicstyles",
+												"groups": ["basicstyles"]
+											},
+											{
+												"name": "links",
+												"groups": ["links"]
+											},
+											{
+												"name": "paragraph",
+												"groups": ["list", "blocks"]
+											},
+											{
+												"name": "document",
+												"groups": ["mode"]
+											},
+											{
+												"name": "insert",
+												"groups": ["insert"]
+											},
+											{
+												"name": "styles",
+												"groups": ["styles"]
+											},
+											{
+												"name": "about",
+												"groups": ["about"]
+											}
+										],
+										// Remove the redundant buttons from toolbar groups defined above.
+										removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+									});
+								</script>
+							</div>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-camera"></i> Gbr B
+								</div>
+								<input class="form-control" name="gambar_b" type="file" accept=".jpg , .png" />
+							</div><br>
+
+							<div class="col-xs-12" style="background-color:#222d32;color:white;">
+								<label>Jawaban Pernyataan 3</label>
+							</div>
+							<div class="input-group">
+								<textarea id="editorC" name="pilihan3" cols="80" class="form-control"></textarea>
+								<script>
+									CKEDITOR.replace('editorC', {
+										enterMode: CKEDITOR.ENTER_BR,
+										height: ['50px'],
+										toolbarGroups: [{
+												"name": "basicstyles",
+												"groups": ["basicstyles"]
+											},
+											{
+												"name": "links",
+												"groups": ["links"]
+											},
+											{
+												"name": "paragraph",
+												"groups": ["list", "blocks"]
+											},
+											{
+												"name": "document",
+												"groups": ["mode"]
+											},
+											{
+												"name": "insert",
+												"groups": ["insert"]
+											},
+											{
+												"name": "styles",
+												"groups": ["styles"]
+											},
+											{
+												"name": "about",
+												"groups": ["about"]
+											}
+										],
+										// Remove the redundant buttons from toolbar groups defined above.
+										removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+									});
+								</script>
+							</div>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-camera"></i> Gbr C
+								</div>
+								<input class="form-control" name="gambar_c" type="file" accept=".jpg , .png" />
 							</div>
 						</div>
-					</div>
-					<!-- <div class="col-xs-12" style="background-color:#222d32;color:white;">
-						<label>Kunci Jawaban</label>
-					</div>
-					<form action="" method="post">
-						<select class="form-select" multiple aria-label="Multiple select example" name="kunci[]" required>
-							<option selected>Pilih Kunci Jawaban</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-							<option value="C">D</option>
-						</select> -->
+						<div class="modal-footer">
+							<button class="btn btn-success" type="submit">
+								Add
+							</button>
+							<button type="reset" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">
+								Cancel
+							</button>
+						</div>
+					</form>
 			</div>
-			<div class="modal-footer">
-				<button class="btn btn-success" type="submit">
-					Add
-				</button>
-				<button type="reset" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">
-					Cancel
-				</button>
-			</div>
-			</form>
 		</div>
 	</div>
 </div>
-</div>
-
-
 
 <!-- Modal Popup Tambah Soal PG Kompleks -->
 <div id="ModalAdd5" class="modal fade" tabindex="-1" role="dialog">
@@ -1106,15 +1218,30 @@ $ur = mysqli_fetch_array($query2);
 					</div>
 					<div class="col-xs-12" style="background-color:#222d32;color:white;">
 						<label>Kunci Jawaban</label>
-					</div>
-					<form action="" method="post">
-						<select class="form-select" multiple aria-label="Multiple select example" name="kunci[]" required>
-							<option selected>Pilih Kunci Jawaban</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-							<option value="C">D</option>
-						</select>
+					</div><br>
+					<form action='' method='post'>
+						<div name="kunci" required>
+							<div class='form-check'>
+								<input type='checkbox' class='form-check-input' id='editorA' value="pilihan1" name="pilihan1">
+								<label class='form-check-label' for='exampleCheck1'>Pilihan1</label>
+							</div>
+							<div class='form-check'>
+								<input type='checkbox' class='form-check-input' id='editorB' value="pilihan2" name="pilihan2">
+								<label class='form-check-label' for='exampleCheck1'>Pilihan2</label>
+							</div>
+							<div class='form-check'>
+								<input type='checkbox' class='form-check-input' id='editorC' value="pilihan3" name="pilihan3">
+								<label class='form-check-label' for='exampleCheck1'>Pilihan3</label>
+							</div>
+							<div class='form-check'>
+								<input type='checkbox' class='form-check-input' id='editorD' value="pilihan4" name="pilihan4">
+								<label class='form-check-label' for='exampleCheck1'>Pilihan4</label>
+							</div>
+							<div class='form-check' id="formgroupop<?php echo $ur['opsi']; ?>">
+								<input type='checkbox' class='form-check-input' value="pilihan5" name="pilihan5">
+								<label class='form-check-label' for='exampleCheck1'>Pilihan5</label>
+							</div>
+						</div>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-success" type="submit">
@@ -1127,7 +1254,6 @@ $ur = mysqli_fetch_array($query2);
 			</form>
 		</div>
 	</div>
-</div>
 </div>
 
 <thead>

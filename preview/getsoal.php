@@ -116,18 +116,33 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 	//Condition Soal dan Jawaban
 	if ($status == 5){
-		$statussoal = "show";
+		$statussoalpgk = "show";
 		$simpanjawab = "jawabansiswa";
+		$statussoal = "hidden";
 		$statussoalbs = "hidden";
+		$statussoaljd = "hidden";
 		$statussoalurai = "hidden";
-		$area = "<div class='col-xs-12' id='opsi$statussoal'>
+		$area = "<div class='col-xs-12' id='opsi$statussoalpgk'>
                                 <input  hidden type='checkbox' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
+	}
+
+	if ($status == 4){
+		$statussoaljd = "show";
+		$simpanjawab = "jawabansiswa";
+		$statussoal = "hidden";
+		$statussoalbs = "hidden";
+		$statussoalpgk = "hidden";
+		$statussoalurai = "hidden";
+		$area = "<div class='col-xs-12' id='opsi$statussoaljd'>
+                                <input  hidden type='selected' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
 	}
 
 	if ($status == 3 ) {
 		$simpanjawab = "jawabansiswa";
 		$statussoalbs = "show";
 		$statussoal = 'hidden';
+		$statussoaljd = "hidden";
+		$statussoalpgk = "hidden";
 		$statussoalurai = "hidden";
 		$area = "<div class='col-xs-12' id='opsi$statussoal'>
                                 <input  hidden type='radio' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
@@ -136,8 +151,10 @@ while ($rr = mysqli_fetch_array($qu)) {
 	if ($status == 2) {
 		$statussoal = "hidden";
 		$statussoalbs = "hidden";
-		$simpanjawab = "jawabanuraian";
+		$statussoaljd = "hidden";
+		$statussoalpgk = "hidden";
 		$statussoalurai = "show";
+		$simpanjawab = "jawabanuraian";
 		$area = "
 			<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text' onchange='return nilaiUH$ar[nomersoal]()'></textarea>
 						";
@@ -147,12 +164,15 @@ while ($rr = mysqli_fetch_array($qu)) {
 		$statussoal = "show";
 		$simpanjawab = "jawabansiswa";
 		$statussoalbs = "hidden";
+		$statussoaljd = "hidden";
+		$statussoalpgk = "hidden";
 		$statussoalurai = "hidden";
 		$area = "<div class='col-xs-12' id='opsi$statussoal'>
                                 <input  hidden type='radio' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
 	}
 
 
+	
 ?>
 
 <div class="soalnye cls<?php echo $i; ?>">
@@ -177,7 +197,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 		<!-- PG Kompleks -->
 		<label class="custom-checkbox-button">
-			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+			<div class="col-xs-12" id="opsi<?php echo $statussoalpgk; ?>">
 				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaA<?php echo "$i"; ?>' value="A" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'A') ? 'checked="checked"' : '' ?> />
 				<span class="helping-el"></span>
 				<span class="label-text">a</span>
@@ -186,7 +206,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		</label>
 		<br>
 		<label class="custom-checkbox-button">
-			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+			<div class="col-xs-12" id="opsi<?php echo $statussoalpgk; ?>">
 				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaB<?php echo "$i"; ?>' value="B" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'B') ? 'checked="checked"' : '' ?> />
 				<span class="helping-el"></span>
 				<span class="label-text">b</span>
@@ -195,7 +215,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		</label>
 		<br>
 		<label class="custom-checkbox-button">
-			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+			<div class="col-xs-12" id="opsi<?php echo $statussoalpgk; ?>">
 				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaC<?php echo "$i"; ?>' value="C" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'C') ? 'checked="checked"' : '' ?> />
 				<span class="helping-el"></span>
 				<span class="label-text">c</span>
@@ -204,7 +224,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		</label>
 		<br>
 		<label class="custom-checkbox-button">
-			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+			<div class="col-xs-12" id="opsi<?php echo $statussoalpgk; ?>">
 				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaD<?php echo "$i"; ?>' value="D" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'D') ? 'checked="checked"' : '' ?> />
 				<span class="helping-el"></span>
 				<span class="label-text">d</span>
@@ -213,7 +233,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		</label>
 		<br>
 		<label id="opsi<?php echo $rr['opsi']; ?>" class="custom-checkbox-button">
-			<div class="col-xs-12" id="opsi<?php echo $statussoal; ?>">
+			<div class="col-xs-12" id="opsi<?php echo $statussoalpgk; ?>">
 				<input type="checkbox" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaE<?php echo "$i"; ?>' value="E" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'E') ? 'checked="checked"' : '' ?> />
 				<span class="helping-el"></span>
 				<span class="label-text">e</span>
@@ -221,6 +241,69 @@ while ($rr = mysqli_fetch_array($qu)) {
 			</div>
 		</label>
 		<br>	
+
+		<!-- Jodohkan Soal -->
+		<label class="custom-selected-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoaljd; ?>">
+				<input type="selected" name='pernyataan1' />
+				<select name="pernyataan1" onchange="updateOptions('pernyataan1', this)">
+                    <option value="" disabled>Pilih Jawaban</option>
+                    <option value="pilihan1" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswa<?php echo "$i"; ?>' value="pilihan1" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'pilihan1') ? 'checked="checked"' : '' ?> />Meong</option>
+                    <option value="pilihan2">Mooo</option>
+                    <option value="pilihan3">Mbeee</option>
+                </select>
+				<p id="cho"><?php echo "$pilihan_a"; ?><?php echo "$gambar_a"; ?></p>
+			</div>
+		</label>
+		<br>
+		<label class="custom-selected-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoaljd; ?>">
+				<input type="selected" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaA<?php echo "$i"; ?>' value="A" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'A') ? 'checked="checked"' : '' ?> />
+				<select name="jawaban1" onchange="updateOptions('jawaban1', this)">
+                    <option value="" disabled>Pilih Jawaban</option>
+                    <option value="jawaban1">Jawaban 1</option>
+                    <option value="jawaban2">Jawaban 2</option>
+                    <option value="jawaban3">Jawaban 3</option>
+                </select>
+				<p id="cho"><?php echo "$pilihan_a"; ?><?php echo "$gambar_a"; ?></p>
+			</div>
+		</label>
+		<br>
+		<label class="custom-selected-button">
+			<div class="col-xs-12" id="opsi<?php echo $statussoaljd; ?>">
+				<input type="selected" name='<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>' id='jawabansiswaA<?php echo "$i"; ?>' value="A" <?php echo ($ar['jawabansiswa'][$ar['nomersoal'] - 1] == 'A') ? 'checked="checked"' : '' ?> />
+				<select name="jawaban1" onchange="updateOptions('jawaban1', this)">
+                    <option value="" disabled>Pilih Jawaban</option>
+                    <option value="jawaban1">Jawaban 1</option>
+                    <option value="jawaban2">Jawaban 2</option>
+                    <option value="jawaban3">Jawaban 3</option>
+                </select>
+				<p id="cho"><?php echo "$pilihan_a"; ?><?php echo "$gambar_a"; ?></p>
+			</div>
+		</label>
+		<br>
+		<!-- <div class="container">
+        <div class="question-column">
+            <div class="question">
+                <p><strong>Pernyataan 1:</strong> Ini adalah pernyataan pertama.</p>
+                <select name="jawaban1" onchange="updateOptions('jawaban1', this)">
+                    <option value="" disabled>Pilih Jawaban</option>
+                    <option value="jawaban1">Jawaban 1</option>
+                    <option value="jawaban2">Jawaban 2</option>
+                    <option value="jawaban3">Jawaban 3</option>
+                </select>
+            </div>
+            <div class="question">
+                <p><strong>Pernyataan 2:</strong> Ini adalah pernyataan kedua.</p>
+                <select name="jawaban2" onchange="updateOptions('jawaban2', this)">
+                    <option value="" disabled>Pilih Jawaban</option>
+                    <option value="jawaban1">Jawaban 1</option>
+                    <option value="jawaban2">Jawaban 2</option>
+                    <option value="jawaban3">Jawaban 3</option>
+                </select>
+            </div>
+        </div>
+    </div> -->
 
 		<!-- BenarSalah -->
 		<label class="custom-radio-button">
