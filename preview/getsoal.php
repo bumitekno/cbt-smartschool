@@ -115,7 +115,19 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 
 	//Condition Soal dan Jawaban
-	if ($status == 5){
+
+	// if ($status == 5){
+	// 	$statussoaljd = "show";
+	// 	$simpanjawab = "jawabansiswa";
+	// 	$statussoal = "hidden";
+	// 	$statussoalbs = "hidden";
+	// 	$statussoalpgk = "hidden";
+	// 	$statussoalurai = "hidden";
+	// 	$area = "<div class='col-xs-12' id='opsi$statussoaljd'>
+    //                             <input  hidden type='selected' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
+	// }
+
+	if ($status == 4){
 		$statussoalpgk = "show";
 		$simpanjawab = "jawabansiswa";
 		$statussoal = "hidden";
@@ -124,17 +136,6 @@ while ($rr = mysqli_fetch_array($qu)) {
 		$statussoalurai = "hidden";
 		$area = "<div class='col-xs-12' id='opsi$statussoalpgk'>
                                 <input  hidden type='checkbox' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
-	}
-
-	if ($status == 4){
-		$statussoaljd = "show";
-		$simpanjawab = "jawabansiswa";
-		$statussoal = "hidden";
-		$statussoalbs = "hidden";
-		$statussoalpgk = "hidden";
-		$statussoalurai = "hidden";
-		$area = "<div class='col-xs-12' id='opsi$statussoaljd'>
-                                <input  hidden type='selected' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
 	}
 
 	if ($status == 3 ) {
@@ -243,7 +244,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		<br>	
 
 		<!-- Jodohkan Soal -->
-		<label class="custom-selected-button">
+		<!-- <label class="custom-selected-button">
 			<div class="col-xs-12" id="opsi<?php echo $statussoaljd; ?>">
 				<input type="selected" name='pernyataan1' />
 				<select name="pernyataan1" onchange="updateOptions('pernyataan1', this)">
@@ -281,29 +282,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 				<p id="cho"><?php echo "$pilihan_a"; ?><?php echo "$gambar_a"; ?></p>
 			</div>
 		</label>
-		<br>
-		<!-- <div class="container">
-        <div class="question-column">
-            <div class="question">
-                <p><strong>Pernyataan 1:</strong> Ini adalah pernyataan pertama.</p>
-                <select name="jawaban1" onchange="updateOptions('jawaban1', this)">
-                    <option value="" disabled>Pilih Jawaban</option>
-                    <option value="jawaban1">Jawaban 1</option>
-                    <option value="jawaban2">Jawaban 2</option>
-                    <option value="jawaban3">Jawaban 3</option>
-                </select>
-            </div>
-            <div class="question">
-                <p><strong>Pernyataan 2:</strong> Ini adalah pernyataan kedua.</p>
-                <select name="jawaban2" onchange="updateOptions('jawaban2', this)">
-                    <option value="" disabled>Pilih Jawaban</option>
-                    <option value="jawaban1">Jawaban 1</option>
-                    <option value="jawaban2">Jawaban 2</option>
-                    <option value="jawaban3">Jawaban 3</option>
-                </select>
-            </div>
-        </div>
-    </div> -->
+		<br> -->
 
 		<!-- BenarSalah -->
 		<label class="custom-radio-button">

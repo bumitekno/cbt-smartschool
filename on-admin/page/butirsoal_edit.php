@@ -1,5 +1,14 @@
 <?php
 include ('../../koneksi/koneksi.php');
+$checklist = '';
+if(!empty($_POST['jawabans'])){
+	foreach ($_POST['jawabans'] as $v) {
+	$checklist .=$v;
+	}
+	$kunci = $checklist;
+} else {
+	$kunci = $_POST['kunci'];
+};
 
 $id					= $_POST['id'];
 $jenissoal			= $_POST['jenissoal'];
@@ -12,7 +21,7 @@ $pilihan2			= $_POST['pilihan2'];
 $pilihan3			= $_POST['pilihan3'];
 $pilihan4			= $_POST['pilihan4'];
 $pilihan5			= $_POST['pilihan5'];
-$kunci  			= $_POST['kunci'];
+// $kunci  			= $_POST['kunci'];
 $gambarsoal			= $_POST['gambarsoal'];
 $gambar_a  			= $_POST['gambar_a'];
 $gambar_b   		= $_POST['gambar_b'];

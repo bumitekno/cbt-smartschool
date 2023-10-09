@@ -52,7 +52,7 @@ include ('conn/fungsi.php');
 						}
 						$i=1;
 						while ($ar = mysqli_fetch_array ($querydosen)){
-						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status='1'");
+						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status IN ('1', '3', '4')");
 						$rows = mysqli_num_rows($result);
 						$result2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status='2'");
 						$rows2 = mysqli_num_rows($result2);
@@ -60,8 +60,8 @@ include ('conn/fungsi.php');
                         $jawab=str_replace('X','',$jwb);
                         $jawabsiswa=strlen( $jawab );
 						$query2 = mysqli_query ($konek, "SELECT * FROM jawaburaian WHERE nama='$ar[nama]' AND kodesoal='$ar[kodesoal]'");
-						$rows3 = mysqli_num_rows($query2);
-						$jawabttl=$jawabsiswa+$rows3;
+						$rows6 = mysqli_num_rows($query2);
+						$jawabttl=$jawabsiswa+$rows6;
 				        $persen=100/$ar['jumlahsoal'];
 						$persenjawab=$persen*$jawabttl;
 						$aktif =$ar['statuslogin'];
@@ -72,7 +72,7 @@ include ('conn/fungsi.php');
 				        {
 					    $aktifstatus = 
 					    "
-					    <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $jawabsiswa dari $rows Soal PG | Terjawab $rows3 dari $rows2 Soal Uraian |sisa $sisasisa menit</p>
+					    <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $jawabsiswa dari $rows Soal PG, Benar Salah, PG Kompleks | Terjawab $rows6 dari $rows2 Soal Uraian | sisa $sisasisa menit</p>
     									<div class='progress progress-md' style='background:grey;width:100%;height:0.5em;'>
     									  <div class='progress-bar' style='width: $persenjawab%;font-size:10px;background-color:black;'></div>
     									</div>
@@ -86,7 +86,7 @@ include ('conn/fungsi.php');
 				        {
 					    $aktifstatus = 
 					    "
-					    <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $jawabsiswa dari $rows Soal PG | Terjawab $rows3 dari $rows2 Soal Uraian | sisa $sisasisa menit</p>
+					    <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $jawabsiswa dari $rows Soal PG, Benar Salah, PG Kompleks | Terjawab $rows6 dari $rows2 Soal Uraian | sisa $sisasisa menit</p>
     									<div class='progress progress-md' style='background:red;width:100%;height:0.5em;'>
     									  <div class='progress-bar progress-bar-success progress-bar-striped active' style='width: $persenjawab%;font-size:10px;'></div>
     									</div>

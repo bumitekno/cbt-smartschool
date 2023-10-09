@@ -127,7 +127,7 @@ if(!$show=='')
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
 						while ($sr = mysqli_fetch_array ($querydosen2)){
-							$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status='1'");
+							$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3', '4')");
 						$rows = mysqli_num_rows($result);
 						$x=$r['jawabansiswa'];
 						$xhasil=substr_count($x, "X");
