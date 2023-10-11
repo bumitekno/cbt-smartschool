@@ -210,21 +210,21 @@ include "tema/tema.php";
             <div class="box-body">
               <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Tambah Bank Soal</button>
               <div id="printableArea">
-                <br></br>
-                <table id="data5" class="table table-hover table-striped">
-                  <?php
-                  include "page/dt_soal.php";
-                  ?>
-                </table>
+                <br>
                 <h4>
                   <font color="#FF0000">Keterangan: *</font>
                 </h4>
                 <ul>
                   <li>Pastikan Soal dalam status <b>"Non Aktif"</b> jika ingin mengedit dan input butir soal</li>
-                  <li>klik <b>tombol</b> status soal untuk mengaktifkan dan menonaktifkan soal </li>
-                  <li>Tidak Bisa <b>menghapus</b> soal yang sedang Aktif </li>
-                  <li>Tidak Bisa <b>INPUT dan Edit</b> soal yang sedang Aktif </li>
-                </ul>
+                  <li>klik <b>tombol status soal</b> untuk mengaktifkan dan menonaktifkan soal </li>
+                  <li>Tidak Bisa <b>INPUT, EDIT, & HAPUS</b> soal yang sedang Aktif </li>
+                </ul><br></br>
+                <table id="data5" class="table table-hover table-striped">
+                  <?php
+                  include "page/dt_soal.php";
+                  ?>
+                </table>
+                
               </div>
     </section><!-- /.content -->
     <!-- Modal Popup Tambah Soal -->
@@ -237,6 +237,14 @@ include "tema/tema.php";
           </div>
           <div class="modal-body">
             <form action="page/soal_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
+            <h4>
+                <font color="#FF0000">Keterangan: *</font>
+              </h4>
+            <ul>
+                <li>JANGAN ada SPASI, gunakan tanda sambung (- atau _)</li>
+                <li>Hindari Kode Soal yang Terlalu Panjang (max 30 karakter) </li>
+                <li>Contoh: BING-11IPA-UAS1</li>
+              </ul><br>
               <div class="form-group">
                 <label>Jenis Ujian</label>
                 <br>
@@ -269,12 +277,12 @@ include "tema/tema.php";
                 <form action="" method="post">
                   <select class="form-control" name="kelas" required>
                     <option value="">Pilih kelas</option>
-                    <option value="7">1</option>
-                    <option value="7">2</option>
-                    <option value="7">3</option>
-                    <option value="7">4</option>
-                    <option value="7">5</option>
-                    <option value="7">6</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
@@ -330,14 +338,6 @@ include "tema/tema.php";
                   Cancel
                 </button>
               </div>
-              <h4>
-                <font color="#FF0000">Keterangan: *</font>
-              </h4>
-              <ul>
-                <li>JANGAN ada SPASI, BISA gunakan tanda sambung (-)</li>
-                <li>Hindari Kode Soal yang Terlalu Panjang </li>
-                <li>Contoh nama yang baik: BING-11IPA-UAS1</li>
-              </ul>
             </form>
           </div>
         </div>
