@@ -144,7 +144,7 @@ include "tema/tema.php";
 										</div>
 										<input class="form-control" type="file" id="files[]" name="files[]" accept="image/x-png,image/gif,image/jpeg,audio/mp3,audio/ogg" required multiple/>
 									</div>
-									<h6>max size : 2 Mb</h6>
+									<h6>max size : 10 Mb</h6>
 									<br>
 					        <button id="clot" class="btn btn-success" type="submit" name="submit_file" value="Submit"><i class="fa fa-cog fa-spin" style="font-size:15px"></i>  Proses</button> 
 					    </div> 
