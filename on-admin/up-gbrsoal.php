@@ -40,7 +40,7 @@ include ('conn/fungsi.php');
     border:0;
     }
     #mar {
-        margin-top:40px;
+        margin-top:0px;
     }
     #clot {
         border-radius:0;
@@ -135,6 +135,12 @@ include "tema/tema.php";
             <div class="col-xs-12">
                 <div class="box">
                     <div id="mar" class="col-xs-12">
+                    <h4><font color="#FF0000"><br><br>Keterangan: *</font></h4>
+                    <ul>
+                    <li>Pastikan semua gambar/audio yang ada di soal sudah terupload disni</li>
+                    <li>Menghapus gambar/audio disini juga akan menghapus yang berkaitan dengan soal</li>
+                    <li>Klik nama file untuk melihat gambar lebih detail</li>
+                    </ul>
                         <div class="col-sm-6">
                             <form action="upload-gbrsoal.php" onSubmit="return validateForm()" method="post" enctype="multipart/form-data" name="form1" id="form1">
                                 <label> Upload Gambar / audio soal</label>
@@ -193,13 +199,7 @@ include "tema/tema.php";
                     ?>
                     </table>
                     </div>
-                    <h4><font color="#FF0000"><br><br>Keterangan: *</font></h4>
-                    <ul>
-                    <li>Pastikan semua gambar yang ada di soal sudah terupload disni</li>
-                    <li>Menghapus gambar disini juga akan menghapus gambar yang berkaitan dengan soal</li>
-                    <li>Klik nama file untuk melihat gambar lebih detail</li>
-                    <br><br><br>
-                    </ul>  
+                    
                 </div>
                 </div>
                 </div>
