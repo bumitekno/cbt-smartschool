@@ -48,14 +48,18 @@ while ($xx = mysqli_fetch_array($qq)) {
 			$score = $nilaipg / $jumlah * $benar;
 			$urai = $cc['nilaiurai'];
 			$nil = $score + $urai;
-?>
+			?>
 			<div class="col-xs-12">
 				<center><img src="../aset/foto/<?php echo $xx['logo']; ?>" width=100 alt="...">
 					<br>
-					<h3><b><u><?php echo $xx['n_sekolah']; ?></u></b></h3><br>
+					<h3><b><u>
+								<?php echo $xx['n_sekolah']; ?>
+							</u></b></h3><br>
 				</center>
 				<center>
-					<h5 id="tutu"><?php echo $xx['sub_n_sekolah']; ?></h5>
+					<h5 id="tutu">
+						<?php echo $xx['sub_n_sekolah']; ?>
+					</h5>
 				</center>
 				<br><br>
 			</div>
@@ -66,31 +70,41 @@ while ($xx = mysqli_fetch_array($qq)) {
 							<td width="30px" rowspan="4" valign="top"></td>
 							<td width="200px">NAMA</td>
 							<td width="10px">:</td>
-							<td><span class="full"><?php echo $cc['nama']; ?></span></td>
+							<td><span class="full">
+									<?php echo $cc['nama']; ?>
+								</span></td>
 						</tr>
 						<tr>
 							<td>KELAS</td>
 							<td>:</td>
-							<td><span class="full"><?php echo $cc['kelas']; ?></span></td>
+							<td><span class="full">
+									<?php echo $cc['kelas']; ?>
+								</span></td>
 						</tr>
 						<tr>
 							<td>MATA PELAJARAN</td>
 							<td>:</td>
 							<td>
-								<span style="width:250px"><?php echo $cc['kodemapel']; ?></span>
+								<span style="width:250px">
+									<?php echo $cc['kodemapel']; ?>
+								</span>
 							</td>
 						</tr>
 						<tr>
 							<td>KODE SOAL</td>
 							<td>:</td>
 							<td>
-								<span style="width:250px"><?php echo $cc['kodesoal']; ?></span>
+								<span style="width:250px">
+									<?php echo $cc['kodesoal']; ?>
+								</span>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="col-xs-4">
-					<a class="btn btn-default" style="float:right;">NILAI : <h3><?php echo number_format($nil, 2); ?></h3></a>
+					<a class="btn btn-default" style="float:right;">NILAI : <h3>
+							<?php echo number_format($nil, 2); ?>
+						</h3></a>
 				</div>
 			</div>
 			<div class="col-xs-12">
@@ -192,7 +206,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$pilihan_e = "";
 							}
 
-							
+
 							if ($ar['status'] == 2) {
 								$statussoal = "hidden";
 							} else {
@@ -210,7 +224,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 							} else if ($jwbsis == "F") {
 								$jwbsis = "Salah";
 							}
-							
+
 							if ($kuncis2 == "A") {
 								$pilihan = "<br>
 						<div class='$statussoal'>
@@ -249,14 +263,14 @@ while ($xx = mysqli_fetch_array($qq)) {
 										&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 										&emsp;<p> &emsp;Salah </p>
 										</div>";
-							
-							} else if($kuncis2=="F") {
-							$pilihan = "<br>
+
+							} else if ($kuncis2 == "F") {
+								$pilihan = "<br>
 							<div class='$statussoal'>
 										&emsp;<p> &emsp;Benar </p>
 										&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-										</div>";	
-						
+										</div>";
+
 							} else {
 								$pilihan = "<br>
 						<div class='$statussoal'>
@@ -285,7 +299,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 							// 			</div>";
 							// 			$jawabansiswabs = "<i class='$statussoalbs'>$jwbsis $benar </i> $nillai";
 							// }
-
+		
 							echo "
 
 								<tr>
@@ -302,14 +316,17 @@ while ($xx = mysqli_fetch_array($qq)) {
 						}
 
 
-					?>
+						?>
 						<hr class="style2">
 						<center>
-							<h5><b> --------- &copy; <?php echo date('Y') ?> <?php echo $xx['n_sekolah']; ?> --------- </b></h5>
+							<h5><b> --------- &copy;
+									<?php echo date('Y') ?>
+									<?php echo $xx['n_sekolah']; ?> ---------
+								</b></h5>
 						</center>
-				</tbody>
-			</div>
-<?php }
-				}
-			}
-		} ?>
+					</tbody>
+				</div>
+			<?php }
+		}
+	}
+} ?>

@@ -8,6 +8,7 @@ $mapel = $_GET['matpel'];
 $kode = $_GET['kode'];
 $waktu = $_GET['waktu'];
 $waktune = $waktu * 60;
+$sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 $query2 = mysqli_query($konek, "SELECT * FROM ujian WHERE kodesoal='$kode'");
 $ur = mysqli_fetch_array($query2);
 if ($ur['aktif'] == 0) {
@@ -42,7 +43,7 @@ if ($qq == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
-?>
+	?>
 
 	<html class="no-js" lang="en">
 
@@ -50,7 +51,9 @@ while ($xx = mysqli_fetch_array($qq)) {
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><?php echo $xx['n_sekolah']; ?></title>
+		<title>
+			<?php echo $xx['n_sekolah']; ?>
+		</title>
 		<link href="../aset/foto/<?php echo $xx['logo']; ?>" rel="icon" type="image/png">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -197,16 +200,18 @@ while ($xx = mysqli_fetch_array($qq)) {
 			$warna = str_replace("yellow", "#f39c12", $warna);
 			$warna = str_replace("green", "#00a65a", $warna);
 			$warna = str_replace("purple", "#605ca8", $warna);
-		?>
+			?>
 			<header style="background-color:<?php echo $warna; ?> ; ">
 				<div class="group">
-					<div class="left" style="background-color:<?php echo $warna; ?>"><img src="../aset/foto/<?php echo $xx['logo_ujian']; ?>" style=" margin-left:0px;"></div>
+					<div class="left" style="background-color:<?php echo $warna; ?>"><img
+							src="../aset/foto/<?php echo $xx['logo_ujian']; ?>" style=" margin-left:0px;"></div>
 				<?php } ?>
 				<div class="right">
 					<table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">
 						<tbody>
 							<tr>
-								<td rowspan="3" width="100px" align="center"><img src="mesin/avatar.gif" style=" margin-left:0px; margin-top:5px" class="foto"></td>
+								<td rowspan="3" width="100px" align="center"><img src="mesin/avatar.gif"
+										style=" margin-left:0px; margin-top:5px" class="foto"></td>
 								<?php $queryn = mysqli_query($konek, "SELECT * FROM siswa WHERE nis='$username'");
 								if ($queryn == false) {
 									die("Terjadi Kesalahan : " . mysqli_error($konek));
@@ -224,17 +229,20 @@ while ($xx = mysqli_fetch_array($qq)) {
 										header('location:ujian.php?kelas=1');
 										exit;
 									}
-								?>
-							</tr>
-							<tr>
-								<td><span class="user"><?php echo $nama; ?><br><?php echo $r['kelas']; ?></span></td>
-							</tr>
-							<tr>
-								<td><span class="log"><a href="logout.php">Logout</a><span></span></span></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+									?>
+								</tr>
+								<tr>
+									<td><span class="user">
+											<?php echo $nama; ?><br>
+											<?php echo $r['kelas']; ?>
+										</span></td>
+								</tr>
+								<tr>
+									<td><span class="log"><a href="logout.php">Logout</a><span></span></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</header>
 
@@ -249,24 +257,36 @@ while ($xx = mysqli_fetch_array($qq)) {
 						</div>
 						<div id="garis" class="list-group-item">
 							<label class="list-group-item-heading">Nomer Peserta</label>
-							<p class="list-group-item-text"><?php echo "$username"; ?></p>
+							<p class="list-group-item-text">
+								<?php echo "$username"; ?>
+							</p>
 						</div>
 						<div id="garis" class="list-group-item">
 							<label class="list-group-item-heading">Nama</label>
-							<p class="list-group-item-text"><?php echo $nama; ?> | <?php echo "$r[kelas]"; ?></p>
+							<p class="list-group-item-text">
+								<?php echo $nama; ?> |
+								<?php echo "$r[kelas]"; ?>
+							</p>
 						</div>
 					<?php } ?>
 					<div id="garis" class="list-group-item">
 						<label class="list-group-item-heading">Mapel </label>
-						<p class="list-group-item-text"><?php echo "$mapel"; ?> | <?php echo "$kode"; ?></p>
+						<p class="list-group-item-text">
+							<?php echo "$mapel"; ?> |
+							<?php echo "$kode"; ?>
+						</p>
 					</div>
 					<div id="garis" class="list-group-item">
 						<label class="list-group-item-heading">Jumlah Soal </label>
-						<p class="list-group-item-text"><?php echo "$rows"; ?></p>
+						<p class="list-group-item-text">
+							<?php echo "$rows"; ?>
+						</p>
 					</div>
 					<div id="garis" class="list-group-item">
 						<label class="list-group-item-heading">Waktu </label>
-						<p class="list-group-item-text"><?php echo $ur['waktu']; ?> MENIT</p>
+						<p class="list-group-item-text">
+							<?php echo $ur['waktu']; ?> MENIT
+						</p>
 					</div>
 					<input id="nis" name="nis" type="hidden" value="<?php echo "$username"; ?>">
 					<input id="nama" name="nama" type="hidden" value="<?php echo "$nama"; ?>">
@@ -278,7 +298,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 					<input id="waktu" name="waktu" type="hidden" value="<?php echo $waktu; ?>">
 					<input id="waktuselesai" name="waktuselesai" type="hidden" value="<?php echo date("H:i:s", $buyar); ?>">
 					<input id="mulaiujian" name="mulaiujian" type="hidden" value="<?php echo $saiki; ?>">
-					<input id="lamaujian" name="lamaujian" type="hidden" value="<?php echo "" . gmdate("H", $waktune) . ":" . gmdate("i", $waktune) . ":" . gmdate("s", $waktune) . ""; ?>">
+					<input id="lamaujian" name="lamaujian" type="hidden"
+						value="<?php echo "" . gmdate("H", $waktune) . ":" . gmdate("i", $waktune) . ":" . gmdate("s", $waktune) . ""; ?>">
 					<input id="sisawaktu" name="sisawaktu" type="hidden" value="<?php echo "$waktune"; ?>">
 					<?php $queryn = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nama='$nama' and kodesoal='$kode'");
 					if ($queryn == false) {
@@ -297,21 +318,21 @@ while ($xx = mysqli_fetch_array($qq)) {
 					</div>
 
 
-					</form>
-					<?php if (!empty($_GET['aktif'])) {
-						echo "&emsp;<a id='ok' href='ujian.php'><button id='ok' type='button' class='btn btn-primary btn-xs' data-toggle='modal'><i class='fa fa-arrow-left'></i> BACK</button></a> <h5 style='color:red;'>&emsp;Ujian siswa <b>AKTIF</b>, Silahkan <b>RESET LOGIN !!</b></h5>";
-					}
-					?>
-					<?php if (!empty($_GET['sudah'])) {
-						echo "&emsp;<a id='ok' href='ujian.php'><button id='ok' type='button' class='btn btn-primary btn-xs' data-toggle='modal'><i class='fa fa-arrow-left'></i> BACK</button></a> <h5 style='color:red;'>&emsp;Siswa Sudah selesai mengerjakan SOAL ini !!</b></h5>";
-					}
-					?>
-				</div>
-				<?php
-				include "footer.php";
+				</form>
+				<?php if (!empty($_GET['aktif'])) {
+					echo "&emsp;<a id='ok' href='ujian.php'><button id='ok' type='button' class='btn btn-primary btn-xs' data-toggle='modal'><i class='fa fa-arrow-left'></i> BACK</button></a> <h5 style='color:red;'>&emsp;Ujian siswa <b>AKTIF</b>, Silahkan <b>RESET LOGIN !!</b></h5>";
+				}
+				?>
+				<?php if (!empty($_GET['sudah'])) {
+					echo "&emsp;<a id='ok' href='ujian.php'><button id='ok' type='button' class='btn btn-primary btn-xs' data-toggle='modal'><i class='fa fa-arrow-left'></i> BACK</button></a> <h5 style='color:red;'>&emsp;Siswa Sudah selesai mengerjakan SOAL ini !!</b></h5>";
+				}
 				?>
 			</div>
-			<div id="buntut">
+			<?php
+			include "footer.php";
+			?>
+		</div>
+		<div id="buntut">
 	</body>
 
 	</html>

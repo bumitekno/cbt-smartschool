@@ -10,13 +10,20 @@ $ur = mysqli_fetch_array($query2);
 	CKEDITOR.env.isCompatible = true;
 </script>
 <div class="btn-group" role="group" aria-label="Basic example">
-	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Soal PG</button>
-	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd2" data-toggle="modal"><i class="fa fa-plus"></i> Soal Uraian</button>
-	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd3" data-toggle="modal"><i class="fa fa-plus"></i> Soal Benar Salah</button>
-	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd4" data-toggle="modal"><i class="fa fa-plus"></i> Soal PG Kompleks</button>
-	<!-- <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd5" data-toggle="modal"><i class="fa fa-plus"></i> Soal Menjodohkan</button> -->
-	<a href="soal-import.php"><button id="clot2" type="button" class="btn btn-warning"><i class="fa fa-upload"></i> Import Butir Soal</button></a>
-	<a class='open_modal1' style='font-decoration:none;color:#222;' hidden><button id="clot" type='button' class='btn btn-danger'><i class='fa fa-picture-o'></i> Database | Upload gambar soal</button></a>
+	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i
+			class="fa fa-plus"></i> Soal PG</button>
+	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd2" data-toggle="modal"><i
+			class="fa fa-plus"></i> Soal Uraian</button>
+	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd3" data-toggle="modal"><i
+			class="fa fa-plus"></i> Soal Benar Salah</button>
+	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd4" data-toggle="modal"><i
+			class="fa fa-plus"></i> Soal PG Kompleks</button>
+	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd5" data-toggle="modal"><i
+			class="fa fa-plus"></i> Soal Menjodohkan</button>
+	<a href="soal-import.php"><button id="clot2" type="button" class="btn btn-warning"><i class="fa fa-upload"></i>
+			Import Butir Soal</button></a>
+	<a class='open_modal1' style='font-decoration:none;color:#222;' hidden><button id="clot" type='button'
+			class='btn btn-danger'><i class='fa fa-picture-o'></i> Database | Upload gambar soal</button></a>
 </div>
 <br><br>
 <h5>
@@ -24,19 +31,25 @@ $ur = mysqli_fetch_array($query2);
 		<div class="form-group">
 			<label class="col-sm-3 col-md-3 control-label">JENIS UJIAN</i></label>
 			<div class="col-sm-9">
-				<p class="form-control-static">: <?php echo $jenis; ?></p>
+				<p class="form-control-static">:
+					<?php echo $jenis; ?>
+				</p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 col-md-3 control-label">MATA PELAJARAN</label>
 			<div class="col-sm-9">
-				<p class="form-control-static">: <?php echo $mapel; ?></p>
+				<p class="form-control-static">:
+					<?php echo $mapel; ?>
+				</p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-3 col-md-3 control-label">KODE SOAL</i></label>
 			<div class="col-sm-9">
-				<p class="form-control-static">: <?php echo $kode; ?></p>
+				<p class="form-control-static">:
+					<?php echo $kode; ?>
+				</p>
 			</div>
 		</div>
 	</form>
@@ -49,7 +62,8 @@ $ur = mysqli_fetch_array($query2);
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Tambah Soal PG</h4>
 			</div>
 			<div class="modal-body">
@@ -69,7 +83,8 @@ $ur = mysqli_fetch_array($query2);
 					<div class="form-group">
 						<label>No. Soal</label>
 						<div class="input-group col-xs-2">
-							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal" required />
+							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal"
+								required />
 						</div>
 					</div>
 					<div class="form-group">
@@ -83,7 +98,8 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
 						</div>
 						<div class="input-group">
-							<textarea id="editor1" name="soal" rows="10" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<textarea id="editor1" name="soal" rows="10" cols="90" class="form-control"
+								placeholder="isi pertanyaan"></textarea>
 							<script>
 								CKEDITOR.replace('editor1', {
 									enterMode: CKEDITOR.ENTER_BR
@@ -110,33 +126,33 @@ $ur = mysqli_fetch_array($query2);
 									enterMode: CKEDITOR.ENTER_BR,
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -162,33 +178,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -214,33 +230,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -266,33 +282,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -318,33 +334,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -389,7 +405,8 @@ $ur = mysqli_fetch_array($query2);
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Tambah Soal uraian</h4>
 			</div>
 			<div class="modal-body">
@@ -409,7 +426,8 @@ $ur = mysqli_fetch_array($query2);
 					<div class="form-group">
 						<label>No. Soal</label>
 						<div class="input-group col-xs-2">
-							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal" required />
+							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal"
+								required />
 						</div>
 					</div>
 					<div class="form-group">
@@ -423,7 +441,8 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
 						</div>
 						<div class="input-group">
-							<textarea id="editor3" name="soal" rows="10" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<textarea id="editor3" name="soal" rows="10" cols="90" class="form-control"
+								placeholder="isi pertanyaan"></textarea>
 							<script>
 								CKEDITOR.replace('editor3', {
 									enterMode: CKEDITOR.ENTER_BR
@@ -437,7 +456,6 @@ $ur = mysqli_fetch_array($query2);
 							</div>
 							<input class="form-control" name="gambarsoal" type="file" accept=".jpg , .png" />
 						</div>
-
 					</div>
 
 					<div class="modal-footer">
@@ -459,7 +477,8 @@ $ur = mysqli_fetch_array($query2);
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Tambah Soal Benar Salah</h4>
 			</div>
 			<div class="modal-body">
@@ -479,7 +498,8 @@ $ur = mysqli_fetch_array($query2);
 					<div class="form-group">
 						<label>No. Soal</label>
 						<div class="input-group col-xs-2">
-							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal" required />
+							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal"
+								required />
 						</div>
 					</div>
 					<div class="form-group">
@@ -493,7 +513,8 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
 						</div>
 						<div class="input-group">
-							<textarea id="editor4" name="soal" rows="10" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<textarea id="editor4" name="soal" rows="10" cols="90" class="form-control"
+								placeholder="isi pertanyaan"></textarea>
 							<script>
 								CKEDITOR.replace('editor4', {
 									enterMode: CKEDITOR.ENTER_BR
@@ -548,7 +569,8 @@ $ur = mysqli_fetch_array($query2);
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Tambah Soal Ganda Kompleks</h4>
 			</div>
 			<div class="modal-body">
@@ -568,7 +590,8 @@ $ur = mysqli_fetch_array($query2);
 					<div class="form-group">
 						<label>No. Soal</label>
 						<div class="input-group col-xs-2">
-							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal" required />
+							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal"
+								required />
 						</div>
 					</div>
 					<div class="form-group">
@@ -582,7 +605,8 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
 						</div>
 						<div class="input-group">
-							<textarea id="editor6" name="soal" rows="10" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<textarea id="editor6" name="soal" rows="10" cols="90" class="form-control"
+								placeholder="isi pertanyaan"></textarea>
 							<script>
 								CKEDITOR.replace('editor6', {
 									enterMode: CKEDITOR.ENTER_BR
@@ -610,33 +634,33 @@ $ur = mysqli_fetch_array($query2);
 									enterMode: CKEDITOR.ENTER_BR,
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -662,33 +686,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -714,33 +738,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -766,33 +790,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -818,33 +842,33 @@ $ur = mysqli_fetch_array($query2);
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -898,13 +922,13 @@ $ur = mysqli_fetch_array($query2);
 	</div>
 </div>
 
-<!-- /*---INI UNTUK SOAL MENJODOHKAN---*/
-
-<div id="ModalAdd4" class="modal fade" tabindex="-1" role="dialog">
+<!-- Modal Popup Tambah Soal Menjodohkan -->
+<div id="ModalAdd5" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Tambah Soal Menjodohkan</h4>
 			</div>
 			<div class="modal-body">
@@ -919,18 +943,18 @@ $ur = mysqli_fetch_array($query2);
 						<input name="kodesoal" type="hidden" class="form-control" value="<?php echo $kode; ?>" />
 					</div>
 					<div class="form-group">
-						<input name="status" type="hidden" class="form-control" value="4" />
+						<input name="status" type="hidden" class="form-control" value="5" />
 					</div>
 					<div class="form-group">
-						<label>No. Soal</label>
+						<label>No. Soal Pernyataan</label>
 						<div class="input-group col-xs-2">
-							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal" required />
+							<input name="nomersoal" type="number" class="form-control input-sm" value="no soal"
+								required />
 						</div>
 					</div>
-
 					<div class="form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>SOAL</label>
+							<label>Soal Pernyataan</label>
 						</div>
 						<div class="input-group">
 							<div class="input-group-addon">
@@ -939,9 +963,10 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
 						</div>
 						<div class="input-group">
-							<textarea id="editor2" name="soal" rows="10" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<textarea id="editor6" name="soal" rows="10" cols="90" class="form-control"
+								placeholder="isi pertanyaan"></textarea>
 							<script>
-								CKEDITOR.replace('editor2', {
+								CKEDITOR.replace('editor6', {
 									enterMode: CKEDITOR.ENTER_BR
 								});
 							</script>
@@ -958,71 +983,94 @@ $ur = mysqli_fetch_array($query2);
 
 					<div class="form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>SOAL PERNYATAAN 1</label>
+							<label> Opsi Jawaban A</label>
 						</div>
 						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-file-audio-o"></i> Audio. Soal
-							</div>
-							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
-						</div>
-						<div class="input-group">
-							<textarea id="editorA" name="pernyataan1" cols="90" class="form-control" placeholder="isi pertanyaan"></textarea>
+							<textarea id="editorA" name="pilihan1" cols="80" class="form-control"></textarea>
 							<script>
 								CKEDITOR.replace('editorA', {
-									enterMode: CKEDITOR.ENTER_BR
+									enterMode: CKEDITOR.ENTER_BR,
+									height: ['50px'],
+									toolbarGroups: [{
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
+									],
+									// Remove the redundant buttons from toolbar groups defined above.
+									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
 								});
 							</script>
 						</div>
-
 						<div class="input-group">
 							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gambar Soal
+								<i class="fa fa-camera"></i> Gbr A
 							</div>
-							<input class="form-control" name="gambarsoal" type="file" accept=".jpg , .png" />
+							<input class="form-control" name="gambar_a" type="file" accept=".jpg , .png" />
 						</div>
-
 					</div>
-
 					<div class="form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>Soal Pernyataan 2</label>
+							<label>Opsi Jawaban B</label>
 						</div>
 						<div class="input-group">
-							<textarea id="editorB" name="pernyataan2" cols="80" class="form-control"></textarea>
+							<textarea id="editorB" name="pilihan2" cols="80" class="form-control"></textarea>
 							<script>
 								CKEDITOR.replace('editorB', {
 									enterMode: CKEDITOR.ENTER_BR,
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -1036,46 +1084,45 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="gambar_b" type="file" accept=".jpg , .png" />
 						</div>
 					</div>
-
-					<div class="form-group">
+					<div id="formgroupop<?php echo $ur['opsi']; ?> " class=" form-group">
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>Soal Pernyataan 3</label>
+							<label>Opsi Jawaban C</label>
 						</div>
 						<div class="input-group">
-							<textarea id="editorC" name="pernyataan3" cols="80" class="form-control"></textarea>
+							<textarea id="editorC" name="pilihan3" cols="80" class="form-control"></textarea>
 							<script>
 								CKEDITOR.replace('editorC', {
 									enterMode: CKEDITOR.ENTER_BR,
 									height: ['50px'],
 									height: ['50px'],
 									toolbarGroups: [{
-											"name": "basicstyles",
-											"groups": ["basicstyles"]
-										},
-										{
-											"name": "links",
-											"groups": ["links"]
-										},
-										{
-											"name": "paragraph",
-											"groups": ["list", "blocks"]
-										},
-										{
-											"name": "document",
-											"groups": ["mode"]
-										},
-										{
-											"name": "insert",
-											"groups": ["insert"]
-										},
-										{
-											"name": "styles",
-											"groups": ["styles"]
-										},
-										{
-											"name": "about",
-											"groups": ["about"]
-										}
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
 									],
 									// Remove the redundant buttons from toolbar groups defined above.
 									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
@@ -1089,172 +1136,138 @@ $ur = mysqli_fetch_array($query2);
 							<input class="form-control" name="gambar_c" type="file" accept=".jpg , .png" />
 						</div>
 					</div>
-
-					<form action='' method='post'>
+					<div id="formgroupop<?php echo $ur['opsi']; ?> class=" form-group">
+						<div class="col-xs-12" style="background-color:#222d32;color:white;">
+							<label> Opsi Jawaban D</label>
+						</div>
+						<div class="input-group">
+							<textarea id="editorD" name="pilihan4" cols="80" class="form-control"></textarea>
+							<script>
+								CKEDITOR.replace('editorD', {
+									enterMode: CKEDITOR.ENTER_BR,
+									height: ['50px'],
+									height: ['50px'],
+									toolbarGroups: [{
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
+									],
+									// Remove the redundant buttons from toolbar groups defined above.
+									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+								});
+							</script>
+						</div>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-camera"></i> Gbr D
+							</div>
+							<input class="form-control" name="gambar_d" type="file" accept=".jpg , .png" />
+						</div>
+					</div>
+					<div id="formgroupop<?php echo $ur['opsi']; ?>" class="form-group">
+						<div class="col-xs-12" style="background-color:#222d32;color:white;">
+							<label> Opsi Jawaban E</label>
+						</div>
+						<div class="input-group">
+							<textarea id="editorE" name="pilihan5" cols="80" class="form-control"></textarea>
+							<script>
+								CKEDITOR.replace('editorE', {
+									enterMode: CKEDITOR.ENTER_BR,
+									height: ['50px'],
+									height: ['50px'],
+									toolbarGroups: [{
+										"name": "basicstyles",
+										"groups": ["basicstyles"]
+									},
+									{
+										"name": "links",
+										"groups": ["links"]
+									},
+									{
+										"name": "paragraph",
+										"groups": ["list", "blocks"]
+									},
+									{
+										"name": "document",
+										"groups": ["mode"]
+									},
+									{
+										"name": "insert",
+										"groups": ["insert"]
+									},
+									{
+										"name": "styles",
+										"groups": ["styles"]
+									},
+									{
+										"name": "about",
+										"groups": ["about"]
+									}
+									],
+									// Remove the redundant buttons from toolbar groups defined above.
+									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+								});
+							</script>
+						</div>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-camera"></i> Gbr E
+							</div>
+							<input class="form-control" name="gambar_e" type="file" accept=".jpg , .png" />
+						</div>
+					</div>
+					<div class="col-xs-12" style="background-color:#222d32;color:white;">
+						<label>Kunci Jawaban</label>
+					</div><br>
+					<form action="" method="post">
 						<div name="kunci" required>
-							<div class="col-xs-12" style="background-color:#222d32;color:white;">
-								<label>Jawaban Pernyataan 1</label>
-							</div>
-							<div class="input-group">
-								<textarea id="editorA" name="pilihan1" cols="80" class="form-control"></textarea>
-								<script>
-									CKEDITOR.replace('editorA', {
-										enterMode: CKEDITOR.ENTER_BR,
-										height: ['50px'],
-										toolbarGroups: [{
-												"name": "basicstyles",
-												"groups": ["basicstyles"]
-											},
-											{
-												"name": "links",
-												"groups": ["links"]
-											},
-											{
-												"name": "paragraph",
-												"groups": ["list", "blocks"]
-											},
-											{
-												"name": "document",
-												"groups": ["mode"]
-											},
-											{
-												"name": "insert",
-												"groups": ["insert"]
-											},
-											{
-												"name": "styles",
-												"groups": ["styles"]
-											},
-											{
-												"name": "about",
-												"groups": ["about"]
-											}
-										],
-										// Remove the redundant buttons from toolbar groups defined above.
-										removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-									});
-								</script>
-							</div>
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="fa fa-camera"></i> Gbr A
-								</div>
-								<input class="form-control" name="gambar_a" type="file" accept=".jpg , .png" />
-							</div><br>
-
-							<div class="col-xs-12" style="background-color:#222d32;color:white;">
-								<label>Jawaban Pernyataan 2</label>
-							</div>
-							<div class="input-group">
-								<textarea id="editorB" name="pilihan2" cols="80" class="form-control"></textarea>
-								<script>
-									CKEDITOR.replace('editorB', {
-										enterMode: CKEDITOR.ENTER_BR,
-										height: ['50px'],
-										toolbarGroups: [{
-												"name": "basicstyles",
-												"groups": ["basicstyles"]
-											},
-											{
-												"name": "links",
-												"groups": ["links"]
-											},
-											{
-												"name": "paragraph",
-												"groups": ["list", "blocks"]
-											},
-											{
-												"name": "document",
-												"groups": ["mode"]
-											},
-											{
-												"name": "insert",
-												"groups": ["insert"]
-											},
-											{
-												"name": "styles",
-												"groups": ["styles"]
-											},
-											{
-												"name": "about",
-												"groups": ["about"]
-											}
-										],
-										// Remove the redundant buttons from toolbar groups defined above.
-										removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-									});
-								</script>
-							</div>
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="fa fa-camera"></i> Gbr B
-								</div>
-								<input class="form-control" name="gambar_b" type="file" accept=".jpg , .png" />
-							</div><br>
-
-							<div class="col-xs-12" style="background-color:#222d32;color:white;">
-								<label>Jawaban Pernyataan 3</label>
-							</div>
-							<div class="input-group">
-								<textarea id="editorC" name="pilihan3" cols="80" class="form-control"></textarea>
-								<script>
-									CKEDITOR.replace('editorC', {
-										enterMode: CKEDITOR.ENTER_BR,
-										height: ['50px'],
-										toolbarGroups: [{
-												"name": "basicstyles",
-												"groups": ["basicstyles"]
-											},
-											{
-												"name": "links",
-												"groups": ["links"]
-											},
-											{
-												"name": "paragraph",
-												"groups": ["list", "blocks"]
-											},
-											{
-												"name": "document",
-												"groups": ["mode"]
-											},
-											{
-												"name": "insert",
-												"groups": ["insert"]
-											},
-											{
-												"name": "styles",
-												"groups": ["styles"]
-											},
-											{
-												"name": "about",
-												"groups": ["about"]
-											}
-										],
-										// Remove the redundant buttons from toolbar groups defined above.
-										removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-									});
-								</script>
-							</div>
-							<div class="input-group">
-								<div class="input-group-addon">
-									<i class="fa fa-camera"></i> Gbr C
-								</div>
-								<input class="form-control" name="gambar_c" type="file" accept=".jpg , .png" />
-							</div>
+							<select class="form-control" name="kunci" required>
+								<option value="">Pilih Kunci Jawaban</option>
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+								<option value="D">D</option>
+								<option id="formgroupop<?php echo $ur['opsi']; ?>" value="E">E</option>
+							</select>
 						</div>
-						<div class="modal-footer">
-							<button class="btn btn-success" type="submit">
-								Add
-							</button>
-							<button type="reset" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">
-								Cancel
-							</button>
-						</div>
-					</form>
 			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" type="submit">
+					Add
+				</button>
+				<button type="reset" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">
+					Cancel
+				</button>
+			</div>
+			</form>
 		</div>
 	</div>
-</div> -->
+</div>
+
 
 <thead>
 	<tr>
