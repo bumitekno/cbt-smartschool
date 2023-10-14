@@ -129,14 +129,83 @@ while ($xx = mysqli_fetch_array($qq)) {
 							} else {
 								$audio = "";
 							}
-							$query3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='2'");
-							$kuncis1 = $ar['kunci'];
-							$kuncis2 = strtoupper($kuncis1);
-							$rows = mysqli_num_rows($query3);
-							$nilaimaxurai = 100 - $rr['nilai'];
-							$nilaipersoal = $nilaimaxurai / $rows;
-							$nilaiperbiji = $nilaipersoal / 5;
-							$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+							if ($ar['status'] == 1) {
+
+								$query3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='1'");
+								$kuncis1 = $ar['kunci'];
+								$kuncis2 = strtoupper($kuncis1);
+								$rows = mysqli_num_rows($query3);
+								$nilaimaxurai = 100 - $rr['nilai'];
+								$nilaipersoal = $nilaimaxurai / $rows;
+								$nilaiperbiji = $nilaipersoal / 5;
+								$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+								$type = "Pilihan Ganda";
+
+							}
+
+							if ($ar['status'] == 2) {
+
+								$query3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='2'");
+								$kuncis1 = $ar['kunci'];
+								$kuncis2 = strtoupper($kuncis1);
+								$rows = mysqli_num_rows($query3);
+								$nilaimaxurai = 100 - $rr['nilai'];
+								$nilaipersoal = $nilaimaxurai / $rows;
+								$nilaiperbiji = $nilaipersoal / 5;
+								$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+								$type = "Soal Uraian  ";
+
+							}
+
+							if ($ar['status'] == 3) {
+
+								$query3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='3'");
+								$kuncis1 = $ar['kunci'];
+								$kuncis2 = strtoupper($kuncis1);
+								$rows = mysqli_num_rows($query3);
+								$nilaimaxurai = 100 - $rr['nilai'];
+								$nilaipersoal = $nilaimaxurai / $rows;
+								$nilaiperbiji = $nilaipersoal / 5;
+								$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+								$type = "Soal Benar atau Salah ";
+
+							}
+
+							if ($ar['status'] == 4) {
+
+								$query3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='4'");
+								$kuncis1 = $ar['kunci'];
+								$kuncis2 = strtoupper($kuncis1);
+								$rows = mysqli_num_rows($query3);
+								$nilaimaxurai = 100 - $rr['nilai'];
+								$nilaipersoal = $nilaimaxurai / $rows;
+								$nilaiperbiji = $nilaipersoal / 5;
+								$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+								$type = "Pilihan Ganda Komplek ";
+
+							}
+
+							if ($ar['status'] == 5) {
+
+								$query3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='5'");
+								$kuncis1 = $ar['kunci'];
+								$kuncis2 = strtoupper($kuncis1);
+								$rows = mysqli_num_rows($query3);
+								$nilaimaxurai = 100 - $rr['nilai'];
+								$nilaipersoal = $nilaimaxurai / $rows;
+								$nilaiperbiji = $nilaipersoal / 5;
+								$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+								$type = "Soal Menjodohkan";
+
+							}
+
+
 							if ($ur['jawaban'] == "") {
 								$nillai = "";
 							} else {
@@ -207,12 +276,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 							}
 
 
-							if ($ar['status'] == 2) {
-								$statussoal = "hidden";
-							} else {
-								$statussoal = "show";
-							}
-
 							if ($jwbsis == $kuncis2) {
 								$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 							} else {
@@ -225,86 +288,145 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$jwbsis = "Salah";
 							}
 
-							if ($kuncis2 == "A") {
-								$pilihan = "<br>
-						<div class='$statussoal'>
-    								&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-    								&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
-                                    &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
-                                    &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
-    								&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-							} else if ($kuncis2 == "B") {
-								$pilihan = "<br>
-						<div class='$statussoal'>
-    								&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
-    								&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-                                    &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
-                                    &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
-    								&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-							} else if ($kuncis2 == "C") {
-								$pilihan = "<br>
-						<div class='$statussoal'>
-    								&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
-    								&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
-                                    &emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-                                    &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
-    								&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-							} else if ($kuncis2 == "D") {
-								$pilihan = "<br>
-						<div class='$statussoal'>
-    								&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
-    								&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
-                                    &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
-                                    &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-    								&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-							} else if ($kuncis2 == "T") {
-								$pilihan = "<br>
-							<div class='$statussoal'>
-										&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-										&emsp;<p> &emsp;Salah </p>
-										</div>";
 
-							} else if ($kuncis2 == "F") {
-								$pilihan = "<br>
-							<div class='$statussoal'>
-										&emsp;<p> &emsp;Benar </p>
-										&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-										</div>";
+							if ($ar['status'] == 4) {
+
+								if ($kuncis1 == "ABC") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p> 
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+								} else if ($kuncis1 == "ABD") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div>  ";
+								} else if ($kuncis1 == "ABE") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>  
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+								} else if ($kuncis1 == "BCD") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p> 
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+								} else if ($kuncis1 == "BCE") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p> 
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+								} else if ($kuncis1 == "ACD") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+								} else if ($kuncis1 == "ACE") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+								} else if ($kuncis1 == "CDE") {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+								} else {
+									$pilihan = "<br>
+										<div class='show'>
+													&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+													&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+													&emsp;<p>c. &emsp;$pilihan_c $gambar_c </p>  
+													&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+													&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+								}
 
 							} else {
-								$pilihan = "<br>
-						<div class='$statussoal'>
-    								&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
-    								&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
-                                    &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
-                                    &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
-    								&emsp;<p>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
+								if ($kuncis2 == "A") {
+									$pilihan = "<br>
+							<div class='$statussoal'>
+										&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+										&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
+										&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
+										&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
+										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
+								} else if ($kuncis2 == "B") {
+									$pilihan = "<br>
+							<div class='$statussoal'>
+										&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
+										&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+										&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
+										&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
+										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
+								} else if ($kuncis2 == "C") {
+									$pilihan = "<br>
+							<div class='$statussoal'>
+										&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
+										&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
+										&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+										&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
+										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
+								} else if ($kuncis2 == "D") {
+									$pilihan = "<br>
+							<div class='$statussoal'>
+										&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
+										&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
+										&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
+										&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
+								} else if ($kuncis2 == "T") {
+									$pilihan = "<br>
+								<div class='$statussoal'>
+											&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+											&emsp;<p> &emsp;Salah </p>
+											</div>";
+
+								} else if ($kuncis2 == "F") {
+									$pilihan = "<br>
+								<div class='$statussoal'>
+											&emsp;<p> &emsp;Benar </p>
+											&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+											</div>";
+
+								} else {
+									$pilihan = "<br>
+									<div class='$statussoal'>
+												&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
+												&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>
+												&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
+												&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
+												&emsp;<p>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
+								}
 							}
 
-							// if($kuncis2=="T")
-							// {
-							// $pilihan = "<br>
-							// <div class='$statussoalbs'>
-							// 			&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-							// 			&emsp;<p> &emsp;Salah </p>
-							// 			</div>";
-							// $jawabansiswabs = "<div><i><u>Jawaban siswa</u></i> : <i class='$statussoalbs'>$jwbsis $benar </i> $nillai</div>";
-							// }
-							// else if($kuncis2=="F")
-							// {
-							// $pilihan = "<br>
-							// <div class='$statussoalbs'>
-							// 			&emsp;<p> &emsp;Benar </p>
-							// 			&emsp;<p> &emsp;Salah &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-							// 			</div>";
-							// 			$jawabansiswabs = "<i class='$statussoalbs'>$jwbsis $benar </i> $nillai";
-							// }
-		
-							echo "
 
+							echo "
 								<tr>
-								
-								$ar[nomersoal]. <b>$ar[soal]</b>
+								$ar[nomersoal]. <b>$ar[soal] ($type) </b>
 							    <br>
 								&emsp;$gambarsoal<br>$audio
 								$pilihan
@@ -313,6 +435,8 @@ while ($xx = mysqli_fetch_array($qq)) {
                                 <br>
                                 <hr class='style1'>
 								</tr>";
+
+
 						}
 
 

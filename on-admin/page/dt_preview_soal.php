@@ -183,7 +183,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								<tr>
 								<hr style='height:1px;border:none;color:#d3d1d1;background-color:#d3d1d1;' />
 								$ar[nomersoal].&emsp;$soal
-								&emsp;$gambarsoal (Pilihan Ganda Dengan 4 Opsi )  <br>$audio
+								&emsp;$gambarsoal (Pilihan Ganda )  <br>$audio
 								$pilihan
 								<br>
                                 
@@ -239,7 +239,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								<tr>
 								<hr style='height:1px;border:none;color:#d3d1d1;background-color:#d3d1d1;' />
 								$ar[nomersoal].&emsp;$soal
-								&emsp;$gambarsoal (Pilihan Ganda Dengan 5 Opsi )<br> $audio
+								&emsp;$gambarsoal (Pilihan Ganda  )<br> $audio
 								$pilihan
 								<br>
    									<td align=center>
