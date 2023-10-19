@@ -314,7 +314,7 @@ while ($r = mysqli_fetch_array($query)) {
 										}
 
 										if ($ar['status'] == 1) {
-											$jwbsis = $ar['jawabansiswa'];
+											$jwbsis = $ar['jawabansiswa'][$ar['nomorsoal']];
 											if (strtolower($jwbsis) == strtolower($kuncis2)) {
 												$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 											} else {
@@ -322,7 +322,7 @@ while ($r = mysqli_fetch_array($query)) {
 											}
 
 											if ($kuncis2 == "A") {
-												$jwbsis = 'A';
+
 												$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -331,7 +331,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 											} else if ($kuncis2 == "B") {
-												$jwbsis = 'B';
+
 												$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -340,7 +340,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 											} else if ($kuncis2 == "C") {
-												$jwbsis = 'C';
+
 												$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -349,7 +349,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 											} else if ($kuncis2 == "D") {
-												$jwbsis = 'D';
+
 												$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -358,7 +358,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 											} else if ($kuncis2 == "T") {
-												$jwbsis = 'T';
+
 												$pilihan = "<br>
 								  <div class='$statussoal'>
 										&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -366,7 +366,7 @@ while ($r = mysqli_fetch_array($query)) {
 										</div>";
 
 											} else if ($kuncis2 == "F") {
-												$jwbsis = 'F';
+
 												$pilihan = "<br>
 								  <div class='$statussoal'>
 										&emsp;<p> &emsp;Benar </p>
@@ -374,7 +374,7 @@ while ($r = mysqli_fetch_array($query)) {
 										</div>";
 
 											} else {
-												$jwbsis = 'E';
+
 												$pilihan = "<br>
 									<div class='$statussoal'>
 										  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -390,112 +390,112 @@ while ($r = mysqli_fetch_array($query)) {
 
 											if ($kuncis1 == "ABC") {
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p> 
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p> 
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
 												$jwbsis = 'ABC';
 											} else if ($kuncis1 == "ABD") {
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div>  ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div>  ";
 												$jwbsis = 'ABD';
 											} else if ($kuncis1 == "ABE") {
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>  
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>  
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 												$jwbsis = 'ABE';
 											} else if ($kuncis1 == "BCD") {
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
 												$jwbsis = 'BCD';
 											} else if ($kuncis1 == "BCE") {
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 												$jwbsis = 'BCE';
 											} else if ($kuncis1 == "ACD") {
 												$jwbsis = 'ACD';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
 											} else if ($kuncis1 == "ACE") {
 												$jwbsis = 'ACE';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "CDE") {
 												$jwbsis = 'CDE';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AD") {
 												$jwbsis = 'AD';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c </p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b </p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c </p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AB") {
 												$jwbsis = 'AB';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c </p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c </p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AC") {
 												$jwbsis = 'AC';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b  </p>
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b  </p>
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AE") {
 												$jwbsis = 'AE';
 												$pilihan = "<br>
-									  <div class='show'>
-											&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
-											&emsp;<p>b. &emsp;$pilihan_b $gambar_b  </p>
-											&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
-											&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
-											&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
+												  <div class='show'>
+														&emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
+														&emsp;<p>b. &emsp;$pilihan_b $gambar_b  </p>
+														&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
+														&emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
+														&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											}
 
 										}

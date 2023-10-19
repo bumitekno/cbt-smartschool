@@ -132,29 +132,23 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				$statussoalpgk = "hidden";
 				$statussoalurai = "hidden";
 
-				$area = "<div class='col-xs-12' id='opsi$statussoaljd'>
-						<input  hidden type='checkbox' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
+				$area = "<div class='col-xs-12' id='opsi$statussoaljd'><input  hidden type='checkbox' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
 
 				if (count($array_kuncian) > 0) {
 					foreach ($array_kuncian as $index) {
 
-						$jawaban_siswa = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $ar['jawabansiswa'][$ar['nomersoal']])));
+						$jawaban_siswa = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $ar['jawabansiswa'])));
 
-						$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $index)));
+						$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $ip)));
 
 						if (strstr($jawaban_siswa, $jawaban_kunci)) {
+							$statussoaljd = "hidden";
+						}
 
-							$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
-							<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" checked="checked" id="jawabansiswaJD' . $i . '">
-							<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
-							</div></label>';
-
-						} else {
-							$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
+						$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
 							<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" id="jawabansiswaJD' . $i . '">
 							<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
 							</div></label>';
-						}
 					}
 				}
 			}

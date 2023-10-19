@@ -302,7 +302,9 @@ while ($xx = mysqli_fetch_array($qq)) {
 							}
 
 							if ($ar['status'] == 1) {
-								$jwbsis = $ar['jawabansiswa'];
+
+								$jwbsis = $ar['jawabansiswa'][$ar['nomorsoal']];
+
 								if (strtolower($jwbsis) == strtolower($kuncis2)) {
 									$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 								} else {
@@ -310,7 +312,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								}
 
 								if ($kuncis2 == "A") {
-									$jwbsis = 'A';
+
 									$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -319,7 +321,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 								} else if ($kuncis2 == "B") {
-									$jwbsis = 'B';
+
 									$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -328,7 +330,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 								} else if ($kuncis2 == "C") {
-									$jwbsis = 'C';
+
 									$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -337,7 +339,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 								} else if ($kuncis2 == "D") {
-									$jwbsis = 'D';
+
 									$pilihan = "<br>
 								<div class='$statussoal'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -346,7 +348,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 								} else if ($kuncis2 == "T") {
-									$jwbsis = 'T';
+
 									$pilihan = "<br>
 								  <div class='$statussoal'>
 										&emsp;<p> &emsp;Benar &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -354,7 +356,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 										</div>";
 
 								} else if ($kuncis2 == "F") {
-									$jwbsis = 'F';
+
 									$pilihan = "<br>
 								  <div class='$statussoal'>
 										&emsp;<p> &emsp;Benar </p>
@@ -362,7 +364,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 										</div>";
 
 								} else {
-									$jwbsis = 'E';
+
 									$pilihan = "<br>
 									<div class='$statussoal'>
 										  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>

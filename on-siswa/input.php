@@ -11,8 +11,6 @@ if ($query == false) {
 	$i = 1;
 }
 while ($ar = mysqli_fetch_array($query)) {
-
-
 	?>
 	<input id="sisasisa" name="sisawaktu" value="<?php print $ar['sisawaktu']; ?>" />
 <?php } ?>

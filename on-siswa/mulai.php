@@ -4,7 +4,6 @@ include('conn/cek.php');
 include('../koneksi/koneksi.php');
 include('conn/fungsi.php');
 
-
 $nis = $_POST['nis'];
 $nama = $_POST['nama'];
 $kelas = $_POST['kelas'];
@@ -19,7 +18,6 @@ $waktuselesai = $_POST['waktuselesai'];
 $sisawaktu = $_POST['sisawaktu'] + (60);
 
 $ok = $_POST['ok'];
-
 
 if ($statuslogin == '1') {
         header('location:confirm.php?aktif=1');

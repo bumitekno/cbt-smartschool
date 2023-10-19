@@ -359,7 +359,6 @@ while ($xx = mysqli_fetch_array($qq)) {
             if ($(".divs div:visible").next().length == 0) {
               //1. Hide the two buttons
 
-
               //3. Show the results
               var divs = $(".divs div:visible").prevAll().clone();
               divs.show();
@@ -370,7 +369,11 @@ while ($xx = mysqli_fetch_array($qq)) {
               $(".your-quiz-result")
                 .empty()
                 .append(divs);
+
             }
+
+            autosave();
+
           }
           return false;
         });
@@ -388,6 +391,9 @@ while ($xx = mysqli_fetch_array($qq)) {
             //2. Can't go previous first div
             console.log("Can't go previous first div");
           }
+
+          autosave();
+
           return false;
         });
       });
@@ -416,11 +422,6 @@ while ($xx = mysqli_fetch_array($qq)) {
         showPage(parseInt($(this).text()))
       });
 
-      $(document).ready(function () {
-        autosave();
-        autoget();
-      });
-
       function autosave() {
         var t = setTimeout("autosave()", 5000); // autosave 10 detikan
         var waktuselesai = $("#waktuselesai").val();
@@ -441,9 +442,15 @@ while ($xx = mysqli_fetch_array($qq)) {
             });
         }
         setInterval(function () {
-          autoSave();
+          t;
         }, 50000);
       }
+
+      $(document).ready(function () {
+
+        autoget();
+      });
+
     </script>
     </form>
     <script>
