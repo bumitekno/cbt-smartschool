@@ -404,53 +404,16 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 						//soal menjodohkan 
 						if ($ar['status'] == 5) {
-
-							if ($ar['kunci'] == "A") {
-								$pilihan .= "<br>
-							<div class='show'>
-										&emsp;<p>a. &emsp;$pilihan_a $gambar_a  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-										&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>  
-										&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
-										&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p> 
-										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
-							} else if ($ar['kunci'] == "B") {
-								$pilihan .= "<br>
-							<div class='show'>
-										&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>  
-										&emsp;<p>b. &emsp;$pilihan_b $gambar_b  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-										&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>  
-										&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>  
-										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div>  ";
-							} else if ($ar['kunci'] == "C") {
-								$pilihan .= "<br>
-							<div class='show'>
-										&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>  
-										&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>  
-										&emsp;<p>c. &emsp;$pilihan_c $gambar_c  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-										&emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>  
-										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
-							} else if ($ar['kunci'] == "D") {
-								$pilihan .= "<br>
-							<div class='show'>
-										&emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>  
-										&emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>  
-										&emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
-										&emsp;<p>d. &emsp;$pilihan_d $gambar_d   &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
-										&emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
-							}
-
 							echo "
 								<tr>
 									<hr style='height:1px;border:none;color:#d3d1d1;background-color:#d3d1d1;' />
 									$ar[nomersoal].&emsp;$soal
-									&emsp;$gambarsoal ( Soal Menjodohkan dengan jawaban yang benar   )<br> $audio
+									&emsp;$gambarsoal ( Soal Menjodohkan dengan jawaban yang benar )<br> $audio
 									<td>
-									$pilihan
+									$ar[kunci]
 									</td>	
 								</tr>";
-
 						}
-
 					}
 					?>
 					<hr class="style2">

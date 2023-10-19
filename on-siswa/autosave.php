@@ -15,5 +15,6 @@ while ($ar = mysqli_fetch_array($query)) {
 	$sisawaktu = $ar['sisawaktu'] - (60);
 }
 //Memnyimpan artikel ke database
+
 mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$answer', sisawaktu='$sisawaktu' WHERE nis='$nis'");
 ?>

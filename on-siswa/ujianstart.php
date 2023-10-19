@@ -226,7 +226,7 @@ while ($xx = mysqli_fetch_array($qq)) {
       <div id="timer" class="list-group-item top-heading">
         <!-------no soal------>
 
-        <body onload=init() onunload=keluar()>
+        <body>
           <div class="btn-group" role="group" aria-label="Basic example">
             <button id="btni" type="button" class="btn btn-danger"><b>SISA WAKTU</b> <i
                 class="fa fa-clock-o fa-spin"></i></button>
@@ -338,6 +338,10 @@ while ($xx = mysqli_fetch_array($qq)) {
       });
     </script>
     <script src="./js/jquery.resizer.min.js"></script>
+    <?php
+    include "bundle/scriptsoal.php";
+    include "bundle/ragu_script.php";
+    ?>
     <script>
       $(".resizable-content").resizable();
     </script>
@@ -411,13 +415,14 @@ while ($xx = mysqli_fetch_array($qq)) {
         $(this).addClass("current");
         showPage(parseInt($(this).text()))
       });
+
       $(document).ready(function () {
         autosave();
+        autoget();
       });
 
       function autosave() {
         var t = setTimeout("autosave()", 5000); // autosave 10 detikan
-
         var waktuselesai = $("#waktuselesai").val();
         var mulaiujian = $("#mulaiujian").val();
         var sisawaktu = $("#sisawaktu").val();
@@ -466,10 +471,7 @@ while ($xx = mysqli_fetch_array($qq)) {
         return true;
       });
     </script>
-    <?php
-    include "bundle/scriptsoal.php";
-    include "bundle/ragu_script.php";
-    ?>
+
   </body>
 
   </html>

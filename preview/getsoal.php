@@ -12,18 +12,33 @@ $qu = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$kode'");
 if ($qu == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
+
+$list_menjodohkan = mysqli_query($konek, "SELECT kunci FROM soal WHERE `status`='5'");
+$rows_jodohkan = mysqli_num_rows($list_menjodohkan);
+
+$array_kuncian = [];
+if ($rows_jodohkan > 0) {
+	while ($chek = mysqli_fetch_array($list_menjodohkan)) {
+		array_push($array_kuncian, $chek['kunci']);
+	}
+}
+
+
 while ($rr = mysqli_fetch_array($qu)) {
 	if ($rr['acak'] > 1) {
 		$acak = "nomersoal ASC";
 	} else {
 		$acak = "RAND ()";
 	}
+
 	$query = mysqli_query($konek, "SELECT * FROM soal WHERE kodemapel='$mapel' and jenissoal='$jenis' and kodesoal='$kode' ORDER by status ASC, $acak");
 	if ($query == false) {
 		die("Terjadi Kesalahan : " . mysqli_error($konek));
 		$i = 1;
 	}
+
 	while ($ar = mysqli_fetch_array($query)) {
+
 		$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$kode'");
 		$rows = mysqli_num_rows($result);
 		$ks = $ar["kodesoal"];
@@ -115,19 +130,44 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 
 		//Condition Soal dan Jawaban
+		$botton_choice = '';
 
-		if ($status == 5) {
+		if ($ar['status'] == 5) {
+			$kategori_soal = 'Soal Menjodohkan';
 			$statussoaljd = "show";
 			$simpanjawab = "jawabansiswa";
 			$statussoal = "show";
 			$statussoalbs = "hidden";
 			$statussoalpgk = "hidden";
 			$statussoalurai = "hidden";
+			$area = "<div class='col-xs-12' id='opsi$statussoaljd'>
+					<input  hidden type='checkbox' name='$simpanjawab$ar[nomersoal]' id='X$i' value='X' checked='checked' ></div>";
+			if (count($array_kuncian) > 0) {
+				foreach ($array_kuncian as $index) {
 
-			$area = '';
+					$jawaban_siswa = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $ar['jawabansiswa'][$ar['nomersoal']])));
+
+					$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $index)));
+
+					if ($jawaban_siswa == $jawaban_kunci) {
+
+						$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
+					<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" checked="checked">
+					<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
+					</div></label>';
+
+					} else {
+						$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
+						<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '">
+						<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
+						</div></label>';
+					}
+				}
+			}
 		}
 
 		if ($status == 4) {
+			$kategori_soal = 'Soal Pilihan Ganda Komplek ';
 			$statussoalpgk = "show";
 			$simpanjawab = "jawabansiswa";
 			$statussoal = "hidden";
@@ -139,6 +179,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		}
 
 		if ($status == 3) {
+			$kategori_soal = 'Soal Benar atau Salah  ';
 			$simpanjawab = "jawabansiswa";
 			$statussoalbs = "show";
 			$statussoal = 'hidden';
@@ -150,6 +191,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		}
 
 		if ($status == 2) {
+			$kategori_soal = 'Soal Uraian';
 			$statussoal = "hidden";
 			$statussoalbs = "hidden";
 			$statussoaljd = "hidden";
@@ -162,6 +204,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 		}
 
 		if ($status == 1) {
+			$kategori_soal = 'Soal Pilihan Ganda  ';
 			$statussoal = "show";
 			$simpanjawab = "jawabansiswa";
 			$statussoalbs = "hidden";
@@ -184,7 +227,9 @@ while ($rr = mysqli_fetch_array($qu)) {
 			<span class="resizable-content">
 				<p><b>
 						<?php echo "$ar[soal]"; ?>
-					</b></p>
+					</b> (
+					<?php echo $kategori_soal; ?> )
+				</p>
 				<br><br>
 				<!-------gambar soal------>
 				<a class='open_modal' style='font-decoration:none;color:#222;' id='<?php echo "$ar[id]"; ?>'>
@@ -279,21 +324,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 				<?php
 				if ($status == 5) { ?>
 
-					<select name="<?php echo "$simpanjawab"; ?><?php echo "$ar[nomersoal]"; ?>" required>
-						<option value="">Pilih Jawaban</option>
-						<option value="A">
-							<?php echo "$pilihan_a"; ?>
-						</option>
-						<option value="B">
-							<?php echo "$pilihan_b"; ?>
-						</option>
-						<option value="C">
-							<?php echo "$pilihan_c"; ?>
-						</option>
-						<option value="D">
-							<?php echo "$pilihan_d"; ?>
-						</option>
-					</select>
+					<?php echo $botton_choice; ?>
 
 				<?php } ?>
 

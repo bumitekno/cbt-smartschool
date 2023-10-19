@@ -28,22 +28,25 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	$kosong = 0;
 	for ($i = 0; $i < $jumlah; $i++) {
 
-		if ($key[$i] == $answer[$i]) {
+		$jawaban_siswa = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $answer[$i])));
+
+		$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $key[$i])));
+
+		if ($jawaban_kunci == $jawaban_siswa) {
 			//jika jawaban cocok (benar)
 			$benar++;
 		} else {
 			//jika salah
 			$salah++;
-
 		}
-
-
 	}
 	$score = $nilaipg / $jumlah * $benar;
+
 	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$answer', kuncisoal='$key', benar='$jam', salah='$tanggal', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")) {
 		header("Location:koreksi.php");
 		exit();
 	}
+
 	die("Terdapat kesalahan : " . mysqli_error($konek));
 
 } ?>

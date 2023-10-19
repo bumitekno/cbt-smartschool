@@ -956,12 +956,7 @@ $ur = mysqli_fetch_array($query2);
 						<div class="col-xs-12" style="background-color:#222d32;color:white;">
 							<label>Soal Pernyataan</label>
 						</div>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-file-audio-o"></i> Audio. Soal
-							</div>
-							<input class="form-control" name="audio" type="file" accept=".mp3 , .ogg" />
-						</div>
+
 						<div class="input-group">
 							<textarea id="editor6" name="soal" rows="10" cols="90" class="form-control"
 								placeholder="isi pertanyaan"></textarea>
@@ -971,289 +966,17 @@ $ur = mysqli_fetch_array($query2);
 								});
 							</script>
 						</div>
-
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gambar Soal
-							</div>
-							<input class="form-control" name="gambarsoal" type="file" accept=".jpg , .png" />
-						</div>
-
 					</div>
 
-					<div class="form-group">
-						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label> Opsi Jawaban A</label>
-						</div>
-						<div class="input-group">
-							<textarea id="editorA" name="pilihan1" cols="80" class="form-control"></textarea>
-							<script>
-								CKEDITOR.replace('editorA', {
-									enterMode: CKEDITOR.ENTER_BR,
-									height: ['50px'],
-									toolbarGroups: [{
-										"name": "basicstyles",
-										"groups": ["basicstyles"]
-									},
-									{
-										"name": "links",
-										"groups": ["links"]
-									},
-									{
-										"name": "paragraph",
-										"groups": ["list", "blocks"]
-									},
-									{
-										"name": "document",
-										"groups": ["mode"]
-									},
-									{
-										"name": "insert",
-										"groups": ["insert"]
-									},
-									{
-										"name": "styles",
-										"groups": ["styles"]
-									},
-									{
-										"name": "about",
-										"groups": ["about"]
-									}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
-						</div>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gbr A
-							</div>
-							<input class="form-control" name="gambar_a" type="file" accept=".jpg , .png" />
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>Opsi Jawaban B</label>
-						</div>
-						<div class="input-group">
-							<textarea id="editorB" name="pilihan2" cols="80" class="form-control"></textarea>
-							<script>
-								CKEDITOR.replace('editorB', {
-									enterMode: CKEDITOR.ENTER_BR,
-									height: ['50px'],
-									height: ['50px'],
-									toolbarGroups: [{
-										"name": "basicstyles",
-										"groups": ["basicstyles"]
-									},
-									{
-										"name": "links",
-										"groups": ["links"]
-									},
-									{
-										"name": "paragraph",
-										"groups": ["list", "blocks"]
-									},
-									{
-										"name": "document",
-										"groups": ["mode"]
-									},
-									{
-										"name": "insert",
-										"groups": ["insert"]
-									},
-									{
-										"name": "styles",
-										"groups": ["styles"]
-									},
-									{
-										"name": "about",
-										"groups": ["about"]
-									}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
-						</div>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gbr B
-							</div>
-							<input class="form-control" name="gambar_b" type="file" accept=".jpg , .png" />
-						</div>
-					</div>
-					<div id="formgroupop<?php echo $ur['opsi']; ?> " class=" form-group">
-						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label>Opsi Jawaban C</label>
-						</div>
-						<div class="input-group">
-							<textarea id="editorC" name="pilihan3" cols="80" class="form-control"></textarea>
-							<script>
-								CKEDITOR.replace('editorC', {
-									enterMode: CKEDITOR.ENTER_BR,
-									height: ['50px'],
-									height: ['50px'],
-									toolbarGroups: [{
-										"name": "basicstyles",
-										"groups": ["basicstyles"]
-									},
-									{
-										"name": "links",
-										"groups": ["links"]
-									},
-									{
-										"name": "paragraph",
-										"groups": ["list", "blocks"]
-									},
-									{
-										"name": "document",
-										"groups": ["mode"]
-									},
-									{
-										"name": "insert",
-										"groups": ["insert"]
-									},
-									{
-										"name": "styles",
-										"groups": ["styles"]
-									},
-									{
-										"name": "about",
-										"groups": ["about"]
-									}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
-						</div>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gbr C
-							</div>
-							<input class="form-control" name="gambar_c" type="file" accept=".jpg , .png" />
-						</div>
-					</div>
-					<div id="formgroupop<?php echo $ur['opsi']; ?> class=" form-group">
-						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label> Opsi Jawaban D</label>
-						</div>
-						<div class="input-group">
-							<textarea id="editorD" name="pilihan4" cols="80" class="form-control"></textarea>
-							<script>
-								CKEDITOR.replace('editorD', {
-									enterMode: CKEDITOR.ENTER_BR,
-									height: ['50px'],
-									height: ['50px'],
-									toolbarGroups: [{
-										"name": "basicstyles",
-										"groups": ["basicstyles"]
-									},
-									{
-										"name": "links",
-										"groups": ["links"]
-									},
-									{
-										"name": "paragraph",
-										"groups": ["list", "blocks"]
-									},
-									{
-										"name": "document",
-										"groups": ["mode"]
-									},
-									{
-										"name": "insert",
-										"groups": ["insert"]
-									},
-									{
-										"name": "styles",
-										"groups": ["styles"]
-									},
-									{
-										"name": "about",
-										"groups": ["about"]
-									}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
-						</div>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gbr D
-							</div>
-							<input class="form-control" name="gambar_d" type="file" accept=".jpg , .png" />
-						</div>
-					</div>
-					<div id="formgroupop<?php echo $ur['opsi']; ?>" class="form-group">
-						<div class="col-xs-12" style="background-color:#222d32;color:white;">
-							<label> Opsi Jawaban E</label>
-						</div>
-						<div class="input-group">
-							<textarea id="editorE" name="pilihan5" cols="80" class="form-control"></textarea>
-							<script>
-								CKEDITOR.replace('editorE', {
-									enterMode: CKEDITOR.ENTER_BR,
-									height: ['50px'],
-									height: ['50px'],
-									toolbarGroups: [{
-										"name": "basicstyles",
-										"groups": ["basicstyles"]
-									},
-									{
-										"name": "links",
-										"groups": ["links"]
-									},
-									{
-										"name": "paragraph",
-										"groups": ["list", "blocks"]
-									},
-									{
-										"name": "document",
-										"groups": ["mode"]
-									},
-									{
-										"name": "insert",
-										"groups": ["insert"]
-									},
-									{
-										"name": "styles",
-										"groups": ["styles"]
-									},
-									{
-										"name": "about",
-										"groups": ["about"]
-									}
-									],
-									// Remove the redundant buttons from toolbar groups defined above.
-									removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-								});
-							</script>
-						</div>
-						<div class="input-group">
-							<div class="input-group-addon">
-								<i class="fa fa-camera"></i> Gbr E
-							</div>
-							<input class="form-control" name="gambar_e" type="file" accept=".jpg , .png" />
-						</div>
-					</div>
-					<div class="col-xs-12" style="background-color:#222d32;color:white;">
-						<label>Kunci Jawaban</label>
-					</div><br>
 					<form action="" method="post">
-						<div name="kunci" required>
-							<select class="form-control" name="kunci" required>
-								<option value="">Pilih Kunci Jawaban</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-								<option value="D">D</option>
-								<option id="formgroupop<?php echo $ur['opsi']; ?>" value="E">E</option>
-							</select>
+						<div class="col-xs-12" style="background-color:#222d32;color:white;">
+							<label>Kunci Jawaban</label>
+						</div><br>
+
+						<div class="input-group">
+							<textarea id="editorD" name="jawabans[]" cols="80" class="form-control" required></textarea>
 						</div>
+
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-success" type="submit">
@@ -1267,7 +990,6 @@ $ur = mysqli_fetch_array($query2);
 		</div>
 	</div>
 </div>
-
 
 <thead>
 	<tr>
