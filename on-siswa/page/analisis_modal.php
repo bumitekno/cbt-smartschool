@@ -21,37 +21,10 @@ while ($r = mysqli_fetch_array($query)) {
 		while ($xx = mysqli_fetch_array($qq)) {
 			$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3', '4','5')");
 			$rows = mysqli_num_rows($result);
-			$x = $r['jawabansiswa'];
-			$xhasil = substr_count($x, "X");
+
 			$nilaipg = $sr['nilai'];
-			$kuncisoal = $r['kuncisoal'];
-			$kuncis = strtoupper($kuncisoal);
-			$key = $kuncis;
 			$jumlah = $rows;
-			$score = 0;
-			$benar = 0;
-			$salaht = 0;
-			$kosong = 0;
-
-			for ($no = 0; $no < $jumlah; $no++) {
-
-				$jawaban_siswa = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $x[$no])));
-
-				$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $key[$no])));
-
-				if ($jawaban_kunci == $jawaban_siswa) {
-					//jika jawaban cocok (benar)
-					$benar++;
-				} else {
-					//jika salah
-					$salaht++;
-				}
-				$salah = $salaht - $xhasil;
-			}
-			$score = $nilaipg / $jumlah * $benar;
-			$pg = number_format($score, 2);
-			$urai = $r['nilaiurai'];
-			$nil = $score + $urai;
+			$nil = 0;
 			?>
 
 			<!-- Modal Popup siswa edit -->
@@ -117,15 +90,27 @@ while ($r = mysqli_fetch_array($query)) {
 							</table>
 						</div>
 						<div class="col-xs-4">
-							<br>
-							<a class="btn btn-default" style="float:right;">NILAI : <h3>
-									<?php echo number_format($nil, 0); ?>
-								</h3></a>
+
 						</div>
 						<div class="col-xs-12">
 							<hr class="style2">
 							<tbody>
 								<?php
+
+								$scorepg = 0;
+								$score_bs = 0;
+								$score_uraian = 0;
+								$score_jd = 0;
+								$score_pgk = 0;
+
+								$scorepg_total = 0;
+								$score_bs_total = 0;
+								$score_uraian_total = 0;
+								$score_jd_total = 0;
+								$score_pgk_total = 0;
+
+								$total_score = 0;
+
 								$qu = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$r[kodesoal]'");
 								if ($qu == false) {
 									die("Terjadi Kesalahan : " . mysqli_error($konek));
@@ -229,21 +214,27 @@ while ($r = mysqli_fetch_array($query)) {
 											$kuncis1 = $ar['kunci'];
 											$kuncis2 = strtoupper($kuncis1);
 											$rows = mysqli_num_rows($query3);
-											$nilaimaxurai = 100 - $rr['nilai'];
-											$nilaipersoal = $nilaimaxurai / $rows;
-											$nilaiperbiji = $nilaipersoal / 5;
-											$skorurai = $ur['nilai'] * $nilaiperbiji;
-											$type = "Pilihan Ganda";
 
+
+											$benarp = 0;
+
+
+											$type = "Pilihan Ganda";
 											$jwbsis = $ar['jawabansiswa'];
 
 											if (substr_count($jwbsis, $kuncis2)) {
 												$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 												$jwbsis = $kuncis2;
+												$benarp++;
 											} else {
 												$benar = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
 												$jwbsis = '-';
 											}
+
+											$scorepg = $nilaipg / $jumlah * $benarp;
+
+											$scorepg_total += $scorepg;
+
 
 											if ($kuncis2 == "A") {
 												$pilihan = "<br>
@@ -296,7 +287,7 @@ while ($r = mysqli_fetch_array($query)) {
 											&emsp;$gambarsoal<br>$audio
 											$pilihan
 											<br><br>
-												<div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai</div>
+												<div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i>  Skor : $scorepg </div>
 												<br>
 												<hr class='style1'>
 											</tr>";
@@ -320,6 +311,10 @@ while ($r = mysqli_fetch_array($query)) {
 
 											$benar = '';
 
+											$score_uraian = $nilaipg / $jumlah * 0;
+
+											$score_uraian_total += $score_uraian;
+
 
 											echo "
 												<tr>
@@ -327,7 +322,7 @@ while ($r = mysqli_fetch_array($query)) {
 												 <br>
 												  &emsp;$gambarsoal<br>$audio
 											<br><br>
-											<div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai</div>
+											<div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> Skor $score_uraian</div>
 											<br><hr class='style1'></tr>";
 
 										}
@@ -338,24 +333,30 @@ while ($r = mysqli_fetch_array($query)) {
 											$kuncis1 = $ar['kunci'];
 											$kuncis2 = strtoupper($kuncis1);
 											$rows = mysqli_num_rows($query3);
-											$nilaimaxurai = 100 - $rr['nilai'];
-											$nilaipersoal = $nilaimaxurai / $rows;
-											$nilaiperbiji = $nilaipersoal / 5;
-											$skorurai = $ur['nilai'] * $nilaiperbiji;
+
 
 											$type = "Soal Benar atau Salah ";
 
 											$jwbsis = $ar['jawabansiswa'];
 
+											$benarBS = 0;
+
 											if (substr_count($jwbsis, 'T')) {
 
 												$jwbsis = "Benar";
+												$benarBS++;
+												$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 											}
 
 											if (substr_count($jwbsis, 'F')) {
 
 												$jwbsis = "Salah";
+												$benarBS++;
+												$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 											}
+
+											$score_bs = $nilaipg / $jumlah * $benarBS;
+											$score_bs_total += $score_bs;
 
 											echo "
 											<tr>
@@ -364,10 +365,11 @@ while ($r = mysqli_fetch_array($query)) {
 											&emsp;$gambarsoal<br>$audio
 											
 											<br><br>
-											<div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis </i></div>
+											<div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis </i>  $benar Skor: $score_bs </div>
 											<br>
 											<hr class='style1'>
 											</tr>";
+
 										}
 
 										if ($ar['status'] == 4) {
@@ -376,10 +378,9 @@ while ($r = mysqli_fetch_array($query)) {
 											$kuncis1 = $ar['kunci'];
 											$kuncis2 = strtoupper($kuncis1);
 											$rows = mysqli_num_rows($query3);
-											$nilaimaxurai = 100 - $rr['nilai'];
-											$nilaipersoal = $nilaimaxurai / $rows;
-											$nilaiperbiji = $nilaipersoal / 5;
-											$skorurai = $ur['nilai'] * $nilaiperbiji;
+
+											$score = 0;
+											$benarPGK = 0;
 
 											$type = "Pilihan Ganda Komplek ";
 
@@ -392,6 +393,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p> 
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
 												$jwbsis = 'ABC';
+												$benarPGK++;
 											} else if ($kuncis1 == "ABD") {
 												$pilihan = "<br>
 												  <div class='show'>
@@ -401,6 +403,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p>d. &emsp;$pilihan_d $gambar_d  &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>  
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div>  ";
 												$jwbsis = 'ABD';
+												$benarPGK++;
 											} else if ($kuncis1 == "ABE") {
 												$pilihan = "<br>
 												  <div class='show'>
@@ -410,6 +413,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>  
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 												$jwbsis = 'ABE';
+												$benarPGK++;
 											} else if ($kuncis1 == "BCD") {
 												$pilihan = "<br>
 												  <div class='show'>
@@ -419,6 +423,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
 												$jwbsis = 'BCD';
+												$benarPGK++;
 											} else if ($kuncis1 == "BCE") {
 												$pilihan = "<br>
 												  <div class='show'>
@@ -428,8 +433,10 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 												$jwbsis = 'BCE';
+												$benarPGK++;
 											} else if ($kuncis1 == "ACD") {
 												$jwbsis = 'ACD';
+												$benarPGK++;
 												$pilihan = "<br>
 												  <div class='show'>
 															  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
@@ -439,6 +446,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
 											} else if ($kuncis1 == "ACE") {
 												$jwbsis = 'ACE';
+												$benarPGK++;
 												$pilihan = "<br>
 												  <div class='show'>
 															  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
@@ -448,6 +456,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "CDE") {
 												$jwbsis = 'CDE';
+												$benarPGK++;
 												$pilihan = "<br>
 												  <div class='show'>
 															  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
@@ -457,6 +466,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AD") {
 												$jwbsis = 'AD';
+												$benarPGK++;
 												$pilihan = "<br>
 												  <div class='show'>
 															  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
@@ -466,6 +476,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AB") {
 												$jwbsis = 'AB';
+												$benarPGK++;
 												$pilihan = "<br>
 												  <div class='show'>
 															  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
@@ -474,6 +485,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p>d. &emsp;$pilihan_d $gambar_d </p>
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AC") {
+												$benarPGK++;
 												$jwbsis = 'AC';
 												$pilihan = "<br>
 												  <div class='show'>
@@ -484,6 +496,7 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											} else if ($kuncis1 == "AE") {
 												$jwbsis = 'AE';
+												$benarPGK++;
 												$pilihan = "<br>
 												  <div class='show'>
 															  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> 
@@ -493,10 +506,13 @@ while ($r = mysqli_fetch_array($query)) {
 															  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 											}
 
+											$score_pgk = $nilaipg / $jumlah * $benarPGK;
+											$score_pgk_total += $score_pgk;
+
 											echo "<tr>
 													$ar[nomersoal]. <b>$ar[soal] ($type) </b><br>
 													&emsp;$gambarsoal<br>$audio
-													$pilihan<br><br><div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> $nillai</div><br><hr class='style1'>
+													$pilihan<br><br><div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'>$jwbsis $benar </i> Skor : $score_pgk </div><br><hr class='style1'>
 												</tr>";
 
 										}
@@ -506,15 +522,15 @@ while ($r = mysqli_fetch_array($query)) {
 											$kuncis1 = $ar['kunci'];
 											$kuncis2 = strtolower($kuncis1);
 											$rows = mysqli_num_rows($query3);
-											$nilaimaxurai = 100 - $rr['nilai'];
-											$nilaipersoal = $nilaimaxurai / $rows;
-											$nilaiperbiji = $nilaipersoal / 5;
-											$skorurai = $ur['nilai'] * $nilaiperbiji;
+
 											$type = "Soal Menjodohkan";
 
+											$score = 0;
+											$benarJd = 0;
 
 											$pilihjod = '';
 											$list_array = '';
+											$benar = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
 
 											if (count($array_kuncian) > 0) {
 												foreach ($array_kuncian as $index) {
@@ -522,22 +538,28 @@ while ($r = mysqli_fetch_array($query)) {
 													$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $ar['kunci'])));
 													if (strstr($jawaban_list, $jawaban_kunci)) {
 														$pilihjod = $index;
+														$benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
+														$benarJd++;
 													}
 
 													$list_array .= '<li>' . $index . '</li>';
 												}
+
+												$score_jd = $nilaipg / $jumlah * $benarJd;
+												$score_jd_total += $score_jd;
 											}
 
 											echo "<tr>
 													$ar[nomersoal]. <b>$ar[soal] ($type) </b><br>
 													&emsp;$gambarsoal<br>$audio <br>
 													$list_array
-													<br><br><div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'> $pilihjod </i> $nillai</div><br><hr class='style1'>
+													<br><br><div><i><u>Jawaban siswa</u></i> : <i class='$statussoal'> $pilihjod </i> $benar  Skor : $score_jd </div><br><hr class='style1'>
 												</tr>";
-
 										}
 
 									}
+
+									$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 
 
 									?>
@@ -549,10 +571,16 @@ while ($r = mysqli_fetch_array($query)) {
 											</b></h5>
 									</center>
 								</tbody>
+								<a class="btn btn-default" style="float:right;">NILAI : <h3>
+										<?php echo number_format($total_score, 2); ?>
+									</h3></a>
 							</div>
 							<div class="modal-footer">
 
 							</div>
+
+
+
 							</form>
 						</div>
 					</div>
