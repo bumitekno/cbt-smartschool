@@ -18,23 +18,23 @@ while ($ar = mysqli_fetch_array($query)) {
   $lama = time();
   $saikii = date("H:i:s", $lama);
   $awal = strtotime($saikii);
-  $mulai = $ar[mulaiujian];
-  $last = $ar[waktuselesai];
+  $mulai = $ar['mulaiujian'];
+  $last = $ar['waktuselesai'];
   $mulailah = $saikii - $mulai;
-  $akhir = strtotime($ar[waktuselesai]);
+  $akhir = strtotime($ar['waktuselesai']);
   $awalah = $awal + $mulailah;
   $akhirlah = $akhir + $mulailah;
   $sisa = $akhirlah - $awalah;
-  $selisih = ($ar[waktu] * 60) - $ar[sisawaktu];
+  $selisih = ($ar['waktu'] * 60) - $ar['sisawaktu'];
   $sisanya = $sisa - $selisih;
-  $wkt = $ar[waktu] * 60;
+  $wkt = $ar['waktu'] * 60;
   $lama = time();
   $buyar = $wkt + $lama;
-  $waktune = $ar[sisawaktu];
+  $waktune = $ar['sisawaktu'];
   $result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
   $rows = mysqli_num_rows($result);
-  $code = $ar[kodemapel];
-  $codesoal = $ar[kodesoal];
+  $code = $ar['kodemapel'];
+  $codesoal = $ar['kodesoal'];
 }
 ?>
 <html class="no-js" lang="en">
@@ -372,8 +372,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 
             }
 
-            autosave();
-
           }
           return false;
         });
@@ -391,8 +389,6 @@ while ($xx = mysqli_fetch_array($qq)) {
             //2. Can't go previous first div
             console.log("Can't go previous first div");
           }
-
-          autosave();
 
           return false;
         });
@@ -420,35 +416,6 @@ while ($xx = mysqli_fetch_array($qq)) {
         $("#pagin li a").removeClass("current");
         $(this).addClass("current");
         showPage(parseInt($(this).text()))
-      });
-
-      function autosave() {
-        var t = setTimeout("autosave()", 5000); // autosave 10 detikan
-        var waktuselesai = $("#waktuselesai").val();
-        var mulaiujian = $("#mulaiujian").val();
-        var sisawaktu = $("#sisawaktu").val();
-        var jawabansiswa<?php echo $ar['nomersoal']; ?> = $("#jawabansiswa<?php echo $ar['nomersoal']; ?>").val();
-
-        if (waktuselesai != '' && mulaiujian != '' && sisawaktu != '') {
-          $.ajax(
-            {
-              type: "POST",
-              url: "autosave.php",
-              data: $('form').serialize(),
-              cache: false,
-              success: function (pesan) {
-                $("#waktu").empty().append(pesan);
-              }
-            });
-        }
-        setInterval(function () {
-          t;
-        }, 50000);
-      }
-
-      $(document).ready(function () {
-
-        autoget();
       });
 
     </script>

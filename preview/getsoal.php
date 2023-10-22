@@ -13,7 +13,7 @@ if ($qu == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 
-$list_menjodohkan = mysqli_query($konek, "SELECT kunci FROM soal WHERE `status`='5'");
+$list_menjodohkan = mysqli_query($konek, "SELECT kunci FROM soal WHERE `status`='5' AND kodesoal='$kode'");
 $rows_jodohkan = mysqli_num_rows($list_menjodohkan);
 
 $array_kuncian = [];
@@ -145,23 +145,11 @@ while ($rr = mysqli_fetch_array($qu)) {
 			if (count($array_kuncian) > 0) {
 				foreach ($array_kuncian as $index) {
 
-					$jawaban_siswa = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $ar['jawabansiswa'][$ar['nomersoal']])));
-
-					$jawaban_kunci = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $index)));
-
-					if ($jawaban_siswa == $jawaban_kunci) {
-
-						$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
-					<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" checked="checked">
+					$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
+					<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '">
 					<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
 					</div></label>';
 
-					} else {
-						$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
-						<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '">
-						<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
-						</div></label>';
-					}
 				}
 			}
 		}
