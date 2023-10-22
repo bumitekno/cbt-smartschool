@@ -190,8 +190,8 @@ if(isset($_POST['submit'])){
              mysqli_query($connsite, $truncate);
     };
     
-//    import data excel mulai baris ke-2 (karena tabel xls ada header pada baris 1)
-    for ($i=2; $i<=$baris; $i++)
+//    import data excel mulai baris ke-8 (karena tabel xls ada header pada baris 1-7)
+    for ($i=8; $i<=$baris; $i++)
     {
 //       membaca data (kolom ke-1 sd terakhir)
       $nip   = $data->val($i, 1);
