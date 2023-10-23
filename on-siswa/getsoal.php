@@ -244,7 +244,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				if (count($array_kuncian) > 0) {
 					foreach ($array_kuncian as $index) {
 						$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
-							<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" onclick="nilaiUHJD' . $ar["nomersoal"] . '(`' . $index . '`);"/>
+							<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" onclick="nilaiUHJD' . $ar["nomersoal"] . '(`' . $index . '`);" id="tokenjd' . $i . '"/>
 							<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
 							</div></label>';
 					}

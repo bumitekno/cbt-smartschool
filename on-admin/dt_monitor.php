@@ -59,9 +59,9 @@ include('conn/fungsi.php');
                 $rows = mysqli_num_rows($result);
                 $result2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status='2'");
                 $rows2 = mysqli_num_rows($result2);
-                $jwb = ($ar['jawabansiswa']);
-                $jawab = str_replace('X', '', $jwb);
-                $jawabsiswa = strlen($jawab);
+                $result3 = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$ar[kodesoal]' AND status IN ('1', '3','4','5') ");
+                $jawabsiswa = mysqli_num_rows($result3);
+
                 $query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$ar[nama]' AND kodesoal='$ar[kodesoal]'");
                 $rows6 = mysqli_num_rows($query2);
                 $jawabttl = $jawabsiswa + $rows6;

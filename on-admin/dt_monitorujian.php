@@ -20,9 +20,6 @@
 		}
 		$i = 1;
 		while ($ar = mysqli_fetch_array($querydosen)) {
-			$jwb = ($ar['jawabansiswa']);
-			$jawab = str_replace('X', '', $jwb);
-			$jawabsiswa = strlen($jawab);
 			if (!$ar['statuslogin'] == '1') {
 				$aktif = "<span style=color:red>Sudah Selesai</span>";
 			} else {

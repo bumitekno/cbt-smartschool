@@ -194,6 +194,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 							if ($soal['status'] == 1) {
 
 								$type = "Pilihan Ganda";
+
 								$jwbsis = $jawaban['jawaban'];
 
 								if ($kunci == strtolower($jawaban_siswa)) {
@@ -204,7 +205,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
 								}
 
-								if ($jawaban_siswa == "a") {
+								if ($kunci == "a") {
 									$pilihan = "<br>
 							 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -212,7 +213,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-								} else if ($jawaban_siswa == "b") {
+								} else if ($kunci == "b") {
 									$pilihan = "<br>
 							 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -220,7 +221,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-								} else if ($jawaban_siswa == "c") {
+								} else if ($kunci == "c") {
 									$pilihan = "<br>
 							 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -228,7 +229,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-								} else if ($jawaban_siswa == "d") {
+								} else if ($kunci == "d") {
 									$pilihan = "<br>
 									 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -236,7 +237,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-								} else if ($jawaban_siswa == "e") {
+								} else if ($kunci == "e") {
 
 									$pilihan = "<br>
 									 <div class='show'>
@@ -406,7 +407,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 					//uraian singkat 
 					$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status IN ('2') ORDER BY `soal`.`nomersoal` ASC ");
-					$rows_uraian = mysqli_num_rows($result);
+					$rows_uraian = mysqli_num_rows($result_uraian);
 
 					while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
 

@@ -210,7 +210,7 @@ while ($r = mysqli_fetch_array($query)) {
 												$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
 											}
 
-											if ($jawaban_siswa == "a") {
+											if ($kunci == "a") {
 												$pilihan = "<br>
 							 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -218,7 +218,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-											} else if ($jawaban_siswa == "b") {
+											} else if ($kunci == "b") {
 												$pilihan = "<br>
 							 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -226,7 +226,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-											} else if ($jawaban_siswa == "c") {
+											} else if ($kunci == "c") {
 												$pilihan = "<br>
 							 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -234,7 +234,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-											} else if ($jawaban_siswa == "d") {
+											} else if ($kunci == "d") {
 												$pilihan = "<br>
 									 <div class='show'>
 									  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>
@@ -242,7 +242,7 @@ while ($r = mysqli_fetch_array($query)) {
 									  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p>
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
-											} else if ($jawaban_siswa == "e") {
+											} else if ($kunci == "e") {
 
 												$pilihan = "<br>
 									 <div class='show'>

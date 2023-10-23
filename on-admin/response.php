@@ -1,43 +1,34 @@
 <?php
 session_start();
-include ('../conn/cek.php');
-include ('../koneksi/koneksi.php');
-include ('conn/fungsi.php');
-						$querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1");
-						if($querydosen == false){
-							die ("Terjadi Kesalahan : ". mysqli_error($konek));
-						}
-						$i=1;
-						while ($ar = mysqli_fetch_array ($querydosen)){
-						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
-						$num_rows = mysqli_num_rows($result);
-						$hm = mysqli_query($konek, "SELECT * FROM jawaban WHERE kodesoal='$ar[kodesoal]'");
-						$num = mysqli_num_rows($hm);
-                                						if ($num > 0)
-                                						{
-                                						$hasil=mysqli_num_rows($hm);
-                                						}
-                                						else
-                                						{
-                                						$hasil="0";    
-                                						}
-                        $hs = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE kodesoal='$ar[kodesoal]'");
-						$nm = mysqli_num_rows($hs);
-						if ($nm > 0)
-                                						{
-                                						$hsil=mysqli_num_rows($hs);
-                                						}
-                                						else
-                                						{
-                                						$hsil="0";    
-                                						}
-						if(!$ar['aktif']=='1')
-				        {
-					    $aktif = "";
-				        }
-				        else
-				        {
-					    $aktif = "
+include('../conn/cek.php');
+include('../koneksi/koneksi.php');
+include('conn/fungsi.php');
+$querydosen = mysqli_query($konek, "SELECT * FROM ujian where aktif=1");
+if ($querydosen == false) {
+	die("Terjadi Kesalahan : " . mysqli_error($konek));
+}
+$i = 1;
+while ($ar = mysqli_fetch_array($querydosen)) {
+	$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]'");
+	$num_rows = mysqli_num_rows($result);
+	$hm = mysqli_query($konek, "SELECT * FROM jawaban WHERE kodesoal='$ar[kodesoal]'");
+	$num = mysqli_num_rows($hm);
+	if ($num > 0) {
+		$hasil = mysqli_num_rows($hm);
+	} else {
+		$hasil = "0";
+	}
+	$hs = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE kodesoal='$ar[kodesoal]'");
+	$nm = mysqli_num_rows($hs);
+	if ($nm > 0) {
+		$hsil = mysqli_num_rows($hs);
+	} else {
+		$hsil = "0";
+	}
+	if (!$ar['aktif'] == '1') {
+		$aktif = "";
+	} else {
+		$aktif = "
 					    <div  id='pew' class='col-xs-6 col-sm-4 col-md-2 col-lg-2'>
                                           <div  id='pew' class='panel panel-primary'>
                                              <div  id='pew' class='panel-heading'>
@@ -67,12 +58,12 @@ include ('conn/fungsi.php');
                                              </a>
                                           </div>
                                        </div>";
-				        }
+	}
 
-							echo "
+	echo "
 								
 								$aktif
 								";
-						$i++;		
-						}
-					?>
+	$i++;
+}
+?>

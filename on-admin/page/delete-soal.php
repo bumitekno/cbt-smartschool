@@ -17,5 +17,8 @@ $kode = $_GET['kode'];
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 mysqli_query($konek, "DELETE FROM soal where kodemapel='$mapel' and jenissoal='$jenis' and kodesoal='$kode'");
 mysqli_query($konek, "DELETE FROM ujian where kodesoal='$kode'");
+mysqli_query($konek, "DELETE FROM jawaban where kodesoal='$kode'");
+mysqli_query($konek, "DELETE FROM jawabother where kodesoal='$kode'");
+mysqli_query($konek, "DELETE FROM jawaburaian where kodesoal='$kode'");
 header('location:../soal.php');
 ?>

@@ -9,12 +9,14 @@ if ($querydosen == false) {
   die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($ar = mysqli_fetch_array($querydosen)) {
+
+  date_default_timezone_set('Asia/Jakarta');
+  $jam = date("h:i:sa");
   if (
-    $add = mysqli_query($konek, "INSERT INTO nilaihasil (nis, nama, kelas, kodemapel, kodesoal, aktif, jumlahsoal, jawabansiswa, benar, salah, nilai, kuncisoal) VALUES 
-	('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]')")
+    $add = mysqli_query($konek, "INSERT INTO nilaihasil (nis, nama, kelas, kodemapel, kodesoal, aktif, jumlahsoal, jawabansiswa, benar, salah, nilai, kuncisoal, waktuselesai) VALUES 
+	('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]', '$jam' )")
   ) {
     mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
-
     mysqli_query($konek, "DELETE FROM jawaban where nis='$username'");
   }
 }
@@ -325,7 +327,6 @@ while ($xx = mysqli_fetch_array($qq)) {
       ?>
       <script>
         var myVar;
-
         function myFunction() {
           myVar = setTimeout(showPage, 3000);
         }
