@@ -418,6 +418,33 @@ while ($xx = mysqli_fetch_array($qq)) {
         showPage(parseInt($(this).text()))
       });
 
+      $(document).ready(function () {
+        autosave();
+      });
+
+      function autosave() {
+        var t = setTimeout("autosave()", 60000); // autosave 10 detikan
+
+        var waktuselesai = $("#waktuselesai").val();
+        var mulaiujian = $("#mulaiujian").val();
+        var sisawaktu = $("#sisawaktu").val();
+        var jawabansiswa<?php echo $ar['nomersoal']; ?> = $("#jawabansiswa<?php echo $ar['nomersoal']; ?>").val();
+
+        if (waktuselesai != '' && mulaiujian != '' && sisawaktu != '') {
+          $.ajax({
+            type: "POST",
+            url: "autosave.php",
+            data: $('form').serialize(),
+            cache: false,
+            success: function (pesan) {
+              $("#waktu").empty().append(pesan);
+            }
+          });
+        }
+
+        setInterval(() => { autosave }, 60000);
+      }
+
     </script>
     </form>
     <script>

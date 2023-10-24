@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Oct 19, 2023 at 07:52 AM
+-- Generation Time: Oct 24, 2023 at 02:51 PM
 -- Server version: 10.6.15-MariaDB-1:10.6.15+maria~ubu2004
 -- PHP Version: 8.0.27
 
@@ -64,6 +64,37 @@ CREATE TABLE `jawaban` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jawabother`
+--
+
+CREATE TABLE `jawabother` (
+  `id` varchar(100) NOT NULL,
+  `nis` varchar(20) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `kodesoal` varchar(50) NOT NULL,
+  `nomersoal` varchar(10) NOT NULL,
+  `jawaban` longtext NOT NULL,
+  `tipe` varchar(2) NOT NULL DEFAULT '0',
+  `tanggal` date DEFAULT current_timestamp(),
+  `waktu` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `jawabother`
+--
+
+INSERT INTO `jawabother` (`id`, `nis`, `nama`, `kodesoal`, `nomersoal`, `jawaban`, `tipe`, `tanggal`, `waktu`) VALUES
+('BHS-Indo-12-1-111222', '111222', 'Target 3', 'BHS-Indo-12', '1', 'A', '1', '2023-10-24', '12:19:49'),
+('BHS-Indo-12-2-111222', '111222', 'Target 3', 'BHS-Indo-12', '2', 'T', '3', '2023-10-24', '12:19:56'),
+('BHS-Indo-12-3-111222', '111222', 'Target 3', 'BHS-Indo-12', '3', 'A,B,C', '4', '2023-10-24', '12:20:01'),
+('BHS-Indo-12-4-111222', '111222', 'Target 3', 'BHS-Indo-12', '4', 'sretydy', '5', '2023-10-24', '12:20:04'),
+('BHS-Indo-12-5-111222', '111222', 'Target 3', 'BHS-Indo-12', '5', 'gfcgh', '5', '2023-10-24', '12:20:08'),
+('IPA2-11-1-09818234561', '09818234561', 'Target 2', 'IPA2-11', '1', 'T', '3', '2023-10-24', '09:44:14'),
+('PPKN-12-1-111222', '111222', 'Target 3', 'PPKN-12', '1', 'B', '1', '2023-10-24', '09:31:48');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jawaburaian`
 --
 
@@ -79,6 +110,14 @@ CREATE TABLE `jawaburaian` (
   `jawaban` longtext NOT NULL,
   `nilai` varchar(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `jawaburaian`
+--
+
+INSERT INTO `jawaburaian` (`id`, `nis`, `nama`, `kodesoal`, `nomersoal`, `soal`, `soal_gbr`, `soal_audio`, `jawaban`, `nilai`) VALUES
+('BHS-Indo-12-6-111222', '111222', 'Target 3', 'BHS-Indo-12', '6', '', '', '', 'sagadgdgaggasgg. \n\ndgg', '0'),
+('BHS-Indo-12-7-111222', '111222', 'Target 3', 'BHS-Indo-12', '7', '', '', '', 'sdsdhshfb', '0');
 
 -- --------------------------------------------------------
 
@@ -101,15 +140,18 @@ CREATE TABLE `nilaihasil` (
   `nilai` varchar(5) NOT NULL,
   `nilaiurai` varchar(5) NOT NULL,
   `kuncisoal` varchar(100) NOT NULL,
-  `statuskoreksi` int(1) NOT NULL
+  `statuskoreksi` int(1) NOT NULL,
+  `waktuselesai` time DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `nilaihasil`
 --
 
-INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal`, `kodesoal`, `aktif`, `jawabansiswa`, `benar`, `salah`, `nilai`, `nilaiurai`, `kuncisoal`, `statuskoreksi`) VALUES
-(2, '0981823456IPA-12', 'Target 1', '11IPA', 'IPA', 3, 'IPA-12', '1', 'IyaOKSulit', '02:07:29pm', '19-10-2023', '100', '', 'IyaOKSulit', 0);
+INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal`, `kodesoal`, `aktif`, `jawabansiswa`, `benar`, `salah`, `nilai`, `nilaiurai`, `kuncisoal`, `statuskoreksi`, `waktuselesai`) VALUES
+(13, '111222', 'Target 3', '12IPS', 'Bahasa Indo', 7, 'BHS-Indo-12', '1', '', '3', '2', '60', '', '', 0, '12:20:15'),
+(17, '111222', 'Target 3', '12IPS', 'PPKN', 1, 'PPKN-12', '1', '', '0', '1', '0', '', '', 0, '09:31:58'),
+(18, '09818234561', 'Target 2', '11IPA', 'IPA2', 1, 'IPA2-11', '1', '', '1', '0', '100', '', '', 0, '09:46:57');
 
 -- --------------------------------------------------------
 
@@ -170,7 +212,8 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nis`, `nama`, `jurusan`, `kelas`, `rombel`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `statuslogin`, `online`) VALUES
-(1, '0981823456', 'Target 1', '', '11IPA', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1');
+(1, '09818234561', 'Target 2', '', '11IPA', '', '12345', 1, 1, NULL, 1, 'Ruang-1', '0', '1'),
+(2, '111222', 'Target 3', '', '12IPS', '', '12345', 1, 1, NULL, 2, 'Ruang-1', '0', '2');
 
 -- --------------------------------------------------------
 
@@ -207,9 +250,15 @@ CREATE TABLE `soal` (
 --
 
 INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `soal`, `gambarsoal`, `pilihan1`, `pilihan2`, `pilihan3`, `pilihan4`, `pilihan5`, `gambar_a`, `gambar_b`, `gambar_c`, `gambar_d`, `gambar_e`, `kunci`, `jawaban`, `audio`, `status`) VALUES
-(1, 'SIMULASI', 'IPA', 'IPA-12', 1, 'Mantap', '', '', '', '', '', '', '', '', '', '', '', 'Iya', '', '', 5),
-(2, 'SIMULASI', 'IPA', 'IPA-12', 2, 'Bagus', '', '', '', '', '', '', '', '', '', '', '', 'OK', '', '', 5),
-(3, 'SIMULASI', 'IPA', 'IPA-12', 3, 'Susah', '', '', '', '', '', '', '', '', '', '', '', 'Sulit', '', '', 5);
+(1, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 1, 'test', '', '1', '2', '3', '4', '5', '', '', '', '', '', 'A', '', '', 1),
+(2, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 2, 'gfcg', '', '', '', '', '', '', '', '', '', '', '', 'T', '', '', 3),
+(3, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 3, 'ghchg', '', 'bvvg', 'hcg', 'hggf', 'dgghdh', 'chgch', '', '', '', '', '', 'ABC', '', '', 4),
+(4, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 4, 'gchgchgch', '', '', '', '', '', '', '', '', '', '', '', 'gfcgh', '', '', 5),
+(5, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 5, 'jgfjff', '', '', '', '', '', '', '', '', '', '', '', 'sretydy', '', '', 5),
+(10, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 7, 'Jelaskan Pendapat kamu tentang kebersihan&nbsp;', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
+(9, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', 6, 'Apa yang di maksud dengan otonomi daerah ?&nbsp;', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 2),
+(11, 'TRYOUT', 'IPA2', 'IPA2-11', 1, 'fgfghfgfx', '', '', '', '', '', '', '', '', '', '', '', 'T', '', '', 3),
+(12, 'TRYOUT', 'PPKN', 'PPKN-12', 1, '&nbsp;Budi Utomo merupakan organisasi pertama di Indonesia yang perjuangan lebih bersifat nasionalis dibandingkan organisasi-organisasi perjuangan sebelumnya yang lebih bersifat kedaerahan. Pada tanggal berapa Budi Utomo itu didirikan...', '', '20 Mei 1908', '20 Mei 1928', '20 Mei 2011', '20 Mei 199', '', '', '', '', '', '', 'A', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +308,9 @@ CREATE TABLE `ujian` (
 --
 
 INSERT INTO `ujian` (`Urut`, `jenis`, `mapel`, `kodesoal`, `waktu`, `lamaujian`, `kunci`, `aktif`, `acak`, `opsi`, `kelas`, `nilai`) VALUES
-(1, 'SIMULASI', 'IPA', 'IPA-12', '60', '01:00:00', 'IyaOKSulit', 1, '2', 'hidden', '11', '100');
+(6, 'TRYOUT', 'IPA2', 'IPA2-11', '60', '01:00:00', 'T', 1, '2', 'hidden', '11', '100'),
+(7, 'TRYOUT', 'PPKN', 'PPKN-12', '60', '01:00:00', 'A', 1, '2', 'hidden', '12', '100'),
+(3, 'TRYOUT', 'Bahasa Indo', 'BHS-Indo-12', '60', '01:00:00', 'ATABCgfcghsretydy', 1, '2', 'hidden', '12', '100');
 
 -- --------------------------------------------------------
 
@@ -313,6 +364,12 @@ ALTER TABLE `jawaban`
   ADD PRIMARY KEY (`nis`);
 
 --
+-- Indexes for table `jawabother`
+--
+ALTER TABLE `jawabother`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Indexes for table `jawaburaian`
 --
 ALTER TABLE `jawaburaian`
@@ -322,8 +379,7 @@ ALTER TABLE `jawaburaian`
 -- Indexes for table `nilaihasil`
 --
 ALTER TABLE `nilaihasil`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nis` (`nis`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `profil`
@@ -379,25 +435,25 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `nilaihasil`
 --
 ALTER TABLE `nilaihasil`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `ujian`
 --
 ALTER TABLE `ujian`
-  MODIFY `Urut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Urut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`

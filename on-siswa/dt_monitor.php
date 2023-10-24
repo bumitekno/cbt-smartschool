@@ -133,6 +133,7 @@ $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 
 				while ($soal = mysqli_fetch_array($result)) {
 					$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$ok'  AND nis='$r[nis]' AND nomersoal='$soal[nomersoal]'");
+					$count_jawaban = mysqli_num_rows($queryhistory);
 					while ($jawaban = mysqli_fetch_array($queryhistory)) {
 
 						$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
@@ -197,16 +198,16 @@ $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 
 				$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('2') ORDER BY `soal`.`nomersoal` ASC ");
 				$rows_uraian = mysqli_num_rows($result_uraian);
-
-				$terjwb = $r["jumlahsoal"] - $xhasil;
-				$persen = 100 / $r["jumlahsoal"];
+				$count_soal = $jumlah + $rows_uraian;
+				$terjwb = $count_soal - $count_jawaban;
+				$persen = 100 / $count_soal;
 				$persenjawab = $persen * $terjwb;
 				echo "
 								<tr>
 								  <td><h6 style='font-size:12px;'>$i</h6></td>
 								  <td><h6 style='font-size:12px;'>$r[kodemapel]</h6></td>
 								  <td><h6 style='font-size:10px;'>$r[kodesoal]</h6></td>
-								  <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $terjwb dari $r[jumlahsoal] Soal</p>
+								  <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $terjwb dari $r[jumlahsoal] Soal </p>
 									<div class='progress progress-md' style='background:#ddd;width:100%;height:0.5em;'>
 									  <div class='progress-bar progress-bar-success' style='width: $persenjawab%;font-size:10px;'></div>
 									</div>

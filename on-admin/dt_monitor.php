@@ -64,9 +64,13 @@ include('conn/fungsi.php');
 
                 $query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$ar[nama]' AND kodesoal='$ar[kodesoal]'");
                 $rows6 = mysqli_num_rows($query2);
-                $jawabttl = $jawabsiswa + $rows6;
-                $persen = 100 / $ar['jumlahsoal'];
-                $persenjawab = $persen * $jawabttl;
+
+                $count_soal = $rows + $rows2;
+                $count_jawaban = $jawabsiswa + $rows6;
+                $terjwb = $count_soal - $count_jawaban;
+                $persen = 100 / $count_soal;
+                $persenjawab = $persen * $terjwb;
+
                 $aktif = $ar['statuslogin'];
                 $sisa = $ar['sisawaktu'] / 60;
                 $sisawaktu = number_format($sisa, 0, '.', '');

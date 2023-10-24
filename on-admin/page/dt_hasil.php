@@ -168,12 +168,18 @@ if (!$show == '') {
 							}
 						}
 
+						$list_jawaban = '';
+
 						while ($soal = mysqli_fetch_array($result)) {
 							$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$cari'  AND nis='$r[nis]' AND nomersoal='$soal[nomersoal]'");
+
 							while ($jawaban = mysqli_fetch_array($queryhistory)) {
 
 								$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
 								$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
+
+								$list_jawaban .= $jawaban['jawaban'];
+								$list_kunci .= $soal['kunci'];
 
 								if ($soal['status'] == 1) {
 									$jwbsis = $jawaban['jawaban'];
@@ -252,11 +258,10 @@ if (!$show == '') {
 									<td id='garis' align=center>$xhasil</td>
 									<td id='garis' align=center style='background-color:grey;color:white'><b>$total_score</b></td>
 									<td id='garis' align=center style='background-color:#2764aa;color:white'><b>$total_score</b></td>
-									<td id='garis'><h6>$r[jawabansiswa]</h6></td>
-									<td id='garis'><h6>$kuncis</h6></td>
-									<td id='garis'><h6>$r[benar] | $r[salah]</h6></td>
+									<td id='garis'><h6>" . str_replace(',', '', $list_jawaban) . "</h6></td>
+									<td id='garis'><h6>" . str_replace(',', '', $list_kunci) . "</h6></td>
+									<td id='garis'><h6>$r[waktuselesai]</h6></td>
 									<td id='garis' align=center>
-									
 									<a class='noprint' href='analisa-soal.php?nis=$r[nis]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
 									<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
 									</td>

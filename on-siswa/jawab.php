@@ -10,6 +10,7 @@ $jumlah = $_POST['jumlah1'];
 $sisawaktu = $_POST['sisawaktu'];
 $mulaiujian = $_POST['mulaiujian'];
 $waktuselesai = $_POST['waktuselesai'];
+
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
 

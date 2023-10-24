@@ -284,7 +284,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
                                 <tr>
                                     <td><span class="user">
                                             <?php echo $nama; ?><br>
-                                            <?php echo $ar[kelas]; ?>
+                                            <?php echo $ar['kelas']; ?>
                                         </span></td>
                                 </tr>
                                 <tr>
@@ -360,7 +360,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
                                 </div>
                             </div>
                         </div>
-                        <input id="mulaiujian" name="mulaiujian" type="hidden" value="<?php echo $ar[sisawaktu]; ?>">
+                        <input id="mulaiujian" name="mulaiujian" type="hidden" value="<?php echo $ar['sisawaktu']; ?>">
                         <?php $queryn = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nama='$nama' and kodesoal='$kode'");
                         if ($queryn == false) {
                             die("Terjadi Kesalahan : " . mysqli_error($konek));
