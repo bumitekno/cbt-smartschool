@@ -378,7 +378,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nip`, `nama`, `jabatan`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `instagram`, `youtube`, `phone`, `admin_su`) VALUES
-(3, 'admin', 'Administrator', 'admin utama', 'admin12345', 1, 1, NULL, 'https://www.instagram.com/websitesekolah/', '', '085742169383', '1'),
+(3, 'admin', 'Administrator', 'admin utama', 'admin12345', 1, 1, NULL, 'https://www.instagram.com/websitesekolah/', '', '0872627181811', '1'),
 (296, 'agus', 'agus', '', 'admin12345', 1, 1, NULL, '', '', '', '0'),
 (297, 'nailil', 'nailil', '', '12345', 1, 1, NULL, '', '', '', '2');
 
