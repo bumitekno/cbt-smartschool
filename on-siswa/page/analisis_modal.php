@@ -254,7 +254,7 @@ while ($r = mysqli_fetch_array($query)) {
 											}
 
 											$scorepg = $nilaipg / $jumlah * $benarp;
-											$scorepg_total += $scorepg;
+											$scorepg_total = $scorepg;
 
 											echo "
 									<tr>
@@ -370,7 +370,7 @@ while ($r = mysqli_fetch_array($query)) {
 											$score = 0;
 											$benarJd = 0;
 
-											$pilihjod = $jawaban['jawaban'];
+											$pilihjod = $jawaban_siswa;
 											$list_array = '';
 											$tanda_kunci = '';
 
@@ -400,7 +400,7 @@ while ($r = mysqli_fetch_array($query)) {
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
                                         &emsp;$gambarsoal<br>$audio <br>
 										$list_array
-                                        <br><br><div><i><u>Jawaban siswa</u></i> : <i class='show'> $pilihjod </i> $tanda  Skor : $score_jd </div><br><hr class='style1'>
+                                        <br><br><div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] </i> $tanda  Skor : $score_jd </div><br><hr class='style1'>
                                     </tr>";
 
 										}
@@ -436,7 +436,7 @@ while ($r = mysqli_fetch_array($query)) {
 						<br><hr class='style1'></tr>";
 
 								}
-
+								
 								$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 
 								?>

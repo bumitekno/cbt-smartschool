@@ -1,18 +1,20 @@
 <?php
 $nis = $_GET['nis'];
+$kodesoal = $_GET['kodesoal'];
 $qq = mysqli_query($konek, "SELECT * FROM profil where id='1'");
 if ($qq == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
 
-	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis'");
+	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal' ");
 	if ($query == false) {
 		die("Terjadi Kesalahan : " . mysqli_error($konek));
 	}
 
 	while ($cc = mysqli_fetch_array($query)) {
-		$cari = $cc['kodesoal'];
+		//$cari = $cc['kodesoal'];
+		$cari = $kodesoal;
 		$querydosen = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$cari'");
 		if ($querydosen == false) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
@@ -247,9 +249,13 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  &emsp;<p>d. &emsp;$pilihan_d $gambar_d &emsp;<i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  &emsp;<p class='$statussoal'>e. &emsp;$pilihan_e $gambar_e</p></div>";
 								}
+								
+								// echo 'AAA'.$nilaipg;	echo '<br/>';		
+								// echo 'BBB'.$jumlah;		echo '<br/>';
+								// echo 'CCC'.$benarp;		echo '<br/>';
 
 								$scorepg = $nilaipg / $jumlah * $benarp;
-								$scorepg_total += $scorepg;
+								$scorepg_total = $scorepg;
 
 								echo "
 									<tr>
@@ -366,10 +372,9 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$score = 0;
 								$benarJd = 0;
 
-								$pilihjod = $jawaban['jawaban'];
+								$pilihjod = $jawaban_siswa;
 								$list_array = '';
 								$tanda_kunci = '';
-
 								if (count($array_kuncian) > 0) {
 									foreach ($array_kuncian as $index) {
 										if ($kunci == strtolower($index)) {
@@ -379,7 +384,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 											$list_array .= '<li>' . $index . '</li>';
 										}
 									}
-
 									if ($kunci == strtolower($pilihjod)) {
 										$benarJd++;
 										$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
@@ -396,7 +400,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
                                         &emsp;$gambarsoal<br>$audio <br>
 										$list_array
-                                        <br><br><div><i><u>Jawaban siswa</u></i> : <i class='show'> $pilihjod </i> $tanda  Skor : $score_jd </div><br><hr class='style1'>
+                                        <br><br><div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] </i> $tanda  Skor : $score_jd </div><br><hr class='style1'>
                                     </tr>";
 
 							}
@@ -432,7 +436,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 						<br><hr class='style1'></tr>";
 
 					}
-
+					// echo $scorepg_total.'-'.$score_bs_total.'-'.$score_uraian_total.'-'.$score_jd_total.'-'.$score_pgk_total;
 					$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 
 					?>

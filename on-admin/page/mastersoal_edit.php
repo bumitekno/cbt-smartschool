@@ -9,7 +9,7 @@ $waktu = $_POST['waktu'];
 $nilai = $_POST['nilai'];
 
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
-if ($edit = mysqli_query($konek, "UPDATE ujian SET acak='$acak', kelas='$kelas', opsi='$opsi', nilai='$nilai', waktu='$waktu' WHERE kodesoal='$kodesoal'")) {
+if ($edit = mysqli_query($konek, "UPDATE ujian SET kodesoal='$kodesoal', acak='$acak', kelas='$kelas', opsi='$opsi', nilai='$nilai', waktu='$waktu' WHERE kodesoal='$kodesoal'")) {
 	header("Location:../soal.php");
 	exit();
 }

@@ -109,7 +109,7 @@
 					}
 
 					if ($soal['status'] == 5) {
-						$pilihjod = $jawaban['jawaban'];
+						$pilihjod = $jawaban_siswa;
 						$benarJd = 0;
 						if ($kunci == strtolower($pilihjod)) {
 							$benarJd++;

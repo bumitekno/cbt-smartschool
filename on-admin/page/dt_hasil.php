@@ -127,6 +127,7 @@ if (!$show == '') {
 					die("Terjadi Kesalahan : " . mysqli_error($konek));
 				}
 				$i = 1;
+				
 				while ($r = mysqli_fetch_array($querydosen)) {
 					$querydosen2 = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$cari'");
 					if ($querydosen2 == false) {
@@ -169,6 +170,7 @@ if (!$show == '') {
 						}
 
 						$list_jawaban = '';
+						$list_kunci = '';
 
 						while ($soal = mysqli_fetch_array($result)) {
 							$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$cari'  AND nis='$r[nis]' AND nomersoal='$soal[nomersoal]'");
@@ -221,7 +223,7 @@ if (!$show == '') {
 								}
 
 								if ($soal['status'] == 5) {
-									$pilihjod = $jawaban['jawaban'];
+									$pilihjod = $jawaban_siswa;
 									$benarJd = 0;
 									if ($kunci == strtolower($pilihjod)) {
 										$benarJd++;
@@ -262,7 +264,7 @@ if (!$show == '') {
 									<td id='garis'><h6>" . str_replace(',', '', $list_kunci) . "</h6></td>
 									<td id='garis'><h6>$r[waktuselesai]</h6></td>
 									<td id='garis' align=center>
-									<a class='noprint' href='analisa-soal.php?nis=$r[nis]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
+									<a class='noprint' href='analisa-soal.php?nis=$r[nis]&kodesoal=$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
 									<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
 									</td>
 								</tr>";

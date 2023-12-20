@@ -1,1 +1,1 @@
-<?php $konek = mysqli_connect('mysql', 'root', 'root', 'cbt_eschool'); ?>
+<?php $konek = mysqli_connect('localhost', 'root', '', 'cbt_eschool_update_final_fix'); ?>
