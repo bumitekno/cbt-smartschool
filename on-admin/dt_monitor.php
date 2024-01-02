@@ -78,7 +78,7 @@ include('conn/fungsi.php');
                 if (!$aktif == 1) {
                     $aktifstatus =
                         "
-					    <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $jawabsiswa dari $rows Soal PG, Benar Salah, PG Kompleks,Menjodohkan | Terjawab $rows6 dari $rows2 Soal Uraian | sisa $sisasisa menit</p>
+					    <td><p style='display:block;width:100%;background:transparent;overflow:show;z-index:9999999999;font-size:10px;margin:0;'>Terjawab $jawabsiswa dari $rows Soal PG, Benar Salah, PG Kompleks, Menjodohkan | Terjawab $rows6 dari $rows2 Soal Uraian | sisa $sisasisa menit</p>
     									<div class='progress progress-md' style='background:grey;width:100%;height:0.5em;'>
     									  <div class='progress-bar' style='width: $persenjawab%;font-size:10px;background-color:black;'></div>
     									</div>
