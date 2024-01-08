@@ -292,12 +292,12 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 						</b> (
 						<?php echo $kategori_soal; ?> )
 					</p>
-					
+					<br><br>
 					<!-------gambar soal------>
 					<a class='open_modal' style='font-decoration:none;color:#222;' id='<?php echo "$ar[id]"; ?>'>
 						<?php echo "$gambarsoal"; ?>
 					</a>
-					<?php echo "$audio"; ?>
+					<?php echo "$audio"; ?><br><br>
 
 					<!-------pilihan------>
 
@@ -492,8 +492,8 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 					<br><br>
 					<label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
-						<span class='d-block d-sm-none'><b>RAGU</b></span>
-						<span class='d-none d-sm-block'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>
+						<span class='hidden-lg hidden-md'><b>RAGUs</b></span>
+						<span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>
 					</label>
 				</span>
 
@@ -505,7 +505,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 		<?php
 		// Soal menjodohkan
-			$i++;
+
 			$query = mysqli_query($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$username' AND soal.status = 5 ORDER by status ASC, $acak");
 			if ($query == false) {
 				die("Terjadi Kesalahan : " . mysqli_error($konek));
@@ -516,13 +516,19 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		<div class="soalnye cls<?php echo $i; ?>" data-id="<?php echo $i; ?>">
 
 			<button id="keto" type="button" class="no btn-primary"><b>Soal Menjodohkan</b></button>
+			<!-------no soal------>
+			<button id="nomer" type="button" class="soal btn-default">
+				<b>
+					<?php echo "$i"; ?>
+				</b>
+			</button>
 
 			</br></br>
 			<span class="resizable-content">
 
 				<div class="container row d-flex" style="display: flex;">
 
-					<div class="col-6">
+					<div class="col-6" style="width:60%">
 
 						<?php
 
@@ -613,11 +619,12 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 								}
 
 								$botton_choice = '';
-								$alphachar = range('A', 'Z'); 
-								$peryataan2 = '<ol type="A">';
-								$dropdown = '<select onchange="nilaiUHJD' . $ar["nomersoal"] . '(this.value);" class="form-select" aria-label="Default select example">
-								<option selected>Pilih</option>';
-								
+								$peryataan2 = '<ol type="a">';
+								$dropdown = '<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+								  Dropdown button
+								</button>
+								<ol type="a" class="dropdown-menu">';
 
 								if ($ar['status'] == 5) {
 									$kategori_soal = 'Soal Menjodohkan';
@@ -629,29 +636,27 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 									$statussoalurai = "hidden";
 
 									if (count($array_kuncian) > 0) {
-										foreach ($array_kuncian as $key => $index) {
+										foreach ($array_kuncian as $index) {
 											$botton_choice .= '<label class="custom-radio-button"><div class="col-xs-12" id="opsi"' . $statussoaljd . '">
 												<input type="radio" name="' . $simpanjawab . $ar['nomersoal'] . '" value="' . $index . '" onclick="nilaiUHJD' . $ar["nomersoal"] . '(`' . $index . '`);" id="tokenjd' . $i . '"/>
 												<span class="helping-el"></span> <p id="cho"> ' . $index . ' </p>
 												</div></label>';
 
-											$dropdown .= '
-											<option value="' . $index . '" id="tokenjd' . $i . '">
-											'.$alphachar[$key].'
-											</option>
-											';
+											$dropdown .= '<li>
+											<a class="dropdown-item" onclick="nilaiUHJD' . $ar["nomersoal"] . '(`' . $index . '`);" id="tokenjd' . $i . '">' . $index . '</a>
+											</li>';
 											
-											$peryataan2 .= '<li class="mb-4">' . $index . '</li>';
+											$peryataan2 .= '<li>' . $index . '</li>';
 											
 										}
 
 										$peryataan2 .= '</ol>';
-										$dropdown .= '</select>';
+										$dropdown .= '</ul></div>';
 
 										$area = "<script>
 											function nilaiUHJD$ar[nomersoal](tokenjd)
 											{
-												
+												alert('cek');
 											var dataStringx = 'nomersoal=$ar[nomersoal]&unik=$ks-$ar[nomersoal]-$nis&kodemapel=$ks&tipe=$ar[status]&tokenjd=' + tokenjd; 
 											$.ajax({type:'post',url:'jawabother.php',data:dataStringx,cache:false,
 												success: function(html) {
@@ -663,22 +668,25 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 								}
 								?>
 
-								<div class="row mb-1">
-									<div class="col-8">
+								<div class="row">
+									<div class="col-6 bg-danger">
 										<!-------gambar soal------>
 										<a class='open_modal' style='font-decoration:none;color:#222;' id='<?php echo "$ar[id]"; ?>'>
 											<?php echo "$gambarsoal"; ?>
 										</a>
 										<?php echo "$audio"; ?>
-										
+										<br><br>
 
 									
 										<p>
 											<b>
-												<?php echo "$i . $ar[soal]"; ?>
-											</b>
+												<?php echo "$ar[soal]"; ?>
+											</b> (
+											<?php echo $kategori_soal; ?> )
 										</p>
 
+										<br><br>
+										
 
 										<!-------pilihan------>
 
@@ -693,8 +701,8 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 									</div>
 
-									<div class="col-3">
-										<!-- <?= $botton_choice ?> -->
+									<div class="col-6">
+										
 										<?= $dropdown ?>
 									</div>
 								</div>
@@ -705,7 +713,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 					</div>
 
-					<div class="col-6">
+					<div class="col-6" style="width:40%">
 						<!-- Jodohkan Soal -->
 						<!-- <?php echo $botton_choice; ?> -->
 
@@ -718,16 +726,24 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 			<br><br>
 
 			<label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
-			<span class='d-block d-sm-none'><b>RAGU</b></span>
-			<span class='d-none d-sm-block'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>
+			<span class='hidden-lg hidden-md'><b>RAGUs</b></span>
+			<span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>
 			</label>
 			</span>
 
 		</div>
 
 
-			<?php
+				<?php
+
+			
+
 		// End soal menjodohkan
+
+
+
+		
+
 
 	}
 } ?>

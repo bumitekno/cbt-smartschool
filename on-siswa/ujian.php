@@ -263,7 +263,7 @@ include "tema/tema.php";
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Ujian Aktif <i class="fa fa-laptop"></i>
+        Ujian Aktif<i class="fa fa-laptop"></i>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Home</a></li>

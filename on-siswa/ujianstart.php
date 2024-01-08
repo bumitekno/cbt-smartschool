@@ -40,7 +40,7 @@ while ($ar = mysqli_fetch_array($query)) {
 <html class="no-js" lang="en">
 <html class="no-js" lang="en">
 <?php
-include "bundle/script.php";
+// include "bundle/script.php";
 include "bundle/bundle_script.php";
 $qq = mysqli_query($konek, "SELECT * FROM profil where id='1'");
 if ($qq == false) {
@@ -66,7 +66,9 @@ while ($xx = mysqli_fetch_array($qq)) {
     include "bundle/ragu_css.php";
     ?>
     <link rel="stylesheet" href="../aset/fa/css/font-awesome.css">
-    <link rel="stylesheet" href="mesin/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="mesin/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
     <style>
       #us {
         position: fixed;
@@ -132,6 +134,9 @@ while ($xx = mysqli_fetch_array($qq)) {
         display: block;
       }
     </style>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
       var count = '<?php echo $sisa; ?>';
       var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
@@ -209,7 +214,7 @@ while ($xx = mysqli_fetch_array($qq)) {
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                   aria-hidden="true">&times;</span></button>
               <h4 class="modal-title">Logout Confirm</h4>
             </div>
@@ -218,12 +223,12 @@ while ($xx = mysqli_fetch_array($qq)) {
             </div>
             <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
               <a href="logout.php" class="btn btn-danger">keluar</a>
-              <button type="button" class="btn btn-success" data-dismiss="modal">Batal</button>
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Batal</button>
             </div>
           </div>
         </div>
       </div>
-      <div id="timer" class="list-group-item top-heading">
+      <div id="timer" class="list-group-item top-heading pb-5">
         <!-------no soal------>
 
         <body>
@@ -256,16 +261,16 @@ while ($xx = mysqli_fetch_array($qq)) {
             <div class="tombol">
               <a id="prev">
                 <button id="prev" class='btn btn-primary xxxx'>
-                  <span class="hidden-lg hidden-md"><i class="fa fa-chevron-left"></i> PREV</span>
-                  <span class="hidden-xs hidden-sm"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
+                  <span class="d-block d-sm-none"><i class="fa fa-chevron-left"></i> PREV</span>
+                  <span class="d-none d-sm-block"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
                 </button></a>
-              <a id="done"> <button id="done" class='btn btn-success xxxx' data-target='#ModalImport' data-toggle='modal'
-                  style="border-radius:0;"> <span class='hidden-lg hidden-md'><i class='fa fa-check'></i> FINISH</span>
-                  <span class='hidden-xs hidden-sm'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> </button></a>
+              <a id="done"> <button id="done" class='btn btn-success xxxx' data-bs-target='#ModalImport' data-bs-toggle='modal'
+                  style="border-radius:0;"> <span class='d-block d-sm-none'><i class='fa fa-check'></i> FINISH</span>
+                  <span class='d-none d-sm-block'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> </button></a>
               <a id="next">
                 <button id="next" class='btn btn-primary xxxx'>
-                  <span class="hidden-lg hidden-md">NEXT <i class="fa fa-chevron-right"></i></span>
-                  <span class="hidden-xs hidden-sm">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
+                  <span class="d-block d-sm-none">NEXT <i class="fa fa-chevron-right"></i></span>
+                  <span class="d-none d-sm-block">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
                 </button></a>
             </div>
           </div>
@@ -273,7 +278,7 @@ while ($xx = mysqli_fetch_array($qq)) {
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                       aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title">Konfirmasi</h4>
                 </div>
@@ -320,7 +325,7 @@ while ($xx = mysqli_fetch_array($qq)) {
           <button id="hm" type="button" class="btnnav btn"><i class="fa fa-chevron-left"></i> <b>SOAL</b></button>
         </div>
       </div>
-      <div id='pagin' class="pagination"></div>
+      <div id='pagin' class="pagination row"></div>
     </div>
 
     <div id="main"></div>
@@ -352,7 +357,10 @@ while ($xx = mysqli_fetch_array($qq)) {
             $(this).hide();
         });
 
+        // Next Prev diganti karena error tdk bisa menyimpan jawaban
+
         $("#next").click(function () {
+          //alert("Hello! I am an alert box!");
           if ($(".divs div:visible").next().length != 0) {
             $(".divs div:visible").next().show().prev().hide();
 
@@ -392,16 +400,42 @@ while ($xx = mysqli_fetch_array($qq)) {
 
           return false;
         });
-      });
-      pageSize = 1;
 
+        // Page sekarang
+        let pageNow = 1;
+
+        // $("#next").click(function () {
+        //   //cek jika sampai akhir tdk bisa eksekusi
+        //   if(pageNow == pageCount){
+        //     return false;
+        //   }
+
+        //   showPage(++pageNow);
+
+        // });
+
+        // $("#prev").click(function () {
+        //   //cek jika sampai awal tdk bisa eksekusi
+        //   if(pageNow == 1){
+        //     return false;
+        //   }
+
+        //   showPage(--pageNow);
+
+        // });
+
+
+      });
+
+      pageSize = 1;
       var pageCount = $(".soalnye").length / pageSize;
 
+      // Menampilkan page disidebar kanan
       for (var i = 0; i < pageCount; i++) {
-
-        $("#pagin").append('<li><a id="navsoal' + (i + 1) + '" href="#" class="xxxx">' + (i + 1) + '</a></li> ');
+        $("#pagin").append('<li class="col-4"><a id="navsoal' + (i + 1) + '" href="#" class="xxxx">' + (i + 1) + '</a></li> ');
       }
       $("#pagin li").first().find("a").addClass("current")
+
       showPage = function (page) {
         $(".soalnye").hide();
         $(".soalnye").each(function (n) {
@@ -411,6 +445,7 @@ while ($xx = mysqli_fetch_array($qq)) {
       }
 
       showPage(1);
+      
 
       $("#pagin li a").click(function () {
         $("#pagin li a").removeClass("current");
