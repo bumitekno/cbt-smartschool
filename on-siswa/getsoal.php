@@ -539,6 +539,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		?>
 
 		<?php
+		
 		// Soal menjodohkan
 		$i++;
 		$end_page = $i;

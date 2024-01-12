@@ -423,7 +423,7 @@ while ($xx = mysqli_fetch_array($qq)) {
           $("#navsoal" + numberPage).addClass("text-primary");
           
           showPage($(this).data("id") + 1);
-          console.log('pageNow ' + $(this).data("id"));
+          //console.log('pageNow ' + $(this).data("id"));
 
         });
 
@@ -440,7 +440,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
           showPage($(this).data("id") - 1);
 
-          console.log('pageNow '  + $(this).data("id"));
+          //console.log('pageNow '  + $(this).data("id"));
 
         });
 
@@ -465,13 +465,8 @@ while ($xx = mysqli_fetch_array($qq)) {
         });
       }
 
-      function check_page(){
-        console.log(pageNow);
-      }
-
       showPage(1);
       
-
       $("#pagin li a").click(function () {
         $("#pagin li a").removeClass("text-primary");
         $(this).addClass("text-primary");
