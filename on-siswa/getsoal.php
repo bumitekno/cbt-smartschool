@@ -176,7 +176,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				$simpanjawab = "jawabanuraian";
 				$area = "
 				<form>
-				<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text' onchange='return nilaiUH$ar[nomersoal]()'>$ur[jawaban]</textarea>
+				<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text'>$ur[jawaban]</textarea>
 				
 				<p id='result$i' style='font-size:11px;font-style: italic;font-style: bold;background-image: linear-gradient(to right, green , white);color:white'></p>
 				<script>
@@ -244,7 +244,6 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 					</script> ";
 
 			}
-
 
 			$botton_choice = '';
 			if ($ar['status'] == 5) {
@@ -491,13 +490,49 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 					<?php } ?>
 
 					<br><br>
-					<label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
+					<label id="ragu" class="btn btn-warning mb-1"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
 						<span class='d-block d-sm-none'><b>RAGU</b></span>
-						<span class='d-none d-sm-block'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>
+						<span class='d-none d-sm-block'><b>RAGU - RAGU</b></span>
 					</label>
 				</span>
 
+				<div id="garistom" class="list-group-item top-heading">
+					<div class="tombol">
+						<a data-id="<?= $i; ?>" class="prev">
+							<?php if ($ar['status'] == 2) { ?>
+								<div id="prev" class='btn btn-primary xxxx' onclick="nilaiUH<?= $ar['nomersoal'] ?>(); showPage(<?= $i ?>)">
+							<?php }else { ?>
+								<div id="prev" class='btn btn-primary xxxx'>
+							<?php } ?>
+
+							<span class="d-block d-sm-none"><i class="fa fa-chevron-left"></i> PREV</span>
+							<span class="d-none d-sm-block"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
+							</div></a>
+						<a id="done"> 
+							<div id="done" class='btn btn-success xxxx' data-bs-target='#ModalImport' data-bs-toggle='modal'
+							style="border-radius:0;"> <span class='d-block d-sm-none'><i class='fa fa-check'></i> FINISH</span>
+							<span class='d-none d-sm-block'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> 
+							</div>
+						</a>
+						<a data-id="<?= $i; ?>" class="next">
+							<?php if ($ar['status'] == 2) { ?>
+								<div id="next" class='btn btn-primary xxxx' onclick="nilaiUH<?= $ar['nomersoal'] ?>(); showPage(<?= $i ?>)">
+							<?php }else { ?>
+								<div id="next" class='btn btn-primary xxxx'>
+							<?php } ?>
+
+								<span class="d-block d-sm-none">NEXT <i class="fa fa-chevron-right"></i></span>
+								<span class="d-none d-sm-block">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
+							</div>
+						</a>
+					</div>
+				</div>
+
 			</div>
+
+			
+
+			
 			<?php
 		}
 
@@ -505,13 +540,14 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 		<?php
 		// Soal menjodohkan
-			$i++;
+		$i++;
+		$end_page = $i;
 			$query = mysqli_query($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$username' AND soal.status = 5 ORDER by status ASC, $acak");
 			if ($query == false) {
 				die("Terjadi Kesalahan : " . mysqli_error($konek));
 				$i = 1;
 			}
-		?>
+			?>
 
 		<div class="soalnye cls<?php echo $i; ?>" data-id="<?php echo $i; ?>">
 
@@ -717,11 +753,27 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 			<br><br>
 
-			<label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
+			<label id="ragu" class="btn btn-warning mb-1"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
 			<span class='d-block d-sm-none'><b>RAGU</b></span>
-			<span class='d-none d-sm-block'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>
+			<span class='d-none d-sm-block'><b>RAGU - RAGU</b></span>
 			</label>
 			</span>
+
+			<div id="garistom" class="list-group-item top-heading">
+				<div class="tombol">
+					<a data-id="<?= $end_page; ?>" class="prev">
+						<div id="prev" class='btn btn-primary xxxx'>
+						<span class="d-block d-sm-none"><i class="fa fa-chevron-left"></i> PREV</span>
+						<span class="d-none d-sm-block"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
+						</div></a>
+					<a id="done"> 
+						<div id="done" class='btn btn-success xxxx' data-bs-target='#ModalImport' data-bs-toggle='modal'
+						style="border-radius:0;"> <span class='d-block d-sm-none'><i class='fa fa-check'></i> FINISH</span>
+						<span class='d-none d-sm-block'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> 
+						</div>
+					</a>
+				</div>
+			</div>
 
 		</div>
 

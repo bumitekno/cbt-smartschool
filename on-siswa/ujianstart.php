@@ -257,23 +257,30 @@ while ($xx = mysqli_fetch_array($qq)) {
             ?>
           </div>
           <br><br>
-          <div id="garistom" class="list-group-item top-heading">
+
+
+          <!-- <div id="garistom" class="list-group-item top-heading">
             <div class="tombol">
               <a id="prev">
-                <button id="prev" class='btn btn-primary xxxx'>
+                <div id="prev" class='btn btn-primary xxxx'>
                   <span class="d-block d-sm-none"><i class="fa fa-chevron-left"></i> PREV</span>
                   <span class="d-none d-sm-block"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
-                </button></a>
-              <a id="done"> <button id="done" class='btn btn-success xxxx' data-bs-target='#ModalImport' data-bs-toggle='modal'
+                </div></a>
+              <a id="done"> 
+                <div id="done" class='btn btn-success xxxx' data-bs-target='#ModalImport' data-bs-toggle='modal'
                   style="border-radius:0;"> <span class='d-block d-sm-none'><i class='fa fa-check'></i> FINISH</span>
-                  <span class='d-none d-sm-block'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> </button></a>
+                  <span class='d-none d-sm-block'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> 
+                </div>
+              </a>
               <a id="next">
-                <button id="next" class='btn btn-primary xxxx'>
+                <div id="next" class='btn btn-primary xxxx'>
                   <span class="d-block d-sm-none">NEXT <i class="fa fa-chevron-right"></i></span>
                   <span class="d-none d-sm-block">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
-                </button></a>
+                </div></a>
             </div>
-          </div>
+          </div> -->
+
+
           <div id="ModalImport" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -359,70 +366,83 @@ while ($xx = mysqli_fetch_array($qq)) {
 
         // Next Prev diganti karena error tdk bisa menyimpan jawaban
 
-        $("#next").click(function () {
-          //alert("Hello! I am an alert box!");
-          if ($(".divs div:visible").next().length != 0) {
-            $(".divs div:visible").next().show().prev().hide();
-
-            if ($(".divs div:visible").next().length == 0) {
-              //1. Hide the two buttons
-
-              //3. Show the results
-              var divs = $(".divs div:visible").prevAll().clone();
-              divs.show();
-
-              //Reverse the order
-              var divs = jQuery.makeArray(divs);
-              divs.reverse();
-              $(".your-quiz-result")
-                .empty()
-                .append(divs);
-
-            }
-
-          }
-          return false;
-        });
-
-        $("#prev").click(function () {
-          if ($(".divs div:visible").prev().length != 0) {
-            console.log("There are still elements");
-            $(".divs div:visible")
-              .prev()
-              .show()
-              .next()
-              .hide();
-          }
-          else {
-            //2. Can't go previous first div
-            console.log("Can't go previous first div");
-          }
-
-          return false;
-        });
-
-        // Page sekarang
-        let pageNow = 1;
-
         // $("#next").click(function () {
-        //   //cek jika sampai akhir tdk bisa eksekusi
-        //   if(pageNow == pageCount){
-        //     return false;
+        //   //alert("Hello! I am an alert box!");
+        //   if ($(".divs div:visible").next().length != 0) {
+        //     $(".divs div:visible").next().show().prev().hide();
+
+        //     if ($(".divs div:visible").next().length == 0) {
+        //       //1. Hide the two buttons
+
+        //       //3. Show the results
+        //       var divs = $(".divs div:visible").prevAll().clone();
+        //       divs.show();
+
+        //       //Reverse the order
+        //       var divs = jQuery.makeArray(divs);
+        //       divs.reverse();
+        //       $(".your-quiz-result")
+        //         .empty()
+        //         .append(divs);
+
+        //     }
+
         //   }
-
-        //   showPage(++pageNow);
-
+        //   return false;
         // });
 
         // $("#prev").click(function () {
-        //   //cek jika sampai awal tdk bisa eksekusi
-        //   if(pageNow == 1){
-        //     return false;
+        //   if ($(".divs div:visible").prev().length != 0) {
+        //     console.log("There are still elements");
+        //     $(".divs div:visible")
+        //       .prev()
+        //       .show()
+        //       .next()
+        //       .hide();
+        //   }
+        //   else {
+        //     //2. Can't go previous first div
+        //     console.log("Can't go previous first div");
         //   }
 
-        //   showPage(--pageNow);
-
+        //   return false;
         // });
+
+        // Page sekarang
+        var pageNow = 1;
+
+        $(".next").click(function () {
+          
+          //cek jika sampai akhir tdk bisa eksekusi
+          if($(this).data("id") == pageCount){
+            return false;
+          }
+
+          $("#pagin li a").removeClass("text-primary");
+          let numberPage = parseInt($(this).data("id")+1);
+          $("#navsoal" + numberPage).addClass("text-primary");
+          
+          showPage($(this).data("id") + 1);
+          console.log('pageNow ' + $(this).data("id"));
+
+        });
+
+        $(".prev").click(function () {
+          
+          //cek jika sampai awal tdk bisa eksekusi
+          if($(this).data("id") == 1){
+            return false;
+          }
+
+          $("#pagin li a").removeClass("text-primary");
+          let numberPage = parseInt($(this).data("id")-1);
+          $("#navsoal" + numberPage).addClass("text-primary");
+
+          showPage($(this).data("id") - 1);
+
+          console.log('pageNow '  + $(this).data("id"));
+
+        });
 
 
       });
@@ -437,6 +457,7 @@ while ($xx = mysqli_fetch_array($qq)) {
       $("#pagin li").first().find("a").addClass("current")
 
       showPage = function (page) {
+        console.log(`pageNow ${page}`);
         $(".soalnye").hide();
         $(".soalnye").each(function (n) {
           if (n >= pageSize * (page - 1) && n < pageSize * page)
@@ -444,12 +465,18 @@ while ($xx = mysqli_fetch_array($qq)) {
         });
       }
 
+      function check_page(){
+        console.log(pageNow);
+      }
+
       showPage(1);
       
 
       $("#pagin li a").click(function () {
-        $("#pagin li a").removeClass("current");
-        $(this).addClass("current");
+        $("#pagin li a").removeClass("text-primary");
+        $(this).addClass("text-primary");
+        pageNow = parseInt($(this).text());
+        //console.log('pageNow ' + pageNow );
         showPage(parseInt($(this).text()))
       });
 
