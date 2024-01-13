@@ -138,7 +138,6 @@ include "tema/tema.php";
             <font color="#FF0000">&emsp; Keterangan: *</font>
           </h4>
           <ul>
-            <li>Data akan tampil jika ada peserta mengerjakan soal</li>
             <li>tunggu sekitar 1 menit setelah siswa aktif mengerjakan</li>
           </ul>
           <div class="btn-group col-lg-12 col-sm-12 col-md-12 col-xs-12">

@@ -29,12 +29,12 @@ include('conn/fungsi.php');
     <table id="table" class="table table-hover table-striped">
         <thead>
             <tr>
-                <th style='width: 3%'>No</th>
+                <th style='width: 10%'>No</th>
                 <th style='width: 20%'>Nama</th>
-                <th style='width: 5%'>Kelas</th>
+                <th style='width: 20%'>Kelas</th>
                 <th style='width: 20%'>Kode Soal</th>
-                <th style='width: 40%'>Progress</th>
-                <th style='width: 17%'>Action</th>
+                <th style='width: 20%'>Progres</th>
+                <th style='width: 10%'>Action</th>
             </tr>
         </thead>
         <tfoot>
@@ -55,26 +55,34 @@ include('conn/fungsi.php');
             }
             $i = 1;
             while ($ar = mysqli_fetch_array($querydosen)) {
-                $result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status IN ('1', '3','4','5')");
+                
+                $result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status IN ('1','3','4','5') ");
                 $rows = mysqli_num_rows($result);
+            
                 $result2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' AND status='2'");
                 $rows2 = mysqli_num_rows($result2);
-                $result3 = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$ar[kodesoal]' AND status IN ('1', '3','4','5') ");
-                $jawabsiswa = mysqli_num_rows($result3);
 
-                $query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$ar[nama]' AND kodesoal='$ar[kodesoal]'");
+                // Jawaban selain uraian
+                $result3 = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$ar[kodesoal]' AND tipe IN ('1','3','4','5') AND nis='$ar[nis]' ");
+                $jawabsiswa = mysqli_num_rows($result3);
+                
+                // Jawaban Uraian
+                $query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$ar[nama]' AND kodesoal='$ar[kodesoal]' AND nis='$ar[nis]'");
                 $rows6 = mysqli_num_rows($query2);
 
                 $count_soal = $rows + $rows2;
                 $count_jawaban = $jawabsiswa + $rows6;
-                $terjwb = $count_soal - $count_jawaban;
-                $persen = 100 / $count_soal;
-                $persenjawab = $persen * $terjwb;
+                //$terjwb = $count_soal - $count_jawaban;
+                //$persen = 100 / $count_soal;
+                //$persenjawab = $persen * $terjwb;
+                $persenjawab = $count_jawaban/$count_soal * 100;
+                //var_dump($count_jawaban);
 
                 $aktif = $ar['statuslogin'];
                 $sisa = $ar['sisawaktu'] / 60;
                 $sisawaktu = number_format($sisa, 0, '.', '');
                 $sisasisa = $sisawaktu;
+                
                 if (!$aktif == 1) {
                     $aktifstatus =
                         "

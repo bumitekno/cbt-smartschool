@@ -50,7 +50,7 @@
 	$(document).ready(function () {
 		$("#responsecontainer").load("dt_monitor.php");
 		var refreshId = setInterval(function () {
-			$("#responsecontainer").load('dt_monitor.php?randval=' + Math.random());
+			$("#responsecontainer").load('dt_monitor.php?randval=' + Math.random());		
 		}, 10000);
 	});
 </script>

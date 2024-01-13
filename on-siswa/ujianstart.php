@@ -418,13 +418,13 @@ while ($xx = mysqli_fetch_array($qq)) {
             return false;
           }
 
+          // Memberikan current page pada pagination
+
           $("#pagin li a").removeClass("text-primary");
           let numberPage = parseInt($(this).data("id")+1);
           $("#navsoal" + numberPage).addClass("text-primary");
           
           showPage($(this).data("id") + 1);
-          //console.log('pageNow ' + $(this).data("id"));
-
         });
 
         $(".prev").click(function () {
@@ -434,14 +434,13 @@ while ($xx = mysqli_fetch_array($qq)) {
             return false;
           }
 
+          // Memberikan current page pada pagination
+
           $("#pagin li a").removeClass("text-primary");
           let numberPage = parseInt($(this).data("id")-1);
           $("#navsoal" + numberPage).addClass("text-primary");
 
           showPage($(this).data("id") - 1);
-
-          //console.log('pageNow '  + $(this).data("id"));
-
         });
 
 
@@ -470,8 +469,7 @@ while ($xx = mysqli_fetch_array($qq)) {
       $("#pagin li a").click(function () {
         $("#pagin li a").removeClass("text-primary");
         $(this).addClass("text-primary");
-        pageNow = parseInt($(this).text());
-        //console.log('pageNow ' + pageNow );
+        pageNow = parseInt($(this).text())
         showPage(parseInt($(this).text()))
       });
 
