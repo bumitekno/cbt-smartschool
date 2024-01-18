@@ -113,6 +113,9 @@ while ($xx = mysqli_fetch_array($qq)) {
     <link rel="stylesheet" href="../aset/fa/css/font-awesome.css">
     <!-- <link rel="stylesheet" href="../aset/bootstrap/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
       var count = 7200;
       var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
@@ -245,7 +248,7 @@ while ($xx = mysqli_fetch_array($qq)) {
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                       aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title">Konfirmasi</h4>
                 </div>
@@ -468,8 +471,8 @@ while ($xx = mysqli_fetch_array($qq)) {
       });
     </script>
     <?php
-    // include "bundle/scriptsoal.php";
-    // include "bundle/ragu_script.php";
+    include "bundle/scriptsoal.php";
+    include "bundle/ragu_script.php";
     ?>
   </body>
 

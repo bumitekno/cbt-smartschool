@@ -50,7 +50,7 @@ while ($ar = mysqli_fetch_array($query)) {
 
         $('body').on('click', '.cls<?php echo $o; ?> input', function () {
 
-            console.log('test');
+            //console.log('test');
 
             if ($(this).attr("id") == "jawabansiswaA<?php echo $o; ?>")
                 $('a#navsoal<?php echo $o; ?>').css("background-image", "url('mesin/pilihanA.jpg')").css("background-size", "cover")

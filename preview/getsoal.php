@@ -126,7 +126,7 @@ while ($rr = mysqli_fetch_array($qu)) {
 
 		// Button sampun
 		if ($i == $rows) {
-			$sampun = "<button id='done' type='button' class='btn btn-success' data-target='#ModalImport' data-toggle='modal'>
+			$sampun = "<button id='done' type='button' class='btn btn-success' data-bs-target='#ModalImport' data-toggle='modal'>
 					                <span class='hidden-lg hidden-md'><i class='fa fa-check'></i> FINISH</span>
                                     <span class='hidden-xs hidden-sm'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span>
 					               </button>";
@@ -417,14 +417,18 @@ while ($rr = mysqli_fetch_array($qu)) {
 				<!-- Footer Soal -->
 				
 				<!-- <div id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress"> -->
-				<!-- <div id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
+				
+
+				<div class=""></div>
+
+				<div id="garistom" class="list-group-item top-heading mt-3 text-center">
+				<div id="ragu" style="position: static !important; height: auto" class="btn btn-warning mb-1 rounded"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
 					<div class='d-block d-sm-none'><b>RAGU</b></div>
 					<div class='d-none d-sm-block'><b>RAGU - RAGU</b></div>
-				</div> -->
-
-				<div id="garistom" class="list-group-item top-heading mt-3">
+				</div>
 					<div class="tombol">
 						<a data-id="<?= $i; ?>" class="prev">
+							<!-- Jika ada soal uraian -->
 							<?php if ($ar['status'] == 2) { ?>
 								<div id="prev" class='btn btn-primary xxxx' onclick="nilaiUH<?= $ar['nomersoal'] ?>(); showPage(<?= $i ?>)">
 							<?php }else { ?>
@@ -434,12 +438,12 @@ while ($rr = mysqli_fetch_array($qu)) {
 							<span class="d-block d-sm-none"><i class="fa fa-chevron-left"></i> PREV</span>
 							<span class="d-none d-sm-block"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
 							</div></a>
-						<!-- <a id="done"> 
-							<div id="done" class='btn btn-success xxxx' data-bs-target='#ModalImport' data-bs-toggle='modal'
+						<a id="done" class="" style="position:static !important;"> 
+							<div class='btn btn-success' data-bs-target='#ModalImport' data-bs-toggle='modal'
 							style="border-radius:0;"> <span class='d-block d-sm-none'><i class='fa fa-check'></i> FINISH</span>
 							<span class='d-none d-sm-block'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> 
 							</div>
-						</a> -->
+						</a>
 						<a data-id="<?= $i; ?>" class="next">
 							<?php if ($ar['status'] == 2) { ?>
 								<div id="next" class='btn btn-primary xxxx' onclick="nilaiUH<?= $ar['nomersoal'] ?>(); showPage(<?= $i ?>)">
@@ -474,8 +478,6 @@ while ($rr = mysqli_fetch_array($qu)) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
 			$i = 1;
 		}
-
-
 	?>
 
 	<div class="soalnye cls<?php echo $i; ?>" data-id="<?php echo $i; ?>">
@@ -680,10 +682,6 @@ while ($rr = mysqli_fetch_array($qu)) {
 		
 	</div>
 
-
-
-
-	
 	
 	<?php 
 	// End soal menjodohkan
