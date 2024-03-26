@@ -30,7 +30,7 @@
 			<?php
 			$kelas = mysqli_query($konek, "SELECT DISTINCT kodesoal FROM nilaihasil");
 			if ($kelas == false) {
-				die("Terjadi Kesalahan : " . mysqli_error($konek));
+				die ("Terjadi Kesalahan : " . mysqli_error($konek));
 			}
 			$i = 1;
 			while ($ar = mysqli_fetch_array($kelas)) {
@@ -124,13 +124,13 @@ if (!$show == '') {
 				<?php
 				$querydosen = mysqli_query($konek, "SELECT * FROM nilaihasil where kodesoal='$cari' ORDER by nilai DESC");
 				if ($querydosen == false) {
-					die("Terjadi Kesalahan : " . mysqli_error($konek));
+					die ("Terjadi Kesalahan : " . mysqli_error($konek));
 				}
 				$i = 1;
 				while ($r = mysqli_fetch_array($querydosen)) {
 					$querydosen2 = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$cari'");
 					if ($querydosen2 == false) {
-						die("Terjadi Kesalahan : " . mysqli_error($konek));
+						die ("Terjadi Kesalahan : " . mysqli_error($konek));
 					}
 					while ($sr = mysqli_fetch_array($querydosen2)) {
 						$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1','3', '4','5')");
@@ -233,39 +233,57 @@ if (!$show == '') {
 									$score_jd_total += $score_jd;
 								}
 							}
-							$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('2') ORDER BY `soal`.`nomersoal` ASC ");
-							$rows_uraian = mysqli_num_rows($result_uraian);
 
 						}
 
 						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 
-						if ($r['statuskoreksi'] > 1) {
-							$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
-						} else {
-							$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> koreksi</button></a>";
+
+						//calculation uraian
+						$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
+						$rows_uraian = mysqli_num_rows($result_uraian);
+
+						if ($rows_uraian > 0) {
+							$jumlah = $rows_uraian;
+
+							if ($r['statuskoreksi'] > 1) {
+								$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' nis='$r[nis]' kelas='$r[kelas]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
+							} else {
+								$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' nis='$r[nis]' kelas='$r[kelas]'  kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> koreksi</button></a>";
+							}
+
+							while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
+								$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nis='$r[nis]' AND kodesoal='$uraian_singkat[kodesoal]'");
+								$ur = mysqli_fetch_array($query2);
+								$score_uraian = $ur['nilai'] / $rows_uraian;
+								$score_uraian_total += $score_uraian;
+								$total_score = $score_uraian_total;
+							}
 						}
 
-						echo "
+						if (!empty ($r['nis'])) {
+							echo "
 								<tr style='font-size:13px;'>
-									<td id='garis' align=center>$i</td>
-									<td id='garis'>$r[nama]</td>
-									<td id='garis'>$r[kelas]</td>
-									<td id='garis'>$r[kodemapel] | $r[kodesoal]</td>
-									<td id='garis' align=center>$jumlah</td>
-									<td id='garis' align=center>$benar</td>
-									<td id='garis' align=center>$salah</td>
-									<td id='garis' align=center>$xhasil</td>
-									<td id='garis' align=center style='background-color:grey;color:white'><b>$total_score</b></td>
-									<td id='garis' align=center style='background-color:#2764aa;color:white'><b>$total_score</b></td>
-									<td id='garis'><h6>" . str_replace(',', '', $list_jawaban) . "</h6></td>
-									<td id='garis'><h6>" . str_replace(',', '', $list_kunci) . "</h6></td>
-									<td id='garis'><h6>$r[waktuselesai]</h6></td>
-									<td id='garis' align=center>
-									<a class='noprint' href='analisa-soal.php?nis=$r[nis]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
-									<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
-									</td>
+								<td id='garis' align=center>$i</td>
+								<td id='garis'>$r[nama]</td>
+								<td id='garis'>$r[kelas]</td>
+								<td id='garis'>$r[kodemapel] | $r[kodesoal]</td>
+								<td id='garis' align=center>$jumlah</td>
+								<td id='garis' align=center>$benar</td>
+								<td id='garis' align=center>$salah</td>
+								<td id='garis' align=center>$xhasil</td>
+								<td id='garis' align=center style='background-color:grey;color:white'><b>$total_score</b></td>
+								<td id='garis' align=center style='background-color:#2764aa;color:white'><b>$total_score</b></td>
+								<td id='garis'><h6>" . str_replace(',', '', $list_jawaban) . "</h6></td>
+								<td id='garis'><h6>" . str_replace(',', '', $list_kunci) . "</h6></td>
+								<td id='garis'><h6>$r[waktuselesai]</h6></td>
+								<td id='garis' align=center>
+								<a class='noprint' href='analisa-soal.php?nis=$r[nis]&kodesoal=$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
+								$koreksi
+								<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
+								</td>
 								</tr>";
+						}
 						$i++;
 					}
 				}

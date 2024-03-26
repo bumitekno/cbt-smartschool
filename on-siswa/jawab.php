@@ -1,9 +1,9 @@
 <?php
 session_start();
-include('conn/cek.php');
-include('../koneksi/koneksi.php');
-include('conn/fungsi.php');
-include('pilihan.php');
+include ('conn/cek.php');
+include ('../koneksi/koneksi.php');
+include ('conn/fungsi.php');
+include ('pilihan.php');
 $kods = $_POST['ks1'];
 $kom = $_POST['km1'];
 $jumlah = $_POST['jumlah1'];
@@ -16,7 +16,7 @@ mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
 
 $querydosen = mysqli_query($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' and mapel='$kom'");
 if ($querydosen == false) {
-	die("Terjadi Kesalahan : " . mysqli_error($konek));
+	die ("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($ar = mysqli_fetch_array($querydosen)) {
 	date_default_timezone_set('Asia/Jakarta');
@@ -67,6 +67,6 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		exit();
 	}
 
-	die("Terdapat kesalahan : " . mysqli_error($konek));
+	die ("Terdapat kesalahan : " . mysqli_error($konek));
 
 } ?>

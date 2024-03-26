@@ -1,11 +1,11 @@
 <?php
 session_start();
-include('conn/cek.php');
-include('../koneksi/koneksi.php');
-include('conn/fungsi.php');
+include ('conn/cek.php');
+include ('../koneksi/koneksi.php');
+include ('conn/fungsi.php');
 
 date_default_timezone_set('Asia/Jakarta');
-$jam = date("h:i:sa");
+$jam = date("h:i:s");
 $tanggal = date("Y-m-d");
 $tokenx = $_POST['tokenjd'];
 $nomersoal = $_POST['nomersoal'];

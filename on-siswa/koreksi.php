@@ -1,17 +1,17 @@
 <?php
 session_start();
-include('conn/cek.php');
-include('../koneksi/koneksi.php');
-include('conn/fungsi.php');
+include ('conn/cek.php');
+include ('../koneksi/koneksi.php');
+include ('conn/fungsi.php');
 
 date_default_timezone_set('Asia/Jakarta');
-$jam = date("h:i:sa");
+$jam = date("Y-m-d h:i:s");
 
 
 $querydosen = mysqli_query($konek, "SELECT * FROM jawaban WHERE nis='$username'");
 
 if ($querydosen == false) {
-  die("Terjadi Kesalahan : " . mysqli_error($konek));
+  die ("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($ar = mysqli_fetch_array($querydosen)) {
   $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
@@ -28,7 +28,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 }
 $qq = mysqli_query($konek, "SELECT * FROM profil where id='1'");
 if ($qq == false) {
-  die("Terjadi Kesalahan : " . mysqli_error($konek));
+  die ("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
   ?>
@@ -275,7 +275,7 @@ while ($xx = mysqli_fetch_array($qq)) {
       <?php
       $querydosen = mysqli_query($konek, "SELECT * FROM theme where id='2'");
       if ($querydosen == false) {
-        die("Terjadi Kesalahan : " . mysqli_error($konek));
+        die ("Terjadi Kesalahan : " . mysqli_error($konek));
       }
       while ($oo = mysqli_fetch_array($querydosen)) {
         $warna = $oo['warna'];
