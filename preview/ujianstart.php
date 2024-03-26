@@ -111,7 +111,11 @@ while ($xx = mysqli_fetch_array($qq)) {
       }
     </style>
     <link rel="stylesheet" href="../aset/fa/css/font-awesome.css">
-    <link rel="stylesheet" href="../aset/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../aset/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
       var count = 7200;
       var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
@@ -196,7 +200,7 @@ while ($xx = mysqli_fetch_array($qq)) {
     <div id="timer" class="list-group-item top-heading">
       <!-------no soal------>
 
-      <body onload=init() onunload=keluar()>
+      <body>
         <div class="btn-group" role="group" aria-label="Basic example">
           <button id="btni" type="button" class="btn btn-danger"><b>SISA WAKTU</b> <i
               class="fa fa-clock-o fa-spin"></i></button>
@@ -223,25 +227,28 @@ while ($xx = mysqli_fetch_array($qq)) {
             ?>
           </div>
           <br><br>
-          <div id="garistom" class="list-group-item top-heading">
+
+          <!-- <div id="garistom" class="list-group-item top-heading">
             <div class="tombol">
               <a id="prev">
                 <button id="prev" class='btn btn-primary xxxx' style='float: left;'>
-                  <span class="hidden-lg hidden-md"><i class="fa fa-chevron-left"></i> PREV</span>
-                  <span class="hidden-xs hidden-sm"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
+                  <span class="d-block d-sm-none"><i class="fa fa-chevron-left"></i> PREV</span>
+                  <span class="d-none d-sm-block"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
                 </button></a>
               <a id="next">
                 <button id="next" class='btn btn-primary xxxx' style='float: right;'>
-                  <span class="hidden-lg hidden-md">NEXT <i class="fa fa-chevron-right"></i></span>
-                  <span class="hidden-xs hidden-sm">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
+                  <span class="d-block d-sm-none">NEXT <i class="fa fa-chevron-right"></i></span>
+                  <span class="d-none d-sm-block">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
                 </button></a>
             </div>
-          </div>
+          </div> -->
+
+
           <div id="ModalImport" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
                       aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title">Konfirmasi</h4>
                 </div>
@@ -291,7 +298,7 @@ while ($xx = mysqli_fetch_array($qq)) {
           <button id="hm" type="button" class="btnnav btn"><i class="fa fa-chevron-left"></i> <b>SOAL</b></button>
         </div>
       </div>
-      <div id='pagin' class="pagination"></div>
+      <div id='pagin' class="pagination row"></div>
     </div>
 
     <div id="main"></div>
@@ -337,52 +344,88 @@ while ($xx = mysqli_fetch_array($qq)) {
             $(this).hide();
         });
 
-        $("#next").click(function () {
-          if ($(".divs div:visible").next().length != 0) {
-            $(".divs div:visible").next().show().prev().hide();
+        // $("#next").click(function () {
+        //   if ($(".divs div:visible").next().length != 0) {
+        //     $(".divs div:visible").next().show().prev().hide();
 
-            if ($(".divs div:visible").next().length == 0) {
-              //1. Hide the two buttons
+        //     if ($(".divs div:visible").next().length == 0) {
+        //       //1. Hide the two buttons
 
 
-              //3. Show the results
-              var divs = $(".divs div:visible").prevAll().clone();
-              divs.show();
+        //       //3. Show the results
+        //       var divs = $(".divs div:visible").prevAll().clone();
+        //       divs.show();
 
-              //Reverse the order
-              var divs = jQuery.makeArray(divs);
-              divs.reverse();
-              $(".your-quiz-result")
-                .empty()
-                .append(divs);
-            }
+        //       //Reverse the order
+        //       var divs = jQuery.makeArray(divs);
+        //       divs.reverse();
+        //       $(".your-quiz-result")
+        //         .empty()
+        //         .append(divs);
+        //     }
+        //   }
+        //   return false;
+        // });
+
+        // $("#prev").click(function () {
+        //   if ($(".divs div:visible").prev().length != 0) {
+        //     console.log("There are still elements");
+        //     $(".divs div:visible")
+        //       .prev()
+        //       .show()
+        //       .next()
+        //       .hide();
+        //   }
+        //   else {
+        //     //2. Can't go previous first div
+        //     console.log("Can't go previous first div");
+        //   }
+        //   return false;
+        // });
+
+        $(".next").click(function () {
+          
+          //cek jika sampai akhir tdk bisa eksekusi
+          if($(this).data("id") == pageCount){
+            return false;
           }
-          return false;
+
+          $("#pagin li a").removeClass("text-primary");
+          let numberPage = parseInt($(this).data("id")+1);
+          $("#navsoal" + numberPage).addClass("text-primary");
+          
+          showPage($(this).data("id") + 1);
+          //console.log('pageNow ' + $(this).data("id"));
+
         });
 
-        $("#prev").click(function () {
-          if ($(".divs div:visible").prev().length != 0) {
-            console.log("There are still elements");
-            $(".divs div:visible")
-              .prev()
-              .show()
-              .next()
-              .hide();
+        $(".prev").click(function () {
+          
+          //cek jika sampai awal tdk bisa eksekusi
+          if($(this).data("id") == 1){
+            return false;
           }
-          else {
-            //2. Can't go previous first div
-            console.log("Can't go previous first div");
-          }
-          return false;
+
+          $("#pagin li a").removeClass("text-primary");
+          let numberPage = parseInt($(this).data("id")-1);
+          $("#navsoal" + numberPage).addClass("text-primary");
+
+          showPage($(this).data("id") - 1);
+
+          //console.log('pageNow '  + $(this).data("id"));
+
         });
+
+
       });
       pageSize = 1;
 
       var pageCount = $(".soalnye").length / pageSize;
 
       for (var i = 0; i < pageCount; i++) {
+        $("#pagin").append('<li class="col-4"><a id="navsoal' + (i + 1) + '" href="#" class="xxxx">' + (i + 1) + '</a></li> ');
 
-        $("#pagin").append('<li><a id="navsoal' + (i + 1) + '" href="#" class="xxxx">' + (i + 1) + '</a></li> ');
+        //$("#pagin").append('<li><a id="navsoal' + (i + 1) + '" href="#" class="xxxx">' + (i + 1) + '</a></li> ');
       }
       $("#pagin li").first().find("a").addClass("current")
       showPage = function (page) {

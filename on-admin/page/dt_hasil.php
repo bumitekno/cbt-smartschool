@@ -127,6 +127,7 @@ if (!$show == '') {
 					die ("Terjadi Kesalahan : " . mysqli_error($konek));
 				}
 				$i = 1;
+				
 				while ($r = mysqli_fetch_array($querydosen)) {
 					$querydosen2 = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$cari'");
 					if ($querydosen2 == false) {
@@ -169,6 +170,7 @@ if (!$show == '') {
 						}
 
 						$list_jawaban = '';
+						$list_kunci = '';
 
 						while ($soal = mysqli_fetch_array($result)) {
 							$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$cari'  AND nis='$r[nis]' AND nomersoal='$soal[nomersoal]'");
@@ -221,7 +223,7 @@ if (!$show == '') {
 								}
 
 								if ($soal['status'] == 5) {
-									$pilihjod = $jawaban['jawaban'];
+									$pilihjod = $jawaban_siswa;
 									$benarJd = 0;
 									if ($kunci == strtolower($pilihjod)) {
 										$benarJd++;

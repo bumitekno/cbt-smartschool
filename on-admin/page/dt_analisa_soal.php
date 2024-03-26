@@ -1,12 +1,14 @@
 <?php
 $nis = $_GET['nis'];
 $kodesoal = $_GET['kodesoal'];
+$kodesoal = $_GET['kodesoal'];
 $qq = mysqli_query($konek, "SELECT * FROM profil where id='1'");
 if ($qq == false) {
 	die ("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
 
+	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal' ");
 	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal' ");
 	if ($query == false) {
 		die ("Terjadi Kesalahan : " . mysqli_error($konek));
@@ -253,6 +255,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 		
 								$scorepg = $nilaipg / $jumlah * $benarp;
 								$scorepg_total = $scorepg;
+								$scorepg_total = $scorepg;
 
 								echo "
 									<tr>
@@ -368,6 +371,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$benarJd = 0;
 
 								$pilihjod = $jawaban_siswa;
+								$pilihjod = $jawaban_siswa;
 								$list_array = '';
 								$tanda_kunci = '';
 								if (count($array_kuncian) > 0) {
@@ -395,6 +399,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
                                         &emsp;$gambarsoal<br>$audio <br>
 										$list_array
+                                        <br><br><div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] </i> $tanda  Skor : $score_jd </div><br><hr class='style1'>
                                         <br><br><div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] </i> $tanda  Skor : $score_jd </div><br><hr class='style1'>
                                     </tr>";
 
@@ -435,8 +440,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 					<br><hr class='style1'></tr>";
 
 					}
-
-
 
 					?>
 				</tbody>

@@ -16,6 +16,9 @@ if ($ur['aktif'] == 0) {
 	header('location:ujian.php?gagal=1');
 	exit;
 }
+
+//die('test confirm');
+
 $querydosen = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$kode' and aktif='1'");
 if ($querydosen == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
