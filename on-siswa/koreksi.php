@@ -16,6 +16,10 @@ if ($querydosen == false) {
 while ($ar = mysqli_fetch_array($querydosen)) {
   $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 
+  if (is_nan($ar['nilai'])) {
+    $ar['nilai'] = 0;
+  }
+
   $add = mysqli_query($konek, "INSERT INTO nilaihasil (nis, nama, kelas, kodemapel, kodesoal, aktif, jumlahsoal, jawabansiswa, benar, salah, nilai, kuncisoal, waktuselesai) VALUES 
 	('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]', '$jam')");
   if (!$add) {
