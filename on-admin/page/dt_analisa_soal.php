@@ -413,6 +413,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 					$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
 					$rows_uraian = mysqli_num_rows($result_uraian);
 
+					$score_max = 0;
 					while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
 
 						$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$cc[nama]' AND kodesoal='$uraian_singkat[kodesoal]' AND nomersoal= $uraian_singkat[nomersoal]");
@@ -438,6 +439,16 @@ while ($xx = mysqli_fetch_array($qq)) {
 					<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $benar </i> Skor $score_uraian</div>
 					<br><hr class='style1'></tr>";
 
+					}
+
+					if ($rows_uraian > 0) {
+						echo " Keterangan <br>";
+						echo " =============================================== <br>";
+						echo " Jumlah Soal Essay :  " . $rows_uraian . '<br>';
+						echo " Skala Skor 1-5 <br>";
+						echo " Total Skor yang diperoleh : " . $score_uraian_total . '<br>';
+						echo " Total Skor Maksimal :  " . $score_max . " ( Jumlah Soal x skor maksimal )  <br>";
+						echo " nilai =  Total Skor yang diperoleh / Total Skor Maksimal x 100  ";
 					}
 
 					?>
