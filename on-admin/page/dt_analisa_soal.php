@@ -3,19 +3,19 @@ $nis = $_GET['nis'];
 $kodesoal = $_GET['kodesoal'];
 $qq = mysqli_query($konek, "SELECT * FROM profil where id='1'");
 if ($qq == false) {
-	die ("Terjadi Kesalahan : " . mysqli_error($konek));
+	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
 	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal' ");
 	if ($query == false) {
-		die ("Terjadi Kesalahan : " . mysqli_error($konek));
+		die("Terjadi Kesalahan : " . mysqli_error($konek));
 	}
 
 	while ($cc = mysqli_fetch_array($query)) {
 		$cari = $kodesoal;
 		$querydosen = mysqli_query($konek, "SELECT * FROM ujian where kodesoal='$cari'");
 		if ($querydosen == false) {
-			die ("Terjadi Kesalahan : " . mysqli_error($konek));
+			die("Terjadi Kesalahan : " . mysqli_error($konek));
 		}
 		$i = 1;
 		while ($sr = mysqli_fetch_array($querydosen)) {
@@ -415,15 +415,15 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 					while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
 
-						$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$cc[nama]' AND kodesoal='$uraian_singkat[kodesoal]'");
+						$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$cc[nama]' AND kodesoal='$uraian_singkat[kodesoal]' AND nomersoal= $uraian_singkat[nomersoal]");
 						$ur = mysqli_fetch_array($query2);
 
 						$score_max = $rows_uraian * 5; // point skore 5 * jumlah soal
 		
-						$score_uraian = $ur['nilai'] / $score_max * 100;
+						$score_uraian = $ur['nilai'];
 
 						$score_uraian_total += $score_uraian;
-						$total_score = $score_uraian_total;
+						$total_score = $score_uraian_total / $score_max * 100;
 
 						$benar = '';
 						$type = "Soal Uraian ";

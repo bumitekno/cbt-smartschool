@@ -255,12 +255,14 @@ if (!$show == '') {
 							}
 
 							while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
-								$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nis='$r[nis]' AND kodesoal='$uraian_singkat[kodesoal]'");
+								$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nis='$r[nis]' AND kodesoal='$uraian_singkat[kodesoal]' AND nomersoal= $uraian_singkat[nomersoal]");
 								$ur = mysqli_fetch_array($query2);
 								$score_max = $rows_uraian * 5; // point skore 5 * jumlah soal
-								$score_uraian = $ur['nilai'] / $score_max * 100;
+				
+								$score_uraian = $ur['nilai'];
+
 								$score_uraian_total += $score_uraian;
-								$total_score = $score_uraian_total;
+								$total_score = $score_uraian_total / $score_max * 100;
 							}
 						}
 
