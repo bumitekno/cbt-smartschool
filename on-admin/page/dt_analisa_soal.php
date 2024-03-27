@@ -418,7 +418,9 @@ while ($xx = mysqli_fetch_array($qq)) {
 						$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$cc[nama]' AND kodesoal='$uraian_singkat[kodesoal]'");
 						$ur = mysqli_fetch_array($query2);
 
-						$score_uraian = $ur['nilai'] / $rows_uraian;
+						$score_max = $rows_uraian * 5; // point skore 5 * jumlah soal
+		
+						$score_uraian = $ur['nilai'] / $score_max * 100;
 
 						$score_uraian_total += $score_uraian;
 						$total_score = $score_uraian_total;
