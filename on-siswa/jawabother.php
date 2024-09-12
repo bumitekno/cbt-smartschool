@@ -20,15 +20,22 @@ $check = mysqli_query($konek, "SELECT id FROM jawabother WHERE id='$unik'");
 
 $barx = mysqli_num_rows($check);
 
-if ($tipe == 4) {
-    $sql_create = mysqli_query($konek, "REPLACE into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
+if ($barx > 0) {
+    $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
 } else {
-    if ($barx > 0) {
-        $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
-    } else {
-        $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
-    }
+    $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
 }
+
+// if ($tipe == 4) {
+//     var_dump($tokenx);
+//     $sql_create = mysqli_query($konek, "REPLACE into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
+// } else {
+//     if ($barx > 0) {
+//         $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
+//     } else {
+//         $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
+//     }
+// }
 
 
 
