@@ -519,33 +519,33 @@ while ($ar = mysqli_fetch_array($query)) {
 					  </div>
 				<div id='formgroup' class='form-group'>
 					<div class='col-xs-12' style='background-color:#222d32;color:white;'>
-					<label>Kunci Jawaban</label>
+						<label>Kunci Jawaban</label>
 					</div>
-				<form action='' method='post'>
-					<div name='kunci' value='$ar[kunci]' required>
-					<div class='form-check'>
-						<input class='form-check-input' type='radio' value='T' name='kunci' id='id_true' ".$is_true.">
-						<label class='form-check-label' for='id_true'>
-						Benar
-						</label>
-					</div>
-					<div class='form-check'>
-						<input class='form-check-input' type='radio' value='F' name='kunci' id='id_false' ".$is_false.">
-						<label class='form-check-label' for='id_false'>
-						Salah
-						</label>
-					</div>
-					</div>         
-					<div class='modal-footer'>
-					<button class='btn btn-success' type='submit'>
-						Save
-					</button>
-					<button type='reset' class='btn btn-danger'  data-dismiss='modal' aria-hidden='true'>
-						Cancel
-					</button>
-					</div>
-				</form>
-		</div>
+					<form action='' method='post'>
+						<div name='kunci' value='$ar[kunci]' required>
+						<div class='form-check'>
+							<input class='form-check-input' type='radio' value='T' name='kunci' id='id_true' ".$is_true.">
+							<label class='form-check-label' for='id_true'>
+							Benar
+							</label>
+						</div>
+						<div class='form-check'>
+							<input class='form-check-input' type='radio' value='F' name='kunci' id='id_false' ".$is_false.">
+							<label class='form-check-label' for='id_false'>
+							Salah
+							</label>
+						</div>
+						</div>         
+						<div class='modal-footer'>
+						<button class='btn btn-success' type='submit'>
+							Save
+						</button>
+						<button type='reset' class='btn btn-danger'  data-dismiss='modal' aria-hidden='true'>
+							Cancel
+						</button>
+						</div>
+					</form>
+				</div>
 	  </div>
 	</div> ";
 

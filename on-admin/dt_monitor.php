@@ -103,11 +103,24 @@ include('conn/fungsi.php');
     									  <div class='progress-bar progress-bar-success progress-bar-striped active' style='width: $persenjawab%;font-size:10px;'></div>
     									</div>
 								  </td>
-					    <td><a href='#' onClick='confirm_delete(\"page/siswa_reset_login.php?id=$ar[id]\")'>
-                        <button class='btn btn-flat bg-orange btn-xs'>RESET LOGIN&emsp; <i class='fa fa-undo fa-spin'></i></button>
-                        </a></td>
+					    <td>
+                            <a href='#' onClick='confirm_delete(\"page/siswa_reset_login.php?id=$ar[id]\")'>
+                                <button class='btn btn-flat bg-orange btn-xs'>RESET LOGIN&emsp; <i class='fa fa-undo fa-spin'></i></button>
+                            </a>
+                            <div>
+                                <form action='jawab.php' method='post'>
+                                    <input type='hidden' name='nis' value='$ar[nis]'>
+                                    <input type='hidden' name='ks1' value='$ar[kodesoal]'>
+                                    <input type='hidden' name='km1' value='$ar[kodemapel]'>
+                                    <button id='yakin' type='submit' class='btn btn-success'> SELESAI</button>
+
+                                </form>
+							</div>
+                        </td>
 					    ";
                 }
+
+
                 echo "
 						<tr>
 								  <td>$i</td>
