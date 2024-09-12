@@ -266,6 +266,8 @@ if (!$show == '') {
 							}
 						}
 
+						$total_score = $r['nilai'] + $r['nilaiurai'];
+
 						if (!empty($r['nis'])) {
 							echo "
 								<tr style='font-size:13px;'>

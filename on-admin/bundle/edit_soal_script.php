@@ -28,70 +28,70 @@
 	<script src="../aset/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<!-- page script -->
     <script>
-      $(function () {	
-		// Daterange Picker
-		$('#Tanggal_Lahir').daterangepicker({
-			singleDatePicker: true,
-			showDropdowns: true,
-			format: 'YYYY-MM-DD'
-		});
+		$(function () {	
+			// Daterange Picker
+			$('#Tanggal_Lahir').daterangepicker({
+				singleDatePicker: true,
+				showDropdowns: true,
+				format: 'YYYY-MM-DD'
+			});
 
-		$('#alert').click(function(){
-			swal("Sukses!", "Berhasil Download Xls", "success");
-		});
-		$('#alert2').click(function(){
-			swal("Sukses!", "Berhasil Download template CSV", "success");
-		});
+			$('#alert').click(function(){
+				swal("Sukses!", "Berhasil Download Xls", "success");
+			});
+			$('#alert2').click(function(){
+				swal("Sukses!", "Berhasil Download template CSV", "success");
+			});
 
-		$('#alert4').click(function(){
-			swal("Sukses!", "Berhasil hapus data", "success");
-		});
+			$('#alert4').click(function(){
+				swal("Sukses!", "Berhasil hapus data", "success");
+			});
 
-		  // Data Table
-       $(document).ready(function() {
-    $('#data5').DataTable( {
-        "language": {
-                searchPlaceholder: "Cari",
-                search: "<i class='fa fa-search' aria-hidden='true'></i>",
-            },
-            "dom": '<"top"Bf>rt<"bottom"lip><"clear">'  ,
-        "scrollX": true,
-        "lengthMenu": [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100, -1], [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, "All Data"]],
-        buttons: [
-            {
-                extend: 'collection',
-                text: '<span class="glyphicon glyphicon-level-up"></span> Kunci Soal', className: 'btn btn-flat bg-red',
-                buttons: [
-                    {
-                        text: '<span class="glyphicon glyphicon-check"></span> Tampilkan Kunci Jawaban',
-                        action: function ( e, dt, node, config ) {
-                            dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
-                        }
-                    }
-                ]
-            }
-        ],
-        columnDefs: [
-            {
-                targets: [-2],
-                visible: false
-            }
-        ]
-    } );
-} );	
-      });
+			// Data Table
+			$(document).ready(function() {
+				$('#data5').DataTable( {
+					"language": {
+							searchPlaceholder: "Cari",
+							search: "<i class='fa fa-search' aria-hidden='true'></i>",
+						},
+						"dom": '<"top"Bf>rt<"bottom"lip><"clear">'  ,
+					"scrollX": true,
+					"lengthMenu": [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100, -1], [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, "All Data"]],
+					buttons: [
+						{
+							extend: 'collection',
+							text: '<span class="glyphicon glyphicon-level-up"></span> Kunci Soal', className: 'btn btn-flat bg-red',
+							buttons: [
+								{
+									text: '<span class="glyphicon glyphicon-check"></span> Tampilkan Kunci Jawaban',
+									action: function ( e, dt, node, config ) {
+										dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
+									}
+								}
+							]
+						}
+					],
+					columnDefs: [
+						{
+							targets: [-2],
+							visible: false
+						}
+					]
+				});
+			} );	
+		});
     </script>
-<script>
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
+	<script>
+		function printDiv(divName) {
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
 
-     document.body.innerHTML = printContents;
+			document.body.innerHTML = printContents;
 
-     window.print();
+			window.print();
 
-     document.body.innerHTML = originalContents;
-}
+			document.body.innerHTML = originalContents;
+		}
     </script>
 	<!-- Javascript Edit--> 
 	<script type="text/javascript"> 
