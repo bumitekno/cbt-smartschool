@@ -222,6 +222,13 @@ while ($ar = mysqli_fetch_array($querydosen)) {
             echo "<h5 id='blink' style='color: red;font-size:10px'>
 					Token salah</h5>";
           } ?>
+          <?php if (!empty($_GET['status']) && $_GET['status'] == 'nonaktif') {
+            echo "<h5 id='blink' style='color: red; font-size: 10px'>
+            Akun Anda tidak aktif. Silakan hubungi administrator.</h5>";
+          }
+          ?>
+
+
           <br>
           <div class="cta"><a href="<?php echo $ar['web']; ?>">
               <font id='blink' style='color: grey;'>

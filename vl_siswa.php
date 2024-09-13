@@ -11,14 +11,23 @@ if ($token == $inputtoken) {
 
     $username = mysqli_real_escape_string($connsite, $username);
     $password = mysqli_real_escape_string($connsite, $password);
-    $q = mysqli_query($connsite, "select nis,pass,nama,statuslogin from siswa where BINARY nis='$username' and pass='$password'");
+    
+    // Menambahkan pengecekan status
+    $q = mysqli_query($connsite, "SELECT nis, pass, nama, status FROM siswa WHERE BINARY nis='$username' AND pass='$password'");
+    
     if (mysqli_num_rows($q) == 1) {
-
-        $_SESSION['siswa'] = $username;
-        $_SESSION['nama'] = $nama;
-        mysqli_query($connsite, "update siswa set online='1'where nis='$username'");
-        header('location:on-siswa/index.php');
-
+        $row = mysqli_fetch_assoc($q);
+        
+        // Memeriksa apakah statusnya aktif (status = 1)
+        if ($row['status'] == 1) {
+            $_SESSION['siswa'] = $username;
+            $_SESSION['nama'] = $row['nama'];
+            mysqli_query($connsite, "UPDATE siswa SET online='1' WHERE nis='$username'");
+            header('location:on-siswa/index.php');
+        } else {
+            // Jika statusnya nonaktif
+            header('location:login.php?status=nonaktif');
+        }
 
     } else {
         header('location:login.php?salah=1');
