@@ -199,7 +199,9 @@ $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 				$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('2') ORDER BY `soal`.`nomersoal` ASC ");
 				$rows_uraian = mysqli_num_rows($result_uraian);
 				$count_soal = $jumlah + $rows_uraian;
-				$terjwb = $count_soal - $count_jawaban;
+				//$terjwb = $count_soal - $count_jawaban;
+				$terjwb = $count_soal;
+				// var_dump($count_soal);
 				$persen = 100 / $count_soal;
 				$persenjawab = $persen * $terjwb;
 				echo "
