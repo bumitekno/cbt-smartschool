@@ -11,20 +11,29 @@ $kodemapel = $_POST['kodemapel'];
 $soal = $_POST['soal'];
 $soal_gbr = $_POST['soal_gbr'];
 $soal_audio = $_POST['soal_audio'];
+
+
+$lokasi_file = $_FILES['file']['tmp_name'];
+$nama_file = $_FILES['file']['name'];
+move_uploaded_file($lokasi_file, "../file_siswa/$nama_file");
+
+
+
 //Memnyimpan artikel ke database
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
-if ($q = mysqli_query($konek, "REPLACE into jawaburaian (id,jawaban,nomersoal,nis,nama,kodesoal,soal,soal_gbr,soal_audio) VALUES ('$unik','$token','$nomersoal','$nis','$nama','$kodemapel','$soal','$soal_gbr','$soal_audio')")) {
+if ($q = mysqli_query($konek, "REPLACE into jawaburaian (id,jawaban,nomersoal,nis,nama,kodesoal,soal,soal_gbr,soal_audio,file) 
+VALUES ('$unik','$token','$nomersoal','$nis','$nama','$kodemapel','$soal','$soal_gbr','$soal_audio','$nama_file')")) {
 	echo "
 		<div id='us' class='save'>
 		  <div class='loading'>
 			<i class='fa fa-save fa-spin' style='font-size:54px'></i>
 		  </div>
 		</div>
-<script>
-setTimeout(function() {
-$('#us').fadeOut();
-}, 300);
-</script>
+		<script>
+			setTimeout(function() {
+				$('#us').fadeOut();
+			}, 300);
+		</script>
 	";
 }
 ?>

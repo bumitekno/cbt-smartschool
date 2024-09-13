@@ -29,64 +29,77 @@ input[type="radio"] {
 <input type="hidden" name="ks" id="ks" value="<?php echo $kodesoal; ?>">
 <input type="hidden" name="nis" id="nis" value="<?php echo $nis; ?>">
 <?php 
+
 $query = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nis='$nis' AND kodesoal='$kodesoal' ORDER by nomersoal ASC");
 if($query == false){
-die ("Terjadi Kesalahan : ". mysqli_error($konek));
+	die ("Terjadi Kesalahan : ". mysqli_error($konek));
 }
 
 $i=0;
-
 while($r = mysqli_fetch_array($query)){
     
-    $nosol=$r['nomersoal'];
-    $query2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$kodesoal' AND nomersoal='$nosol' ORDER by nomersoal ASC");
-if($query2 == false){
-die ("Terjadi Kesalahan : ". mysqli_error($konek));
-}
-while($or = mysqli_fetch_array($query2)){
-						if(!$or['gambarsoal']=='')
-				        {
-					    $gambarsoal = "<br><img src='../gbr/$or[gambarsoal]' alt='Nature' class='responsive' align=center style='max-width:500px; height:auto' ><br>";
-				        }
-				        else
-				        {
-					    $gambarsoal = "";
-					    }
-						if(!$or['audio']=='')
-				        {
-					    $audio = "<br><audio src='../gbr/$or[audio]' controls controlsList='nodownload'></audio>";
-				        }
-				        else
-				        {
-					    $audio = "";
-				        }
-				        
-	$i++; 
-?>
+		$nosol=$r['nomersoal'];
+		$query2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$kodesoal' AND nomersoal='$nosol' ORDER by nomersoal ASC");
+		if($query2 == false){
+			die ("Terjadi Kesalahan : ". mysqli_error($konek));
+		}
+		while($or = mysqli_fetch_array($query2)){
+			if(!$or['gambarsoal']=='')
+			{
+			$gambarsoal = "<br><img src='../gbr/$or[gambarsoal]' alt='Nature' class='responsive' align=center style='max-width:500px; height:auto' ><br>";
+			}
+			else
+			{
+			$gambarsoal = "";
+			}
+			if(!$or['audio']=='')
+			{
+			$audio = "<br><audio src='../gbr/$or[audio]' controls controlsList='nodownload'></audio>";
+			}
+			else
+			{
+			$audio = "";
+			}
+								
+			$i++; 
+?>				
+	<div class="col-xs-12">
+		<div class="attachment">
+			<a href="#" class="name">
+				<br>
+				Soal nomer <?php echo $r['nomersoal']; ?>
+			</a>
+			<p class="filename">
+				<?php echo $or['soal']; ?>
+				
+				<?php echo $gambarsoal; ?>
+				<?php echo $audio; ?>
+			</p>
+		</div>
+		<div class="attachment">
 
-						
-							<div class="col-xs-12">
-									<div class="attachment">
-										<a href="#" class="name">
-											<br>
-											Soal nomer <?php echo $r['nomersoal']; ?>
-										</a>
-									  <p class="filename">
-									<?php echo $or['soal']; ?><?php echo $gambarsoal; ?><?php echo $audio; ?>
-									  </p>
-									</div>
-									<div class="attachment">
-									  <a href="#" class="name">
-											Jawaban :
-										</a>
+	
 
-									  <p class="filename">
-										<?php echo $r['jawaban']; ?>
-										<br><br>
-										
-									  </p>
-									</div>
-							</div>
+			<a class="name">
+				Jawaban :
+			</a>
+
+			<p class="filename">
+			<?php echo $r['jawaban']; ?>
+			<br><br>
+
+			<?php if (!empty($r['file'])): ?>
+				<a href="../file_siswa/<?php echo htmlspecialchars($r['file']); ?>" target="_blank">
+					<i class="fa fa-file" aria-hidden="true"></i>
+					Lihat jawaban upload siswa
+				</a>
+			<?php endif; ?>
+
+			
+			</p>
+		</div>
+	</div>
+
 <div class="container<?php echo $i; ?>" id="tengah">
 
     <label class="radio-inline">
@@ -106,7 +119,9 @@ while($or = mysqli_fetch_array($query2)){
     </label>
   
 </div>
-<hr class="style-two">								
+
+<hr class="style-two">	
+
 <?php }} ?>		
 &nbsp;&nbsp;&nbsp;<input type="submit" name="submit" value="submit"/>
   </form>						

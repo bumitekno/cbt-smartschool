@@ -176,20 +176,44 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				$simpanjawab = "jawabanuraian";
 				$area = "
 				<form>
+				<div class='mb-3'>	
+					<label>Upload file</label>
+					<input class='form-control' type='file' id='fileInput$i' name='file' />
+				</div>
 				<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text'>$ur[jawaban]</textarea>
-				
 				<p id='result$i' style='font-size:11px;font-style: italic;font-style: bold;background-image: linear-gradient(to right, green , white);color:white'></p>
 				<script>
 					function nilaiUH$ar[nomersoal]()
 					{
-					var token= document.getElementById('token$i').value;
-					var dataString = 'nomersoal=$ar[nomersoal]&unik=$ks-$ar[nomersoal]-$nis&kodemapel=$ks&token=' + token; 
-					$.ajax({type:'post',url:'jawaburaian.php',data:dataString,cache:false,
-						success: function(html) {
-						$('#result').html(html);
-						$('#result$i').html('&#10004; jawaban tersimpan');
+						var token= document.getElementById('token$i').value;
+						var dataString = 'nomersoal=$ar[nomersoal]&unik=$ks-$ar[nomersoal]-$nis&kodemapel=$ks&token=' + token; 
+						const formData = new FormData();
+
+					
+						formData.append('nomersoal', '$ar[nomersoal]');
+						formData.append('unik', '$ks' + '-' + '$ar[nomersoal]' + '-' + '$nis');
+						formData.append('kodemapel', '$ks');
+						formData.append('token', token);
+
+						if (fileInput$i.files.length > 0) {
+							formData.append('file', fileInput$i.files[0]); // Menambahkan file ke FormData
+						}
+
+						console.log(fileInput$i);
+
+						$.ajax({
+							type:'post',
+							url:'jawaburaian.php',
+							data: formData,
+							processData: false, // Jangan memproses data secara otomatis
+							contentType: false, // Jangan menetapkan jenis konten (biarkan browser yang menentukan)
+							success: function(html) {
+							console.log('berhasil');
+							$('#result$i').html(html);
+							$('#result$i').html('&#10004; jawaban tersimpan');
 						}});
-					return false;
+
+						return false;
 					}
 				</script> 
 				";

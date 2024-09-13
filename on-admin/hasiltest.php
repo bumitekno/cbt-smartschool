@@ -14,7 +14,8 @@ $cari = $_POST['cari'];
 	<?php
 		include "bundle/bundle_css.php";
 	?>
-	<style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
 
 	#tengah {
 	  margin: auto;
@@ -188,16 +189,16 @@ $cari = $_POST['cari'];
             <li><i class="fa fa-print"></i> Cetak Hasil</li>
           </ol>
         </section>
-<?php 
-                    if (!empty($_GET['gagal'])) { 
-                    echo "
-                        <div class='col-lg-3 col-md-4 alert alert-danger alert-dismissible fade-in'>
-                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            <i class='icon fa fa-close'></i> Gagal !!! silahkan login sebagai admin / editor.
-                        </div>
-                        "; 
-                        }
-                     ?>
+        <?php 
+          if (!empty($_GET['gagal'])) { 
+              echo "
+              <div class='col-lg-3 col-md-4 alert alert-danger alert-dismissible fade-in'>
+                  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                  <i class='icon fa fa-close'></i> Gagal !!! silahkan login sebagai admin / editor.
+              </div>
+              "; 
+          }
+        ?>
         <!-- Main content -->
         <section class="content">
             <div class="row">
