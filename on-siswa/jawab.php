@@ -27,17 +27,16 @@ $querydosen = mysqli_query ($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' 
                         $kosong=0;
                     for ($i=0;$i<$jumlah;$i++){
                         
-                    if($key[$i]==$answer[$i]){
-                        //jika jawaban cocok (benar)
-                        $benar++;
-                    }else{
-                        //jika salah
-                        $salah++;
-                    
-                    }  
+						if($key[$i]==$answer[$i]){
+							//jika jawaban cocok (benar)
+							$benar++;
+						}else{
+							//jika salah
+							$salah++;
+						
+						}  
     
-    
-}
+					}
 $score = $nilaipg/$jumlah*$benar;            
 	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$answer', kuncisoal='$key', benar='$jam', salah='$tanggal', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")){
 		header("Location:koreksi.php");
