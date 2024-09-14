@@ -8,8 +8,8 @@ die ("Terjadi Kesalahan : ". mysqli_error($konek));
 }
 while($r = mysqli_fetch_array($query)){
 $kelas=$r['kelas'];
-$kelasx=preg_replace('/[^0-9\  ]/', '', $kelas);
-$rombelx=preg_replace('/\d/', '', $kelas );
+$kelasx=preg_replace('/[^0-9\  ]/', '', $kelas); // Ambil angka
+$rombelx=preg_replace('/\d/', '', $kelas );		// Ambil huruf
 ?>
 	
 <!-- Modal Popup siswa edit -->

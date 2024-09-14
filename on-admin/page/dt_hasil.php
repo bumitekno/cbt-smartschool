@@ -183,6 +183,7 @@ if (!$show == '') {
 								$list_jawaban .= $jawaban['jawaban'];
 								$list_kunci .= $soal['kunci'];
 
+								// PG
 								if ($soal['status'] == 1) {
 									$jwbsis = $jawaban['jawaban'];
 									$benarp = 0;
@@ -196,6 +197,7 @@ if (!$show == '') {
 									$scorepg_total += $scorepg;
 								}
 
+								// BS
 								if ($soal['status'] == 3) {
 									$jwbsis = $jawaban['jawaban'];
 									$benarBS = 0;
@@ -209,6 +211,7 @@ if (!$show == '') {
 									$score_bs_total += $score_bs;
 								}
 
+								// PGK
 								if ($soal['status'] == 4) {
 									$jwbsis = str_replace(',', '', $jawaban['jawaban']);
 									$benarPGK = 0;
@@ -222,6 +225,7 @@ if (!$show == '') {
 									$score_pgk_total += $score_pgk;
 								}
 
+								// Jodoh
 								if ($soal['status'] == 5) {
 									$pilihjod = $jawaban_siswa;
 									$benarJd = 0;
