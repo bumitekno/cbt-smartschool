@@ -21,8 +21,8 @@
         while ($ar = mysqli_fetch_array ($querydosen)){
             // Cek status siswa (1 = Aktif, 0 = Nonaktif)
             $status_button = $ar['status'] == 1 
-                             ? "<a href='page/ubah_status_siswa.php?id=$ar[id]&status=1' class='btn btn-success'>Aktif</a>" 
-                             : "<a href='page/ubah_status_siswa.php?id=$ar[id]&status=0' class='btn btn-danger'>Nonaktif</a>";
+                             ? "<a href='page/ubah_status_siswa.php?id=$ar[id]&status=0' class='btn btn-success'>Aktif</a>" 
+                             : "<a href='page/ubah_status_siswa.php?id=$ar[id]&status=1' class='btn btn-danger'>Nonaktif</a>";
 
             echo "
                 <tr>
