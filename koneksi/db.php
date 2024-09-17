@@ -1,5 +1,6 @@
-<?php 
+<?php
 error_reporting(E_ALL ^ E_DEPRECATED);
-$connsite= mysqli_connect('localhost', 'root', '');
-mysqli_select_db($connsite, 'cbt_eschool');
+include("config.php");
+$connsite = mysqli_connect(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
+mysqli_select_db($connsite, DB_DATABASE);
 ?>
