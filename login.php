@@ -191,6 +191,11 @@ a:active  {
 					Nomer peserta atau Password tidak ditemukan di database</h5>"; }?>
 <?php if (!empty($_GET['token'])) { echo "<h5 id='blink' style='color: red;font-size:10px'>
 					Token salah</h5>"; }?>
+          <?php if (!empty($_GET['status']) && $_GET['status'] == 'nonaktif') {
+            echo "<h5 id='blink' style='color: red; font-size: 10px'>
+            Akun Anda tidak aktif. Silakan hubungi administrator.</h5>";
+          }
+          ?>
 		<br>
     <div class="cta"><a href="<?php echo $ar['web'];?>"><font id='blink' style='color: grey;'><h5><b>&copy;  <?php echo date ('Y') ?></b></h5> <?php echo $ar['n_sekolah'];?></a></font></div>
 		<!-- <font id='blink' style='color: grey;font-size:10px'>made by codelite <?php echo date("Y");?></font> -->
