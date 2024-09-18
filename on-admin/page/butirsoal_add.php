@@ -1,5 +1,6 @@
 <?php
 include('../../koneksi/koneksi.php');
+include('../utils/validate_file.php');
 
 $checklist = '';
 if (!empty($_POST['jawabans'])) {
@@ -8,9 +9,9 @@ if (!empty($_POST['jawabans'])) {
 	}
 	$kunci = $checklist;
 } else {
-	$kunci = $_POST['kunci'];
+	$kunci = $_POST['kunci'] ?? null;
 }
-;
+
 $jenissoal = $_POST['jenissoal'];
 $kodemapel = $_POST['kodemapel'];
 $kodesoal = $_POST['kodesoal'];
@@ -23,29 +24,37 @@ $pilihan4 = $_POST['pilihan4'] ?? null;
 $pilihan5 = $_POST['pilihan5'] ?? null;
 // $kunci  			= $_POST['kunci'];
 $status = $_POST['status'];
-$lokasi_file = $_FILES['gambarsoal']['tmp_name'];
-$nama_file = $_FILES['gambarsoal']['name'];
-move_uploaded_file($lokasi_file, "../../gbr/$nama_file");
 
-$lokasi_file_a = $_FILES['gambar_a']['tmp_name'];
-$nama_file_a = $_FILES['gambar_a']['name'];
-move_uploaded_file($lokasi_file_a, "../../gbr/$nama_file_a");
+//$lokasi_file = $_FILES['gambarsoal']['tmp_name'];
+// $nama_file = $_FILES['gambarsoal']['name'];
+// move_uploaded_file($lokasi_file, "../../gbr/$nama_file");
 
-$lokasi_file_b = $_FILES['gambar_b']['tmp_name'];
-$nama_file_b = $_FILES['gambar_b']['name'];
-move_uploaded_file($lokasi_file_b, "../../gbr/$nama_file_b");
+$nama_file = isset($_FILES['gambarsoal']) ? upload($_FILES['gambarsoal'], '../../gbr/') : null;
 
-$lokasi_file_c = $_FILES['gambar_c']['tmp_name'];
-$nama_file_c = $_FILES['gambar_c']['name'];
-move_uploaded_file($lokasi_file_c, "../../gbr/$nama_file_c");
+// $lokasi_file_a = $_FILES['gambar_a']['tmp_name'];
+// $nama_file_a = $_FILES['gambar_a']['name'];
+// move_uploaded_file($lokasi_file_a, "../../gbr/$nama_file_a");
+$nama_file_a = isset($_FILES['gambar_a']) ? upload($_FILES['gambar_a'], '../../gbr/') : null ;
+$nama_file_b = isset($_FILES['gambar_b']) ? upload($_FILES['gambar_b'], '../../gbr/') : null ;
+$nama_file_c = isset($_FILES['gambar_c']) ? upload($_FILES['gambar_c'], '../../gbr/') : null ;
+$nama_file_d = isset($_FILES['gambar_d']) ? upload($_FILES['gambar_d'], '../../gbr/') : null ;
+$nama_file_e = isset($_FILES['gambar_e']) ? upload($_FILES['gambar_e'], '../../gbr/') : null ;
 
-$lokasi_file_d = $_FILES['gambar_d']['tmp_name'];
-$nama_file_d = $_FILES['gambar_d']['name'];
-move_uploaded_file($lokasi_file_d, "../../gbr/$nama_file_d");
+// $lokasi_file_b = $_FILES['gambar_b']['tmp_name'];
+// $nama_file_b = $_FILES['gambar_b']['name'];
+// move_uploaded_file($lokasi_file_b, "../../gbr/$nama_file_b");
 
-$lokasi_file_e = $_FILES['gambar_e']['tmp_name'];
-$nama_file_e = $_FILES['gambar_e']['name'];
-move_uploaded_file($lokasi_file_e, "../../gbr/$nama_file_e");
+// $lokasi_file_c = $_FILES['gambar_c']['tmp_name'];
+// $nama_file_c = $_FILES['gambar_c']['name'];
+// move_uploaded_file($lokasi_file_c, "../../gbr/$nama_file_c");
+
+// $lokasi_file_d = $_FILES['gambar_d']['tmp_name'];
+// $nama_file_d = $_FILES['gambar_d']['name'];
+// move_uploaded_file($lokasi_file_d, "../../gbr/$nama_file_d");
+
+// $lokasi_file_e = $_FILES['gambar_e']['tmp_name'];
+// $nama_file_e = $_FILES['gambar_e']['name'];
+// move_uploaded_file($lokasi_file_e, "../../gbr/$nama_file_e");
 
 $lokasi_file_f = $_FILES['audio']['tmp_name'];
 $nama_file_f = $_FILES['audio']['name'];

@@ -179,6 +179,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				<div class='mb-3'>	
 					<label>Upload file</label>
 					<input class='form-control' type='file' id='fileInput$i' name='file' />
+					<label><small>*Unggah file jika diperlukan, tipe file yang diterima : pdf, jpg, jpeg, png, file doc, file excel </small></label>
 				</div>
 				<textarea class='form-control' rows='5' id='token$i' name='token$ar[nomersoal]' type='text'>$ur[jawaban]</textarea>
 				<p id='result$i' style='font-size:11px;font-style: italic;font-style: bold;background-image: linear-gradient(to right, green , white);color:white'></p>
@@ -199,7 +200,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 							formData.append('file', fileInput$i.files[0]); // Menambahkan file ke FormData
 						}
 
-						console.log(fileInput$i);
+						
 
 						$.ajax({
 							type:'post',
@@ -208,10 +209,13 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 							processData: false, // Jangan memproses data secara otomatis
 							contentType: false, // Jangan menetapkan jenis konten (biarkan browser yang menentukan)
 							success: function(html) {
-							console.log('berhasil');
-							$('#result$i').html(html);
-							$('#result$i').html('&#10004; jawaban tersimpan');
-						}});
+								$('#result$i').html(html);
+								$('#result$i').html('&#10004; jawaban tersimpan');
+							},
+							error: function(xhr, status, error) {
+								alert('Error menyimpan jawaban');
+							}
+						});
 
 						return false;
 					}
