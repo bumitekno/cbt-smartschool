@@ -39,7 +39,6 @@ $rombelx=preg_replace('/\d/', '', $kelas );
 									</div>
 									<select class="form-control" name="agama">
 										<option value="">Pilih Agama</option>
-										<option value="universal" <?php if($r["agama"] == "universal") echo 'selected'; ?>>Universal/Umum</option>
 										<option value="islam" <?php if($r["agama"] == "islam") echo 'selected'; ?>>Islam</option>
 										<option value="kristen" <?php if($r["agama"] == "kristen") echo 'selected'; ?>>Kristen</option>
 										<option value="katholik" <?php if($r["agama"] == "katholik") echo 'selected'; ?>>Katolik</option>
