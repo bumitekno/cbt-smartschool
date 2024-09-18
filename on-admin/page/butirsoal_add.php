@@ -29,16 +29,16 @@ $status = $_POST['status'];
 // $nama_file = $_FILES['gambarsoal']['name'];
 // move_uploaded_file($lokasi_file, "../../gbr/$nama_file");
 
-$nama_file = isset($_FILES['gambarsoal']) ? upload($_FILES['gambarsoal'], '../../gbr/') : null;
+$nama_file = $_FILES['gambarsoal']['error'] === UPLOAD_ERR_OK ? upload($_FILES['gambarsoal'], '../../gbr/') : null;
 
 // $lokasi_file_a = $_FILES['gambar_a']['tmp_name'];
 // $nama_file_a = $_FILES['gambar_a']['name'];
 // move_uploaded_file($lokasi_file_a, "../../gbr/$nama_file_a");
-$nama_file_a = isset($_FILES['gambar_a']) ? upload($_FILES['gambar_a'], '../../gbr/') : null ;
-$nama_file_b = isset($_FILES['gambar_b']) ? upload($_FILES['gambar_b'], '../../gbr/') : null ;
-$nama_file_c = isset($_FILES['gambar_c']) ? upload($_FILES['gambar_c'], '../../gbr/') : null ;
-$nama_file_d = isset($_FILES['gambar_d']) ? upload($_FILES['gambar_d'], '../../gbr/') : null ;
-$nama_file_e = isset($_FILES['gambar_e']) ? upload($_FILES['gambar_e'], '../../gbr/') : null ;
+$nama_file_a = ( isset($_FILES['gambar_a']) && $_FILES['gambar_a']['error'] === UPLOAD_ERR_OK ) ? upload($_FILES['gambar_a'], '../../gbr/') : null ;
+$nama_file_b = ( isset($_FILES['gambar_b']) && $_FILES['gambar_b']['error'] === UPLOAD_ERR_OK ) ? upload($_FILES['gambar_b'], '../../gbr/') : null ;
+$nama_file_c = ( isset($_FILES['gambar_c']) && $_FILES['gambar_c']['error'] === UPLOAD_ERR_OK ) ? upload($_FILES['gambar_c'], '../../gbr/') : null ;
+$nama_file_d = ( isset($_FILES['gambar_d']) && $_FILES['gambar_d']['error'] === UPLOAD_ERR_OK ) ? upload($_FILES['gambar_d'], '../../gbr/') : null ;
+$nama_file_e = ( isset($_FILES['gambar_e']) && $_FILES['gambar_e']['error'] === UPLOAD_ERR_OK ) ? upload($_FILES['gambar_e'], '../../gbr/') : null ;
 
 // $lokasi_file_b = $_FILES['gambar_b']['tmp_name'];
 // $nama_file_b = $_FILES['gambar_b']['name'];
