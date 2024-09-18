@@ -1,23 +1,25 @@
 				<thead>
 					<tr>
 						<th width="5%">No</th>
-						<th width="20%">Mapel</th>
+						<th width="15%">Mapel</th>
 						<th width="10%">Jumlah Soal PG</th>
 						<th width="5%">Jumlah Soal Uraian</th>
-						<th width="10%">Waktu</th>
+						<th width="8%">Waktu</th>
 						<!-- <th width="5%">opsi jwb</th>
 						<th width="5%">tampil soal</th> -->
-						<th width="10%">Kelas</th>
-						<th width="10%">Bobot Nilai</th>
+						<th width="8%">Kelas</th>
+						<th width="8%">Jurusan</th>
+						<th width="8%">Agama</th>
+						<th width="8%">Bobot Nilai</th>
 						<!-- <th width="5%">bobot nilai uraian</th> -->
-						<th width="20%">Editor Soal</th>
+						<th width="15%">Editor Soal</th>
 						<th width="30%">Status Soal</th>
 						<th width="30%">Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
-						$querydosen = mysqli_query ($konek, "SELECT DISTINCT jenissoal, kodemapel, soal.kodesoal, aktif, /*opsi, acak,*/ kelas, nilai, waktu FROM soal CROSS JOIN ujian USING (kodesoal) ORDER by id DESC");
+						$querydosen = mysqli_query ($konek, "SELECT DISTINCT jenissoal, kodemapel, soal.kodesoal, aktif, /*opsi, acak,*/ kelas, jurusan, agama, nilai, waktu FROM soal CROSS JOIN ujian USING (kodesoal) ORDER by id DESC");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
@@ -75,7 +77,7 @@
 				        {
 					    $tomboledit = "<a href='#'><button type='button' class='btn btn-default btn-xs btn-flat' disabled><i class='fa fa-pencil-square-o'></i> option</button></a>";
 				        }
-						$boboturai=100-$ar[nilai];
+						$boboturai=100-$ar['nilai'];
 							echo "
 								<tr>
 		<td align=center>$i</td>
@@ -86,6 +88,8 @@
 		<td align=center>$ar[waktu]'</td>
 		
 		<td align=center>$ar[kelas]</td>
+		<td align=center>$ar[jurusan]</td>
+		<td align=center>$ar[agama]</td>
 		<td align=center>$ar[nilai]</td>
 		
 		<td align=center>

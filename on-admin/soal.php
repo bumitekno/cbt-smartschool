@@ -83,7 +83,7 @@ include ('conn/fungsi.php');
         border-color:grey;
         -moz-box-shadow:    inset 0 0 10px #000000;
         -webkit-box-shadow: inset 0 0 10px #000000;
-        box-shadow:  
+        box-shadow: 0px 5px 15px grey;
 }
  #clot3d2 {
         border-radius:0;
@@ -267,6 +267,30 @@ include "tema/tema.php";
 								 
                                      </select> 
                              </div>
+                             <div class="form-group">
+                <label>Jurusan</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-book"></i>
+                  </div>
+                  <input name="jurusan" type="text" class="form-control" placeholder="Jurusan" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Agama</label>
+                <br>
+                <form action="" method="post">
+                  <select class="form-control" name="agama" required>
+                    <option value="">Pilih Agama</option>
+                    <option value="Universal">Universal</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Kristen">Kristen</option>  
+                    <option value="Katholik">Katolik</option>  
+                    <option value="Hindu">Hindu</option>  
+                    <option value="Budha">Budha</option>
+                    <option value="Konghucu">Konghucu</option>
+                  </select>
+              </div>
 							<div class="form-group">
 								<label>Kode Soal</label>
 									<div class="input-group">

@@ -20,6 +20,8 @@ if($admin_su == 1)
 $jenissoal			= $_POST['jenissoal'];
 $kodemapel			= $_POST['kodemapel'];
 $kelas				= $_POST['kelas'];
+$jurusan 			= $_POST['jurusan'];
+$agama 				= $_POST['agama'];
 $kodesoal			= $_POST['kodesoal'];
 $waktu			    = $_POST['waktu'];
 $acak			    = $_POST['acak'];
@@ -29,8 +31,8 @@ $suwe=''.gmdate('H',$waktune).':'.gmdate('i',$waktune).':'.gmdate('s',$waktune).
 if ($add = mysqli_query($konek, "INSERT INTO soal (jenissoal, kodemapel, kodesoal) VALUES 
 	('$jenissoal', '$kodemapel', '$kodesoal')")){
 	}
-if ($add = mysqli_query($konek, "INSERT INTO ujian (jenis, mapel, kodesoal, kelas, waktu, lamaujian, acak, opsi) VALUES 
-	('$jenissoal', '$kodemapel', '$kodesoal', '$kelas', '$waktu', '$suwe', '$acak', '$opsi')")){
+if ($add = mysqli_query($konek, "INSERT INTO ujian (jenis, mapel, kodesoal, kelas, jurusan, agama, waktu, lamaujian, acak, opsi) VALUES 
+	('$jenissoal', '$kodemapel', '$kodesoal', '$kelas', '$jurusan', '$agama', '$waktu', '$suwe', '$acak', '$opsi')")){
 		header("Location:../soal.php");
 		exit();
 	}
