@@ -3,7 +3,9 @@
         <th width="4%">No</th>
         <th width="15%">No Peserta / NIS</th>
         <th width="25%">Nama</th>
+        <th width="4%">Agama</th>
         <th width="4%">Kelas</th>
+        <th width="4%">Jurusan</th>
         <th width="10%">Password</th>
         <th width="6%">Sesi</th>
         <th width="10%">Ruang</th>
@@ -29,7 +31,9 @@
                     <td align=center>$i</td>
                     <td>$ar[nis]</td>
                     <td>$ar[nama]</td>
+                    <td>$ar[agama]</td>
                     <td>$ar[kelas]</td>
+                    <td>$ar[jurusan]</td>
                     <td>$ar[pass]</td>
                     <td>$ar[sesi]</td>
                     <td>$ar[ruang]</td>
