@@ -292,7 +292,30 @@ include "tema/tema.php";
                     <option value="S1">S1</option>
                     <option value="S2">S2</option>
                     <option value="S3">S3</option>
-
+                  </select>
+              </div>
+              <div class="form-group">
+                <label>Jurusan</label>
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-book"></i>
+                  </div>
+                  <input name="jurusan" type="text" class="form-control" placeholder="Jurusan" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Agama</label>
+                <br>
+                <form action="" method="post">
+                  <select class="form-control" name="agama" required>
+                    <option value="">Pilih Agama</option>
+                    <option value="Universal">Universal</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Kristen">Kristen</option>  
+                    <option value="Katholik">Katolik</option>  
+                    <option value="Hindu">Hindu</option>  
+                    <option value="Budha">Budha</option>
+                    <option value="Konghucu">Konghucu</option>
                   </select>
               </div>
               <div class="form-group">
