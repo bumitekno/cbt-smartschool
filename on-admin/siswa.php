@@ -173,14 +173,21 @@ include "tema/tema.php";
 										<input name="nama" type="text" class="form-control" placeholder="nama siswa" required />
 									</div>		
 							</div>
-							<div class="form-group col-sm-3">
+							<div class="form-group col-sm-4">
 								<label>kelas</label>
 									<div class="input-group">
 
 										<input name="kelas" type="number" class="form-control" placeholder="Kelas" required />
 									</div>
 							</div>
-                            <div class="form-group col-sm-3">
+              <div class="form-group col-sm-4">
+								<label>Jurusan</label>
+									<div class="input-group">
+
+										<input name="jurusan" type="text" class="form-control" placeholder="jurusan" required />
+									</div>
+							</div>
+                            <div class="form-group col-sm-4">
                                 <label>Rombel</label>
 								
                                 <div class="input-group">
@@ -210,6 +217,19 @@ include "tema/tema.php";
                                      </select> 
                              </div>
                              <div class="form-group col-sm-6">
+                               <label>Agama</label>
+                               <form action="" method="post">   
+                                 <select class="form-control" name="agama"> 
+                                   <option value="">Pilih Agama</option> 
+                                   <option value="Islam">Islam</option>
+                                   <option value="Kristen">Kristen</option>  
+                                   <option value="Katholik">Katolik</option>  
+                                   <option value="Hindu">Hindu</option>  
+                                   <option value="Budha">Budha</option>
+                                   <option value="Konghucu">Konghucu</option>
+                                  </select> 
+                                </div>
+              <div class="form-group col-sm-6">
 							<label>Ruang</label>
 							 <form action="" method="post">   
                                  <select class="form-control" name="ruang"> 

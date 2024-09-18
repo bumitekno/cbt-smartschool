@@ -32,6 +32,24 @@ $rombelx=preg_replace('/\d/', '', $kelas );
 									</div>
 							</div>
 							<div class="form-group col-sm-6">
+							<label>Agama</label>
+							<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-user-circle"></i>
+									</div>
+									<select class="form-control" name="agama">
+										<option value="">Pilih Agama</option>
+										<option value="universal" <?php if($r["agama"] == "universal") echo 'selected'; ?>>Universal/Umum</option>
+										<option value="islam" <?php if($r["agama"] == "islam") echo 'selected'; ?>>Islam</option>
+										<option value="kristen" <?php if($r["agama"] == "kristen") echo 'selected'; ?>>Kristen</option>
+										<option value="katholik" <?php if($r["agama"] == "katholik") echo 'selected'; ?>>Katolik</option>
+										<option value="hindu" <?php if($r["agama"] == "hindu") echo 'selected'; ?>>Hindu</option>
+										<option value="budha" <?php if($r["agama"] == "budha") echo 'selected'; ?>>Budha</option>
+										<option value="konghucu" <?php if($r["agama"] == "konghucu") echo 'selected'; ?>>Konghucu</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group col-sm-6">
 								<label>No. Peserta</label>
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -56,6 +74,15 @@ $rombelx=preg_replace('/\d/', '', $kelas );
 											<i class="fa fa-book"></i>
 										</div>
 										<input name="kelas" type="number" class="form-control" value="<?php echo $kelasx; ?>"/>
+									</div>
+							</div>
+							<div class="form-group col-sm-6">
+								<label>jurusan</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-book"></i>
+										</div>
+										<input name="jurusan" type="text" class="form-control" value="<?php echo $r["jurusan"]; ?>"/>
 									</div>
 							</div>
 							<div class="form-group col-sm-6">

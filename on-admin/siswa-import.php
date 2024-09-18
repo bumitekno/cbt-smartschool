@@ -196,13 +196,15 @@ if(isset($_POST['submit'])){
 //       membaca data (kolom ke-1 sd terakhir)
       $nis   = $data->val($i, 1);
       $nama  = $data->val($i, 2);
-      $kelas = $data->val($i, 3);
-      $pass  = $data->val($i, 4);
-      $sesi  = $data->val($i, 5);
-      $ruang = $data->val($i, 6);
+      $agama = $data->val($i, 3);
+      $kelas = $data->val($i, 4);
+      $jurusan = $data->val($i, 5);
+      $pass  = $data->val($i, 6);
+      $sesi  = $data->val($i, 7);
+      $ruang = $data->val($i, 8);
 
 //      setelah data dibaca, masukkan ke tabel pegawai sql
-      $query = "INSERT into siswa (nis,nama,kelas,pass,sesi,ruang)values('$nis','$nama','$kelas','$pass','$sesi','$ruang')";
+      $query = "INSERT into siswa (nis,nama,agama,kelas,jurusan,pass,sesi,ruang)values('$nis','$nama','$agama','$kelas','$jurusan','$pass','$sesi','$ruang')";
       $hasil = mysqli_query($connsite, $query);
     }
     
