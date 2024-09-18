@@ -8,4 +8,6 @@ $kelas=$ar['kelas'];
 $ruang=$ar['ruang']; 
 $sesi=$ar['sesi']; 
 $statuslogin=$ar['statuslogin']; 
+$jurusan=$ar['jurusan'];  
+$agama=$ar['agama'];  
 ?>
