@@ -277,18 +277,18 @@ include "tema/tema.php";
                 </div>
               </div>
               <div class="form-group">
-                <label>Agama</label>
+                <label>Identitas Mapel</label>
                 <br>
                 <form action="" method="post">
                   <select class="form-control" name="agama" required>
-                    <option value="">Pilih Agama</option>
-                    <option value="Universal">Universal</option>
-                    <option value="Islam">Islam</option>
-                    <option value="Kristen">Kristen</option>  
-                    <option value="Katholik">Katolik</option>  
-                    <option value="Hindu">Hindu</option>  
-                    <option value="Budha">Budha</option>
-                    <option value="Konghucu">Konghucu</option>
+                    <option value="">Pilih Identitas Mapel</option>
+                    <option value="">Universal</option>
+                    <option value="islam">Islam</option>
+                    <option value="kristen">Kristen</option>  
+                    <option value="katholik">Katolik</option>  
+                    <option value="hindu">Hindu</option>  
+                    <option value="budha">Budha</option>
+                    <option value="konghucu">Konghucu</option>
                   </select>
               </div>
 							<div class="form-group">
