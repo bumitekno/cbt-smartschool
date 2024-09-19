@@ -3,11 +3,14 @@ include ('conn/cek.php');
 include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
 ?>
-            <div class="box-body">
-                
+<div class="box-body">             
 <?php
 $kelasx=preg_replace('/[^0-9\  ]/', '', $kelas);
-						$querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1 and kelas='$kelasx' ");
+						// $querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1 and kelas='$kelasx' ");
+						$querydosen = mysqli_query($konek, "SELECT * FROM ujian 
+							WHERE (agama = '' OR agama = '$agama' OR agama IS NULL)
+							AND (jurusan = '' OR jurusan = '$jurusan' OR jurusan IS NULL)
+							AND aktif=1 and kelas='$kelasx'");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
@@ -32,36 +35,35 @@ $kelasx=preg_replace('/[^0-9\  ]/', '', $kelas);
                                 						$nope='disabled';    
                                 						}
 
-							echo "
-								
+								echo "					
 								<div  id='pew' class='col-xs-6 col-sm-4 col-md-3 col-lg-2'>
-                                          <div  id='pew' class='panel panel-$hsil'>
-                                             <div  id='pew' class='panel-heading'>
-                                                <div class='row'>
-                                                   <div class='col-xs-8'>
-                                                      <h6>$ar[kodesoal]
-                                                      <br>$num_rows Soal</h6>
-                                                   </div>
-                                                   <div class='col-xs-4 text-right'>
-                                                      <i class='fa fa-clock-o fa-spin'></i>$ar[waktu]'
-                                                   </div>
-                                                </div>
-                                                <div class='row'>
-                                                    <div class='col-xs-12'>
-                                                        <h6><b>$ar[mapel]</b></h6>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                             <a class='$hsil' href='confirm.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&waktu=$ar[waktu]'>
-                                                <div  id='pow' class='panel-footer' style='border:0;border-radius:0;'>
-                                                   <span class='pull-left'><i class='fa fa-check'></i> Kerjakan</span>
-                                                   <span class='pull-right'><i class='fa fa-arrow-circle-right'></i></span>
-                                                   <div class='clearfix'></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div>
-								";
+									<div  id='pew' class='panel panel-$hsil'>
+										<div  id='pew' class='panel-heading'>
+										<div class='row'>
+											<div class='col-xs-8'>
+												<h6>$ar[kodesoal]
+												<br>$num_rows Soal</h6>
+											</div>
+											<div class='col-xs-4 text-right'>
+												<i class='fa fa-clock-o fa-spin'></i>$ar[waktu]'
+											</div>
+										</div>
+										<div class='row'>
+											<div class='col-xs-12'>
+												<h6><b>$ar[mapel]</b></h6>
+											</div>
+										</div>
+										</div>
+										<a class='$hsil' href='confirm.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&waktu=$ar[waktu]'>
+										<div  id='pow' class='panel-footer' style='border:0;border-radius:0;'>
+											<span class='pull-left'><i class='fa fa-check'></i> Kerjakan</span>
+											<span class='pull-right'><i class='fa fa-arrow-circle-right'></i></span>
+											<div class='clearfix'></div>
+										</div>
+										</a>
+									</div>
+								</div>
+							";
 						$i++;		
 						}
 					?>
