@@ -220,12 +220,12 @@ include "tema/tema.php";
                   <form action="" method="post">   
                       <select class="form-control" name="agama"> 
                           <option value="">Pilih Agama</option> 
-                              <option value="Islam">Islam</option>
-                              <option value="Kristen">Kristen</option>  
-                              <option value="Katholik">Katolik</option>  
-                              <option value="Hindu">Hindu</option>  
-                              <option value="Budha">Budha</option>
-                              <option value="Konghucu">Konghucu</option>
+                              <option value="islam">Islam</option>
+                              <option value="kristen">Kristen</option>  
+                              <option value="katholik">Katolik</option>  
+                              <option value="hindu">Hindu</option>  
+                              <option value="budha">Budha</option>
+                              <option value="konghucu">Konghucu</option>
                         </select> 
                 </div>
                 <div class="form-group col-sm-6">
