@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 18, 2024 at 03:02 PM
+-- Generation Time: Sep 19, 2024 at 07:44 AM
 -- Server version: 8.3.0
 -- PHP Version: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cbt_5soal`
+-- Database: `cbt_5type_soal`
 --
 
 -- --------------------------------------------------------
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `article` (
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `date` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`id`, `content`, `author`, `tanggal`, `date`) VALUES
+(3, '<p><img alt=\"\" src=\"data:text/html;base64,PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCjxoZWFkPg0KICAgIDx0aXRsZT5VcGxvYWQgRmlsZTwvdGl0bGU+IA0KPC9oZWFkPg0KDQo8Ym9keT4NCiAgICA8Zm9ybSBhY3Rpb249InVwbG9hZGVyLnBocCIgbWV0aG9kPSJwb3N0IiBlbmN0eXBlPSJtdWx0aXBhcnQvZm9ybS1kYXRhIj4NCiAgICAgICAgUGlsaWggZmlsZTogPGlucHV0IHR5cGU9ImZpbGUiIG5hbWU9ImJlcmthcyIgLz4NCiAgICAgICAgPGlucHV0IHR5cGU9InN1Ym1pdCIgbmFtZT0idXBsb2FkIiB2YWx1ZT0idXBsb2FkIiAvPg0KICAgIDwvZm9ybT4gDQo8L2JvZHk+IA0KPC9odG1sPg==\" />asdasd</p>\r\n', 'Administrator', '2023-06-25 12:27:30', '');
 
 -- --------------------------------------------------------
 
@@ -160,6 +167,13 @@ CREATE TABLE IF NOT EXISTS `profil` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `profil`
+--
+
+INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kepsek`, `nip`, `jenis_ujian`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `tanggal`, `th_ajaran`, `logo_kota`, `web`, `bg_login`) VALUES
+(1, 'SMK LOKAL', 'Temanggung', 'Alfa Beta', '-', 'Sumatif Akhir Tahun', 'sekolah', 'kisaran.jpg', 'mai.jpg', 'Temanggung', '31 Mei 2024', '2023/2024', 'kanan.png', '-', 'TTD KS NO BG.png');
+
 -- --------------------------------------------------------
 
 --
@@ -232,6 +246,17 @@ CREATE TABLE IF NOT EXISTS `theme` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `theme`
+--
+
+INSERT INTO `theme` (`id`, `warna`) VALUES
+(2, 'blue'),
+(1, 'purple'),
+(3, 'hidden'),
+(4, '0'),
+(5, 'show');
+
 -- --------------------------------------------------------
 
 --
@@ -280,7 +305,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`nip`),
   UNIQUE KEY `username_2` (`nip`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nip`, `nama`, `jabatan`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `instagram`, `youtube`, `phone`, `admin_su`) VALUES
+(1, 'admin', 'admin', '', 'admin12345', 1, 1, NULL, '', '', '', '1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
