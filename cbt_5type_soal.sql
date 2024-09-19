@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 18, 2024 at 01:39 AM
+-- Generation Time: Sep 18, 2024 at 03:02 PM
 -- Server version: 8.3.0
 -- PHP Version: 7.4.33
 
@@ -171,9 +171,9 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nis` varchar(100) NOT NULL,
   `nama` varchar(200) NOT NULL,
-  `agama` varchar(30) NOT NULL,
+  `agama` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `kelas` text NOT NULL,
-  `jurusan` text NOT NULL,
+  `jurusan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `pass` varchar(255) NOT NULL,
   `Id_User` int NOT NULL DEFAULT '1',
   `Id_Usergroup_User` int NOT NULL DEFAULT '1',
@@ -251,9 +251,9 @@ CREATE TABLE IF NOT EXISTS `ujian` (
   `acak` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `opsi` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kelas` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `agama` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agama` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nilai` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jurusan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jurusan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`Urut`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
