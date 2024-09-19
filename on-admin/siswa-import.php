@@ -191,20 +191,20 @@ if(isset($_POST['submit'])){
     };
     
 //    import data excel mulai baris ke-8 (karena tabel xls ada header pada baris 1-7)
-    for ($i=8; $i<=$baris; $i++)
+    for ($i=10; $i<=$baris; $i++)
     {
 //       membaca data (kolom ke-1 sd terakhir)
       $nis   = $data->val($i, 1);
       $nama  = $data->val($i, 2);
-      $agama = $data->val($i, 8);
+      $agama = $data->val($i, 5);
       $kelas = $data->val($i, 3);
-      $jurusan = $data->val($i, 7);
-      $pass  = $data->val($i, 4);
-      $sesi  = $data->val($i, 5);
-      $ruang = $data->val($i, 6);
+      $jurusan = $data->val($i, 4);
+      $pass  = $data->val($i, 6);
+      $sesi  = $data->val($i, 7);
+      $ruang = $data->val($i, 8);
 
 //      setelah data dibaca, masukkan ke tabel pegawai sql
-      $query = "INSERT into siswa (nis,nama,agama, kelas,jurusan,pass,sesi,ruang,)values('$nis','$nama','$agama','$kelas','$jurusan','$pass','$sesi','$ruang')";
+      $query = "INSERT into siswa (nis,nama,agama, kelas,jurusan,pass,sesi,ruang)values('$nis','$nama','$agama','$kelas','$jurusan','$pass','$sesi','$ruang')";
       $hasil = mysqli_query($connsite, $query);
     }
     
