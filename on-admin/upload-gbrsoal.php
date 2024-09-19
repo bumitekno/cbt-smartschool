@@ -31,6 +31,7 @@ include ('conn/fungsi.php');
                     array_push($error,"$file_name, ");
                 }
             }
+            
             echo "
             <div class='col-lg-3 col-md-4 alert alert-success alert-dismissible fade-in'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
