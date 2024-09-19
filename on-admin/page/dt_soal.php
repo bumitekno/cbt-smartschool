@@ -9,7 +9,7 @@
 						<th width="5%">tampil soal</th> -->
 						<th width="8%">Kelas</th>
 						<th width="8%">Jurusan</th>
-						<th width="8%">Agama</th>
+						<th width="8%">Identitas Mapel</th>
 						<th width="8%">Bobot Nilai</th>
 						<!-- <th width="5%">bobot nilai uraian</th> -->
 						<th width="15%">Editor Soal</th>
