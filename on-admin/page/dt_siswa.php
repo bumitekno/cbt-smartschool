@@ -1,9 +1,9 @@
 <thead>
     <tr>
         <th width="4%">No</th>
-        <th width="15%">No Peserta / NIS</th>
-        <th width="25%">Nama</th>
-        <th width="4%">Agama</th>
+        <th width="12%">No Peserta/NIS</th>
+        <th width="20%">Nama</th>
+        <th width="8%">Agama</th>
         <th width="4%">Kelas</th>
         <th width="4%">Jurusan</th>
         <th width="10%">Password</th>
