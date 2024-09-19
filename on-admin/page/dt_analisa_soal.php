@@ -23,6 +23,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 			$rows = mysqli_num_rows($result);
 			$jumlah = $rows;
 			$nilaipg = $sr['nilai'];
+			$nilaiurai = 100 - $nilaipg;
 			$nil = 0;
 			$statussoal = $sr['opsi'];
 			?>
@@ -404,10 +405,9 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 						}
 
-
 						// echo $scorepg_total.'-'.$score_bs_total.'-'.$score_uraian_total.'-'.$score_jd_total.'-'.$score_pgk_total;
 						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
-
+						var_dump($total_score);
 					}
 
 					$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
@@ -424,7 +424,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 						$score_uraian = $ur['nilai'];
 
 						$score_uraian_total += $score_uraian;
-						$total_score = $score_uraian_total / $score_max * 100;
+						//$total_score = $score_uraian_total / $score_max * 100;
 
 						$benar = '';
 						$type = "Soal Uraian ";
@@ -432,31 +432,43 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 						echo "
 						<tr>
-						$uraian_singkat[nomersoal]. <b>$uraian_singkat[soal] ($type) </b>
+							$uraian_singkat[nomersoal]. <b>$uraian_singkat[soal] ($type) </b>
 						 <br>
 						  &emsp;$gambarsoal<br>$audio
-					<br><br>
-					<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $benar </i> Skor $score_uraian</div>
-					<br><hr class='style1'></tr>";
+							<br><br>
+							<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $benar </i> Skor $score_uraian</div>
+							<br><hr class='style1'>
+						</tr>";
 
 					}
 
+					
+
+					
+					$score_uraian_final = 0;
 					if ($rows_uraian > 0) {
-						echo " Keterangan <br>";
+						$score_uraian_final = ($score_uraian_total/$score_max)*($nilaiurai);
+						echo " Keterangan Uraian<br>";
 						echo " =============================================== <br>";
 						echo " Jumlah Soal Essay :  " . $rows_uraian . '<br>';
 						echo " Skala Skor 1-5 <br>";
-						echo " Total Skor yang diperoleh : " . $score_uraian_total . '<br>';
+						echo " Skor yang diperoleh : " . $score_uraian_total . '<br>';
 						echo " Total Skor Maksimal :  " . $score_max . " ( Jumlah Soal x skor maksimal )  <br>";
-						echo " nilai =  Total Skor yang diperoleh / Total Skor Maksimal x 100  ";
+						echo " Nilai Uraian = Skor yang diperoleh / Total Skor Maksimal x Bobot Uraian  ";
+						echo " <br>               <span style='padding-left:90px'>" .$score_uraian_total." / " . $score_max . " x ".$nilaiurai."%<span>  ";
+						echo " <br>               <span style='padding-left:90px'>" .number_format($score_uraian_final,2)."";
 					}
+
+					$score_akhir = $total_score + $score_uraian_final;
+
+					echo "<br> Nilai Lain = " . number_format($total_score) . '<br>';
 
 					?>
 				</tbody>
 
 				<div class="btn btn-default" style="float: right;display: block;position: absolute;bottom: 100%;left: 78%;">NILAI :
 					<h3>
-						<?php echo number_format($total_score, 2); ?>
+						<?php echo number_format($score_akhir, 2); ?>
 					</h3>
 				</div>
 				<center>
