@@ -6,7 +6,7 @@ if ($qq == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
-	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal' ");
+	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE kodesoal='$kodesoal' ");
 	if ($query == false) {
 		die("Terjadi Kesalahan : " . mysqli_error($konek));
 	}
@@ -186,6 +186,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 
 						while ($jawaban = mysqli_fetch_array($queryhistory)) {
+							// var_dump($jawaban);
+							// die('ja');
 
 							$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
 							$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
@@ -263,7 +265,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 									$pilihan
 										<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i>  Skor : $scorepg </div>
 										<br>
-										<hr class='style1'>
 									</tr>";
 
 							}
@@ -295,7 +296,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 								&emsp;$gambarsoal<br>$audio
 								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: $score_bs </div>
 								<br>
-								<hr class='style1'>
 							    </tr>";
 
 							}
@@ -355,7 +355,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								echo "<tr>
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
 								&emsp;$gambarsoal<br>$audio
-								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br><hr class='style1'>
+								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br>
 								 </tr>";
 
 							}
@@ -396,7 +396,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 										<div class='jawaban'>
 										$list_array
 										</div>
-                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] $tanda</i>  Skor : $score_jd </div><br><hr class='style1'>
+                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] $tanda</i>  Skor : $score_jd </div><br>
                                     </tr>";
 
 							}
@@ -433,7 +433,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 						 <br>
 						  &emsp;$gambarsoal<br>$audio
 							<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $benar </i> Skor : $score_uraian</div>
-							<br><hr class='style1'>
+							<br>
 						</tr>";
 
 					}
@@ -473,6 +473,10 @@ while ($xx = mysqli_fetch_array($qq)) {
 							<?php echo $xx['n_sekolah']; ?> ---------
 						</b></h5>
 				</center>
+
+				<div style="padding: 100px 0;"></div>
+				<div class="page-break"></div>
+
 			</div>
 
 		<?php }

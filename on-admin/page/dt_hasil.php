@@ -66,6 +66,10 @@ if (!$show == '') {
 		<i class="fa fa-bar-chart" aria-hidden="true"></i> Statistik nilai
 		<?php echo $cari; ?>
 	</button>
+	<a href="analisa-soal-all.php?kodesoal=<?php echo $cari; ?>" class="btn btn-info">
+		<i class="fas fa-vote-yea"></i>
+		Lihat Hasil Semua Siswa
+	</a>
 	<div class="collapse" id="collapseExample">
 		<div class="card card-body">
 			<div class="box-header">
@@ -81,6 +85,7 @@ if (!$show == '') {
 </div>
 <div class="col-xs-12" style="overflow-x:auto;">
 	<div id="ndelik<?php echo $cul ?>">
+		
 		<table id="data" class="table table-bordered table-striped">
 			<thead style="font-size:10px;">
 				<tr>

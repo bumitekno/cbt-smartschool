@@ -67,6 +67,12 @@ if ($admin_su == 1) {
       width: auto;
     }
 
+    @media print {
+      .page-break {
+        page-break-before: always;
+      }
+    }
+
     div > .jawaban {
       padding: 0 20px;
     }
@@ -120,10 +126,10 @@ include "tema/tema.php";
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Analisa Soal</h1>
+      <h1>Analisa Semua Soal</h1>
       <ol class="breadcrumb">
         <li><a href="#"> Home</a></li>
-        <li><i class="fa fa-search"></i> Analisa Soal</li>
+        <li><i class="fa fa-search"></i> Analisa Semua Soal</li>
       </ol>
     </section>
 
@@ -142,7 +148,7 @@ include "tema/tema.php";
               <br><br>
               <div style="overflow-x:auto;" id="printableArea">
                 <?php
-                include "page/dt_analisa_soal.php";
+                include "page/dt_analisa_soal-all.php";
                 ?>
               </div>
     </section><!-- /.content -->

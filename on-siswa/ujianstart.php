@@ -337,6 +337,14 @@ while ($xx = mysqli_fetch_array($qq)) {
 
     <div id="main"></div>
     <script>
+
+      // Auto logout
+      // document.addEventListener('visibilitychange', function() {
+      //   if (document.hidden) {
+      //     $('#form1').submit();
+      //   }
+      // }, false);
+
       $(document).ready(() => {
         const button = $("#hm");
 
