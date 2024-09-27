@@ -18,7 +18,12 @@ while ($xx = mysqli_fetch_array($qq)) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
 		}
 		$i = 1;
+
+		
+		
+
 		while ($sr = mysqli_fetch_array($querydosen)) {
+
 			$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3','4','5') ORDER BY nomersoal ");
 			$rows = mysqli_num_rows($result);
 			$jumlah = $rows;
@@ -26,9 +31,13 @@ while ($xx = mysqli_fetch_array($qq)) {
 			$nilaiurai = 100 - $nilaipg;
 			$nil = 0;
 			$statussoal = $sr['opsi'];
+
 			?>
 
-			<div class="col-xs-12">
+			
+
+			
+			<div class="col-xs-12 kop">
 				<center><img src="../aset/foto/<?php echo $xx['logo']; ?>" width=100 alt="...">
 					<br>
 					<h3><b><u>
@@ -42,7 +51,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				</center>
 				<br><br>
 			</div>
-			<div id="tuti" class="col-xs-12">
+			<div id="tuti" class="col-xs-12 data-diri">
 				<div class="col-xs-8">
 					<table class="cetakan full">
 						<tr>
@@ -83,7 +92,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				<div class="col-xs-4">
 				</div>
 			</div>
-			<div class="col-xs-12">
+			<div class="col-xs-12 jawaban">
 				<hr class="style2">
 				<tbody>
 					<?php
@@ -111,7 +120,14 @@ while ($xx = mysqli_fetch_array($qq)) {
 						}
 					}
 
+					$benarp = 0;
+					$benarBS = 0;
+					$benarPGK = 0;
+					$salah = 0;
+
 					while ($soal = mysqli_fetch_array($result)) {
+
+
 						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]'  AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
 
 						if (!$soal['soal'] == '') {
@@ -186,8 +202,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 
 						while ($jawaban = mysqli_fetch_array($queryhistory)) {
-							// var_dump($jawaban);
-							// die('ja');
 
 							$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
 							$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
@@ -197,6 +211,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$type = "Pilihan Ganda";
 
 								$jwbsis = $jawaban['jawaban'];
+								
 
 								if ($kunci == strtolower($jawaban_siswa)) {
 									$benarp++;
@@ -255,7 +270,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 		
 								$scorepg = $nilaipg / $jumlah * $benarp;
 								$scorepg_total = $scorepg;
-								$scorepg_total = $scorepg;
+								var_dump($benarp);
 
 								echo "
 									<tr>
@@ -407,6 +422,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 					}
 
+					// Urain
 					$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
 					$rows_uraian = mysqli_num_rows($result_uraian);
 
@@ -478,6 +494,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				<div class="page-break"></div>
 
 			</div>
+			
 
 		<?php }
 	}
