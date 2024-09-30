@@ -338,12 +338,26 @@ while ($xx = mysqli_fetch_array($qq)) {
     <div id="main"></div>
     <script>
 
-      // Auto logout
-      // document.addEventListener('visibilitychange', function() {
-      //   if (document.hidden) {
-      //     $('#form1').submit();
-      //   }
-      // }, false);
+      <?php 
+            $query = mysqli_query($konek, "SELECT is_autologout FROM profil WHERE id='1'");
+            if($query == false){
+            die ("Terjadi Kesalahan : ". mysqli_error($konek));
+            }
+            while($datas = mysqli_fetch_array($query)){
+                  $is_autologout = $datas['is_autologout'];
+                  if($is_autologout == '1'){
+         ?>
+
+         // Auto logout
+         document.addEventListener('visibilitychange', function() {
+           if (document.hidden) {
+             $('#form1').submit();
+           }
+         }, false);
+         
+      <?php }}?>
+
+ 
 
       $(document).ready(() => {
         const button = $("#hm");

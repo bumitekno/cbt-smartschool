@@ -164,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `profil` (
   `logo_kota` varchar(30) NOT NULL,
   `web` varchar(100) NOT NULL,
   `bg_login` varchar(30) NOT NULL,
+  `is_autologout` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

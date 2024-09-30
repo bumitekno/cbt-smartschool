@@ -200,78 +200,78 @@ box-shadow: -15px 0 15px -15px inset;
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
-                        <?php
-	                    $querydosen = mysqli_query ($konek, "SELECT * FROM theme where id='1'");
-						if($querydosen == false){
-							die ("Terjadi Kesalahan : ". mysqli_error($konek));
-						}
-						while ($ar = mysqli_fetch_array ($querydosen)){
-                        ?>
-                        <br>
-                        <label><i class="fa fa-user-circle-o"></i> Tema Dashboard Admin </label>
-                        <form action="page/tema_change.php" enctype="multipart/form-data" method="post">
-        							 <input  name="id" type="hidden" class="form-control" value="1" />
-        							 <div class="col-sm-6 col-xs-8" id="Select">
-                                         <select class="form-control"  name="warna" onchange="this.form.submit()"> 
-                                             <option id="<?php echo $ar['warna'];?>" value="<?php echo $ar['warna'];?>"><?php echo $ar['warna'];?></option>
-                                                 <option id="yellow" value="yellow">yellow</option>
-                                                 <option id="red" value="red">red</option>  
-                                                 <option id="blue" value="blue">blue</option>  
-                                                 <option id="purple" value="purple">purple</option>
-                                                 <option id="green" value="green">green</option>
-                                             </select>
-                                    </div>
-                                    <div class="col-sm-3 col-xs-4" id="Select">
-        							</div>
-        				</form>
-				</div><br><br><?php }?>
-                <div class="box">
-                        <?php
-	                    $querydosen = mysqli_query ($konek, "SELECT * FROM theme where id='2'");
-						if($querydosen == false){
-							die ("Terjadi Kesalahan : ". mysqli_error($konek));
-						}
-						while ($ar = mysqli_fetch_array ($querydosen)){
-                        ?>
-                        <label><i class="fa fa-users"></i> Tema Dashboard Siswa</label>
-                        <form action="page/tema_change.php" enctype="multipart/form-data" method="post">
-        							 <input  name="id" type="hidden" class="form-control" value="2" />
-        							 <div class="col-sm-6 col-xs-8" id="Select">
-                                         <select class="form-control"  name="warna" onchange="this.form.submit()"> 
-                                             <option id="<?php echo $ar['warna'];?>" value="<?php echo $ar['warna'];?>"><?php echo $ar['warna'];?></option>
-                                                 <option id="yellow" value="yellow">yellow</option>
-                                                 <option id="red" value="red">red</option>  
-                                                 <option id="blue" value="blue">blue</option>  
-                                                 <option id="purple" value="purple">purple</option>
-                                                 <option id="green" value="green">green</option>
-                                             </select>
-                                        </div>
-                                        <div class="col-sm-3 col-xs-4" id="Select">
-        								</div>
-        				</form>
-				</div><br><br><?php }?>
-                <div class="box">
-                        <?php
-	                    $querydosen = mysqli_query ($konek, "SELECT * FROM theme where id='3'");
-						if($querydosen == false){
-							die ("Terjadi Kesalahan : ". mysqli_error($konek));
-						}
-						while ($ar = mysqli_fetch_array ($querydosen)){
-                        ?>
-                        <label><i class="fa fa-area-chart"></i> Tampilkan Hasil Ujian di Dashboard Siswa</label>
-                        <form action="page/tema_change.php" enctype="multipart/form-data" method="post">
-        							 <input  name="id" type="hidden" class="form-control" value="3" />
-        							 <div class="col-sm-6 col-xs-8" id="Select">
-                                         <select class="form-control"  name="warna" onchange="this.form.submit()"> 
-                                             <option id="<?php echo $ar['warna'];?>" value="<?php echo $ar['warna'];?>"><?php echo $ar['warna'];?></option>
-                                                 <option value="show">Show / Tampilkan</option>
-                                                 <option value="hidden">Hidden / Sembunyikan</option>  
-                                             </select> 
-                                        </div>
-                                        <div class="col-sm-3 col-xs-4" id="Select">
-        								</div>
-        				</form>
-				</div><br><br><?php }?>
+							<?php
+							$querydosen = mysqli_query ($konek, "SELECT * FROM theme where id='1'");
+							if($querydosen == false){
+								die ("Terjadi Kesalahan : ". mysqli_error($konek));
+							}
+							while ($ar = mysqli_fetch_array ($querydosen)){
+							?>
+							<br>
+							<label><i class="fa fa-user-circle-o"></i> Tema Dashboard Admin </label>
+							<form action="page/tema_change.php" enctype="multipart/form-data" method="post">
+										<input  name="id" type="hidden" class="form-control" value="1" />
+										<div class="col-sm-6 col-xs-8" id="Select">
+											<select class="form-control"  name="warna" onchange="this.form.submit()"> 
+												<option id="<?php echo $ar['warna'];?>" value="<?php echo $ar['warna'];?>"><?php echo $ar['warna'];?></option>
+													<option id="yellow" value="yellow">yellow</option>
+													<option id="red" value="red">red</option>  
+													<option id="blue" value="blue">blue</option>  
+													<option id="purple" value="purple">purple</option>
+													<option id="green" value="green">green</option>
+												</select>
+										</div>
+										<div class="col-sm-3 col-xs-4" id="Select">
+										</div>
+							</form>
+						</div><br><br><?php }?>
+						<div class="box">
+								<?php
+								$querydosen = mysqli_query ($konek, "SELECT * FROM theme where id='2'");
+								if($querydosen == false){
+									die ("Terjadi Kesalahan : ". mysqli_error($konek));
+								}
+								while ($ar = mysqli_fetch_array ($querydosen)){
+								?>
+								<label><i class="fa fa-users"></i> Tema Dashboard Siswa</label>
+								<form action="page/tema_change.php" enctype="multipart/form-data" method="post">
+											<input  name="id" type="hidden" class="form-control" value="2" />
+											<div class="col-sm-6 col-xs-8" id="Select">
+												<select class="form-control"  name="warna" onchange="this.form.submit()"> 
+													<option id="<?php echo $ar['warna'];?>" value="<?php echo $ar['warna'];?>"><?php echo $ar['warna'];?></option>
+														<option id="yellow" value="yellow">yellow</option>
+														<option id="red" value="red">red</option>  
+														<option id="blue" value="blue">blue</option>  
+														<option id="purple" value="purple">purple</option>
+														<option id="green" value="green">green</option>
+													</select>
+												</div>
+												<div class="col-sm-3 col-xs-4" id="Select">
+												</div>
+								</form>
+						</div><br><br><?php }?>
+						<div class="box">
+								<?php
+								$querydosen = mysqli_query ($konek, "SELECT * FROM theme where id='3'");
+								if($querydosen == false){
+									die ("Terjadi Kesalahan : ". mysqli_error($konek));
+								}
+								while ($ar = mysqli_fetch_array ($querydosen)){
+								?>
+								<label><i class="fa fa-area-chart"></i> Tampilkan Hasil Ujian di Dashboard Siswa</label>
+								<form action="page/tema_change.php" enctype="multipart/form-data" method="post">
+											<input  name="id" type="hidden" class="form-control" value="3" />
+											<div class="col-sm-6 col-xs-8" id="Select">
+												<select class="form-control"  name="warna" onchange="this.form.submit()"> 
+													<option id="<?php echo $ar['warna'];?>" value="<?php echo $ar['warna'];?>"><?php echo $ar['warna'];?></option>
+														<option value="show">Show / Tampilkan</option>
+														<option value="hidden">Hidden / Sembunyikan</option>  
+													</select> 
+												</div>
+												<div class="col-sm-3 col-xs-4" id="Select">
+												</div>
+								</form>
+						</div><br><br><?php }?>
                     </div><!-- /.col -->
                 </div>
               </div>
@@ -388,7 +388,7 @@ box-shadow: -15px 0 15px -15px inset;
 									</div>
 							</div>
 					</div>
-          <div class="col-md-6">
+          			<div class="col-md-6">
         					<div class="form-group">
 								<label>Nama Server*(Jangan diubah)</label>
 									<div class="input-group">
@@ -396,6 +396,23 @@ box-shadow: -15px 0 15px -15px inset;
 											<i class="fa fa-server"></i>
 										</div>
 										<input name="kode_sekolah" type="text" class="form-control" value="<?php echo $r['kode_sekolah'];?>" required />
+									</div>
+							</div>
+					</div>
+					<div class="col-md-6">
+        					<div class="form-group">
+								<label>Autologout</label>
+									<div class="input-group">
+										<div class="input-group-addon">
+											<i class="fa fa-server"></i>
+										</div>
+										<select class="form-control" name="is_autologout"> 
+											<option id="<?php echo $r['is_autologout'];?>" value="<?php echo $r['is_autologout'];?>">
+												<?php echo $r['is_autologout'] == '1' ? 'Iya' : 'Tidak';?>
+											</option>
+											<option value="0">Tidak</option>
+											<option value="1">Iya</option>  
+										</select> 
 									</div>
 							</div>
 					</div>
