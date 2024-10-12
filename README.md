@@ -33,7 +33,7 @@
 - memperbaiki penilaian ujian yang memiliki tipe soal uraian
 
 ## Installation
-1. Buat database baru lalu import database 'cbt_2type_soal.sql'.
+1. Buat database baru lalu import database 'cbt_5type_soal.sql'.
 2. Setting database (nama db, username db, dan password db) pada folder koneksi dan file config.php
 
 ## Thank to All Contribute this Code
