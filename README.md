@@ -1,5 +1,5 @@
 <p align="center>
-  <img src="[https://images.app.goo.gl/ZGLSmT8rV6AqvNdR8](https://mysch.id/cms_web/upload/picture/aplikasi-ujian-online-berbasis-web.jpg)" width="400" alt="Laravel Logo">
+  <img src="https://mysch.id/cms_web/upload/picture/aplikasi-ujian-online-berbasis-web.jpg" width="400" alt="Laravel Logo">
   </p>
   
 ## CBT 2 TYPE SOAL (PENYEMPURNAAN)
