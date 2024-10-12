@@ -3,7 +3,7 @@
         width="400" alt="Laravel Logo">
 </p>
 
-## CBT 5 TYPE SOAL
+## CBT 5 TYPE SOAL PENYEMPURNAAN
 ## Septermber 2024
 ### Tipe Soal
 - 1 = Pilihan Ganda
