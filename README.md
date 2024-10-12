@@ -1,4 +1,4 @@
-<p align="center>
+<p align="center">
   <img src="https://mysch.id/cms_web/upload/picture/aplikasi-ujian-online-berbasis-web.jpg" width="400" alt="Laravel Logo">
   </p>
   
@@ -23,3 +23,4 @@
 - *Novi* (2022)
 - *Imam* (2024)
 - *Feri* (2021)
+
