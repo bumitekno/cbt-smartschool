@@ -1,7 +1,9 @@
 <p align="center>
   <img src="https://images.app.goo.gl/ZGLSmT8rV6AqvNdR8" width="400" alt="Laravel Logo">
   </p>
+  
 ## CBT 2 TYPE SOAL (PENYEMPURNAAN)
+
 ### Keterangan Siswa / User
 - Menambahkan status siswa (aktif dan nonaktif), jika aktif dapat login ke CBT, jika nonaktif tidak dapat login ke CBT
 - Menambahkan kolom agama dan jurusan di bagian siswa, yang nantinya digunakan untuk validasi soal atau ujian
