@@ -14,12 +14,12 @@ $ur = mysqli_fetch_array($query2);
 			class="fa fa-plus"></i> Soal PG</button>
 	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd2" data-toggle="modal"><i
 			class="fa fa-plus"></i> Soal Uraian</button>
-	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd3" data-toggle="modal"><i
+	<!-- <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd3" data-toggle="modal"><i
 			class="fa fa-plus"></i> Soal Benar Salah</button>
 	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd4" data-toggle="modal"><i
 			class="fa fa-plus"></i> Soal PG Kompleks</button>
 	<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd5" data-toggle="modal"><i
-			class="fa fa-plus"></i> Soal Menjodohkan</button>
+			class="fa fa-plus"></i> Soal Menjodohkan</button> -->
 	<a href="soal-import.php"><button id="clot2" type="button" class="btn btn-warning"><i class="fa fa-upload"></i>
 			Import Butir Soal</button></a>
 	<a class='open_modal1' style='font-decoration:none;color:#222;' hidden><button id="clot" type='button'
