@@ -52,14 +52,14 @@
                             <div class='col-sm-6' style="border:0;">
                                 <div style="border:0;" class='panel panel-primary'>
                                     <div class='panel-heading'>
-                                        <b>Cetak kartu per kelas</b>
+                                        <b>Cetak kartu per tingkat</b>
                                         <br>
                                         <div class='row'>
                                             <div style="border:0;" class='col-xs-6 text-left'>
                                                 <div>
                                                     <form action="#" method="post">
                                                         <select class="form-control" id="mySelect" name="kelas" onchange="this.form.submit()">
-                                                            <option value="<?php echo $ar[kelas]; ?>"><i class="fa fa-angle-down"></i>PILIH KELAS - </option>
+                                                            <option value="<?php echo $ar[kelas]; ?>"><i class="fa fa-angle-down"></i>PILIH TINGKAT - </option>
 
                                                             <?php
                                                             $kelas = mysqli_query($konek, "SELECT DISTINCT kelas FROM siswa");

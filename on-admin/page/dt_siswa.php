@@ -1,15 +1,15 @@
 <thead>
     <tr>
         <th width="4%">No</th>
-        <th width="12%">No Peserta/NIS</th>
+        <th width="12%">NIM</th>
         <th width="20%">Nama</th>
         <th width="8%">Agama</th>
-        <th width="4%">Kelas</th>
-        <th width="4%">Jurusan</th>
+        <th width="4%">Tingkat</th>
+        <th width="15%">Program Studi</th>
         <th width="10%">Password</th>
         <th width="6%">Sesi</th>
         <th width="10%">Ruang</th>
-        <th width="10%">Status Siswa</th>
+        <th width="10%">Status Mahasiswa</th>
         <th width="30%">Action</th>
     </tr>
 </thead>

@@ -31,7 +31,7 @@ include('conn/fungsi.php');
             <tr>
                 <th style='width: 10%'>No</th>
                 <th style='width: 20%'>Nama</th>
-                <th style='width: 20%'>Kelas</th>
+                <th style='width: 20%'>Tingkat</th>
                 <th style='width: 20%'>Kode Soal</th>
                 <th style='width: 20%'>Progres</th>
                 <th style='width: 10%'>Action</th>

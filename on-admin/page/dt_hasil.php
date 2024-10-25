@@ -91,7 +91,7 @@ if (!$show == '') {
 				<tr>
 					<th id="garis" width="3%">No</th>
 					<th id="garis" width="20%">Nama</th>
-					<th id="garis" width="3%">Kelas</th>
+					<th id="garis" width="3%">Tingkat</th>
 					<th id="garis" width="3%">Mapel</th>
 					<th id="garis" width="3%">Jmlh Soal</th>
 					<th id="garis" width="3%">Benar</th>

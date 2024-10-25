@@ -1,7 +1,7 @@
                             <form action="#" method="post">
                             	<div class="col-sm-2" id="Select">
                             		<select class="form-control" id="mySelect" name="kelas" required>
-                            			<option value="<?php echo $ar[kelas]; ?>"><i class="fa fa-angle-down"></i><?php echo $ar[kelas]; ?>- PILIH KELAS - </option>
+                            			<option value="<?php echo $ar[kelas]; ?>"><i class="fa fa-angle-down"></i><?php echo $ar[kelas]; ?>- PILIH TINGKAT - </option>
                             			<?php
 										$kelas = mysqli_query($konek, "SELECT DISTINCT kelas FROM siswa");
 										if ($kelas == false) {

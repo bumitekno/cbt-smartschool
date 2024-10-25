@@ -4,7 +4,7 @@
 			<th width="5%">No</th>
 			<th width="25%">No Peserta</th>
 			<th width="30%">Nama</th>
-			<th width="10%">Kelas</th>
+			<th width="10%">Tingkat</th>
 			<th width="10%">action</th>
 		</tr>
 	</thead>

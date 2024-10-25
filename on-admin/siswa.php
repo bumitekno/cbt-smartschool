@@ -156,12 +156,12 @@ include "tema/tema.php";
 					<div class="modal-body">
 						<form action="page/siswa_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
 							<div class="form-group col-sm-6">
-								<label>No. Peserta / NIS</label>
+								<label>NIM</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-info"></i>
 										</div>
-										<input name="nis" type="text" class="form-control" placeholder="No Peserta" required />
+										<input name="nis" type="text" class="form-control" placeholder="NIM" required />
 									</div>
 							</div>		
 							<div class="form-group col-sm-6">
