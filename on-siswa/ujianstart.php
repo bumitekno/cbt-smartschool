@@ -154,7 +154,7 @@ while ($xx = mysqli_fetch_array($qq)) {
         minutes %= 60;
         hours %= 60;
 
-        document.getElementById("divwaktu").innerHTML = hours + " jam : " + minutes + " menit"; // watch for spelling
+        document.getElementById("divwaktu").innerHTML = hours + " jam : " + minutes + " menit : " + seconds + " detik"; // watch for spelling
       }
     </script>
   </head>
