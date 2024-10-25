@@ -270,7 +270,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 		
 								$scorepg = $nilaipg / $jumlah * $benarp;
 								$scorepg_total = $scorepg;
-								var_dump($benarp);
+								// var_dump($benarp);
 
 								echo "
 									<tr>
