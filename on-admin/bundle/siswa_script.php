@@ -51,7 +51,7 @@
             "pageLength": 20,
             "lengthMenu": [[10, 20, 30, 40, 50, 60, 70, 80, 90, 100, -1], [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, "All Data"]],
         buttons: [
-            { extend:'colvis', className: 'BTN3', text: '<span class="glyphicon glyphicon-level-up"></span> Detail Siswa' }, { extend: 'excel', className: 'BTN3',
+            { extend:'colvis', className: 'BTN3', text: '<span class="glyphicon glyphicon-level-up"></span> Detail Mahasiswa' }, { extend: 'excel', className: 'BTN3',
             text: '<span class="glyphicon glyphicon-cloud-download"></span> Download Excel'}, { extend: 'print', className: 'BTN3',
             text: '<span class="glyphicon glyphicon-print"></span> Cetak'}
         ],

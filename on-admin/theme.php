@@ -124,7 +124,7 @@ box-shadow: -15px 0 15px -15px inset;
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN MENU</li>
               <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-				<li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
+				<li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Mahasiswa</span></a></li>
 
 				<li class="treeview">
                   <a href="#">

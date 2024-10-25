@@ -8,7 +8,7 @@ include ('conn/fungsi.php');
 <html>
  <head>
     <meta charset="utf-8">
-    <title>DATA SISWA</title>
+    <title>DATA MAHASISWA</title>
 	<!-- Library CSS -->
 	<link href="../js/sweetalert.css" rel="stylesheet" type="text/css"/>
 	<?php
@@ -82,7 +82,7 @@ include "tema/tema.php";
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN MENU</li>
                 <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-				<li class="active"><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>	
+				<li class="active"><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Mahasiswa</span></a></li>	
 				
 				<li class="treeview">
                   <a href="#">
@@ -114,10 +114,10 @@ include "tema/tema.php";
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>Data Siswa</h1>
+          <h1>Data Mahasiswa</h1>
           <ol class="breadcrumb">
             <li><a href="#"> Home</a></li>
-            <li><i class="fa fa-graduation-cap"></i> Index siswa</li>
+            <li><i class="fa fa-graduation-cap"></i> Index Mahasiswa</li>
           </ol>
         </section>
 
@@ -130,9 +130,9 @@ include "tema/tema.php";
 				</div><!-- /.box-header -->
                 <div class="box-body">
 <div class="btn-group" role="group" aria-label="...">
-  <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-user-plus"></i> + Siswa</button>
+  <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-user-plus"></i> + Mahasiswa</button>
   <button id="clot" class="btn btn-default hidden" float:right onclick="printDiv('printableArea')"><i class="fa fa-print"></i> Cetak </button>
-  <a href="siswa-import.php"><button id="clot" type="button" class="btn btn-warning"><i class="fa fa-upload"></i> Import Siswa</button></a>
+  <a href="siswa-import.php"><button id="clot" type="button" class="btn btn-warning"><i class="fa fa-upload"></i> Import Mahasiswa</button></a>
 </div>
 
 				<div style="overflow-x:auto;" id="printableArea">
@@ -151,7 +151,7 @@ include "tema/tema.php";
 				<div class="modal-content">
 					<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Tambah Siswa</h4>
+					<h4 class="modal-title">Tambah Mahasiswa</h4>
 					</div>
 					<div class="modal-body">
 						<form action="page/siswa_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
@@ -174,17 +174,17 @@ include "tema/tema.php";
 									</div>		
 							</div>
 							<div class="form-group col-sm-4">
-								<label>kelas</label>
+								<label>Tingkat</label>
 									<div class="input-group">
 
-										<input name="kelas" type="number" class="form-control" placeholder="Kelas" required />
+										<input name="kelas" type="number" class="form-control" placeholder="Tingkat" required />
 									</div>
 							</div>
 							<div class="form-group col-sm-4">
-								<label>Jurusan</label>
+								<label>Program Studi</label>
 									<div class="input-group">
 
-										<input name="jurusan" type="text" class="form-control" placeholder="jurusan" required />
+										<input name="jurusan" type="text" class="form-control" placeholder="Program Studi" required />
 									</div>
 							</div>
               <div class="form-group col-sm-4">
@@ -285,7 +285,7 @@ include "tema/tema.php";
 				<div class="modal-content" style="margin-top:100px;">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" style="text-align:center;">Yakin menghapus siswa ini ?</h4>
+						<h4 class="modal-title" style="text-align:center;">Yakin menghapus mahasiswa ini ?</h4>
 					</div>    
 					<div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
 						<a href="#" class="btn btn-danger" id="delete_link">Hapus</a>
