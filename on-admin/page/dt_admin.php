@@ -4,7 +4,7 @@
 						<th width="10%">Username </th>
 						<th width="20%">Nama</th>
 						<th width="10%">Jabatan</th>
-						<th width="5%">phone</th>
+						<!-- <th width="5%">phone</th> -->
 						<th width="10%">Password</th>
 						<th width="15%">Action</th>
 					</tr>
@@ -18,7 +18,7 @@
 						$i=1;
 						while ($ar = mysqli_fetch_array ($querydosen)){
 						$adminsu =$ar['admin_su'];
-						    $adminsu = str_replace("0", "Guru", $adminsu);
+						    $adminsu = str_replace("0", "Dosen", $adminsu);
                             $adminsu = str_replace("2", "Pengawas", $adminsu);	
 							echo "
 								<tr>
@@ -26,7 +26,6 @@
 									<td>$ar[nip]</td>
 									<td>$ar[nama]</td>
 									<td>$adminsu</td>
-									<td>$ar[phone]</td>
 									<td>$ar[pass]</td>
 									<td align=center>
 									<a id='alert$i' href='page/resetpass.php?id=$ar[id]'><button type='button' class='btn btn-success btn-flat' onclick='myFunction2()'><i class='fa fa-refresh'></i> Reset Password</button></a>

@@ -228,7 +228,7 @@ include "tema/tema.php";
 								<form action="" method="post">
 									<select class="form-control" name="jabatan">
 										<option value="">Jabatan</option>
-										<option value="0">Guru</option>
+										<option value="0">Dosen</option>
 										<option value="2">Pengawas</option>
 									</select>
 							</div>
