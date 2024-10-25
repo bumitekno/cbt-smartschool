@@ -143,7 +143,7 @@ include "tema/tema.php";
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN MENU</li>
         <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-        <li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
+        <li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Mahasiswa</span></a></li>
 
         <li class="treeview active">
           <a href="#">
@@ -237,24 +237,18 @@ include "tema/tema.php";
           </div>
           <div class="modal-body">
             <form action="page/soal_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
-            <h4>
-                <font color="#FF0000">Keterangan: *</font>
-              </h4>
-            <ul>
-                <li>JANGAN ada SPASI, gunakan tanda sambung (- atau _)</li>
-                <li>Hindari Kode Soal yang Terlalu Panjang (max 30 karakter) </li>
-                <li>Contoh: BING-11IPA-UAS1</li>
-              </ul><br>
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Jenis Ujian</label>
-                <br>
+                <!-- <br> -->
                 <form action="" method="post">
                   <select class="form-control" name="jenissoal" required>
                     <option value="">Pilih Jenis Ujian</option>
+                    <option value="UjianSemester">Ujian Semester</option>
+                    <option value="UjianTengahSemester">Ujian Tengah Semester</option>
                     <option value="PAS">PAS</option>
                     <option value="UASBN">UASBN</option>
-                    <option value="UKK">UKK</option>
-                    <option value="USEK">USEK</option>
+                    <!-- <option value="UKK">UKK</option>
+                    <option value="USEK">USEK</option> -->
                     <option value="PTS">PTS</option>
                     <option value="UH">UH</option>
                     <option value="TRYOUT">TRYOUT</option>
@@ -262,7 +256,7 @@ include "tema/tema.php";
                   </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Mapel</label>
                 <div class="input-group">
                   <div class="input-group-addon">
@@ -271,12 +265,12 @@ include "tema/tema.php";
                   <input name="kodemapel" type="text" class="form-control" placeholder="MAPEL" required />
                 </div>
               </div>
-              <div class="form-group">
-                <label>Kelas</label>
+              <div class="form-group col-sm-6">
+                <label>Tingkat</label>
                 <br>
                 <form action="" method="post">
                   <select class="form-control" name="kelas" required>
-                    <option value="">Pilih kelas</option>
+                    <option value="">Pilih Tingkat</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -294,16 +288,16 @@ include "tema/tema.php";
                     <option value="S3">S3</option>
                   </select>
               </div>
-              <div class="form-group">
-                <label>Jurusan</label>
+              <div class="form-group col-sm-6">
+                <label>Program Studi</label>
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-book"></i>
                   </div>
-                  <input name="jurusan" type="text" class="form-control" placeholder="Jurusan" required />
+                  <input name="jurusan" type="text" class="form-control" placeholder="Program Studi" required />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Identitas Mapel</label>
                 <br>
                 <form action="" method="post">
@@ -318,7 +312,7 @@ include "tema/tema.php";
                     <option value="konghucu">Konghucu</option>
                   </select>
               </div>
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Kode Soal</label>
                 <div class="input-group">
                   <div class="input-group-addon">
@@ -327,7 +321,7 @@ include "tema/tema.php";
                   <input name="kodesoal" type="text" class="form-control" placeholder="kode soal" required />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Opsi jawaban</label>
                 <br>
                 <form action="" method="post">
@@ -337,7 +331,7 @@ include "tema/tema.php";
                     <option value="show">5 Opsi Jawaban</option>
                   </select>
               </div>
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Tampilan Soal</label>
                 <br>
                 <form action="" method="post">
@@ -347,9 +341,9 @@ include "tema/tema.php";
                     <option value="2">Urut</option>
                   </select>
               </div>
-              <div class="form-group">
+              <div class="form-group col-sm-12">
                 <label>Waktu Ujian</label>
-                <div class="input-group col-xs-2">
+                <div class="input-group col-xs-6">
                   <input name="waktu" type="number" class="form-control" required> Menit</input>
                 </div>
               </div>
@@ -361,6 +355,14 @@ include "tema/tema.php";
                   Cancel
                 </button>
               </div>
+              <h4>
+                <font color="#FF0000">Keterangan: *</font>
+              </h4>
+            <ul>
+                <li>JANGAN ada SPASI, gunakan tanda sambung (- atau _)</li>
+                <li>Hindari Kode Soal yang Terlalu Panjang (max 30 karakter) </li>
+                <li>Contoh: BING-11IPA-UAS1</li>
+            </ul>
             </form>
           </div>
         </div>
