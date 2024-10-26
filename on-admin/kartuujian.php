@@ -162,7 +162,7 @@ include "tema/tema.php";
 				<div class="modal-content">
 					<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Kartu Siswa</h4><br>
+					<h4 class="modal-title">Kartu Mahasiswa</h4><br>
 					<button id="clot" class="btn btn-default" float:right onclick="printDiv('printableArea1')"><i class="fa fa-print"></i> Cetak </button> 
                     <br><h6><i>Gunakan kertas Letter (8 1/2 X 11 in)</i></h6>
 					</div>

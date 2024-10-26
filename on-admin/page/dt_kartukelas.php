@@ -20,7 +20,7 @@
                             <div class='col-sm-6' style="border:0;">
                                 <div style="border:0;" class='panel panel-primary'>
                                     <div class='panel-heading'>
-                                        <b>Cetak kartu per siswa</b>
+                                        <b>Cetak kartu tiap mahasiswa</b>
                                         <br>
                                         <div class='row'>
                                             <div style="border:0;" class='col-xs-6 text-left'>
@@ -52,7 +52,7 @@
                             <div class='col-sm-6' style="border:0;">
                                 <div style="border:0;" class='panel panel-primary'>
                                     <div class='panel-heading'>
-                                        <b>Cetak kartu per tingkat</b>
+                                        <b>Cetak kartu tiap tingkat</b>
                                         <br>
                                         <div class='row'>
                                             <div style="border:0;" class='col-xs-6 text-left'>
