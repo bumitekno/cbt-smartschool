@@ -166,7 +166,7 @@ include "tema/tema.php";
                 <div class="box-body">
                 <div class="btn-group" role="group" aria-label="...">
                 <a href="siswa.php"><button id="clot" type="button" class="btn btn-success"><i class="fa fa-chevron-left"></i> Kembali</button></a>
-                    <a href="page/imporexcel-siswa-new.xls"><button id="alert2" type="button" class="btn btn-warning"><i class="fa fa-download" aria-hidden="true"></i> Download Template Xls</button></a>
+                    <a href="page/import-excel-siswa.xls"><button id="alert2" type="button" class="btn btn-warning"><i class="fa fa-download" aria-hidden="true"></i> Download Template Xls</button></a>
 				      <h5><p align="left">Pastikan file yang di upload menggunakan file XLS (Excel 2003)<br>
 				      download template Xls diatas</b></h5>
 					  <br><br>
