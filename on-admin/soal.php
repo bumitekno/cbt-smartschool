@@ -288,13 +288,39 @@ include "tema/tema.php";
                     <option value="S3">S3</option>
                   </select>
               </div>
-              <div class="form-group col-sm-6">
+              <?php
+              include('../koneksi/koneksi.php');
+              $query = "SELECT ALL jurusan FROM siswa";
+              $result = mysqli_query($konek, $query);
+              if (!$konek) {
+                die("Koneksi database gagal.");
+              }
+
+              // Query untuk mengambil semua data jurusan unik dari tabel siswa
+              $query = "SELECT DISTINCT jurusan FROM siswa WHERE jurusan IS NOT NULL AND jurusan != ''";
+              $result = mysqli_query($konek, $query);
+
+              // Debugging: Cek apakah query berhasil dijalankan
+              if (!$result) {
+                  die("Query gagal: " . mysqli_error($konek));
+              }
+              ?>
+              <div class="form-group">
                 <label>Program Studi</label>
                 <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-book"></i>
-                  </div>
-                  <input name="jurusan" type="text" class="form-control" placeholder="Program Studi" required />
+                    <div class="input-group-addon">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <select name="jurusan" class="form-control" required>
+                        <option value="">Pilih Jurusan</option>
+                        <?php
+                        // Looping data jurusan untuk menjadi pilihan dropdown
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $jurusan = htmlspecialchars($row['jurusan']);
+                            echo "<option value='$jurusan'>$jurusan</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
               </div>
               <div class="form-group col-sm-6">
