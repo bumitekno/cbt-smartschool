@@ -31,7 +31,7 @@
 <tr><td id="cilik"><b>Username</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[nis]; ?></b></td></tr>
 <tr><td id="cilik"><b>Password</b></td><td id="cilik"> :</td><td id="cilik"><b>&emsp;<?php echo $ar[pass]; ?></b></td></tr>
 <tr><td></td><td></td><td id="cilik">&nbsp;&nbsp;&nbsp;<?php echo $xx['kota'];?>, <?php echo $xx['tanggal'];?></td></tr>
-<tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;Kepala Sekolah</td></tr>
+<tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;Ketua Stikes</td></tr>
 <tr><td></td><td></td><td id="cilik" height="40" width="115">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='../images/<?php echo $xx['bg_login'];?>' width=70px height=auto/></td></tr>
 <tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;<u><?php echo $xx['kepsek'];?></u></td></tr>
 <tr><td></td><td></td><td id="cilik" width="290">&nbsp;&nbsp;&nbsp;NIP.<?php echo $xx['nip'];?></td></tr>

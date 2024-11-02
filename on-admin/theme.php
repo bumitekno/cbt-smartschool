@@ -190,7 +190,7 @@ box-shadow: -15px 0 15px -15px inset;
 <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-tachometer"></i> Ujian</a></li>
-              <li><a href="#tab_2" data-toggle="tab"><i class="fa fa-bank"></i> Sekolah</a></li>
+              <li><a href="#tab_2" data-toggle="tab"><i class="fa fa-bank"></i> Universitas</a></li>
               <li><a href="#tab_3" data-toggle="tab"><i class="fa fa-image"></i> Logo</a></li>
               <li><a href="#tab_4" data-toggle="tab"><i class="fa fa-user-secret"></i> Admin</a></li>
               <li><a href="#tab_5" data-toggle="tab"><i class="fa fa-database"></i> Database</a></li>
@@ -291,7 +291,7 @@ box-shadow: -15px 0 15px -15px inset;
                         <form action="page/setting_change.php" enctype="multipart/form-data" method="post">
         				  <input  name="id" type="hidden" class="form-control" value="1" />
         					<div class="form-group">
-								<label>Nama Sekolah</label>
+								<label>Nama Universitas</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-bank"></i>
@@ -302,7 +302,7 @@ box-shadow: -15px 0 15px -15px inset;
 					</div>
 					<div class="col-md-6">
         					<div class="form-group">
-								<label>Alamat Sekolah</label>
+								<label>Alamat Universitas</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -313,7 +313,7 @@ box-shadow: -15px 0 15px -15px inset;
 					</div>
           <div class="col-md-6">
         					<div class="form-group">
-								<label>Kepala Sekolah</label>
+								<label>Ketua Stikes</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-user" aria-hidden="true"></i>
@@ -324,7 +324,7 @@ box-shadow: -15px 0 15px -15px inset;
 					</div>
           <div class="col-md-6">
         					<div class="form-group">
-								<label>NIP Kepala Sekolah</label>
+								<label>NIP Ketua Stikes</label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-id-card" aria-hidden="true"></i>
