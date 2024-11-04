@@ -187,7 +187,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 											  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>  
 											  &emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>  
 											  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
-											  &emsp;<p>d. &emsp;$pilihan_d $gambar_d></i></p>
+											  &emsp;<p>d. &emsp;$pilihan_d $gambar_d</i></p>
 											  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 							}
 
