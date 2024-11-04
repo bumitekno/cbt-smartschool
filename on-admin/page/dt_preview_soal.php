@@ -181,6 +181,14 @@ while ($xx = mysqli_fetch_array($qq)) {
 											  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
 											  &emsp;<p>d. &emsp;$pilihan_d $gambar_d   &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p>
 											  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e</p> </div> ";
+							} else if ($ar['kunci'] == "E") {
+								$pilihan = "<br>
+								 <div class='$statussoal'>
+											  &emsp;<p>a. &emsp;$pilihan_a $gambar_a</p>  
+											  &emsp;<p>b. &emsp;$pilihan_b $gambar_b</p>  
+											  &emsp;<p>c. &emsp;$pilihan_c $gambar_c</p> 
+											  &emsp;<p>d. &emsp;$pilihan_d $gambar_d></i></p>
+											  &emsp;<p class='$rr[opsi]'>e. &emsp;$pilihan_e $gambar_e &emsp;<i class='fa fa-check-circle' style='font-size:20px;color:green'></i></p> </div> ";
 							}
 
 							echo "
