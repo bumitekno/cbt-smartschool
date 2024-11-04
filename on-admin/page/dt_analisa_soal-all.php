@@ -260,8 +260,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  <p>a. $pilihan_a $gambar_a</p>
 									  <p>b. $pilihan_b $gambar_b</p>
 									  <p>c. $pilihan_c $gambar_c</p>
-									  <p>d. $pilihan_d $gambar_d <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
+									  <p>d. $pilihan_d $gambar_d</p>
+									  <p class='$statussoal'>e. $pilihan_e $gambar_e <i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
 								}
 
 								// echo 'AAA'.$nilaipg;	echo '<br/>';		
