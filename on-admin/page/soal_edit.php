@@ -34,6 +34,15 @@ while($ar = mysqli_fetch_array($query)){
                                          <option value="show">5 Opsi jawaban</option>  
                                      </select> 
                              </div>
+							 <div class="form-group">
+								<label>Kode Soal</label>
+									<div class="input-group">
+										<input name="kodesoal" type="text" class="form-control" value="<?php echo $ar["kodesoal"]; ?>"/>
+										<div class="input-group-addon">
+											<i class="fa fa-book"></i>
+										</div>
+									</div>
+							</div>
                              <div class="form-group">
 								<label>waktu ujian</label>
 									<div class="input-group">

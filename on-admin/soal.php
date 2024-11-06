@@ -223,24 +223,25 @@ include "tema/tema.php";
 					</div>
 					<div class="modal-body">
 						<form action="page/soal_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
-							<div class="form-group">
+							<div class="form-group col-sm-6">
 								<label>Jenis Ujian</label>
-                             <br>
-							 <form action="" method="post">   
-                                 <select class="form-control" name="jenissoal" required >  
-                                     <option value="">Pilih Jenis Ujian</option>
-                                         <option value="PAS">PAS</option>
-                                         <option value="UASBN">UASBN</option>
-                                         <option value="UKK">UKK</option>
-                                         <option value="USEK">USEK</option>
-                                         <option value="PTS">PTS</option>
-                                         <option value="UH">UH</option> 
-                                         <option value="TRYOUT">TRYOUT</option>  
-                                         <option value="SIMULASI">SIMULASI</option>  
-                                     </select> 
-                             </div>		
-							
-                             <div class="form-group">
+                <br>
+							  <form action="" method="post">   
+                <select class="form-control" name="jenissoal" required >  
+                   <option value="">Pilih Jenis Ujian</option>
+                   <option value="UTS">UTS</option>
+                   <option value="UAS">UAS</option>
+                   <option value="PAS">PAS</option>
+                   <option value="PTS">PTS</option>
+                   <option value="UASBN">UASBN</option>
+                   <option value="UKK">UKK</option>
+                   <option value="UH">UH</option> 
+                   <option value="USEK">USEK</option>
+                   <option value="TRYOUT">TRYOUT</option>  
+                   <option value="SIMULASI">SIMULASI</option>                                         
+                </select>                  
+              </div>		
+              <div class="form-group col-sm-6">
 								<label>Mapel</label>
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -249,34 +250,65 @@ include "tema/tema.php";
 										<input name="kodemapel" type="text" class="form-control" placeholder="MAPEL" required />
 									</div>
 							</div>
-                            <div class="form-group">
+              <div class="form-group col-sm-6">
 								<label>Kelas</label>
-                             <br>
-							 <form action="" method="post">   
-                                 <select class="form-control" name="kelas" required >  
-                                     <option value="">Pilih kelas</option>
-                                         <option value="7">7</option>
-                                         <option value="8">8</option>  
-                                         <option value="9">9</option>  
-                                         <option value="10">10</option>
-                                         <option value="11">11</option>
-                                         <option value="12">12</option> 
-                                         <option value="S1">S1</option>
-                                         <option value="S2">S2</option>
-                                         <option value="S3">S3</option>
-								 
-                                     </select> 
-                             </div>
-                             <div class="form-group">
-                <label>Jurusan</label>
+                <br>
+							  <form action="" method="post">   
+                  <select class="form-control" name="kelas" required >  
+                    <option value="">Pilih kelas</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>  
+                    <option value="9">9</option>  
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option> 
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                    <option value="S3">S3</option>
+                  </select> 
+                </div>
+              <?php
+              include('../koneksi/koneksi.php');
+              $query = "SELECT ALL jurusan FROM siswa";
+              $result = mysqli_query($konek, $query);
+              if (!$konek) {
+                die("Koneksi database gagal.");
+              }
+
+              // Query untuk mengambil semua data jurusan unik dari tabel siswa
+              $query = "SELECT DISTINCT jurusan FROM siswa WHERE jurusan IS NOT NULL AND jurusan != ''";
+              $result = mysqli_query($konek, $query);
+
+              // Debugging: Cek apakah query berhasil dijalankan
+              if (!$result) {
+                  die("Query gagal: " . mysqli_error($konek));
+              }
+              ?>
+              <div class="form-group col-sm-6">
+                <label>Program Studi</label>
                 <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-book"></i>
-                  </div>
-                  <input name="jurusan" type="text" class="form-control" placeholder="Jurusan" required />
+                    <div class="input-group-addon">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <select name="jurusan" class="form-control" required>
+                        <option value="">Pilih Jurusan</option>
+                        <?php
+                        // Looping data jurusan untuk menjadi pilihan dropdown
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $jurusan = htmlspecialchars($row['jurusan']);
+                            echo "<option value='$jurusan'>$jurusan</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label>Identitas Mapel</label>
                 <br>
                 <form action="" method="post">
@@ -291,7 +323,7 @@ include "tema/tema.php";
                     <option value="konghucu">Konghucu</option>
                   </select>
               </div>
-							<div class="form-group">
+							<div class="form-group col-sm-6">
 								<label>Kode Soal</label>
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -300,29 +332,29 @@ include "tema/tema.php";
 										<input name="kodesoal" type="text" class="form-control" placeholder="kode soal" required />
 									</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-sm-6">
 								<label>Opsi jawaban</label>
                              <br>
-							 <form action="" method="post">   
-                                 <select class="form-control" name="opsi" required >  
-                                     <option value="">Pilih</option>
-                                         <option value="hidden">4 Opsi jawaban</option>
-                                         <option value="show">5 Opsi jawaban</option>  
-                                     </select> 
-                             </div>
-                             <div class="form-group">
+							  <form action="" method="post">   
+                  <select class="form-control" name="opsi" required >  
+                    <option value="">Pilih</option>
+                    <option value="hidden">4 Opsi jawaban</option>
+                    <option value="show">5 Opsi jawaban</option>  
+                  </select> 
+              </div>
+              <div class="form-group col-sm-6">
 								<label>Tampilan Soal</label>
-                             <br>
-							 <form action="" method="post">   
-                                 <select class="form-control" name="acak" required >  
-                                     <option value="">Pilih</option>
-                                         <option value="1">Acak</option>
-                                         <option value="2">Urut</option>  
-                                     </select> 
-                             </div>
-                            <div class="form-group">
+                <br>
+							  <form action="" method="post">   
+                  <select class="form-control" name="acak" required >  
+                    <option value="">Pilih</option>
+                    <option value="1">Acak</option>
+                    <option value="2">Urut</option>  
+                  </select> 
+              </div>
+              <div class="form-group col-sm-12">
 								<label>Waktu Ujian</label>
-									<div class="input-group col-xs-2">
+									<div class="input-group col-xs-6">
 										<input name="waktu" type="number" class="form-control" required > Menit</input>
 									</div>
 							</div>
