@@ -37,7 +37,7 @@ $querydosen = mysqli_query ($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' 
 						}  
     
 					}
-$score = $nilaipg/$jumlah*$benar;            
+$score = floor($nilaipg/$jumlah*$benar);            
 	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$answer', kuncisoal='$key', benar='$jam', salah='$tanggal', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")){
 		header("Location:koreksi.php");
 		exit();

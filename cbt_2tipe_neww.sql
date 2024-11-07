@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 19, 2024 at 07:35 AM
+-- Generation Time: Nov 07, 2024 at 08:42 AM
 -- Server version: 8.3.0
 -- PHP Version: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cbt_2type_soal`
+-- Database: `cbt_2tipe_neww`
 --
 
 -- --------------------------------------------------------
@@ -107,16 +107,16 @@ CREATE TABLE IF NOT EXISTS `nilaihasil` (
   `nama` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `kelas` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `kodemapel` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `jumlahsoal` int NOT NULL,
-  `kodesoal` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `aktif` varchar(20) NOT NULL,
-  `jawabansiswa` varchar(100) NOT NULL,
-  `benar` varchar(10) NOT NULL,
-  `salah` varchar(10) NOT NULL,
-  `nilai` varchar(5) NOT NULL,
-  `nilaiurai` varchar(5) NOT NULL,
-  `kuncisoal` varchar(100) NOT NULL,
-  `statuskoreksi` int NOT NULL,
+  `jumlahsoal` int DEFAULT NULL,
+  `kodesoal` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `aktif` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `jawabansiswa` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `benar` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `salah` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilai` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `nilaiurai` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `kuncisoal` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `statuskoreksi` int DEFAULT NULL,
   `waktuselesai` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `nis` (`nis`)
@@ -195,20 +195,20 @@ CREATE TABLE IF NOT EXISTS `soal` (
   `jenissoal` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kodemapel` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kodesoal` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `nomersoal` int NOT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambarsoal` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pilihan1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pilihan2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pilihan3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pilihan4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pilihan5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar_a` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar_b` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar_c` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar_d` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar_e` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kunci` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomersoal` int DEFAULT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `gambarsoal` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pilihan1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `pilihan2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `pilihan3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `pilihan4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `pilihan5` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `gambar_a` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gambar_b` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gambar_c` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gambar_d` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gambar_e` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kunci` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `audio` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
@@ -252,13 +252,13 @@ CREATE TABLE IF NOT EXISTS `ujian` (
   `kodesoal` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `waktu` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `lamaujian` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kunci` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kunci` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `aktif` int DEFAULT NULL,
   `acak` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `opsi` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `kelas` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `agama` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nilai` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nilai` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jurusan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`Urut`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
