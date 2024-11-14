@@ -142,14 +142,43 @@ if(!$show=='')
                         $salaht=0;
                         $kosong=0;
 						
+						//calculation uraian
+						// $result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
+						// $rows_uraian = mysqli_num_rows($result_uraian);
+
+						// if ($rows_uraian > 0) {
+						// 	$jumlah = $rows_uraian;
+
+						// 	if ($r['statuskoreksi'] > 1) {
+						// 		$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' nis='$r[nis]' kelas='$r[kelas]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
+						// 	} else {
+						// 		$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' nis='$r[nis]' kelas='$r[kelas]'  kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> koreksi</button></a>";
+						// 	}
+
+						// 	while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
+						// 		$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nis='$r[nis]' AND kodesoal='$uraian_singkat[kodesoal]' AND nomersoal= $uraian_singkat[nomersoal]");
+						// 		$ur = mysqli_fetch_array($query2);
+						// 		$score_max = $rows_uraian * 5; // point skore 5 * jumlah soal
+				
+						// 		$score_uraian = $ur['nilai'];
+
+						// 		$score_uraian_total += $score_uraian;
+						// 		$total_score = $score_uraian_total / $score_max * 100;
+						// 	}
+						// }
+
+						// $total_score = $r['nilai'] + $r['nilaiurai'];
+
                     for ($no=0;$no<$jumlah;$no++){
                     if($r['statuskoreksi']>1)
 				        {
-					    $koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
+					    $koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nis='$r[nis]' kelas='$r[kelas]' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
 				        }
 				        else
 				        {
-						$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> koreksi</button></a>";
+						$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nis='$r[nis]' kelas='$r[kelas]' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> 
+						koreksis '$r[nis]'
+						</button></a>";
 				        }    
                     if($key[$no]==$x[$no]){
                         //jika jawaban cocok (benar)
@@ -186,6 +215,7 @@ $totalnilai=$scoreasli+$uraiasli;
 									<td id='garis' align=center>
 									
 									<a class='noprint' href='analisa-soal.php?nis=$r[nis]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
+									$koreksi
 									<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
 									</td>
 								</tr>";
