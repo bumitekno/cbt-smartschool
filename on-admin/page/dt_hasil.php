@@ -177,8 +177,7 @@ if(!$show=='')
 				        else
 				        {
 						$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nis='$r[nis]' kelas='$r[kelas]' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> 
-						koreksis '$r[nis]'
-						</button></a>";
+						koreksi </button></a>";
 				        }    
                     if($key[$no]==$x[$no]){
                         //jika jawaban cocok (benar)
