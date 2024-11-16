@@ -19,7 +19,7 @@
 				</thead>
 				<tbody>
 					<?php
-						$querydosen = mysqli_query ($konek, "SELECT DISTINCT jenissoal, kodemapel, soal.kodesoal, aktif, /*opsi, acak,*/ kelas, jurusan, agama, nilai, waktu FROM soal CROSS JOIN ujian USING (kodesoal) ORDER by id DESC");
+						$querydosen = mysqli_query ($konek, "SELECT DISTINCT ujian.jenis, ujian.mapel, ujian.kodesoal, ujian.aktif, /*opsi, acak,*/ ujian.kelas, ujian.jurusan, ujian.agama, ujian.nilai, ujian.waktu FROM ujian LEFT JOIN soal ON ujian.kodesoal = soal.kodesoal ORDER by soal.id DESC");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
@@ -45,7 +45,7 @@
 				        }
 					    if(!$ar['aktif']=='1')
 				        {
-					    $tombol = "<a href='edit-soal.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]'><button id='clot' type='button' class='btn btn-warning btn-xs'><i class='fa fa-pencil-square-o'></i> Input</button></a>
+					    $tombol = "<a href='edit-soal.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[jenis]'><button id='clot' type='button' class='btn btn-warning btn-xs'><i class='fa fa-pencil-square-o'></i> Input</button></a>
 									</td>";
 				        }
 				        else
@@ -54,15 +54,15 @@
 				        }
 				        if(!$ar['aktif']=='1')
 				        {
-					    $tombolon = "<button id='cloti' type='button' class='btn btn-danger'>OFF</button><a href='page/aktif-set.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]'><button id='clot3d' type='button' class='btn btn-default'>ON</button></a>";
+					    $tombolon = "<button id='cloti' type='button' class='btn btn-danger'>OFF</button><a href='page/aktif-set.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[jenis]'><button id='clot3d' type='button' class='btn btn-default'>ON</button></a>";
 				        }
 				        else
 				        {
-					    $tombolon = "<a href='page/aktif-off.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]'><button id='clot3d2' type='button' class='btn btn-default'></i>OFF</button></a><button id='cloti' type='button' class='btn btn-success'></i>ON</button>";
+					    $tombolon = "<a href='page/aktif-off.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[jenis]'><button id='clot3d2' type='button' class='btn btn-default'></i>OFF</button></a><button id='cloti' type='button' class='btn btn-success'></i>ON</button>";
 				        }
 				        if(!$ar['aktif']=='1')
 				        {
-					    $tomboldel = "<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/delete-soal.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]\")'><button id='clot' type='button' class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button></a";
+					    $tomboldel = "<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/delete-soal.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[jenis]\")'><button id='clot' type='button' class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button></a";
 				        }
 				        else
 				        {
@@ -81,7 +81,7 @@
 							echo "
 								<tr>
 		<td align=center>$i</td>
-		<td align=left>$ar[jenissoal]<br>$ar[kodemapel]<br>
+		<td align=left>$ar[jenis]<br>$ar[mapel]<br>
 		$ar[kodesoal]</td>
 		<td align=center>$num_rows</td>
 		<td align=center>$num_rows2</td>
@@ -94,7 +94,7 @@
 		
 		<td align=center>
 		
-        <a href='preview-soal.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]'><button id='clot' type='button' class='btn bg-navy btn-xs'><i class='fa fa-print'></i></button></a>
+        <a href='preview-soal.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[soal]'><button id='clot' type='button' class='btn bg-navy btn-xs'><i class='fa fa-print'></i></button></a>
                                     $tomboledit
                                     $tombol
 									</td>
@@ -102,8 +102,8 @@
                                     $tombolon
 									</td>
 							        <td align=center>
-							        <a href='page/exportsoal.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]'><button id='clot' type='button' class='btn btn-default btn-sm'><i class='fa fa-download'></i></button></a>
-                                    $tomboldel 
+							        <a href='page/exportsoal.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[jenis]'><button id='clot' type='button' class='btn btn-default btn-sm'><i class='fa fa-download'></i></button></a>
+                                    $tomboldel
 									</td>
 								</tr>";
 						$i++;		
