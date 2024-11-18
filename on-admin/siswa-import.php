@@ -166,7 +166,7 @@ include "tema/tema.php";
                 <div class="box-body">
                 <div class="btn-group" role="group" aria-label="...">
                 <a href="siswa.php"><button id="clot" type="button" class="btn btn-success"><i class="fa fa-chevron-left"></i> Kembali</button></a>
-                    <a href="page/imporexcel-siswa.xls"><button id="alert2" type="button" class="btn btn-warning"><i class="fa fa-download" aria-hidden="true"></i> Download Template Xls</button></a>
+                    <a href="page/import-excel-siswa.xls"><button id="alert2" type="button" class="btn btn-warning"><i class="fa fa-download" aria-hidden="true"></i> Download Template Xls</button></a>
 				      <h5><p align="left">Pastikan file yang di upload menggunakan file XLS (Excel 2003)<br>
 				      download template Xls diatas</b></h5>
 					  <br><br>
@@ -190,8 +190,8 @@ if(isset($_POST['submit'])){
              mysqli_query($connsite, $truncate);
     };
     
-//    import data excel mulai baris ke-2 (karena tabel xls ada header pada baris 1)
-    for ($i=2; $i<=$baris; $i++)
+//    import data excel mulai baris ke-10 (karena tabel xls ada header pada baris 1)
+    for ($i=10; $i<=$baris; $i++)
     {
 //       membaca data (kolom ke-1 sd terakhir)
       $nis   = $data->val($i, 1);
