@@ -7,7 +7,7 @@ $nama			= $_POST['nama'];
 $jabatan 		= $_POST['jabatan'];
 $pass			= $_POST['pass'];
 
-
+$sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 if ($add = mysqli_query($konek, "INSERT INTO users (nip, nama, admin_su, pass) VALUES 
 	('$nip', '$nama', '$jabatan', '$pass')")){
 		header("Location:../super.php");
