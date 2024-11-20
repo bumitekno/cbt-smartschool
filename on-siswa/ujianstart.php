@@ -66,6 +66,12 @@ while ($xx = mysqli_fetch_array($qq)) {
     <link rel="stylesheet" href="../aset/fa/css/font-awesome.css">
     <link rel="stylesheet" href="mesin/bootstrap.min.css">
     <style>
+       body {
+            -webkit-user-select: none;/* Chrome, Safari */
+            -moz-user-select: none;/* Firefox */
+            -ms-user-select: none;/* IE */
+            user-select: none;/* Standard */
+        }
       #us {
         position: fixed;
         top: 0;
@@ -131,6 +137,17 @@ while ($xx = mysqli_fetch_array($qq)) {
       }
     </style>
     <script>
+      // document.addEventListener('contextmenu', function(e) {
+      //       e.preventDefault();
+      //       alert('Klik kanan dinonaktifkan!');
+      //   });
+
+      //   document.addEventListener('keydown', function(e) {
+      //       if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'p')) {
+      //           e.preventDefault();
+      //           alert('Shortcut ini dinonaktifkan!');
+      //       }
+      //   });
       var count = '<?php echo $sisa; ?>';
       var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
 
@@ -325,6 +342,7 @@ while ($xx = mysqli_fetch_array($qq)) {
     </script>
     
     <script type="text/javascript">
+      // Auto logouyt
       document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
           $('#form1').submit();
