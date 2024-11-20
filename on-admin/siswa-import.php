@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ALL);
 include ('../koneksi/koneksi.php');
 include ('conn/cek.php');
 include ('conn/fungsi.php');
@@ -16,84 +17,7 @@ include ('../koneksi/db.php');
 	<?php
 		include "bundle/bundle_css.php";
 	?>
-	<style>
-	    #clot {
-	        border-radius:0;
-	    }
-	    #alert2 {
-	        border-radius:0;
-	    }
-	    .progress, .alert {
-            margin: 15px;
-        }
-        
-        .alert {
-            display: none;
-        }
-        #cog {
-    border-radius:0; 
-    background-color:#222d32;
-    color:white;
-    border:0;
-    }
-    #cog:hover {
-    border-radius:0; 
-    background-color:#ff8f0a;
-    color:white;
-    border:0;
-    }
-	.alert-success {
-	border-radius:0;
-	font-size:12px;	
-	position: fixed;
-	right: 5px;
-	bottom: 0px;
-	z-index:9999;
-	}
-	@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-.fade-in {
-  opacity:0;  /* make things invisible upon start */
-  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
-
-  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
-
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
-}
-.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background-color: #000;
-}
-.preloader .loading {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  font: 14px arial;
-}
-        .affix {
-      top: 0;
-      width: 100%;
-      z-index: 9999 !important;
-  }
-
-  .affix + .container-fluid {
-      padding-top: 70px;
-  }
-	</style>
   </head>
 <?php
 include "tema/tema.php";
@@ -168,12 +92,13 @@ include "tema/tema.php";
                 <a href="siswa.php"><button id="clot" type="button" class="btn btn-success"><i class="fa fa-chevron-left"></i> Kembali</button></a>
                     <a href="page/import-excel-siswa.xls"><button id="alert2" type="button" class="btn btn-warning"><i class="fa fa-download" aria-hidden="true"></i> Download Template Xls</button></a>
 				      <h5><p align="left">Pastikan file yang di upload menggunakan file XLS (Excel 2003)<br>
-				      download template Xls diatas</b></h5>
+				      download template Xls diatas ini benar</b></h5>
 					  <br><br>
 	
 <?php
+                  
 if(isset($_POST['submit'])){
-
+	
     $target = basename($_FILES['filepegawaiall']['name']) ;
     move_uploaded_file($_FILES['filepegawaiall']['tmp_name'], $target);
     
@@ -196,9 +121,9 @@ if(isset($_POST['submit'])){
 //       membaca data (kolom ke-1 sd terakhir)
       $nis   = $data->val($i, 1);
       $nama  = $data->val($i, 2);
-      $agama = $data->val($i, 3);
-      $kelas = $data->val($i, 4);
-      $jurusan = $data->val($i, 5);
+      $agama = $data->val($i, 5);
+      $kelas = $data->val($i, 3);
+      $jurusan = $data->val($i, 4);
       $pass  = $data->val($i, 6);
       $sesi  = $data->val($i, 7);
       $ruang = $data->val($i, 8);
@@ -207,8 +132,8 @@ if(isset($_POST['submit'])){
       $query = "INSERT into siswa (nis,nama,agama,kelas,jurusan,pass,sesi,ruang)values('$nis','$nama','$agama','$kelas','$jurusan','$pass','$sesi','$ruang')";
       $hasil = mysqli_query($connsite, $query);
     }
-    
-    if(!$hasil){
+  
+      if(!$hasil){
 //          jika import gagal
           die(mysqli_error($connsite));
       }else{
@@ -223,13 +148,15 @@ if(isset($_POST['submit'])){
             </div>";
     }
     
+
+    
 //    hapus file xls yang udah dibaca
     unlink($_FILES['filepegawaiall']['name']);
 }
 
 ?>
 <form name="myForm" id="myForm" onSubmit="return validateForm()" action="siswa-import.php" method="post" enctype="multipart/form-data">
-    <input class="form-control" type="file" id="filepegawaiall" name="filepegawaiall" required />
+  <input class="form-control" type="file" id="filepegawaiall" name="filepegawaiall" required />
     <br>
     <input id="clot" type="submit" name="submit" value="Import" class="xxxx"/>
     <input id="clot" type="reset" value="Batal" /><br/>
@@ -240,15 +167,7 @@ if(isset($_POST['submit'])){
 //    validasi form (hanya file .xls yang diijinkan)
     function validateForm()
     {
-        function hasExtension(inputID, exts) {
-            var fileName = document.getElementById(inputID).value;
-            return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
-        }
-
-        if(!hasExtension('filepegawaiall', ['.xls'])){
-            alert("Hanya file XLS (Excel 2003) yang diijinkan.");
-            return false;
-        }
+        
     }
 </script>
     </div><!-- /.content-wrapper -->
