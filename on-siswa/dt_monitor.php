@@ -9,7 +9,7 @@ $kelasx=preg_replace('/[^0-9\  ]/', '', $kelas);
 						// $querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1 and kelas='$kelasx' ");
 						$querydosen = mysqli_query($konek, "SELECT * FROM ujian 
 							WHERE (agama = '' OR agama = '$agama' OR agama IS NULL)
-							AND (jurusan = '' OR jurusan = '$jurusan' OR jurusan IS NULL)
+							AND (jurusan = '' OR jurusan = '$jurusan' OR jurusan IS NULL OR jurusan = 'universal')
 							AND aktif=1 and kelas='$kelasx'");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));

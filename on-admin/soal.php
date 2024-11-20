@@ -298,16 +298,17 @@ include "tema/tema.php";
                     </div>
                     <select name="jurusan" class="form-control" required>
                         <option value="">Pilih Jurusan</option>
-                        <?php
-                        // Looping data jurusan untuk menjadi pilihan dropdown
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $jurusan = htmlspecialchars($row['jurusan']);
-                            echo "<option value='$jurusan'>$jurusan</option>";
-                        }
-                        ?>
+                        <option value="universal">Universal</option> <!-- Opsi untuk semua jurusan -->
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                $jurusan = htmlspecialchars($row['jurusan']);
+                echo "<option value='$jurusan'>$jurusan</option>";
+            }
+            ?>
                     </select>
                 </div>
               </div>
+              
               <div class="form-group col-sm-6">
                 <label>Identitas Mapel</label>
                 <br>
