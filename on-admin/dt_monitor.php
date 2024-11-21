@@ -34,16 +34,6 @@ include ('conn/fungsi.php');
                   <th style='width: 17%'>Action</th>
                 </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th id="foo"></th>
-                        <th id="foo"></th>
-                        <th>kelas</th>
-                        <th>kode soal</th>
-                        <th id="foo"></th>
-                        <th id="foo"></th>
-                    </tr>
-                </tfoot>
                 <tbody>
 <?php
 						$querydosen = mysqli_query ($konek, "SELECT * FROM siswa CROSS JOIN jawaban USING (nis) ORDER by nis ASC"); 
@@ -112,9 +102,8 @@ include ('conn/fungsi.php');
 								  <td>$ar[kelas]</td>
 								  <td>$ar[kodesoal]</td>
 								  $aktifstatus
-                                  <td>
-                                  </td>
-                                  </tr>";
+                                  
+                        </tr>";
 						$i++;		
 						}
 					?>

@@ -213,7 +213,7 @@ $totalnilai=$scoreasli+$uraiasli;
 									<td id='garis'><h6>$r[benar] | $r[salah]</h6></td>
 									<td id='garis' align=center>
 									
-									<a class='noprint' href='analisa-soal.php?nis=$r[nis]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
+									<a class='noprint' href='analisa-soal.php?nis=$r[nis]&kodesoal=$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
 									$koreksi
 									<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
 									</td>

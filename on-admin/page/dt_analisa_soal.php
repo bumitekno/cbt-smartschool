@@ -1,11 +1,12 @@
 <?php 
 $nis=$_GET['nis'];
+$kodesoal=$_GET['kodesoal'];
 $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 						if($qq == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
 						while ($xx = mysqli_fetch_array ($qq)){
-	$query = mysqli_query ($konek, "SELECT * FROM nilaihasil WHERE nis='$nis'");
+	$query = mysqli_query ($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal'");
 						if($query == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						$i=1;
