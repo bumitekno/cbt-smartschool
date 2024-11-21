@@ -2,6 +2,7 @@
 $mapel=$_GET['matpel'];
 $jenis=$_GET['jenis'];
 $kode=$_GET['kode'];
+// var_dump($mapel,$jenis,$kode);
 $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 						if($qq == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
@@ -46,7 +47,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
 						while ($rr = mysqli_fetch_array ($qu)){
-						$querydosen = mysqli_query ($konek, "SELECT * FROM soal where kodemapel='$mapel' and jenissoal='$jenis' and kodesoal='$kode' ORDER BY nomersoal ASC");
+						$querydosen = mysqli_query ($konek, "SELECT * FROM soal where kodemapel='$mapel' and kodesoal='$kode' ORDER BY nomersoal ASC");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
