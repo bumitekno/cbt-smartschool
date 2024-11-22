@@ -94,7 +94,7 @@
 		
 		<td align=center>
 		
-        <a href='preview-soal.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[soal]'><button id='clot' type='button' class='btn bg-navy btn-xs'><i class='fa fa-print'></i></button></a>
+        <a href='preview-soal.php?matpel=$ar[mapel]&kode=$ar[kodesoal]&jenis=$ar[jenis]'><button id='clot' type='button' class='btn bg-navy btn-xs'><i class='fa fa-print'></i></button></a>
                                     $tomboledit
                                     $tombol
 									</td>
