@@ -202,7 +202,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
         </div>
 </div>
 </header>
-<div class="col-md-6 col-md-offset-3 login-wrapper" style="float:inherit; margin-top:20px">
+<div class="col-md-6 col-md-offset-3 login-wrapper" style="float:inherit; margin-top:5px">
 <div class="panel panel-default">
 <div id="progres" class="progress">
     <div id="progres" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
