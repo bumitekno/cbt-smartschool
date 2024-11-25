@@ -54,13 +54,17 @@ include ('conn/fungsi.php');
 include "tema/tema.php";
 ?>
     <div class="wrapper">
+      
+      <!-- Left side column. contains the logo and sidebar -->
       <?php
         include "navbar/content_header.php";  
        ?>
-      <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
+
+        
+
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
@@ -117,203 +121,203 @@ include "tema/tema.php";
 		<!-- Content -->
 	    <section class="content">
           <div class="row">
-									<!-- card -->
-                                    <div class="box-body">
-                                       <div class="col-lg-3 col-md-3 col-xs-6">
-                                          <div class="panel panel-primary">
-                                             <div class="panel-heading">
-                                                <div class="row">
-                                                   <div class="col-xs-3"><i class="fa fa-laptop fa-5x"></i></div>
-                                                   <div class="col-xs-9 text-right">
-                                                      <div class="huge"></div>
-                                                      <div>Ujian Aktif</div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <a href="ujian.php" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#1d4e77;border:0;">
-                                                   <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
-                                                   <div class="clearfix"></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div>
-                                    
-                                       <!-- Statistik Siswa -->
-                                       <div class="col-lg-3 col-md-3 col-xs-6">
-                                          <div class="panel panel-success">
-                                             <div class="panel-heading">
-                                                <div class="row">
-                                                   <div class="col-xs-3"><i class="fa fa-user fa-5x"></i></div>
-                                                   <div class="col-xs-9 text-right">
-                                                      <div class="huge"></div>
-                                                      <div>Profil</div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <a href="profil.php" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#2b5918;border:0;">
-                                                   <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
-                                                   <div class="clearfix"></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div>
-                                    
-                                       <!-- Statistik Mapel -->
-                                       <div class="col-lg-3 col-md-3 col-xs-6">
-                                          <div class="panel panel-warning">
-                                             <div class="panel-heading">
-                                                <div class="row">
-                                                   <div class="col-xs-3">
-                                                      <i class="fa fa-book fa-5x"></i>
-                                                   </div>
-                                                   <div class="col-xs-9 text-right">
-                                                      <div class="huge"></div>
-                                                      <div>Nilai</div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <a href="nilai.php" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#ed4e04;border:0;">
-                                                   <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
-                                                   <div class="clearfix"></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div>
-                                    
-                                       <!-- Statistik Soal -->
-                                       <!-- <div class="col-lg-3 col-md-3 col-xs-6">
-                                          <div class="panel panel-danger">
-                                             <div class="panel-heading">
-                                                <div class="row">
-                                                   <div class="col-xs-3">
-                                                      <i class="fa fa-info fa-5x"></i>
-                                                   </div>
-                                                   <div class="col-xs-9 text-right">
-                                                      <div class="huge"></div>
-                                                      <div>Tentang Aplikasi</div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <a href="" data-toggle="modal" data-target="#about" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#af0505;border:0;">
-                                                   <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
-                                                   <div class="clearfix"></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div> -->
-                                   </div>
-<div class="box-body">                                   <!-- End of card -->
-<ul class="timeline" style="width: 100%; height: 350px; overflow-y: auto;">
-
-    <!-- timeline time label -->
-    <li class="time-label">
-        <span class="bg-white">
-            <i class="fa fa-info-circle"></i> tutorial cara mengikuti ujian
-        </span>
-    </li>
-    <!-- /.timeline-label -->
-
-    <!-- timeline item -->
-    <li>
-        <!-- timeline icon -->
-        <i class="fa fa-envelope bg-blue"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 1</span>
-
-            <h3 class="timeline-header"><a href="#">Langkah pertama</a> ...</h3>
-
-            <div class="timeline-body">
-                Pilih menu ujian.
+            <!-- card -->
+            <div class="box-body">
+               <div class="col-lg-3 col-md-3 col-xs-6">
+                  <div class="panel panel-primary">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3"><i class="fa fa-laptop fa-5x"></i></div>
+                           <div class="col-xs-9 text-right">
+                              <div class="huge"></div>
+                              <div>Ujian Aktif</div>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="ujian.php" style="color:white;">
+                        <div class="panel-footer" style="background-color:#1d4e77;border:0;">
+                           <span class="pull-left"></span>
+                           <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
+                           <div class="clearfix"></div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            
+               <!-- Statistik Siswa -->
+               <div class="col-lg-3 col-md-3 col-xs-6">
+                  <div class="panel panel-success">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3"><i class="fa fa-user fa-5x"></i></div>
+                           <div class="col-xs-9 text-right">
+                              <div class="huge"></div>
+                              <div>Profil</div>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="profil.php" style="color:white;">
+                        <div class="panel-footer" style="background-color:#2b5918;border:0;">
+                           <span class="pull-left"></span>
+                           <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
+                           <div class="clearfix"></div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            
+               <!-- Statistik Mapel -->
+               <div class="col-lg-3 col-md-3 col-xs-6">
+                  <div class="panel panel-warning">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3">
+                              <i class="fa fa-book fa-5x"></i>
+                           </div>
+                           <div class="col-xs-9 text-right">
+                              <div class="huge"></div>
+                              <div>Nilai</div>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="nilai.php" style="color:white;">
+                        <div class="panel-footer" style="background-color:#ed4e04;border:0;">
+                           <span class="pull-left"></span>
+                           <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
+                           <div class="clearfix"></div>
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            
+               <!-- Statistik Soal -->
+               <!-- <div class="col-lg-3 col-md-3 col-xs-6">
+                  <div class="panel panel-danger">
+                     <div class="panel-heading">
+                        <div class="row">
+                           <div class="col-xs-3">
+                              <i class="fa fa-info fa-5x"></i>
+                           </div>
+                           <div class="col-xs-9 text-right">
+                              <div class="huge"></div>
+                              <div>Tentang Aplikasi</div>
+                           </div>
+                        </div>
+                     </div>
+                     <a href="" data-toggle="modal" data-target="#about" style="color:white;">
+                        <div class="panel-footer" style="background-color:#af0505;border:0;">
+                           <span class="pull-left"></span>
+                           <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
+                           <div class="clearfix"></div>
+                        </div>
+                     </a>
+                  </div>
+               </div> -->
             </div>
+            <div class="box-body">                                   <!-- End of card -->
+            <ul class="timeline" style="width: 100%; height: 350px; overflow-y: auto;">
 
-            <div class="timeline-footer">
-                <a href="ujian.php" class="btn btn-primary btn-xs">Menu Ujian</a>
+               <!-- timeline time label -->
+               <li class="time-label">
+                  <span class="bg-white">
+                        <i class="fa fa-info-circle"></i> tutorial cara mengikuti ujian
+                  </span>
+               </li>
+               <!-- /.timeline-label -->
+
+               <!-- timeline item -->
+               <li>
+                  <!-- timeline icon -->
+                  <i class="fa fa-envelope bg-blue"></i>
+                  <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> 1</span>
+
+                        <h3 class="timeline-header"><a href="#">Langkah pertama</a> ...</h3>
+
+                        <div class="timeline-body">
+                           Pilih menu ujian.
+                        </div>
+
+                        <div class="timeline-footer">
+                           <a href="ujian.php" class="btn btn-primary btn-xs">Menu Ujian</a>
+                        </div>
+                  </div>
+               </li>
+               
+               <li>
+                  <!-- timeline icon -->
+                  <i class="fa fa-envelope bg-yellow"></i>
+                  <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> 2</span>
+
+                        <h3 class="timeline-header"><a href="#">Langkah kedua</a> ...</h3>
+
+                        <div class="timeline-body">
+                           Pilih salah satu soal ujian yang aktif, klik tombol mengerjakan.<br>
+                           hubungi proktor atau admin jika tidak ada soal aktif.
+                        </div>
+
+                        <div class="timeline-footer">
+                        </div>
+                  </div>
+               </li>
+               
+               <li>
+                  <!-- timeline icon -->
+                  <i class="fa fa-user bg-red"></i>
+                  <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> 3</span>
+
+                        <h3 class="timeline-header"><a href="#">Langkah ketiga</a> ...</h3>
+
+                        <div class="timeline-body">
+                           periksa data diri dan data soal lalu centang beberapa syarat mengerjakan soal...
+                        </div>
+
+                        <div class="timeline-footer">
+                        </div>
+                  </div>
+               </li>
+               
+               <li>
+                  <!-- timeline icon -->
+                  <i class="fa fa-check bg-green"></i>
+                  <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> 4</span>
+
+                        <h3 class="timeline-header"><a href="#">Langkah keempat</a> ...</h3>
+
+                        <div class="timeline-body">
+                           Soal siap dikerjakan...<br>
+                           Pastikan soal sudah dikerjakan semua dengan teliti sebelum menyelesaikan ujian...<br>
+                           Tombol selesai ujian ada pada nomor soal terakhir.
+                        </div>
+
+                        <div class="timeline-footer">
+                        </div>
+                  </div>
+               </li>
+               
+               <li>
+                  <!-- timeline icon -->
+                  <i class="fa fa-edit bg-blue"></i>
+                  <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> 5</span>
+
+                        <h3 class="timeline-header"><a href="#">Langkah kelima</a> ...</h3>
+
+                        <div class="timeline-body">
+                           Daftar nilai hasil ujian bisa dilihat di menu "daftar nilai" jika menu ini dibuka oleh proktor atau admin..<br>
+                           jika menu ini ditutup oleh proktor atau admin daftar nilai tidak bisa dilihat..
+                        </div>
+
+                        <div class="timeline-footer">
+                           <a href="nilai.php" class="btn btn-primary btn-xs">Menu Daftar nilai</a>
+                        </div>
+                  </div>
+               </li>
             </div>
-        </div>
-    </li>
-    
-    <li>
-        <!-- timeline icon -->
-        <i class="fa fa-envelope bg-yellow"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 2</span>
-
-            <h3 class="timeline-header"><a href="#">Langkah kedua</a> ...</h3>
-
-            <div class="timeline-body">
-                Pilih salah satu soal ujian yang aktif, klik tombol mengerjakan.<br>
-                hubungi proktor atau admin jika tidak ada soal aktif.
-            </div>
-
-            <div class="timeline-footer">
-            </div>
-        </div>
-    </li>
-    
-     <li>
-        <!-- timeline icon -->
-        <i class="fa fa-user bg-red"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 3</span>
-
-            <h3 class="timeline-header"><a href="#">Langkah ketiga</a> ...</h3>
-
-            <div class="timeline-body">
-                periksa data diri dan data soal lalu centang beberapa syarat mengerjakan soal...
-            </div>
-
-            <div class="timeline-footer">
-            </div>
-        </div>
-    </li>
-    
-    <li>
-        <!-- timeline icon -->
-        <i class="fa fa-check bg-green"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 4</span>
-
-            <h3 class="timeline-header"><a href="#">Langkah keempat</a> ...</h3>
-
-            <div class="timeline-body">
-                Soal siap dikerjakan...<br>
-                Pastikan soal sudah dikerjakan semua dengan teliti sebelum menyelesaikan ujian...<br>
-                Tombol selesai ujian ada pada nomor soal terakhir.
-            </div>
-
-            <div class="timeline-footer">
-            </div>
-        </div>
-    </li>
-    
-    <li>
-        <!-- timeline icon -->
-        <i class="fa fa-edit bg-blue"></i>
-        <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock-o"></i> 5</span>
-
-            <h3 class="timeline-header"><a href="#">Langkah kelima</a> ...</h3>
-
-            <div class="timeline-body">
-                Daftar nilai hasil ujian bisa dilihat di menu "daftar nilai" jika menu ini dibuka oleh proktor atau admin..<br>
-                jika menu ini ditutup oleh proktor atau admin daftar nilai tidak bisa dilihat..
-            </div>
-
-            <div class="timeline-footer">
-                <a href="nilai.php" class="btn btn-primary btn-xs">Menu Daftar nilai</a>
-            </div>
-        </div>
-    </li>
-</div>
-</ul>
+            </ul>
 		 </section>		
     </div><!-- /.content-wrapper -->
     <?php
