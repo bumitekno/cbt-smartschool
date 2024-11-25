@@ -48,7 +48,7 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
 				        
 						if(!$ar['gambarsoal']=='')
 				        {
-					    $gambarsoal = "<img src='../gbr/$ar[gambarsoal]' alt='Nature' class='responsive' align=center style='max-width:450px;height:auto' ><br>";
+					    $gambarsoal = "<img src='../gbr/$ar[gambarsoal]' alt='Nature' class='responsive' align=center style='max: width 250px;height:250px' ><br>";
 				        }
 				        else
 				        {

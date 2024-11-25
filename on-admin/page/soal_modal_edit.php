@@ -80,6 +80,7 @@ $ur = mysqli_fetch_array ($query2);
 					<div class='modal-body'>
 						<form action='page/butirsoal_edit.php' name='modal_popup' enctype='multipart/form-data' method='post'>
 						    <input name='id' type='hidden' value='$ar[id]'/>
+		                    <input name='nomorsoal' type='hidden' class='form-control' value='$ar[nomorsoal]'/>
 		                    <input name='jenissoal' type='hidden' class='form-control' value='$ar[jenissoal]'/>
 		                    <input name='kodemapel' type='hidden' class='form-control' value='$ar[kodemapel]'/>
 		                    <input name='kodesoal' type='hidden' class='form-control' value='$ar[kodesoal]'/>
@@ -146,13 +147,14 @@ $ur = mysqli_fetch_array ($query2);
 					<div class='modal-body'>
 						<form action='page/butirsoal_edit.php' name='modal_popup' enctype='multipart/form-data' method='post'>
 						    <input name='id' type='hidden' value='$ar[id]'/>
+		                    <input name='nomorsoal' type='hidden' class='form-control' value='$ar[nomorsoal]'/>
 		                    <input name='jenissoal' type='hidden' class='form-control' value='$ar[jenissoal]'/>
 		                    <input name='kodemapel' type='hidden' class='form-control' value='$ar[kodemapel]'/>
 		                    <input name='kodesoal' type='hidden' class='form-control' value='$ar[kodesoal]'/>
 		                    <div class='form-group'>
 								<label>No. Soal</label> : $ar[nomersoal]
 									<div class='input-group col-xs-2'>
-										<input name='nomersoal' type='hidden' class='form-control input-sm' value='$ar[nomersoal]' required />
+										<input name='nomersoal' type='text' class='form-control input-sm' value='$ar[nomersoal]' required />
 									</div>
 							</div>
 							
