@@ -17,17 +17,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 		if ($querydosen == false) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
 		}
-
-		// Jawaban siswa
-		$dataJawabanSiswa = json_decode($cc['jawabansiswa'], true);
-		$multidimensionalArray = [];
-		foreach ($dataJawabanSiswa as $item) {
-			foreach ($item as $key => $value) {
-				$multidimensionalArray[$key] =  $value;
-			}
-		}
-
-
 		$i = 1;
 		while ($sr = mysqli_fetch_array($querydosen)) {
 			$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3','4','5') ORDER BY nomersoal ");
@@ -124,8 +113,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 					// Soal
 					while ($soal = mysqli_fetch_array($result)) {
-						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
-
+						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]'  AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
 
 						// Pilihan
 
@@ -209,21 +197,16 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 						// End pilihan
 
-						$jawabans = $multidimensionalArray[$soal['nomersoal']];
-						
-					
-							
-							// clean jawaban siswa
-							$jawaban_siswa = strtolower(str_replace(' ', '', $jawabans));
-							// clean kunci
-							$kunci = strtolower(str_replace(' ', '', $soal['kunci']));	
+						while ($jawaban = mysqli_fetch_array($queryhistory)) {
 
+							$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
+							$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
 
 							if ($soal['status'] == 1) {
 
 								$type = "Pilihan Ganda";
 
-								$jwbsis = $jawabans;
+								$jwbsis = $jawaban['jawaban'];
 
 								if ($kunci == strtolower($jawaban_siswa)) {
 									$benarp++;
@@ -302,7 +285,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$type = "Soal Benar atau Salah ";
 
 								$benarBS = 0;
-								$jwbsis = $jawabans;
+								$jwbsis = $jawaban['jawaban'];
 
 								if ($kunci == strtolower($jwbsis)) {
 									$jwbsis = "Benar";
@@ -341,7 +324,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$tanda_c = '';
 								$tanda_d = '';
 								$tanda_e = '';
-								$jwbsis = $jawaban_siswa_new;
+
+								$jwbsis = str_replace(',', '', $jawaban['jawaban']);
 
 								if ($kunci == strtolower($jwbsis)) {
 									$benarPGK++;
@@ -424,12 +408,12 @@ while ($xx = mysqli_fetch_array($qq)) {
 										<div class='jawaban'>
 										$list_array
 										</div>
-                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawabans $tanda</i>  Skor : $score_jd </div><br><hr class='style1'>
+                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] $tanda</i>  Skor : $score_jd </div><br><hr class='style1'>
                                     </tr>";
 
 							}
 
-						
+						}
 
 						// echo $scorepg_total.'-'.$score_bs_total.'-'.$score_uraian_total.'-'.$score_jd_total.'-'.$score_pgk_total;
 						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;

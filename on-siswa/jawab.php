@@ -11,7 +11,7 @@ $sisawaktu = $_POST['sisawaktu'];
 $mulaiujian = $_POST['mulaiujian'];
 $waktuselesai = $_POST['waktuselesai'];
 
-$sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
+$sql_mode = mysqli_query($konek, "SET sql_mode = '';");
 mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
 
 $querydosen = mysqli_query($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' and mapel='$kom'");
@@ -32,6 +32,8 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	$querysoal = mysqli_query($konek, "SELECT * FROM soal WHERE `kodesoal`='$kods' AND `status` IN('1','3','4','5')");
 	$jumlah = mysqli_num_rows($querysoal);
 
+	$dataJawaban = [];
+
 	while ($soal = mysqli_fetch_array($querysoal)) {
 		$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'");
 
@@ -40,6 +42,10 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		while ($jawaban = mysqli_fetch_array($queryhistory)) {
 
 			$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
+
+			$dataJawaban[] = [
+				$soal['nomersoal'] => $jawaban['jawaban']
+			];
 
 			//jawaban soal pg komplek
 			if ($jawaban['tipe'] == 4) {
@@ -61,10 +67,18 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	}
 
 	$score = $nilaipg / $jumlah * $benar;
+	$dataJawaban = json_encode($dataJawaban);
 
-	if ($edit = mysqli_query($konek, "UPDATE jawaban SET  benar='$benar', salah='$salah', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")) {
-		header("Location:koreksi.php");
-		exit();
+	//var_dump($dataJawaban);
+	// die();
+
+	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$dataJawaban', benar='$benar', salah='$salah', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")) {
+		
+		if($delete = mysqli_query($konek, "DELETE FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'") ){
+
+			header("Location:koreksi.php");
+			exit();
+		}
 	}
 
 	die ("Terdapat kesalahan : " . mysqli_error($konek));

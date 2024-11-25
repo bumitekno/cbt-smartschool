@@ -16,27 +16,25 @@ $tipe = $_POST['tipe'];
 //Memnyimpan artikel ke database
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 
-$check = mysqli_query($konek, "SELECT id FROM jawabother WHERE id='$unik'");
-
-$barx = mysqli_num_rows($check);
-
-if ($barx > 0) {
+$data = $_SESSION["unix"];
+// Jika sebelumnya pernah
+if(in_array($unik,$data)){
     $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
-} else {
+}else{
+    $data[] = $unik;
+    // $_SESSION["unix"] = $data;
     $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
 }
 
-// if ($tipe == 4) {
-//     var_dump($tokenx);
-//     $sql_create = mysqli_query($konek, "REPLACE into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
-// } else {
-//     if ($barx > 0) {
-//         $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
-//     } else {
-//         $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
-//     }
+$_SESSION["unix"] = $data;
+// var_dump($_SESSION["unix"]);
+// unset($_SESSION["unix"]);
+
+// if(!in_array($unik,$_SESSION["unix"])){
+//     $_SESSION["unix"][] = $unix;
+//     $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
+// }else{
+//     $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
 // }
-
-
 
 ?>

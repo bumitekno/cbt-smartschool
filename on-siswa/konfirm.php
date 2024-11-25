@@ -3,6 +3,9 @@ session_start();
 include('conn/cek.php');
 include('../koneksi/koneksi.php');
 include('conn/fungsi.php');
+
+$_SESSION["unix"] = [];
+
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
 $querydosen = mysqli_query($konek, "SELECT * FROM jawaban where nis='$username'");
 if ($querydosen == false) {

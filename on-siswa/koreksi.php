@@ -7,7 +7,6 @@ include ('conn/fungsi.php');
 date_default_timezone_set('Asia/Jakarta');
 $jam = date("Y-m-d h:i:s");
 
-
 $querydosen = mysqli_query($konek, "SELECT * FROM jawaban WHERE nis='$username'");
 
 if ($querydosen == false) {
@@ -19,6 +18,9 @@ while ($ar = mysqli_fetch_array($querydosen)) {
   if (is_nan($ar['nilai'])) {
     $ar['nilai'] = 0;
   }
+
+  // var_dump($ar);
+  // die();
 
   $add = mysqli_query($konek, "INSERT INTO nilaihasil (nis, nama, kelas, kodemapel, kodesoal, aktif, jumlahsoal, jawabansiswa, benar, salah, nilai, kuncisoal, waktuselesai) VALUES 
 	('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]', '$jam')");
@@ -34,6 +36,9 @@ $qq = mysqli_query($konek, "SELECT * FROM profil where id='1'");
 if ($qq == false) {
   die ("Terjadi Kesalahan : " . mysqli_error($konek));
 }
+
+unset($_SESSION["unix"]);
+
 while ($xx = mysqli_fetch_array($qq)) {
   ?>
   <link href="mesin/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -346,4 +351,4 @@ while ($xx = mysqli_fetch_array($qq)) {
           document.getElementById("myDiv").style.display = "block";
         }
       </script>
-    <?php } ?>
+<?php } ?>
