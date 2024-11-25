@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 07, 2024 at 08:42 AM
+-- Generation Time: Nov 25, 2024 at 07:20 AM
 -- Server version: 8.3.0
 -- PHP Version: 7.4.33
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `jawaban` (
   `kodesoal` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `aktif` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `waktu` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `jawabansiswa` varchar(100) DEFAULT NULL,
+  `jawabansiswa` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `benar` varchar(10) DEFAULT NULL,
   `salah` varchar(10) DEFAULT NULL,
   `nilai` varchar(10) DEFAULT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `nilaihasil` (
   `jumlahsoal` int DEFAULT NULL,
   `kodesoal` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `aktif` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `jawabansiswa` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `jawabansiswa` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci,
   `benar` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `salah` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `nilai` varchar(5) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
