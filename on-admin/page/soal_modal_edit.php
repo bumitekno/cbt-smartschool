@@ -87,7 +87,7 @@ $ur = mysqli_fetch_array ($query2);
 		                    <div class='form-group'>
 								<label>No. Soal</label> : $ar[nomersoal]
 									<div class='input-group col-xs-2'>
-										<input name='nomersoal' type='hidden' class='form-control input-sm' value='$ar[nomersoal]' required />
+										<input name='nomersoal' type='text' class='form-control input-sm' value='$ar[nomersoal]' required />
 									</div>
 							</div>
 							
