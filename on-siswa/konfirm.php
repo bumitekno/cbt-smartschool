@@ -214,7 +214,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
                 
                     <label class="list-group-item-heading">SYARAT PENGERJAAN SOAL :</label>
                     <p class="list-group-item-text"><h6><i>Baca dan ceklis beberapa syarat dibawah ini lalu klik mulai untuk mengerjakan soal !!!</i></h6></p>
-                    <br>
+                    
                     <button id="doa" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" style="margin-bottom: 10px;">DOA Menghadapi ujian</button>
                     <label class="container">&emsp; Berdoa Sebelum mengerjakan soal
                       <input id="input3" type="checkbox" name="completed3" value="35" required >
