@@ -165,7 +165,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 </header>
 
     
-<div class="col-md-6 col-md-offset-3 login-wrapper" style="float:inherit">
+<div class="col-md-6 col-md-offset-3 login-wrapper" style="float:inherit; margin-top:20px">
     <div class="panel panel-default">
 
         <form action="mulai.php" method="post">    
