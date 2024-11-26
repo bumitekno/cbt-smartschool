@@ -69,8 +69,6 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	$score = $nilaipg / $jumlah * $benar;
 	$dataJawaban = json_encode($dataJawaban);
 
-	//var_dump($dataJawaban);
-	// die();
 
 	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$dataJawaban', benar='$benar', salah='$salah', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")) {
 		

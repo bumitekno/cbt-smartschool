@@ -29,11 +29,15 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	while ($soal = mysqli_fetch_array($querysoal)) {
 		$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'");
 
-		$checkrow = mysqli_num_rows($queryhistory);
+		$dataJawaban = [];
 
 		while ($jawaban = mysqli_fetch_array($queryhistory)) {
 
 			$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
+
+			$dataJawaban[] = [
+				$soal['nomersoal'] => $jawaban['jawaban']
+			];
 
 			//jawaban soal pg komplek
 			if ($jawaban['tipe'] == 4) {
@@ -55,12 +59,13 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	}
 
 	$score = $nilaipg / $jumlah * $benar;
+	$dataJawaban = json_encode($dataJawaban);
 
 	$edit = mysqli_query($konek, "UPDATE jawaban SET  benar='$benar', salah='$salah', nilai='$score' WHERE nis='$username'");
-		
+	$delete = mysqli_query($konek, "DELETE FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'");
+
 	date_default_timezone_set('Asia/Jakarta');
 	$jam = date("Y-m-d h:i:s");
-
 
 	$querydosen = mysqli_query($konek, "SELECT * FROM jawaban WHERE nis='$username'");
 
@@ -76,7 +81,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		}
 
 		$add = mysqli_query($konek, "INSERT INTO nilaihasil (nis, nama, kelas, kodemapel, kodesoal, aktif, jumlahsoal, jawabansiswa, benar, salah, nilai, kuncisoal, waktuselesai) VALUES 
-			('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]', '$jam')");
+			('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$dataJawaban', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]', '$jam')");
 		if (!$add) {
 			print_r(mysqli_error($konek));
 		} else {
