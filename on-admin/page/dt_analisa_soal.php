@@ -143,7 +143,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 						$jwbsis=$ar[jawabansiswa][($ar[nomersoal]-1)];
 				        if(!$ar['gambarsoal']=='')
 				        {
-					    $gambarsoal = "<img class='max' src='../gbr/$ar[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
+					    $gambarsoal = "<img class='max' src='../gbr/$ar[gambarsoal]' align=center style='max-width:250px;height:auto' ><br>";
 				        }
 				        else
 				        {
@@ -152,7 +152,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        
 				        if(!$ar['gambar_a']=='')
 				        {
-					    $gambar_a = "<img src='../gbr/$ar[gambar_a]' align=center style='max-width:300pk;height:auto' >";
+					    $gambar_a = "<img src='../gbr/$ar[gambar_a]' align=center style='max-width:200px;height:auto' >";
 				        }
 				        else
 				        {
@@ -168,7 +168,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        }
 				        if(!$ar['gambar_b']=='')
 				        {
-					    $gambar_b = "<img src='../gbr/$ar[gambar_b]' align=center style='max-width:300pk;height:auto' >";
+					    $gambar_b = "<img src='../gbr/$ar[gambar_b]' align=center style='max-width:200px;height:auto' >";
 				        }
 				        else
 				        {
@@ -184,7 +184,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        }
 				        if(!$ar['gambar_c']=='')
 				        {
-					    $gambar_c = "<img src='../gbr/$ar[gambar_c]' align=center style='max-width:300pk;height:auto' >";
+					    $gambar_c = "<img src='../gbr/$ar[gambar_c]' align=center style='max-width:200px;height:auto' >";
 				        }
 				        else
 				        {
@@ -200,7 +200,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        }
 				        if(!$ar['gambar_d']=='')
 				        {
-					    $gambar_d = "<img src='../gbr/$ar[gambar_d]' align=center style='max-width:300pk;height:auto' >";
+					    $gambar_d = "<img src='../gbr/$ar[gambar_d]' align=center style='max-width:200px;height:auto' >";
 				        }
 				        else
 				        {
@@ -217,7 +217,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        
 				        if(!$ar['gambar_e']=='')
 				        {
-					    $gambar_e = "<img src='../gbr/$ar[gambar_e]' align=center style='max-width:300pk;height:auto' >";
+					    $gambar_e = "<img src='../gbr/$ar[gambar_e]' align=center style='max-width:200px;height:auto' >";
 				        }
 				        else
 				        {
