@@ -26,18 +26,23 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	$querysoal = mysqli_query($konek, "SELECT * FROM soal WHERE `kodesoal`='$kods' AND `status` IN('1','3','4','5')");
 	$jumlah = mysqli_num_rows($querysoal);
 
+	$dataJawaban = [];
+
 	while ($soal = mysqli_fetch_array($querysoal)) {
 		$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'");
-
-		$dataJawaban = [];
+		
+		
 
 		while ($jawaban = mysqli_fetch_array($queryhistory)) {
+			
 
 			$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
 
 			$dataJawaban[] = [
 				$soal['nomersoal'] => $jawaban['jawaban']
 			];
+
+			//var_dump($dataJawaban);
 
 			//jawaban soal pg komplek
 			if ($jawaban['tipe'] == 4) {
@@ -56,6 +61,8 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 				}
 			}
 		}
+
+		// var_dump($dataJawaban);
 	}
 
 	$score = $nilaipg / $jumlah * $benar;
