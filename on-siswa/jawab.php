@@ -72,7 +72,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$dataJawaban', benar='$benar', salah='$salah', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")) {
 		
-		if($delete = mysqli_query($konek, "DELETE FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'") ){
+		if($delete = mysqli_query($konek, "DELETE FROM jawabother WHERE kodesoal='$kods' AND nis='$username'") ){
 
 			header("Location:koreksi.php");
 			exit();

@@ -62,7 +62,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	$dataJawaban = json_encode($dataJawaban);
 
 	$edit = mysqli_query($konek, "UPDATE jawaban SET  benar='$benar', salah='$salah', nilai='$score' WHERE nis='$username'");
-	$delete = mysqli_query($konek, "DELETE FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'");
+	$delete = mysqli_query($konek, "DELETE FROM jawabother WHERE kodesoal='$kods' AND nis='$username'");
 
 	date_default_timezone_set('Asia/Jakarta');
 	$jam = date("Y-m-d h:i:s");
