@@ -17,10 +17,18 @@ while ($xx = mysqli_fetch_array($qq)) {
 		if ($querydosen == false) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
 		}
-		$i = 1;
 
-		
-		
+		// Jawaban siswa
+		$dataJawabanSiswa = json_decode($cc['jawabansiswa'], true);
+		$multidimensionalArray = [];
+		foreach ($dataJawabanSiswa as $item) {
+			foreach ($item as $key => $value) {
+				$multidimensionalArray[$key] =  $value;
+			}
+		}
+
+
+		$i = 1;
 
 		while ($sr = mysqli_fetch_array($querydosen)) {
 
@@ -125,298 +133,302 @@ while ($xx = mysqli_fetch_array($qq)) {
 					$benarPGK = 0;
 					$salah = 0;
 
+					// Soal
 					while ($soal = mysqli_fetch_array($result)) {
-
-
 						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]'  AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
 
-						if (!$soal['soal'] == '') {
-							$soal_name = "<b>$soal[soal]</b><br><br>";
-						} else {
-							$soal_name = "";
-						}
+						// Pilihan
 
-						if (!$soal['audio'] == '') {
-							$audio = "<audio src='images/$soal[audio]' controls controlsList='nodownload'></audio>";
-						} else {
-							$audio = "";
-						}
-
-						if (!$soal['gambarsoal'] == '') {
-							$gambarsoal = "<img class='max' src='../gbr/$soal[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
-						} else {
-							$gambarsoal = "";
-						}
-
-						if (!$soal['gambar_a'] == '') {
-							$gambar_a = "<img src='../gbr/$soal[gambar_a]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_a = "";
-						}
-						if (!$soal['pilihan1'] == '') {
-							$pilihan_a = "$soal[pilihan1]";
-						} else {
-							$pilihan_a = "";
-						}
-						if (!$soal['gambar_b'] == '') {
-							$gambar_b = "<img src='../gbr/$soal[gambar_b]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_b = "";
-						}
-						if (!$soal['pilihan2'] == '') {
-							$pilihan_b = "$soal[pilihan2]";
-						} else {
-							$pilihan_b = "";
-						}
-						if (!$soal['gambar_c'] == '') {
-							$gambar_c = "<img src='../gbr/$soal[gambar_c]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_c = "";
-						}
-						if (!$soal['pilihan3'] == '') {
-							$pilihan_c = "$soal[pilihan3]";
-						} else {
-							$pilihan_c = "";
-						}
-						if (!$soal['gambar_d'] == '') {
-							$gambar_d = "<img src='../gbr/$soal[gambar_d]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_d = "";
-						}
-						if (!$soal['pilihan4'] == '') {
-							$pilihan_d = "$soal[pilihan4]";
-						} else {
-							$pilihan_d = "";
-						}
-
-						if (!$ar['gambar_e'] == '') {
-							$gambar_e = "<img src='../gbr/$soal[gambar_e]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_e = "";
-						}
-						if (!$soal['pilihan5'] == '') {
-							$pilihan_e = "$soal[pilihan5]";
-						} else {
-							$pilihan_e = "";
-						}
-
-
-						while ($jawaban = mysqli_fetch_array($queryhistory)) {
-
-							$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
-							$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
-
-							if ($soal['status'] == 1) {
-
-								$type = "Pilihan Ganda";
-
-								$jwbsis = $jawaban['jawaban'];
-								
-
-								if ($kunci == strtolower($jawaban_siswa)) {
-									$benarp++;
-									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
-								} else {
-									$salah++;
-									$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
-								}
-
-								if ($kunci == "a") {
-									$pilihan = "
-							 <div class='show jawaban'>
-									  <p>a. $pilihan_a $gambar_a <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-									  <p>b. $pilihan_b $gambar_b</p>
-									  <p>c. $pilihan_c $gambar_c</p>
-									  <p>d. $pilihan_d $gambar_d</p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
-								} else if ($kunci == "b") {
-									$pilihan = "
-							 <div class='show jawaban'>
-									  <p>a. $pilihan_a $gambar_a</p>
-									  <p>b. $pilihan_b $gambar_b <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-									  <p>c. $pilihan_c $gambar_c</p>
-									  <p>d. $pilihan_d $gambar_d</p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
-								} else if ($kunci == "c") {
-									$pilihan = "
-							 <div class='show jawaban'>
-									  <p>a. $pilihan_a $gambar_a</p>
-									  <p>b. $pilihan_b $gambar_b</p>
-									  <p>c. $pilihan_c $gambar_c <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-									  <p>d. $pilihan_d $gambar_d</p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
-								} else if ($kunci == "d") {
-									$pilihan = "
-									 <div class='show jawaban'>
-									  <p>a. $pilihan_a $gambar_a</p>
-									  <p>b. $pilihan_b $gambar_b</p>
-									  <p>c. $pilihan_c $gambar_c</p>
-									  <p>d. $pilihan_d $gambar_d <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
-								} else if ($kunci == "e") {
-
-									$pilihan = "
-									 <div class='show jawaban'>
-									  <p>a. $pilihan_a $gambar_a</p>
-									  <p>b. $pilihan_b $gambar_b</p>
-									  <p>c. $pilihan_c $gambar_c</p>
-									  <p>d. $pilihan_d $gambar_d</p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e <i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
-								}
-
-								// echo 'AAA'.$nilaipg;	echo '<br/>';		
-								// echo 'BBB'.$jumlah;		echo '<br/>';
-								// echo 'CCC'.$benarp;		echo '<br/>';
-		
-								$scorepg = $nilaipg / $jumlah * $benarp;
-								$scorepg_total = $scorepg;
-								var_dump($benarp);
-
-								echo "
-									<tr>
-									$soal[nomersoal]. <b>$soal[soal] ($type) </b>
-								 <br>
-									&emsp;$gambarsoal<br>$audio
-									$pilihan
-										<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i>  Skor : $scorepg </div>
-										<br>
-									</tr>";
-
+							if (!$soal['soal'] == '') {
+								$soal_name = "<b>$soal[soal]</b><br><br>";
+							} else {
+								$soal_name = "";
 							}
 
-							if ($soal['status'] == 3) {
-
-								$type = "Soal Benar atau Salah ";
-
-								$benarBS = 0;
-								$jwbsis = $jawaban['jawaban'];
-
-								if ($kunci == strtolower($jwbsis)) {
-									$jwbsis = "Benar";
-									$benarBS++;
-									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
-								} else {
-									$salah++;
-									$jwbsis = "Salah";
-									$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
-								}
-
-								$score_bs = $nilaipg / $jumlah * $benarBS;
-								$score_bs_total += $score_bs;
-
-								echo "
-								<tr>
-								$soal[nomersoal]. <b>$soal[soal] ($type) </b>
-								<br>
-								&emsp;$gambarsoal<br>$audio
-								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: $score_bs </div>
-								<br>
-							    </tr>";
-
+							if (!$soal['audio'] == '') {
+								$audio = "<audio src='images/$soal[audio]' controls controlsList='nodownload'></audio>";
+							} else {
+								$audio = "";
 							}
 
-							if ($soal['status'] == 4) {
+							if (!$soal['gambarsoal'] == '') {
+								$gambarsoal = "<img class='max' src='../gbr/$soal[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
+							} else {
+								$gambarsoal = "";
+							}
 
-								$score = 0;
-								$benarPGK = 0;
-								$type = "Pilihan Ganda Kompleks ";
+							if (!$soal['gambar_a'] == '') {
+								$gambar_a = "<img src='../gbr/$soal[gambar_a]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_a = "";
+							}
+							if (!$soal['pilihan1'] == '') {
+								$pilihan_a = "$soal[pilihan1]";
+							} else {
+								$pilihan_a = "";
+							}
+							if (!$soal['gambar_b'] == '') {
+								$gambar_b = "<img src='../gbr/$soal[gambar_b]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_b = "";
+							}
+							if (!$soal['pilihan2'] == '') {
+								$pilihan_b = "$soal[pilihan2]";
+							} else {
+								$pilihan_b = "";
+							}
+							if (!$soal['gambar_c'] == '') {
+								$gambar_c = "<img src='../gbr/$soal[gambar_c]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_c = "";
+							}
+							if (!$soal['pilihan3'] == '') {
+								$pilihan_c = "$soal[pilihan3]";
+							} else {
+								$pilihan_c = "";
+							}
+							if (!$soal['gambar_d'] == '') {
+								$gambar_d = "<img src='../gbr/$soal[gambar_d]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_d = "";
+							}
+							if (!$soal['pilihan4'] == '') {
+								$pilihan_d = "$soal[pilihan4]";
+							} else {
+								$pilihan_d = "";
+							}
 
-								$split_str = str_split($kunci);
-								$tanda_a = '';
-								$tanda_b = '';
-								$tanda_c = '';
-								$tanda_d = '';
-								$tanda_e = '';
+							if (!$ar['gambar_e'] == '') {
+								$gambar_e = "<img src='../gbr/$soal[gambar_e]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_e = "";
+							}
+							if (!$soal['pilihan5'] == '') {
+								$pilihan_e = "$soal[pilihan5]";
+							} else {
+								$pilihan_e = "";
+							}
 
-								$jwbsis = str_replace(',', '', $jawaban['jawaban']);
+						// End pilihan
 
-								if ($kunci == strtolower($jwbsis)) {
-									$benarPGK++;
-									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
-								} else {
-									$salah++;
-									$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
-								}
+						$jawabans = $multidimensionalArray[$soal['nomersoal']];
 
-								foreach ($split_str as $l) {
-									if ($l == 'a') {
-										$tanda_a = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
-									}
-									if ($l == 'b') {
-										$tanda_b = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
-									}
-									if ($l == 'c') {
-										$tanda_c = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
-									}
-									if ($l == 'd') {
-										$tanda_d = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
-									}
-									if ($l == 'e') {
-										$tanda_e = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
-									}
-								}
+						// clean jawaban siswa
+						$jawaban_siswa = strtolower(str_replace(' ', '', $jawabans));
+						// clean kunci
+						$kunci = strtolower(str_replace(' ', '', $soal['kunci']));	
+
+
+						if ($soal['status'] == 1) {
+
+							$type = "Pilihan Ganda";
+
+							$jwbsis = $jawabans;
+
+							if ($kunci == strtolower($jawaban_siswa)) {
+								$benarp++;
+								$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
+							} else {
+								$salah++;
+								$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
+							}
+
+							if ($kunci == "a") {
+								$pilihan = "
+						 <div class='show jawaban'>
+								  <p>a. $pilihan_a $gambar_a <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+								  <p>b. $pilihan_b $gambar_b</p>
+								  <p>c. $pilihan_c $gambar_c</p>
+								  <p>d. $pilihan_d $gambar_d</p>
+								  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
+							} else if ($kunci == "b") {
+								$pilihan = "
+						 <div class='show jawaban'>
+								  <p>a. $pilihan_a $gambar_a</p>
+								  <p>b. $pilihan_b $gambar_b <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+								  <p>c. $pilihan_c $gambar_c</p>
+								  <p>d. $pilihan_d $gambar_d</p>
+								  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
+							} else if ($kunci == "c") {
+								$pilihan = "
+						 <div class='show jawaban'>
+								  <p>a. $pilihan_a $gambar_a</p>
+								  <p>b. $pilihan_b $gambar_b</p>
+								  <p>c. $pilihan_c $gambar_c <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+								  <p>d. $pilihan_d $gambar_d</p>
+								  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
+							} else if ($kunci == "d") {
+								$pilihan = "
+								 <div class='show jawaban'>
+								  <p>a. $pilihan_a $gambar_a</p>
+								  <p>b. $pilihan_b $gambar_b</p>
+								  <p>c. $pilihan_c $gambar_c</p>
+								  <p>d. $pilihan_d $gambar_d <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
+								  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
+							} else if ($kunci == "e") {
 
 								$pilihan = "
-							 	<div class='show jawaban'>
-											  <p>a. $pilihan_a $gambar_a $tanda_a </p>
-											  <p>b. $pilihan_b $gambar_b $tanda_b</p>  
-											  <p>c. $pilihan_c $gambar_c $tanda_c</p> 
-											  <p>d. $pilihan_d $gambar_d $tanda_d</p> 
-											  <p class='$statussoal'>e. $pilihan_e $gambar_e $tanda_e</p> </div> ";
-
-								$score_pgk = $nilaipg / $jumlah * $benarPGK;
-								$score_pgk_total += $score_pgk;
-
-								echo "<tr>
-								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
-								&emsp;$gambarsoal<br>$audio
-								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br>
-								 </tr>";
-
+								 <div class='show jawaban'>
+								  <p>a. $pilihan_a $gambar_a</p>
+								  <p>b. $pilihan_b $gambar_b</p>
+								  <p>c. $pilihan_c $gambar_c</p>
+								  <p>d. $pilihan_d $gambar_d </p>
+								  <p class='$statussoal'>e. $pilihan_e $gambar_e<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
 							}
 
-							if ($soal['status'] == 5) {
-								$type = "Soal Menjodohkan";
-								$score = 0;
-								$benarJd = 0;
+							// echo 'AAA'.$nilaipg;	echo '<br/>';		
+							// echo 'BBB'.$jumlah;		echo '<br/>';
+							// echo 'CCC'.$benarp;		echo '<br/>';
+	
+							$scorepg = $nilaipg / $jumlah * $benarp;
+							$scorepg_total = $scorepg;
+							$scorepg_total = $scorepg;
 
-								$pilihjod = $jawaban_siswa;
-								$pilihjod = $jawaban_siswa;
-								$list_array = '';
-								$tanda_kunci = '';
-								if (count($array_kuncian) > 0) {
-									foreach ($array_kuncian as $index) {
-										if ($kunci == strtolower($index)) {
-											$tanda_kunci = " <i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
-											$list_array .= '<li>' . $index . '' . $tanda_kunci . '</li>';
-										} else {
-											$list_array .= '<li>' . $index . '</li>';
-										}
-									}
-									if ($kunci == strtolower($pilihjod)) {
-										$benarJd++;
-										$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
-									} else {
-										$salah++;
-										$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
-									}
-
-									$score_jd = $nilaipg / $jumlah * $benarJd;
-									$score_jd_total += $score_jd;
-								}
-
-								echo "<tr>
+							echo "
+								<tr>
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b>
-                                        &emsp;$gambarsoal<br>$audio <br>
-										<div class='jawaban'>
-										$list_array
-										</div>
-                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] $tanda</i>  Skor : $score_jd </div><br>
-                                    </tr>";
-
-							}
+							 <br>
+								&emsp;$gambarsoal<br>$audio
+								$pilihan
+									<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i>  Skor : $scorepg </div>
+									<br>
+									<hr class='style1'>
+								</tr>";
 
 						}
+
+						if ($soal['status'] == 3) {
+
+							$type = "Soal Benar atau Salah ";
+
+							$benarBS = 0;
+							$jwbsis = $jawabans;
+
+							if ($kunci == strtolower($jwbsis)) {
+								$jwbsis = "Benar";
+								$benarBS++;
+								$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
+							} else {
+								$salah++;
+								$jwbsis = "Salah";
+								$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
+							}
+
+							$score_bs = $nilaipg / $jumlah * $benarBS;
+							$score_bs_total += $score_bs;
+
+							echo "
+							<tr>
+							$soal[nomersoal]. <b>$soal[soal] ($type) </b>
+							<br>
+							&emsp;$gambarsoal<br>$audio
+							<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: $score_bs </div>
+							<br>
+							<hr class='style1'>
+							</tr>";
+
+						}
+
+						if ($soal['status'] == 4) {
+
+							$score = 0;
+							$benarPGK = 0;
+							$type = "Pilihan Ganda Kompleks ";
+
+							$split_str = str_split($kunci);
+							$tanda_a = '';
+							$tanda_b = '';
+							$tanda_c = '';
+							$tanda_d = '';
+							$tanda_e = '';
+							$jwbsis = $jawaban_siswa;
+
+							if ($kunci == strtolower($jwbsis)) {
+								$benarPGK++;
+								$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
+							} else {
+								$salah++;
+								$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
+							}
+
+							foreach ($split_str as $l) {
+								if ($l == 'a') {
+									$tanda_a = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
+								}
+								if ($l == 'b') {
+									$tanda_b = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
+								}
+								if ($l == 'c') {
+									$tanda_c = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
+								}
+								if ($l == 'd') {
+									$tanda_d = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
+								}
+								if ($l == 'e') {
+									$tanda_e = "<i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
+								}
+							}
+
+							$pilihan = "
+							 <div class='show jawaban'>
+										  <p>a. $pilihan_a $gambar_a $tanda_a </p>
+										  <p>b. $pilihan_b $gambar_b $tanda_b</p>  
+										  <p>c. $pilihan_c $gambar_c $tanda_c</p> 
+										  <p>d. $pilihan_d $gambar_d $tanda_d</p> 
+										  <p class='$statussoal'>e. $pilihan_e $gambar_e $tanda_e</p> </div> ";
+
+							$score_pgk = $nilaipg / $jumlah * $benarPGK;
+							$score_pgk_total += $score_pgk;
+
+							echo "<tr>
+							$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
+							&emsp;$gambarsoal<br>$audio
+							 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br><hr class='style1'>
+							 </tr>";
+
+						}
+
+						if ($soal['status'] == 5) {
+							$type = "Soal Menjodohkan";
+							$score = 0;
+							$benarJd = 0;
+
+							$pilihjod = $jawaban_siswa;
+							$pilihjod = $jawaban_siswa;
+							$list_array = '';
+							$tanda_kunci = '';
+							if (count($array_kuncian) > 0) {
+								foreach ($array_kuncian as $index) {
+									if ($kunci == strtolower($index)) {
+										$tanda_kunci = " <i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
+										$list_array .= '<li>' . $index . '' . $tanda_kunci . '</li>';
+									} else {
+										$list_array .= '<li>' . $index . '</li>';
+									}
+								}
+								if ($kunci == strtolower($pilihjod)) {
+									$benarJd++;
+									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
+								} else {
+									$salah++;
+									$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
+								}
+
+								$score_jd = $nilaipg / $jumlah * $benarJd;
+								$score_jd_total += $score_jd;
+							}
+
+							echo "<tr>
+							$soal[nomersoal]. <b>$soal[soal] ($type) </b>
+									&emsp;$gambarsoal<br>$audio <br>
+									<div class='jawaban'>
+									$list_array
+									</div>
+									<div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawabans $tanda</i>  Skor : $score_jd </div><br><hr class='style1'>
+								</tr>";
+
+						}
+
 
 						// echo $scorepg_total.'-'.$score_bs_total.'-'.$score_uraian_total.'-'.$score_jd_total.'-'.$score_pgk_total;
 						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
@@ -453,10 +465,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 						</tr>";
 
 					}
-
-					
-
-					
+	
 					$score_uraian_final = 0;
 					if ($rows_uraian > 0) {
 						$score_uraian_final = ($score_uraian_total/$score_max)*($nilaiurai);

@@ -6,7 +6,7 @@ if ($qq == false) {
 	die("Terjadi Kesalahan : " . mysqli_error($konek));
 }
 while ($xx = mysqli_fetch_array($qq)) {
-	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$kodesoal' ");
+	$query = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE kodesoal='$kodesoal' ");
 	if ($query == false) {
 		die("Terjadi Kesalahan : " . mysqli_error($konek));
 	}
@@ -17,19 +17,13 @@ while ($xx = mysqli_fetch_array($qq)) {
 		if ($querydosen == false) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
 		}
-
-		// Jawaban siswa
-		$dataJawabanSiswa = json_decode($cc['jawabansiswa'], true);
-		$multidimensionalArray = [];
-		foreach ($dataJawabanSiswa as $item) {
-			foreach ($item as $key => $value) {
-				$multidimensionalArray[$key] =  $value;
-			}
-		}
-
-
 		$i = 1;
+
+		
+		
+
 		while ($sr = mysqli_fetch_array($querydosen)) {
+
 			$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3','4','5') ORDER BY nomersoal ");
 			$rows = mysqli_num_rows($result);
 			$jumlah = $rows;
@@ -37,9 +31,13 @@ while ($xx = mysqli_fetch_array($qq)) {
 			$nilaiurai = 100 - $nilaipg;
 			$nil = 0;
 			$statussoal = $sr['opsi'];
+
 			?>
 
-			<div class="col-xs-12">
+			
+
+			
+			<div class="col-xs-12 kop">
 				<center><img src="../aset/foto/<?php echo $xx['logo']; ?>" width=100 alt="...">
 					<br>
 					<h3><b><u>
@@ -53,7 +51,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				</center>
 				<br><br>
 			</div>
-			<div id="tuti" class="col-xs-12">
+			<div id="tuti" class="col-xs-12 data-diri">
 				<div class="col-xs-8">
 					<table class="cetakan full">
 						<tr>
@@ -94,7 +92,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				<div class="col-xs-4">
 				</div>
 			</div>
-			<div class="col-xs-12">
+			<div class="col-xs-12 jawaban">
 				<hr class="style2">
 				<tbody>
 					<?php
@@ -122,107 +120,98 @@ while ($xx = mysqli_fetch_array($qq)) {
 						}
 					}
 
-					// Soal
+					$benarp = 0;
+					$benarBS = 0;
+					$benarPGK = 0;
+					$salah = 0;
+
 					while ($soal = mysqli_fetch_array($result)) {
-						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
 
 
-						// Pilihan
+						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]'  AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
 
-							if (!$soal['soal'] == '') {
-								$soal_name = "<b>$soal[soal]</b><br><br>";
-							} else {
-								$soal_name = "";
-							}
+						if (!$soal['soal'] == '') {
+							$soal_name = "<b>$soal[soal]</b><br><br>";
+						} else {
+							$soal_name = "";
+						}
 
-							if (!$soal['audio'] == '') {
-								$audio = "<audio src='images/$soal[audio]' controls controlsList='nodownload'></audio>";
-							} else {
-								$audio = "";
-							}
+						if (!$soal['audio'] == '') {
+							$audio = "<audio src='images/$soal[audio]' controls controlsList='nodownload'></audio>";
+						} else {
+							$audio = "";
+						}
 
-							if (!$soal['gambarsoal'] == '') {
-								$gambarsoal = "<img class='max' src='../gbr/$soal[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
-							} else {
-								$gambarsoal = "";
-							}
+						if (!$soal['gambarsoal'] == '') {
+							$gambarsoal = "<img class='max' src='../gbr/$soal[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
+						} else {
+							$gambarsoal = "";
+						}
 
-							if (!$soal['gambar_a'] == '') {
-								$gambar_a = "<img src='../gbr/$soal[gambar_a]' align=center style='max-width:300pk;height:auto' >";
-							} else {
-								$gambar_a = "";
-							}
+						if (!$soal['gambar_a'] == '') {
+							$gambar_a = "<img src='../gbr/$soal[gambar_a]' align=center style='max-width:300pk;height:auto' >";
+						} else {
+							$gambar_a = "";
+						}
+						if (!$soal['pilihan1'] == '') {
+							$pilihan_a = "$soal[pilihan1]";
+						} else {
+							$pilihan_a = "";
+						}
+						if (!$soal['gambar_b'] == '') {
+							$gambar_b = "<img src='../gbr/$soal[gambar_b]' align=center style='max-width:300pk;height:auto' >";
+						} else {
+							$gambar_b = "";
+						}
+						if (!$soal['pilihan2'] == '') {
+							$pilihan_b = "$soal[pilihan2]";
+						} else {
+							$pilihan_b = "";
+						}
+						if (!$soal['gambar_c'] == '') {
+							$gambar_c = "<img src='../gbr/$soal[gambar_c]' align=center style='max-width:300pk;height:auto' >";
+						} else {
+							$gambar_c = "";
+						}
+						if (!$soal['pilihan3'] == '') {
+							$pilihan_c = "$soal[pilihan3]";
+						} else {
+							$pilihan_c = "";
+						}
+						if (!$soal['gambar_d'] == '') {
+							$gambar_d = "<img src='../gbr/$soal[gambar_d]' align=center style='max-width:300pk;height:auto' >";
+						} else {
+							$gambar_d = "";
+						}
+						if (!$soal['pilihan4'] == '') {
+							$pilihan_d = "$soal[pilihan4]";
+						} else {
+							$pilihan_d = "";
+						}
 
-							if (!$soal['pilihan1'] == '') {
-								$pilihan_a = "$soal[pilihan1]";
-							} else {
-								$pilihan_a = "";
-							}
+						if (!$ar['gambar_e'] == '') {
+							$gambar_e = "<img src='../gbr/$soal[gambar_e]' align=center style='max-width:300pk;height:auto' >";
+						} else {
+							$gambar_e = "";
+						}
+						if (!$soal['pilihan5'] == '') {
+							$pilihan_e = "$soal[pilihan5]";
+						} else {
+							$pilihan_e = "";
+						}
 
-							if (!$soal['gambar_b'] == '') {
-								$gambar_b = "<img src='../gbr/$soal[gambar_b]' align=center style='max-width:300pk;height:auto' >";
-							} else {
-								$gambar_b = "";
-							}
 
-							if (!$soal['pilihan2'] == '') {
-								$pilihan_b = "$soal[pilihan2]";
-							} else {
-								$pilihan_b = "";
-							}
+						while ($jawaban = mysqli_fetch_array($queryhistory)) {
 
-							if (!$soal['gambar_c'] == '') {
-								$gambar_c = "<img src='../gbr/$soal[gambar_c]' align=center style='max-width:300pk;height:auto' >";
-							} else {
-								$gambar_c = "";
-							}
-
-							if (!$soal['pilihan3'] == '') {
-								$pilihan_c = "$soal[pilihan3]";
-							} else {
-								$pilihan_c = "";
-							}
-
-							if (!$soal['gambar_d'] == '') {
-								$gambar_d = "<img src='../gbr/$soal[gambar_d]' align=center style='max-width:300pk;height:auto' >";
-							} else {
-								$gambar_d = "";
-							}
-
-							if (!$soal['pilihan4'] == '') {
-								$pilihan_d = "$soal[pilihan4]";
-							} else {
-								$pilihan_d = "";
-							}
-
-							if (!$ar['gambar_e'] == '') {
-								$gambar_e = "<img src='../gbr/$soal[gambar_e]' align=center style='max-width:300pk;height:auto' >";
-							} else {
-								$gambar_e = "";
-							}
-
-							if (!$soal['pilihan5'] == '') {
-								$pilihan_e = "$soal[pilihan5]";
-							} else {
-								$pilihan_e = "";
-							}
-
-						// End pilihan
-
-						$jawabans = $multidimensionalArray[$soal['nomersoal']];
-						
-					
-							
-							// clean jawaban siswa
-							$jawaban_siswa = strtolower(str_replace(' ', '', $jawabans));
-							// clean kunci
-							$kunci = strtolower(str_replace(' ', '', $soal['kunci']));	
+							$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
+							$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
 
 							if ($soal['status'] == 1) {
 
 								$type = "Pilihan Ganda";
 
-								$jwbsis = $jawabans;
+								$jwbsis = $jawaban['jawaban'];
+								
 
 								if ($kunci == strtolower($jawaban_siswa)) {
 									$benarp++;
@@ -271,8 +260,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  <p>a. $pilihan_a $gambar_a</p>
 									  <p>b. $pilihan_b $gambar_b</p>
 									  <p>c. $pilihan_c $gambar_c</p>
-									  <p>d. $pilihan_d $gambar_d </p>
-									  <p class='$statussoal'>e. $pilihan_e $gambar_e<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
+									  <p>d. $pilihan_d $gambar_d</p>
+									  <p class='$statussoal'>e. $pilihan_e $gambar_e <i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
 								}
 
 								// echo 'AAA'.$nilaipg;	echo '<br/>';		
@@ -281,7 +270,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 		
 								$scorepg = $nilaipg / $jumlah * $benarp;
 								$scorepg_total = $scorepg;
-								$scorepg_total = $scorepg;
+								var_dump($benarp);
 
 								echo "
 									<tr>
@@ -291,7 +280,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 									$pilihan
 										<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i>  Skor : $scorepg </div>
 										<br>
-										<hr class='style1'>
 									</tr>";
 
 							}
@@ -301,7 +289,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$type = "Soal Benar atau Salah ";
 
 								$benarBS = 0;
-								$jwbsis = $jawabans;
+								$jwbsis = $jawaban['jawaban'];
 
 								if ($kunci == strtolower($jwbsis)) {
 									$jwbsis = "Benar";
@@ -323,7 +311,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 								&emsp;$gambarsoal<br>$audio
 								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: $score_bs </div>
 								<br>
-								<hr class='style1'>
 							    </tr>";
 
 							}
@@ -340,7 +327,8 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$tanda_c = '';
 								$tanda_d = '';
 								$tanda_e = '';
-								$jwbsis = $jawaban_siswa;
+
+								$jwbsis = str_replace(',', '', $jawaban['jawaban']);
 
 								if ($kunci == strtolower($jwbsis)) {
 									$benarPGK++;
@@ -382,7 +370,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								echo "<tr>
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
 								&emsp;$gambarsoal<br>$audio
-								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br><hr class='style1'>
+								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br>
 								 </tr>";
 
 							}
@@ -423,22 +411,22 @@ while ($xx = mysqli_fetch_array($qq)) {
 										<div class='jawaban'>
 										$list_array
 										</div>
-                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawabans $tanda</i>  Skor : $score_jd </div><br><hr class='style1'>
+                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawaban[jawaban] $tanda</i>  Skor : $score_jd </div><br>
                                     </tr>";
 
 							}
 
-						
+						}
 
 						// echo $scorepg_total.'-'.$score_bs_total.'-'.$score_uraian_total.'-'.$score_jd_total.'-'.$score_pgk_total;
 						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 					}
 
+					// Urain
 					$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
 					$rows_uraian = mysqli_num_rows($result_uraian);
 
 					$score_max = 0;
-
 					while ($uraian_singkat = mysqli_fetch_array($result_uraian)) {
 
 						$query2 = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nama='$cc[nama]' AND kodesoal='$uraian_singkat[kodesoal]' AND nomersoal= $uraian_singkat[nomersoal]");
@@ -461,13 +449,11 @@ while ($xx = mysqli_fetch_array($qq)) {
 						 <br>
 						  &emsp;$gambarsoal<br>$audio
 							<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $benar </i> Skor : $score_uraian</div>
-							<br><hr class='style1'>
+							<br>
 						</tr>";
 
 					}
-
-					
-					
+	
 					$score_uraian_final = 0;
 					if ($rows_uraian > 0) {
 						$score_uraian_final = ($score_uraian_total/$score_max)*($nilaiurai);
@@ -500,7 +486,12 @@ while ($xx = mysqli_fetch_array($qq)) {
 							<?php echo $xx['n_sekolah']; ?> ---------
 						</b></h5>
 				</center>
+
+				<div style="padding: 100px 0;"></div>
+				<div class="page-break"></div>
+
 			</div>
+			
 
 		<?php }
 	}
