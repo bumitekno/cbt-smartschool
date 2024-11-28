@@ -35,31 +35,42 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 		while ($jawaban = mysqli_fetch_array($queryhistory)) {
 			
-
-			$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
+			$jawaban_sementara = $jawaban['jawaban'];
+			$kunci = strtolower(str_replace(' ','', $soal['kunci']));
+			$jawaban = strtolower(str_replace(' ','',$jawaban_sementara));
 
 			$dataJawaban[] = [
-				$soal['nomersoal'] => $jawaban['jawaban']
+				$soal['nomersoal'] => $jawaban_sementara
 			];
 
-			//var_dump($dataJawaban);
+			if ($kunci == $jawaban) {
+				$benar++;
+			} else {
+				$salah++;
+			}
+
+			// $kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
+
+			// $dataJawaban[] = [
+			// 	$soal['nomersoal'] => $jawaban['jawaban']
+			// ];
 
 			//jawaban soal pg komplek
-			if ($jawaban['tipe'] == 4) {
-				$remove_coma = str_replace(',', '', $jawaban['jawaban']);
-				if ($kunci == strtolower($remove_coma)) {
-					$benar++;
-				} else {
-					$salah++;
-				}
-			} else {
-				$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
-				if ($kunci == strtolower($jawaban_siswa)) {
-					$benar++;
-				} else {
-					$salah++;
-				}
-			}
+			// if ($jawaban['tipe'] == 4) {
+			// 	$remove_coma = str_replace(',', '', $jawaban['jawaban']);
+			// 	if ($kunci == strtolower($remove_coma)) {
+			// 		$benar++;
+			// 	} else {
+			// 		$salah++;
+			// 	}
+			// } else {
+			// 	$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
+			// 	if ($kunci == strtolower($jawaban_siswa)) {
+			// 		$benar++;
+			// 	} else {
+			// 		$salah++;
+			// 	}
+			// }
 		}
 
 		// var_dump($dataJawaban);
