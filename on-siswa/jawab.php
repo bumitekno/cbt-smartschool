@@ -40,35 +40,41 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		$checkrow = mysqli_num_rows($queryhistory);
 
 		while ($jawaban = mysqli_fetch_array($queryhistory)) {
-
-			$kunci = strtolower(str_replace(' ', '-', $soal['kunci']));
+			$jawaban_sementara = $jawaban['jawaban'];
+			$kunci = strtolower(str_replace(' ','', $soal['kunci']));
+			$jawaban = strtolower(str_replace(' ','',$jawaban_sementara));
 
 			$dataJawaban[] = [
-				$soal['nomersoal'] => $jawaban['jawaban']
+				$soal['nomersoal'] => $jawaban_sementara
 			];
 
-			//jawaban soal pg komplek
-			if ($jawaban['tipe'] == 4) {
-				$remove_coma = str_replace(',', '', $jawaban['jawaban']);
-				if ($kunci == strtolower($remove_coma)) {
-					$benar++;
-				} else {
-					$salah++;
-				}
+			if ($kunci == $jawaban) {
+				$benar++;
 			} else {
-				$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
-				if ($kunci == strtolower($jawaban_siswa)) {
-					$benar++;
-				} else {
-					$salah++;
-				}
+				$salah++;
 			}
+
+			//jawaban soal pg komplek
+			// if ($jawaban['tipe'] == 4) {
+			// 	$remove_coma = str_replace(',', '', $jawaban['jawaban']);
+			// 	if ($kunci == strtolower($remove_coma)) {
+			// 		$benar++;
+			// 	} else {
+			// 		$salah++;
+			// 	}
+			// } else {
+			// 	$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
+			// 	if ($kunci == strtolower($jawaban_siswa)) {
+			// 		$benar++;
+			// 	} else {
+			// 		$salah++;
+			// 	}
+			// }
 		}
 	}
 
 	$score = $nilaipg / $jumlah * $benar;
 	$dataJawaban = json_encode($dataJawaban);
-
 
 	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$dataJawaban', benar='$benar', salah='$salah', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")) {
 		
