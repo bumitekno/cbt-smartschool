@@ -172,7 +172,7 @@ include "tema/tema.php";
                     <?php 
                     $dir = "../gbr/";
                     chdir($dir);
-                    array_multisort(array_map('filemtime', ($files = glob("*.{jpg,JPG,jpeg,JPEG,png,gif,PNG,mp3,ogg}", GLOB_BRACE))), SORT_DESC, $files);
+                    array_multisort(array_map('filemtime', ($files = glob("*.{jpg,jpeg,png,gif,mp3,ogg}", GLOB_BRACE))), SORT_DESC, $files);
                     foreach($files as $data)
                     {
                     $gambarsoal ="<img src='../gbr/$data' width=200pk height=auto >";
@@ -181,7 +181,7 @@ include "tema/tema.php";
                     $tanda=explode(".",$data);
                     $file = $tanda[0];
                     $dok = $tanda[1];
-                    	if($dok == "JPG" OR $dok == "jpg" OR  $dok == "jpeg" OR  $dok == "JPEG" OR  $dok == "PNG" OR  $dok == "png" OR  $dok == "PNG" OR  $dok == "JPG"){
+                    	if($dok == "jpg" OR  $dok == "jpeg" OR  $dok == "png"){
                     	$co="<img src='../gbr/$data' width=200pk height=auto >";
                     	} elseif ($dok == "mp3" OR $dok == "ogg") {
                     	$co="<audio src='../gbr/$data' controls ></audio>";
