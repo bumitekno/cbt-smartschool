@@ -29,7 +29,7 @@ if($admin_su == 1)
 	<?php
 		include "bundle/bundle_css.php";
 	?>
-	<style>
+<style>
 	    #cog {
     border-radius:0; 
     background-color:#222d32;
@@ -58,7 +58,7 @@ if($admin_su == 1)
         max-height:400px;
         width:auto;
     }
-	</style>
+</style>
   </head>
 <?php
 include "tema/tema.php";

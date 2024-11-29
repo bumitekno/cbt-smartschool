@@ -79,73 +79,76 @@ while ($xx = mysqli_fetch_array($qq)) {
 					}
 					while ($ar = mysqli_fetch_array($querydosen)) {
 
-						if (!$ar['audio'] == '') {
-							$audio = "<audio src='../gbr/$ar[audio]' controls controlsList='nodownload'></audio>";
-						} else {
-							$audio = "";
-						}
+						// Soal
+							if (!$ar['audio'] == '') {
+								$audio = "<audio src='../gbr/$ar[audio]' controls controlsList='nodownload'></audio>";
+							} else {
+								$audio = "";
+							}
 
-						if (!$ar['soal'] == '') {
-							$soal = "<b>$ar[soal]</b><br>";
-						} else {
-							$soal = "<br>";
-						}
-						if (!$ar['gambarsoal'] == '') {
-							$gambarsoal = "<img class='max' src='../gbr/$ar[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
-						} else {
-							$gambarsoal = "";
-						}
-						if (!$ar['gambar_a'] == '') {
-							$gambar_a = "<img src='../gbr/$ar[gambar_a]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_a = "";
-						}
-						if (!$ar['pilihan1'] == '') {
-							$pilihan_a = "$ar[pilihan1]";
-						} else {
-							$pilihan_a = "";
-						}
-						if (!$ar['gambar_b'] == '') {
-							$gambar_b = "<img src='../gbr/$ar[gambar_b]' align=center style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_b = "";
-						}
-						if (!$ar['pilihan2'] == '') {
-							$pilihan_b = "$ar[pilihan2]";
-						} else {
-							$pilihan_b = "";
-						}
-						if (!$ar['gambar_c'] == '') {
-							$gambar_c = "<img src='../gbr/$ar[gambar_c]' style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_c = "";
-						}
-						if (!$ar['pilihan3'] == '') {
-							$pilihan_c = "$ar[pilihan3]";
-						} else {
-							$pilihan_c = "";
-						}
-						if (!$ar['gambar_d'] == '') {
-							$gambar_d = "<img src='../gbr/$ar[gambar_d]' style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_d = "";
-						}
-						if (!$ar['pilihan4'] == '') {
-							$pilihan_d = "$ar[pilihan4]";
-						} else {
-							$pilihan_d = "";
-						}
+							if (!$ar['soal'] == '') {
+								$soal = "<b>$ar[soal]</b><br>";
+							} else {
+								$soal = "<br>";
+							}
+							if (!$ar['gambarsoal'] == '') {
+								$gambarsoal = "<img class='max' src='../gbr/$ar[gambarsoal]' align=center style='max-width:300pk;height:auto' ><br>";
+							} else {
+								$gambarsoal = "";
+							}
+							if (!$ar['gambar_a'] == '') {
+								$gambar_a = "<img src='../gbr/$ar[gambar_a]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_a = "";
+							}
+							if (!$ar['pilihan1'] == '') {
+								$pilihan_a = "$ar[pilihan1]";
+							} else {
+								$pilihan_a = "";
+							}
+							if (!$ar['gambar_b'] == '') {
+								$gambar_b = "<img src='../gbr/$ar[gambar_b]' align=center style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_b = "";
+							}
+							if (!$ar['pilihan2'] == '') {
+								$pilihan_b = "$ar[pilihan2]";
+							} else {
+								$pilihan_b = "";
+							}
+							if (!$ar['gambar_c'] == '') {
+								$gambar_c = "<img src='../gbr/$ar[gambar_c]' style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_c = "";
+							}
+							if (!$ar['pilihan3'] == '') {
+								$pilihan_c = "$ar[pilihan3]";
+							} else {
+								$pilihan_c = "";
+							}
+							if (!$ar['gambar_d'] == '') {
+								$gambar_d = "<img src='../gbr/$ar[gambar_d]' style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_d = "";
+							}
+							if (!$ar['pilihan4'] == '') {
+								$pilihan_d = "$ar[pilihan4]";
+							} else {
+								$pilihan_d = "";
+							}
 
-						if (!$ar['gambar_e'] == '') {
-							$gambar_e = "<img src='../gbr/$ar[gambar_e]' style='max-width:300pk;height:auto' >";
-						} else {
-							$gambar_e = "";
-						}
-						if (!$ar['pilihan5'] == '') {
-							$pilihan_e = "$ar[pilihan5]";
-						} else {
-							$pilihan_e = "";
-						}
+							if (!$ar['gambar_e'] == '') {
+								$gambar_e = "<img src='../gbr/$ar[gambar_e]' style='max-width:300pk;height:auto' >";
+							} else {
+								$gambar_e = "";
+							}
+							if (!$ar['pilihan5'] == '') {
+								$pilihan_e = "$ar[pilihan5]";
+							} else {
+								$pilihan_e = "";
+							}
+
+						// End soal
 
 						if ($ar['status'] == 1) {
 
@@ -220,21 +223,23 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 						if ($ar['status'] == 3) {
 
+							
+
 							$checked_true = $ar['kunci'] == "T" ? 'checked' : '';
 							$checked_false = $ar['kunci'] == "F" ? 'checked' : '';
 
 							$pilihan_benar_salah = "<br>
 											  <div class='show'>
 												<div class='form-check'>
-												<input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault1' " . $checked_true . "  disabled>
+												<input class='form-check-input' type='radio' name='flexRadioDefault$ar[nomersoal]' id='flexRadioDefault1' " . $checked_true . "  disabled>
 												<label class='form-check-label' for='flexRadioDefault1'>
-													Benar
+													Benar 
 												</label>
 											</div>
 											<div class='form-check'>
-												<input class='form-check-input' type='radio' name='flexRadioDefault' id='flexRadioDefault2' " . $checked_false . " disabled>
+												<input class='form-check-input' type='radio' name='flexRadioDefault$ar[nomersoal]' id='flexRadioDefault2' " . $checked_false . " disabled>
 												<label class='form-check-label' for='flexRadioDefault2'>
-													Salah
+													Salah 
 												</label>
 											</div>
 									</div> ";
