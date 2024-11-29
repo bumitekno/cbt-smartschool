@@ -253,7 +253,7 @@ $('form').ajaxForm({
             return (new RegExp('(' + exts.join('|').replace(/\./g, '\\.') + ')$')).test(fileName);
         }
 
-        if(!hasExtension('files[]', [".jpg", ".png", ".gif", ".jpeg", ".PNG", ".JPG", ".mp3", ".ogg", ".JPEG"])){
+        if(!hasExtension('files[]', [".jpg", ".png", ".gif", ".jpeg", ".mp3", ".ogg"])){
             alert("Hanya file .jpg, .jpeg, gif dan png yang diijinkan.");
             return false;
         }
