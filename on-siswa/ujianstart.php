@@ -70,6 +70,13 @@ while ($xx = mysqli_fetch_array($qq)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <style>
+
+      body {
+            -webkit-user-select: none;/* Chrome, Safari */
+            -moz-user-select: none;/* Firefox */
+            -ms-user-select: none;/* IE */
+            user-select: none;/* Standard */
+      }
       #us {
         position: fixed;
         top: 0;
@@ -338,24 +345,54 @@ while ($xx = mysqli_fetch_array($qq)) {
     <div id="main"></div>
     <script>
 
-      <?php 
-            $query = mysqli_query($konek, "SELECT is_autologout FROM profil WHERE id='1'");
-            if($query == false){
-            die ("Terjadi Kesalahan : ". mysqli_error($konek));
-            }
-            while($datas = mysqli_fetch_array($query)){
-                  $is_autologout = $datas['is_autologout'];
-                  if($is_autologout == '1'){
-         ?>
+      // Tidak bisa klik kanan
+      document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          alert('Klik kanan dinonaktifkan!');
+      });
 
-         // Auto logout
-         document.addEventListener('visibilitychange', function() {
-           if (document.hidden) {
-             $('#form1').submit();
-           }
-         }, false);
+      document.addEventListener('keydown', function(e) {
+          if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'p')) {
+              e.preventDefault();
+              alert('Shortcut ini dinonaktifkan!');
+          }
+      });
+
+      // Auto Submit
+      <?php 
+          $query = mysqli_query($konek, "SELECT is_autologout FROM profil WHERE id='1'");
+          if($query == false){
+          die ("Terjadi Kesalahan : ". mysqli_error($konek));
+          }
+          while($datas = mysqli_fetch_array($query)){
+                $is_autologout = $datas['is_autologout'];
+                if($is_autologout == '1'){
+      ?>
+
+                // Auto logout
+                document.addEventListener('visibilitychange', function() {
+                  if (document.hidden) {
+                    if (sessionStorage.clickcount) {
+                      sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+
+                      if(sessionStorage.clickcount > 3){
+                        $('#form1').submit();
+                        sessionStorage.clear();
+                      }else{
+                        alert(`Kamu baru saja meninggalkan halaman ujian sebanyak ${sessionStorage.clickcount} kali.\n Jika kamu meninggalkan halaman ini sebanyak 3 kali, ujian akan otomatis diselesaikan. \nHarap tetap berada di halaman ini selama ujian berlangsung`);
+                      }
+
+                    } else {
+                      sessionStorage.clickcount = 1;
+                      alert(`Kamu baru saja meninggalkan halaman ujian sebanyak ${sessionStorage.clickcount} kali.\n Jika kamu meninggalkan halaman ini sebanyak 3 kali, ujian akan otomatis diselesaikan. \nHarap tetap berada di halaman ini selama ujian berlangsung`);
+                    }
+                  }
+                }, false);
          
-      <?php }}?>
+      <?php 
+            }
+          }
+      ?>
 
  
 
@@ -495,32 +532,32 @@ while ($xx = mysqli_fetch_array($qq)) {
         showPage(parseInt($(this).text()))
       });
 
-      $(document).ready(function () {
-        autosave();
-      });
+      // $(document).ready(function () {
+      //   autosave();
+      // });
 
-      function autosave() {
-        var t = setTimeout("autosave()", 60000); // autosave 10 detikan
+      // function autosave() {
+      //   var t = setTimeout("autosave()", 60000); // autosave 10 detikan
 
-        var waktuselesai = $("#waktuselesai").val();
-        var mulaiujian = $("#mulaiujian").val();
-        var sisawaktu = $("#sisawaktu").val();
-        var jawabansiswa<?php echo $ar['nomersoal']; ?> = $("#jawabansiswa<?php echo $ar['nomersoal']; ?>").val();
+      //   var waktuselesai = $("#waktuselesai").val();
+      //   var mulaiujian = $("#mulaiujian").val();
+      //   var sisawaktu = $("#sisawaktu").val();
+      //   var jawabansiswa<?php echo $ar['nomersoal']; ?> = $("#jawabansiswa<?php echo $ar['nomersoal']; ?>").val();
 
-        if (waktuselesai != '' && mulaiujian != '' && sisawaktu != '') {
-          $.ajax({
-            type: "POST",
-            url: "autosave.php",
-            data: $('form').serialize(),
-            cache: false,
-            success: function (pesan) {
-              $("#waktu").empty().append(pesan);
-            }
-          });
-        }
+      //   if (waktuselesai != '' && mulaiujian != '' && sisawaktu != '') {
+      //     $.ajax({
+      //       type: "POST",
+      //       url: "autosave.php",
+      //       data: $('form').serialize(),
+      //       cache: false,
+      //       success: function (pesan) {
+      //         $("#waktu").empty().append(pesan);
+      //       }
+      //     });
+      //   }
 
-        setInterval(() => { autosave }, 60000);
-      }
+      //   setInterval(() => { autosave }, 60000);
+      // }
 
     </script>
     </form>
