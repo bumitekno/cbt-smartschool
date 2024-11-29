@@ -1,40 +1,35 @@
 <p align="center">
-    <img src="https://mysch.id/cms_web/upload/picture/aplikasi-ujian-online-berbasis-web.jpg" 
-        width="400" alt="Laravel Logo">
+     <img src="https://cdn.icon-icons.com/icons2/928/PNG/512/optimization_icon-icons.com_72195.png" width="400" alt="Laravel Logo">
 </p>
 
-## CBT 5 TYPE SOAL PENYEMPURNAAN
-## Septermber 2024
-### Tipe Soal
-- 1 = Pilihan Ganda
-- 2 = Uraian
-- 3 = Benar salah
-- 4 = Pilihan Ganda Kompleks
-- 5 = Menjodohkan
+# CBT 5 TYPE SOAL PENYEMPURNAAN OPTIMASI
+> [!NOTE]
+> [ November 2024 ]
+> Latar belakang optimasi karena ada kampus yang menggunakan CBT 5 tipe dengan user 100 dengan jumlah 100 mengalami masalah pada server.
+> Dikarenakan data pada kolom jawabother terlalu banyak ( 20.000 baris ).
+> Penyimpanan data jawaban vertikal jadi banyak sekali
 
-## Penyempurnaan
-### Keterangan Siswa / User
-- Menambahkan status siswa (aktif dan nonaktif), jika aktif dapat login ke CBT, jika nonaktif tidak dapat login ke CBT
-- Menambahkan kolom agama dan jurusan di bagian siswa, yang nantinya digunakan untuk validasi soal atau ujian
+> [!CAUTION]
+> Ubah type kolom `jawaban` pada tabel `nilaihasil` dan kolom `jawabansiswa` pada tabel `jawaban` menjadi `longtext` karena akan digunakan untuk menyimpan data jawaban siswa 
 
-### Validasi Bank Soal
-- Menambah validasi ujian dengan menyamakan jurusan, agama, kelas siswa dengan data siswa, agar ujian yang tampil pada halaman siswa sudah sesuai dengan data siswa
-- menambahkan inputan identitas mapel dan jurusan
 
-### Setting Autologout
-- menambahkan fitur untuk dapat memilih autologout pada CBT aktif atau tidak yang berada di dalam menu setting
-- jika aktif maka saat siswa mengerjakan dan membuka tab baru maka akan otomatis logout
-- jika nonaktif maka siswa dapat membuka tab lain saat mengerjakan ujian
+## Optimasi
+Alur | Lama | Optimasi |
+---- | ---- | -------- |
+Simpan jawaban| Data jawaban siswa disimpan vertikal dan ditampilkan pada hasil jawaban dari tabel `jawabother` dan tidak dihapus | Jawaban siswa disimpan pada `jawabother` kemudian ketika selesai maka jawaban siswa akan disimpan pada tabel `nilaihasil` dikolom `jawaban` bentuk json. Dan data jawaban siswa ditabel `jawabother` akan dihapus | 
+Siswa jawab soal | Ketika siswa jawab 1 soal maka akan cek `GET` di tabel `jawabother` apakah sudah ada atau belum, jika sudah maka `update` jika belum maka `create` | Ketika siswa jawab soal pertama kali maka id_jawaban siswa akan disimpan pada `SESSION`. Jadi setiap siswa menjawab akan dicek di `session` apakah siswa pernah soal tersebut atau belum, jika sudah maka `update` dan jika belum `create`. Intinya kita tidak perlu `GET` data dari tabel `jawabother` ketika menjawab setiap soal ( meminimalisir query ke database) |
+|Lihat jawaban| Lihat jawaban siswa pada admin ambil dari tabel `jawabother` ( datanya banyak sekali ) | Data diambil dari kolom `jawaban` pada tabel `nilaihasil` yang sudah disimpan sebelumnya dengan bentuk `json`|
+Autosave berkala | Akan ada `request` berkala setiap beberapa detik untuk mengirim jawaban siswa | Fitur dihapus karena tidak berguna, fitur hanya berguna untuk yang 2 tipe soal |
+Menampilkan nilai hasil | Pada program sebelumnya pada halaman admin nilai hasil, nilainya dihitung lagi dari jawaban siswa (diloop) benar salahnya dikalkulasi saat menampilkan data hasil | Hanya menampilkan data yang sudah ada pada tabel `nilaihasil` karena sudah ada data `nilai`, `benar`, `salah` dkk ( mengurangi proses kalkulasi )
 
-### Nilai Hasil
-- memperbaiki nilai hasil dari segi tampilan dan penghitungan
-- menambahkan fitur atau tombol cetak seluruh hasil siswa
-- memperbaiki urutan hasil jawaban siswa
-- memperbaiki penilaian ujian yang memiliki tipe soal uraian
+## Penyempurnaan Lanjutan
+- Ada sebuah alert peringatan jika fitur `autosubmit` diaktifkan, ada 3 kesepatan untuk siswa jika pindah ketab lain berupa alert. Jadi lebih informatif tidak langsung jawaban terkirim
 
-## Installation
-1. Buat database baru lalu import database 'cbt_5type_soal.sql'.
-2. Setting database (nama db, username db, dan password db) pada folder koneksi dan file config.php
+## Fixing Bug
+### November
+- Preiview soal untuk benar salah belum benar
+- Siswa tidak bisa `copy` dan `inspect` saat mengerjakan soal
+
 
 ## Thank to All Contribute this Code
 - *Syafii* (2019)
