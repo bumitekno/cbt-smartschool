@@ -172,7 +172,7 @@ include "tema/tema.php";
                     <?php 
                     $dir = "../gbr/";
                     chdir($dir);
-                    array_multisort(array_map('filemtime', ($files = glob("*.{jpg,jpeg,png,gif,mp3,ogg}", GLOB_BRACE))), SORT_DESC, $files);
+                    array_multisort(array_map('filemtime', ($files = glob("*.{jpg,jpeg,png,gif,mp3,ogg,JPG,JPEG,PNG}", GLOB_BRACE))), SORT_DESC, $files);
                     foreach($files as $data)
                     {
                     $gambarsoal ="<img src='../gbr/$data' width=200pk height=auto >";
