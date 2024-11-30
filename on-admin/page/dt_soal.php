@@ -24,27 +24,28 @@
 	<?php
 	//$querydosen = mysqli_query($konek, "SELECT DISTINCT jenissoal, kodemapel, soal.kodesoal, aktif, /*opsi, acak,*/ kelas, nilai, waktu FROM soal CROSS JOIN ujian USING (kodesoal)");
 	$querydosen = mysqli_query($konek, "SELECT * FROM ujian WHERE kodesoal=(kodesoal)");
-	if ($querydosen == false) {
-		die("Terjadi Kesalahan : " . mysqli_error($konek));
-	}
+		if ($querydosen == false) {
+			die("Terjadi Kesalahan : " . mysqli_error($konek));
+		}
 	$i = 1;
 	while ($ar = mysqli_fetch_array($querydosen)) {
+		// Ambil data soal dan kelompkkan berdasarkan status
+		$queryGetType = mysqli_query($konek, "SELECT COUNT(id) as jumlah, status FROM soal WHERE kodesoal='$ar[kodesoal]' AND status != 0 GROUP BY status ORDER BY status");
+		if ($queryGetType == false) {
+			die("Terjadi Kesalahan : " . mysqli_error($konek));
+		}
+
+		$dataSoal = [];
+		while ($typeSoal = mysqli_fetch_array($queryGetType)) {
+			$dataSoal[$typeSoal['status']] = $typeSoal['jumlah'];
+		}
+
 		$opsi = $ar['opsi'];
 		$opsi = str_replace("hidden", "4 opsi", $opsi);
 		$opsi = str_replace("show", "5 opsi", $opsi);
 		$acak = $ar['acak'];
 		$acak = str_replace("1", "acak", $acak);
 		$acak = str_replace("2", "urut", $acak);
-		$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='1'");
-		$num_rows = mysqli_num_rows($result);
-		$result2 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='2'");
-		$num_rows2 = mysqli_num_rows($result2);
-		$result3 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='3'");
-		$num_rows3 = mysqli_num_rows($result3);
-		$result4 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='4'");
-		$num_rows4 = mysqli_num_rows($result4);
-		$result5 = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$ar[kodesoal]' and status='5'");
-		$num_rows5 = mysqli_num_rows($result5);
 		if (!$ar['aktif'] == '1') {
 			$aktif = "<span style=color:red>Non Aktif</span>";
 		} else {
@@ -78,11 +79,11 @@
 		<td align=center>$i</td>
 		<td align=left>$ar[jenis]<br>$ar[mapel]<br>
 		$ar[kodesoal]</td>
-		<td align=center>$num_rows</td>
-		<td align=center>$num_rows2</td>
-		<td align=center>$num_rows3</td>
-		<td align=center>$num_rows4</td>
-		<td align=center>$num_rows5</td>
+		<td align=center>$dataSoal[1]</td>
+		<td align=center>$dataSoal[2]</td>
+		<td align=center>$dataSoal[3]</td>
+		<td align=center>$dataSoal[4]</td>
+		<td align=center>$dataSoal[5]</td>
 		<td align=center>$ar[waktu]'</td>
 		
 		<td align=center>$ar[kelas]</td>
@@ -105,6 +106,7 @@
 									</td>
 								</tr>";
 		$i++;
+	
 	}
 	?>
 </tbody>
