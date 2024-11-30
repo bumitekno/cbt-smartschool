@@ -142,7 +142,7 @@ include "tema/tema.php";
       }
       ?>
       <br>
-      <div class='col-md-9'>
+      <div class='col-md-12'>
 
         <!-- Statistik kartu -->
         <div class='col-lg-12 col-md-12 col-xs-12'>
@@ -277,46 +277,7 @@ include "tema/tema.php";
         </div>
 
       </div>
-      <div class='col-md-3'>
-        <div class="box">
-          <!-- <div class="box-header with-border">
-            <h4 class="box-title" style="font-size:13px;background-color:#d2d6de;color:black;padding:15px;width:220%;margin-left:-40px;margin-right:0px;margin-top:-10px;">&emsp;<i class='fa fa-download' aria-hidden='true'></i>  Download Berkas</h4>
-          </div> -->
-        </div>
-        <?php
-        $dir = "upload/";
-        chdir($dir);
-        array_multisort(array_map('filemtime', ($files = glob("*.{doc,docx,xlsx,xls,csv,xml,pdf,et,ppt,pptx,zip,rar,rtf,txt,sql,apk}", GLOB_BRACE))), SORT_DESC, $files);
-        foreach ($files as $data) {
-          $filesize = filesize($data);
-          $filesizeKB = round($filesize / 1024, 2);
-          $filesizeMB = round($filesize / 1024 / 1024, 2);
-          $tgl = date('d-m-Y', filemtime($data));
-          $jam = date('H:i', filemtime($data));
-          $tanda = explode(".", $data);
-          $file = $tanda[0];
-          $dok = $tanda[1];
-          if ($dok == "xls" or $dok == "xlsx" or  $dok == "csv" or  $dok == "xml" or  $dok == "et") {
-            $co = "red";
-          } elseif ($dok == "doc" or $dok == "docx" or  $dok == "sql" or  $dok == "csv" or  $dok == "xml") {
-            $co = "aqua";
-          } elseif ($dok == "pdf" or $dok == "ppt" or  $dok == "pptx") {
-            $co = "yellow";
-          } elseif ($dok == "rar" or $dok == "zip") {
-            $co = "green";
-          } else {
-            $co = "#111";
-          }
-          echo "
-                                        <div class='row'>
-                                            <h6><a href='" . upload . "/" . $data . "' target='new_tab'><i class='fa fa-file-zip-o' aria-hidden='true'></i> " . $data . "</a>
-                                          </div>
-                        ";
-          echo "</tr>";
-        }
-        ?>
-
-      </div>
+     
     </section>
     <section class="content-header">
       <div class="row">
