@@ -19,13 +19,13 @@ $querydosen = mysqli_query ($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' 
 						    date_default_timezone_set('Asia/Jakarta');
 							$jam=date("h:i:sa");
 							$tanggal=date("d-m-Y");
-						$key=$ar[kunci];
+						$key=str_replace(" ","",$ar['kunci']);
 						$nilaipg=$ar['nilai'];
                         $score=0;
                         $benar=0;
                         $salah=0;
                         $kosong=0;
-                    for ($i=0;$i<$jumlah;$i++){
+                    for ($i=0;$i<strlen($key);$i++){
                         
 						if($key[$i]==$answer[$i]){
 							//jika jawaban cocok (benar)
