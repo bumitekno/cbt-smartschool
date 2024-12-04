@@ -52,12 +52,16 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 			$dataUraian[$jawabs['nomersoal']] = $jawabs;
 		}
 
-		$queryjawaban = mysqli_query($konek, "SELECT nomersoal,jawaban,tipe FROM jawabother WHERE kodesoal='$ar[kodesoal]' AND nis='$username'");
+		$queryjawaban = mysqli_query($konek, "SELECT id,nomersoal,jawaban,tipe FROM jawabother WHERE kodesoal='$ar[kodesoal]' AND nis='$username'");
 		$dataJawaban = [];
+		$dataJawabOther = [];
 
 		while ($jawab = mysqli_fetch_array($queryjawaban)) {
 			$dataJawaban[$jawab['nomersoal']] = $jawab;
+			$dataJawabOther[] = $jawab['id'];
 		}
+
+		$_SESSION["unix"] = $dataJawabOther;
 		
 		if ($query == false) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));

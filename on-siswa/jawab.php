@@ -35,7 +35,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	$dataJawaban = [];
 
 	while ($soal = mysqli_fetch_array($querysoal)) {
-		$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]'");
+		$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND tanggal='$tanggal' AND nis='$username' AND nomersoal='$soal[nomersoal]' ORDER BY nomersoal ");
 
 		$checkrow = mysqli_num_rows($queryhistory);
 
