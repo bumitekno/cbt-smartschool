@@ -35,23 +35,27 @@ if(isset($_FILES['file'])){
 
 //Memnyimpan artikel ke database
 $sql_mode = mysqli_query($konek, "set @@sql_mode = '';");
-if ($q = mysqli_query($konek, "REPLACE into jawaburaian (id,jawaban,nomersoal,nis,nama,kodesoal,soal,soal_gbr,soal_audio,file) 
-VALUES ('$unik','$token','$nomersoal','$nis','$nama','$kodemapel','$soal','$soal_gbr','$soal_audio','$nama_file')")) {
-	echo "
-		<div id='us' class='save'>
-		  <div class='loading'>
-			<i class='fa fa-save fa-spin' style='font-size:54px'></i>
-		  </div>
-		</div>
-		<script>
-			setTimeout(function() {
-				$('#us').fadeOut();
-			}, 300);
-		</script>
-	";
-}else{
-	http_response_code(400); 
-	echo json_encode(['error' => 'Error']);
-    exit; //
+
+if($token != '' || $token != null){
+	if ($q = mysqli_query($konek, "REPLACE into jawaburaian (id,jawaban,nomersoal,nis,nama,kodesoal,soal,soal_gbr,soal_audio,file) 
+	VALUES ('$unik','$token','$nomersoal','$nis','$nama','$kodemapel','$soal','$soal_gbr','$soal_audio','$nama_file')")) {
+		echo "
+			<div id='us' class='save'>
+			  <div class='loading'>
+				<i class='fa fa-save fa-spin' style='font-size:54px'></i>
+			  </div>
+			</div>
+			<script>
+				setTimeout(function() {
+					$('#us').fadeOut();
+				}, 300);
+			</script>
+		";
+	}else{
+		http_response_code(400); 
+		echo json_encode(['error' => 'Error']);
+		exit; //
+	}
 }
+
 ?>
