@@ -124,8 +124,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 					// Soal
 					while ($soal = mysqli_fetch_array($result)) {
-						$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
-
+						//$queryhistory = mysqli_query($konek, "SELECT * FROM jawabother WHERE kodesoal='$soal[kodesoal]' AND nis='$cc[nis]' AND nomersoal='$soal[nomersoal]'");
 
 						// Pilihan
 
@@ -222,6 +221,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 								$type = "Pilihan Ganda";
 
+								$benarp = 0;
 								$jwbsis = $jawabans;
 
 								if ($kunci == strtolower($jawaban_siswa)) {
@@ -234,7 +234,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 								if ($kunci == "a") {
 									$pilihan = "
-							 <div class='show jawaban'>
+							 		<div class='show jawaban'>
 									  <p>a. $pilihan_a $gambar_a <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  <p>b. $pilihan_b $gambar_b</p>
 									  <p>c. $pilihan_c $gambar_c</p>
@@ -242,7 +242,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
 								} else if ($kunci == "b") {
 									$pilihan = "
-							 <div class='show jawaban'>
+							 		<div class='show jawaban'>
 									  <p>a. $pilihan_a $gambar_a</p>
 									  <p>b. $pilihan_b $gambar_b <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
 									  <p>c. $pilihan_c $gambar_c</p>
@@ -250,7 +250,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  <p class='$statussoal'>e. $pilihan_e $gambar_e</p></div>";
 								} else if ($kunci == "c") {
 									$pilihan = "
-							 <div class='show jawaban'>
+							 		<div class='show jawaban'>
 									  <p>a. $pilihan_a $gambar_a</p>
 									  <p>b. $pilihan_b $gambar_b</p>
 									  <p>c. $pilihan_c $gambar_c <i class='fa fa-star' style='font-size:15px;color:green'></i></p>
@@ -280,8 +280,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								// echo 'CCC'.$benarp;		echo '<br/>';
 		
 								$scorepg = $nilaipg / $jumlah * $benarp;
-								$scorepg_total = $scorepg;
-								$scorepg_total = $scorepg;
+								$scorepg_total += $scorepg;
 
 								echo "
 									<tr>
@@ -289,7 +288,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								 <br>
 									&emsp;$gambarsoal<br>$audio
 									$pilihan
-										<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i>  Skor : $scorepg </div>
+										<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i>  Skor : ". round($scorepg,2) ." </div>
 										<br>
 										<hr class='style1'>
 									</tr>";
@@ -321,7 +320,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b>
 								<br>
 								&emsp;$gambarsoal<br>$audio
-								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: $score_bs </div>
+								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: ". round($score_bs,2)." </div>
 								<br>
 								<hr class='style1'>
 							    </tr>";
@@ -382,7 +381,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								echo "<tr>
 								$soal[nomersoal]. <b>$soal[soal] ($type) </b> <br>
 								&emsp;$gambarsoal<br>$audio
-								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : $score_pgk </div><br><hr class='style1'>
+								 $pilihan<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda </i> Skor : ". round($score_pgk,2)." </div><br><hr class='style1'>
 								 </tr>";
 
 							}
@@ -423,7 +422,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 										<div class='jawaban'>
 										$list_array
 										</div>
-                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawabans $tanda</i>  Skor : $score_jd </div><br><hr class='style1'>
+                                        <div><i><u>Jawaban siswa</u></i> : <i class='show'> $jawabans $tanda</i>  Skor : " .round($score_jd,2). " </div><br><hr class='style1'>
                                     </tr>";
 
 							}
