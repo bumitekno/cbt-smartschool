@@ -31,6 +31,10 @@ Menampilkan nilai hasil | Pada program sebelumnya pada halaman admin nilai hasil
 - Preiview soal untuk benar salah belum benar
 - Siswa tidak bisa `copy` dan `inspect` saat mengerjakan soal
 
+### Desember
+- Tidak dapat kodesoal pada edit ujian
+- Tidak boleh ada `space` dalam kodesoal saat CRUD ujian
+
 
 ## Thank to All Contribute this Code
 - *Syafii* (2019)
