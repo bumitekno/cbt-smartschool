@@ -27,18 +27,18 @@ while($ar = mysqli_fetch_array($query)){
                             <div class="form-group">
 								<label>Opsi jawaban</label>
                              <br>
-							 <form action="" method="post">   
-                                 <select class="form-control" name="opsi" required >  
-                                     <option value="<?php echo $ar["opsi"]; ?>"><?php echo $opsi; ?></option>
-                                         <option value="hidden">4 Opsi jawaban</option>
-                                         <option value="show">5 Opsi jawaban</option>  
-                                     </select> 
+                                <select class="form-control" name="opsi" required >  
+                                    <option value="<?php echo $ar["opsi"]; ?>"><?php echo $opsi; ?></option>
+                                    <option value="hidden">4 Opsi jawaban</option>
+                                    <option value="show">5 Opsi jawaban</option>  
+                                </select> 
                              </div>
 
 							 <div class="form-group">
 								<label>Kode Soal</label>
 									<div class="input-group">
 										<input name="kodesoal" type="text" class="form-control" value="<?php echo $ar["kodesoal"]; ?>"/>
+										<input name="kodesoal_old" value="<?php echo $ar["kodesoal"]; ?>" hidden/>
 										<div class="input-group-addon">
 											<i class="fa fa-book"></i>
 										</div>
@@ -76,12 +76,11 @@ while($ar = mysqli_fetch_array($query)){
                              <div class="form-group">
 								<label>Tampilan Soal</label>
                              <br>
-							 <form action="" method="post">   
-                                 <select class="form-control" name="acak" required >  
+                                <select class="form-control" name="acak" required >  
                                      <option value="<?php echo $ar["acak"]; ?>"><?php echo $acak; ?></option>
                                          <option value="1">Acak</option>
                                          <option value="2">Urut</option>  
-                                     </select> 
+                                </select> 
                              </div>
       
 							<div class="modal-footer">
