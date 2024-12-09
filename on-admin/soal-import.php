@@ -148,67 +148,113 @@ if(isset($_POST['submit'])){
     move_uploaded_file($_FILES['filepegawaiall']['tmp_name'], $target);
     
     $data = new Spreadsheet_Excel_Reader($_FILES['filepegawaiall']['name'],false);
-    
-//    menghitung jumlah baris file xls
-    $baris = $data->rowcount($sheet_index=0);
-    
-//    jika kosongkan data dicentang jalankan kode berikut
-    $drop = isset( $_POST["drop"] ) ? $_POST["drop"] : 0 ;
-    if($drop == 1){
-//             kosongkan tabel pegawai
-             $truncate ="TRUNCATE TABLE soal";
-             mysqli_query($connsite, $truncate);
-    };
-    
-//    import data excel mulai baris ke-11 (karena tabel xls ada header & info pada baris 1-10)
-    for ($i=11; $i<=$baris; $i++)
-    {
-//       membaca data (kolom ke-1 sd terakhir)
-      $jenissoal    = $data->val($i, 1);
-      $kodemapel    = $data->val($i, 2);
-      $kodesoal     = $data->val($i, 3);
-      $nomersoal    = $data->val($i, 4);
-      $soal         = $data->val($i, 5);
-      $gambarsoal   = $data->val($i, 6);
-      $pilihan1     = $data->val($i, 7);
-      $pilihan2     = $data->val($i, 8);
-      $pilihan3     = $data->val($i, 9);
-      $pilihan4     = $data->val($i, 10);
-      $pilihan5     = $data->val($i, 11);
-      $gambar_a     = $data->val($i, 12);
-      $gambar_b     = $data->val($i, 13);
-      $gambar_c     = $data->val($i, 14);
-      $gambar_d     = $data->val($i, 15);
-      $gambar_e     = $data->val($i, 16);
-      $kunci        = $data->val($i, 17);
-	    $status       = $data->val($i, 18);
-$soal1=addslashes($soal);
-$pilihan1a=addslashes($pilihan1);
-$pilihan2b=addslashes($pilihan2);
-$pilihan3c=addslashes($pilihan3);
-$pilihan4d=addslashes($pilihan4);
-$pilihan5e=addslashes($pilihan5);
-//      setelah data dibaca, masukkan ke tabel pegawai sql
-      $query = "INSERT into soal (jenissoal,kodemapel,kodesoal,nomersoal,soal,gambarsoal,pilihan1,pilihan2,pilihan3,pilihan4,pilihan5,gambar_a,gambar_b,gambar_c,gambar_d,gambar_e,kunci,status)values('$jenissoal','$kodemapel','$kodesoal','$nomersoal','$soal1','$gambarsoal','$pilihan1a','$pilihan2b','$pilihan3c','$pilihan4d','$pilihan5e','$gambar_a','$gambar_b','$gambar_c','$gambar_d','$gambar_e','$kunci','$status')";
-      $hasil = mysqli_query($connsite, $query);
+
+    $jenissoal    = $data->val(12, 1);
+    $kodemapel = $data->val(12, 2);
+    $kodesoal = $data->val(12, 3);
+
+    $sqlQueryCekSoal = "SELECT * FROM ujian WHERE jenis='$jenissoal' AND mapel='$kodemapel' AND kodesoal='$kodesoal'";
+    $queryCekSoal = mysqli_query($connsite, $sqlQueryCekSoal);
+
+    if ($queryCekSoal == false) {
+      die("Terjadi Kesalahan : " . mysqli_error($connsite));
     }
+
+    $cekSoal = mysqli_num_rows($queryCekSoal);
     
-    if(!$hasil){
-//          jika import gagal
-          die(mysqli_error($connsite));
+    if($cekSoal != 1){
+      $sqlRekomendasi = "SELECT * FROM ujian WHERE jenis LIKE '%$jenissoal%' AND mapel LIKE '%$kodemapel%' OR kodesoal LIKE '%$kodesoal%'";
+      $queryRekomendasi = mysqli_query($connsite, $sqlRekomendasi);
+
+      if ($queryRekomendasi == false) {
+        die("Terjadi Kesalahan : " . mysqli_error($connsite));
+      }
+
+      $data = '';
+      while ($hasilRekomendasi = mysqli_fetch_array($queryRekomendasi)) {
+        $data .= "
+          <p> Jenis : ". $hasilRekomendasi['jenis'].", mapel : ". $hasilRekomendasi['mapel'] .", kodesoal : ". $hasilRekomendasi['kodesoal'] ."</p>
+        ";
+      }
+
+
+      echo "
+        <div class='progress'>
+                <div class='progress-bar' role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'></div>
+        </div>
+        <div class='col-lg-6 col-md-6 alert alert-danger alert-dismissible fade-in' role='alert'>
+          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+          <h4>Gagal Import Soal</h4>
+          <p>Ujian yang akan diinput soal tidak ditemukan, silakan cek jenis, mapel dan kodesoal kembali.</p>
+          <p>Apakah sudah sesuai dengan Ujian yang ada </p>
+        </div>
+        <p>Mungkin Ini Ujian Yang Anda Maksud</p>
+        ". $data ."
+      ";
+
+      
+    }else{
+      //menghitung jumlah baris file xls
+      $baris = $data->rowcount($sheet_index=0);
+      
+      //jika kosongkan data dicentang jalankan kode berikut
+      $drop = isset( $_POST["drop"] ) ? $_POST["drop"] : 0 ;
+      if($drop == 1){
+        //kosongkan tabel pegawai
+               $truncate ="TRUNCATE TABLE soal";
+               mysqli_query($connsite, $truncate);
+      };
+      
+      //import data excel mulai baris ke-11 (karena tabel xls ada header & info pada baris 1-10)
+      for ($i=12; $i<=$baris; $i++)
+      {
+        //membaca data (kolom ke-1 sd terakhir)
+        $jenissoal    = $data->val($i, 1);
+        $kodemapel    = $data->val($i, 2);
+        $kodesoal     = $data->val($i, 3);
+        $nomersoal    = $data->val($i, 4);
+        $soal         = $data->val($i, 5);
+        $gambarsoal   = $data->val($i, 6);
+        $pilihan1     = $data->val($i, 7);
+        $pilihan2     = $data->val($i, 8);
+        $pilihan3     = $data->val($i, 9);
+        $pilihan4     = $data->val($i, 10);
+        $pilihan5     = $data->val($i, 11);
+        $gambar_a     = $data->val($i, 12);
+        $gambar_b     = $data->val($i, 13);
+        $gambar_c     = $data->val($i, 14);
+        $gambar_d     = $data->val($i, 15);
+        $gambar_e     = $data->val($i, 16);
+        $kunci        = $data->val($i, 17);
+        $status       = $data->val($i, 18);
+        $soal1=addslashes($soal);
+        $pilihan1a=addslashes($pilihan1);
+        $pilihan2b=addslashes($pilihan2);
+        $pilihan3c=addslashes($pilihan3);
+        $pilihan4d=addslashes($pilihan4);
+        $pilihan5e=addslashes($pilihan5);
+        //setelah data dibaca, masukkan ke tabel pegawai sql
+        $query = "INSERT into soal (jenissoal,kodemapel,kodesoal,nomersoal,soal,gambarsoal,pilihan1,pilihan2,pilihan3,pilihan4,pilihan5,gambar_a,gambar_b,gambar_c,gambar_d,gambar_e,kunci,status)values('$jenissoal','$kodemapel','$kodesoal','$nomersoal','$soal1','$gambarsoal','$pilihan1a','$pilihan2b','$pilihan3c','$pilihan4d','$pilihan5e','$gambar_a','$gambar_b','$gambar_c','$gambar_d','$gambar_e','$kunci','$status')";
+        $hasil = mysqli_query($connsite, $query);
+      }
+      
+      if(!$hasil){
+        //jika import gagal
+            die(mysqli_error($connsite));
       }else{
-//          jika impor berhasil
-          echo "
-<div class='progress'>
-    <div class='progress-bar' role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'></div>
-</div>
-<div class='col-lg-3 col-md-4 alert alert-success alert-dismissible fade-in' role='alert'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <i class='icon fa fa-check'></i> Success Import Soal !!!.
+        //jika impor berhasil
+            echo "
+            <div class='progress'>
+                <div class='progress-bar' role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'></div>
+            </div>
+            <div class='col-lg-3 col-md-4 alert alert-success alert-dismissible fade-in' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                            <i class='icon fa fa-check'></i> Success Import Soal !!!.
             </div>";
+      }
     }
     
-//    hapus file xls yang udah dibaca
+    //hapus file xls yang udah dibaca
     unlink($_FILES['filepegawaiall']['name']);
 }
 
