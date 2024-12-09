@@ -1,8 +1,8 @@
 <?php
 include('../../koneksi/koneksi.php');
 
-$kodesoal_old = $_POST['kodesoal_old'];
-$kodesoal = $_POST['kodesoal'];
+$kodesoal_old = str_replace(" ","-",$_POST['kodesoal_old']);
+$kodesoal = str_replace(" ","-",$_POST['kodesoal']);
 $acak = $_POST['acak'];
 $opsi = $_POST['opsi'];
 $kelas = $_POST['kelas'];
