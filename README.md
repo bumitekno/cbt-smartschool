@@ -24,6 +24,7 @@ Menampilkan nilai hasil | Pada program sebelumnya pada halaman admin nilai hasil
 
 ## Penyempurnaan Lanjutan
 - Ada sebuah alert peringatan jika fitur `autosubmit` diaktifkan, ada 3 kesepatan untuk siswa jika pindah ketab lain berupa alert. Jadi lebih informatif tidak langsung jawaban terkirim
+- Menambah fitur validasi saat import soal, kodemapel, jenis dan kodesoal harus sama dengan yang ada pada data `tabel` ujian, karena akan menjadi error jika relasinya tidak sama
 
 ## Fixing Bug
 ### November
