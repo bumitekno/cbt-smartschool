@@ -116,7 +116,7 @@
                             						<td align="center"></td>
                             					</tr>
                             					<tr>
-                            						<td align="left">&emsp;JURUSAN</td>
+                            						<td align="left">&emsp;KELAS</td>
                             						<td align="left">: <?php echo $_POST['kelas']; ?></td>
                             						<td align="center"></td>
                             					</tr>

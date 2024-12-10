@@ -118,7 +118,7 @@
                             						<td><span style="width:250px"> <?php echo $_POST['ruang']; ?> / <?php echo $_POST['sesi']; ?></span></td>
                             					</tr>
                             					<tr>
-                            						<td>Program Keahlian</td>
+                            						<td>Kelas</td>
                             						<td>: </td>
                             						<td><span class="full"> <?php echo $_POST['kelas']; ?></span></td>
                             					</tr>
