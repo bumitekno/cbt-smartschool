@@ -25,7 +25,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 						$x=$cc['jawabansiswa'];
 						$xhasil=substr_count($x, "X");
 						
-						$kuncisoal=$cc['kuncisoal'];
+						$kuncisoal=str_replace(" ","",$cc['kuncisoal']);
 						$kuncis=strtoupper($kuncisoal);
 						$key=$kuncis;
 				
@@ -118,7 +118,7 @@ $urai=$cc['nilaiurai'];
 				        }	
 						$query3 = mysqli_query ($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status='2'");
 						$kuncis1=$ar[kunci];
-						$kuncis2=strtoupper($kuncis1);
+						$kuncis2=str_replace(" ","",strtoupper($kuncis1));
 $rows = mysqli_num_rows($query3);
 $nilaimaxurai=100-$rr['nilai'];
 $nilaipersoal=$nilaimaxurai/$rows ;
@@ -239,6 +239,7 @@ $skorurai=$ur['nilai']*$nilaiperbiji;
 				        {
 					    $statussoal = "show";
 				        }
+						// var_dump($jwbsis,$kuncis2);
 				        if($jwbsis==$kuncis2)
 				        {
 					    $benar = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
