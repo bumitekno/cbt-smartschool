@@ -330,7 +330,7 @@ include "tema/tema.php";
 										<div class="input-group-addon">
 											<i class="fa fa-book"></i>
 										</div>
-										<input name="kodesoal" type="text" class="form-control" placeholder="kode soal" required />
+										<input name="kodesoal" type="text" class="form-control" placeholder="kode soal" pattern="^[^ &]+$" title="Tidak boleh ada space dan tanda &" required />
 									</div>
 							</div>
 							<div class="form-group col-sm-6">

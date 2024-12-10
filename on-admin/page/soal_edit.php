@@ -38,6 +38,7 @@ while($ar = mysqli_fetch_array($query)){
 								<label>Kode Soal</label>
 									<div class="input-group">
 										<input name="kodesoal" type="text" class="form-control" value="<?php echo $ar["kodesoal"]; ?>"/>
+										<input name="kodesoal_old" value="<?php echo $ar["kodesoal"]; ?>" pattern="^[^ &]+$" title="Tidak boleh ada space dan tanda &" hidden/>
 										<div class="input-group-addon">
 											<i class="fa fa-book"></i>
 										</div>
