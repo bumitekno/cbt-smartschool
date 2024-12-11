@@ -85,7 +85,7 @@ if(!$show=='')
 						<th id="garis" width="3%">Jmlh Soal</th>
 						<th id="garis" width="3%">Benar</th>
 						<th id="garis" width="3%">Salah</th>
-						<th id="garis" width="3%">kosong</th>
+						<th id="garis" width="3%">Kosong</th>
 						<th id="garis" width="5%">Nilai</th>
 						<!-- <th id="garis" width="5%">Nilai urai</th> -->
 						<th id="garis" width="5%">Total Nilai</th>
@@ -128,45 +128,54 @@ if(!$show=='')
 						}
 						while ($sr = mysqli_fetch_array ($querydosen2)){
 							$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status='1'");
-						$rows = mysqli_num_rows($result);
-						$x=$r['jawabansiswa'];
-						$xhasil=substr_count($x, "X");
-						$nilaipg=$sr['nilai'];
+							$rows = mysqli_num_rows($result);
+							$x=$r['jawabansiswa'];
+							$xhasil=substr_count($x, "X");
+							$nilaipg=$sr['nilai'];
+							
+							$kuncisoal=$sr['kunci'];
+							$kuncis=str_replace(" ","",strtoupper($kuncisoal));
+							$kunciuser = str_replace(" ","",strtoupper($r['kuncisoal']));
+							$key=$kuncis;
+							$jumlah=$rows;
+							$score=0;
+							$benar=0;
+							$salaht=0;
+							$kosong=0;
+
+							$is_koreksi_ulang = $kunciuser != $kuncis ? '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' : '';
 						
-						$kuncisoal=$r['kuncisoal'];
-						$kuncis=strtoupper($kuncisoal);
-						$key=$kuncis;
-						$jumlah=$rows;
-						$score=0;
-                        $benar=0;
-                        $salaht=0;
-                        $kosong=0;
-						
-                    for ($no=0;$no<$jumlah;$no++){
-                    if($r['statuskoreksi']>1)
-				        {
-					    $koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
-				        }
-				        else
-				        {
-						$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> koreksi</button></a>";
-				        }    
-                    if($key[$no]==$x[$no]){
-                        //jika jawaban cocok (benar)
-                        $benar++;
-                    }
-					else
-					{
-                        //jika salah
-                        $salaht++;
-                    
-                    }  
-					$salah=$salaht-$xhasil;
-}
-$score = $nilaipg/$jumlah*$benar;  
-$scoreasli=number_format($score,0);
-$uraiasli=number_format($r['nilaiurai'],0);   
-$totalnilai=$scoreasli+$uraiasli;       
+							for ($no=0;$no<$jumlah;$no++){
+								if($r['statuskoreksi']>1)
+									{
+									$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nis='$r[nis]' kelas='$r[kelas]' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-refresh'></i> edit koreksi</button></a>";
+									}
+									else
+									{
+									$koreksi = "<a class='open_modal2' style='font-decoration:none;color:#222;' nis='$r[nis]' kelas='$r[kelas]' nama='$r[nama]' kodesoal='$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i> 
+									koreksi </button></a>";
+								}    
+								
+								if($key[$no]==$x[$no]){
+									//jika jawaban cocok (benar)
+									$benar++;
+								}
+								else
+								{
+									//jika salah
+									$salaht++;
+								
+								}  
+								$salah=$salaht-$xhasil;
+							}
+
+							// $score = $nilaipg/$jumlah*$benar;  
+							$score = $r['nilai'];
+							$scoreasli=number_format($score,0);
+							$uraiasli=number_format($r['nilaiurai'],0);   
+							$kosong = $jumlah - ($benar+$salah);
+							$totalnilai=$scoreasli+$uraiasli;      
+
 							echo "
 								<tr style='font-size:13px;'>
 									<td id='garis' align=center>$i</td>
@@ -176,20 +185,25 @@ $totalnilai=$scoreasli+$uraiasli;
 									<td id='garis' align=center>$jumlah</td>
 									<td id='garis' align=center>$benar</td>
 									<td id='garis' align=center>$salah</td>
-									<td id='garis' align=center>$xhasil</td>
-									<td id='garis' align=center style='background-color:grey;color:white'><b>$scoreasli</b></td>
+									<td id='garis' align=center>$kosong</td>
+									<td id='garis' align=center style='background-color:grey;color:white'><b>$is_koreksi_ulang $scoreasli</b></td>
 									
 									<td id='garis' align=center style='background-color:#2764aa;color:white'><b>$totalnilai</b></td>
 									<td id='garis'><h6>$r[jawabansiswa]</h6></td>
-									<td id='garis'><h6>$kuncis</h6></td>
+									<td id='garis'><h6>$kunciuser</h6></td>
 									<td id='garis'><h6>$r[benar] | $r[salah]</h6></td>
 									<td id='garis' align=center>
 									
-									<a class='noprint' href='analisa-soal.php?nis=$r[nis]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
+									<a class='noprint' href='analisa-soal.php?nis=$r[nis]&kodesoal=$r[kodesoal]'><button id='ti' type='button' class='btn btn-success btn-xs'><i class='fa fa-eye'></i> Lihat Hasil</button></a>
+									<a class='noprint' href='koreksi_ulang.php?nis=$r[nis]&kodesoal=$r[kodesoal]'><button id='ti' type='button' class='btn btn-warning btn-xs'><i class='fa fa-refresh'></i> Koreksi Ulang</button></a>
+									$koreksi
 									<a style='font-decoration:none;color:#222;' onClick='confirm_delete(\"page/hasil_delete.php?id=$r[id]&kodesoal=$r[kodesoal]&nama=$r[nama]\")'><button id='ti' type='button' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button></a> 
 									</td>
-								</tr>";
-						$i++;		
+								</tr>"
+							;
+
+						$i++;
+								
 						}}
 					?>
 				</tbody>

@@ -103,8 +103,9 @@ include ('conn/fungsi.php');
 								  <td>$ar[kelas]</td>
 								  <td>$ar[kodesoal]</td>
 								  $aktifstatus
-								</tr>
-								";
+                                  <td>
+                                  </td>
+                                  </tr>";
 						$i++;		
 						}
 					?>
