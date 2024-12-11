@@ -151,7 +151,7 @@ if(isset($_POST['submit'])){
 
     $jenissoal    = $data->val(12, 1);
     $kodemapel = $data->val(12, 2);
-    $kodesoal = $data->val(12, 3);
+    $kodesoal = str_replace(" ","",$data->val(12, 3));
 
     $sqlQueryCekSoal = "SELECT * FROM ujian WHERE jenis='$jenissoal' AND mapel='$kodemapel' AND kodesoal='$kodesoal'";
     $queryCekSoal = mysqli_query($connsite, $sqlQueryCekSoal);
@@ -211,7 +211,7 @@ if(isset($_POST['submit'])){
         //membaca data (kolom ke-1 sd terakhir)
         $jenissoal    = $data->val($i, 1);
         $kodemapel    = $data->val($i, 2);
-        $kodesoal     = $data->val($i, 3);
+        $kodesoal     = str_replace(" ","",$data->val($i, 3));
         $nomersoal    = $data->val($i, 4);
         $soal         = $data->val($i, 5);
         $gambarsoal   = $data->val($i, 6);
