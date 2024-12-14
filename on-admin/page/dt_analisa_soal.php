@@ -29,7 +29,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 			}
 		}
 
-		var_dump($dataJawabanSiswa);
+		// var_dump($dataJawabanSiswa);
 
 		$i = 1;
 		while ($sr = mysqli_fetch_array($querydosen)) {
@@ -401,7 +401,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$pilihjod = $jawaban_siswa;
 								$list_array = '';
 								$tanda_kunci = '';
-								var_dump($kunci,strtolower($pilihjod));
+								// var_dump($kunci,strtolower($pilihjod));
 								if (count($array_kuncian) > 0) {
 									foreach ($array_kuncian as $index) {
 										if ($soal['kunci'] == $index) {

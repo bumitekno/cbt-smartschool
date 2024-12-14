@@ -490,9 +490,8 @@ var pieChart = new Chart(oilCanvas, {
         kodesoal: kodesoal, 
       },
       success: function (data){
-        console.log(data);
         if(data){
-          console.log('Sukses');
+          swal("Sukses!", `Sukses koreksi nis: ${nis}`, "success");
         }else{
           swal("Gagal!", `Gagal koreksi nis: ${nis}`, "error");
         }
