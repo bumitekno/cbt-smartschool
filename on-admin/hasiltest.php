@@ -492,9 +492,9 @@ var pieChart = new Chart(oilCanvas, {
       success: function (data){
         console.log(data);
         if(data){
-          alert(`Sukses koreksi nis: ${nis}`);
+          console.log('Sukses');
         }else{
-          alert('Gagal koreksi soal');
+          swal("Gagal!", `Gagal koreksi nis: ${nis}`, "error");
         }
       }
 		});
