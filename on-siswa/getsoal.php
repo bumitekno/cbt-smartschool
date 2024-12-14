@@ -2,6 +2,7 @@
 include('conn/cek.php');
 include('../koneksi/koneksi.php');
 include('conn/fungsi.php');
+session_start();
 ?>
 <?php
 

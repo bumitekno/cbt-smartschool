@@ -19,7 +19,9 @@ while ($xx = mysqli_fetch_array($qq)) {
 		}
 
 		// Jawaban siswa
-		$dataJawabanSiswa = json_decode($cc['jawabansiswa'], true);
+		$hilang = str_replace("\n","",$cc['jawabansiswa']);
+		$dataJawabanSiswa = json_decode($hilang);
+
 		$multidimensionalArray = [];
 		foreach ($dataJawabanSiswa as $item) {
 			foreach ($item as $key => $value) {
@@ -27,6 +29,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 			}
 		}
 
+		var_dump($dataJawabanSiswa);
 
 		$i = 1;
 		while ($sr = mysqli_fetch_array($querydosen)) {
@@ -98,6 +101,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				<hr class="style2">
 				<tbody>
 					<?php
+					$global_benar = 0;
 					$scorepg = 0;
 					$score_bs = 0;
 					$score_uraian = 0;
@@ -226,6 +230,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 								if ($kunci == strtolower($jawaban_siswa)) {
 									$benarp++;
+									$global_benar++;
 									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 								} else {
 									$salah++;
@@ -275,10 +280,6 @@ while ($xx = mysqli_fetch_array($qq)) {
 									  <p class='$statussoal'>e. $pilihan_e $gambar_e<i class='fa fa-star' style='font-size:15px;color:green'></i></p></div>";
 								}
 
-								// echo 'AAA'.$nilaipg;	echo '<br/>';		
-								// echo 'BBB'.$jumlah;		echo '<br/>';
-								// echo 'CCC'.$benarp;		echo '<br/>';
-		
 								$scorepg = $nilaipg / $jumlah * $benarp;
 								$scorepg_total += $scorepg;
 
@@ -302,13 +303,15 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$benarBS = 0;
 								$jwbsis = $jawabans;
 
+
 								if ($kunci == strtolower($jwbsis)) {
-									$jwbsis = "Benar";
+									$jwbHasil = "Benar";
 									$benarBS++;
+									$global_benar++;
 									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 								} else {
 									$salah++;
-									$jwbsis = "Salah";
+									$jwbHasil = "Salah";
 									$tanda = "<i class='fa fa-close' style='font-size:28px;color:red'></i>";
 								}
 
@@ -317,10 +320,12 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 								echo "
 								<tr>
-								$soal[nomersoal]. <b>$soal[soal] ($type) </b>
+								$soal[nomersoal]. <b>$soal[soal] ($type) </b><br>
+								Kunci = $kunci<br>
+								Jawab = " . strtolower($jwbsis) ."<br>
 								<br>
 								&emsp;$gambarsoal<br>$audio
-								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbsis $tanda</i>   Skor: ". round($score_bs,2)." </div>
+								<div><i><u>Jawaban siswa</u></i> : <i class='show'>$jwbHasil $tanda</i>   Skor: ". round($score_bs,2)." </div>
 								<br>
 								<hr class='style1'>
 							    </tr>";
@@ -343,6 +348,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 								if ($kunci == strtolower($jwbsis)) {
 									$benarPGK++;
+									$global_benar++;
 									$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 								} else {
 									$salah++;
@@ -392,12 +398,11 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$benarJd = 0;
 
 								$pilihjod = $jawaban_siswa;
-								$pilihjod = $jawaban_siswa;
 								$list_array = '';
 								$tanda_kunci = '';
 								if (count($array_kuncian) > 0) {
 									foreach ($array_kuncian as $index) {
-										if ($kunci == strtolower($index)) {
+										if ($soal['kunci'] == $index) {
 											$tanda_kunci = " <i class='fa fa-check-circle' style='font-size:20px;color:green'></i>";
 											$list_array .= '<li>' . $index . '' . $tanda_kunci . '</li>';
 										} else {
@@ -406,6 +411,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 									}
 									if ($kunci == strtolower($pilihjod)) {
 										$benarJd++;
+										$global_benar++;
 										$tanda = "<i class='fa fa-check' style='font-size:28px;color:green'></i>";
 									} else {
 										$salah++;
@@ -430,8 +436,12 @@ while ($xx = mysqli_fetch_array($qq)) {
 						
 
 						// echo $scorepg_total.'-'.$score_bs_total.'-'.$score_uraian_total.'-'.$score_jd_total.'-'.$score_pgk_total;
-						$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
 					}
+					$total_score = $scorepg_total + $score_bs_total + $score_uraian_total + $score_jd_total + $score_pgk_total;
+					//var_dump($scorepg_total,$score_bs_total,$score_jd_total,$score_pgk_total);
+					$score = $global_benar / $jumlah * $nilaipg;
+					var_dump($global_benar,$jumlah,$nilaipg);
+
 
 					$result_uraian = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cc[kodesoal]' AND status = '2' ORDER BY `soal`.`nomersoal` ASC ");
 					$rows_uraian = mysqli_num_rows($result_uraian);

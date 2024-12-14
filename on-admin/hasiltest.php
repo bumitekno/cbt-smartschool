@@ -400,85 +400,106 @@ var pieChart = new Chart(oilCanvas, {
   data: oilData
 });
 </script>
+
 <script>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["NILAI <?php echo $cari;?>"],
-    datasets: [{
-      label: 'nilai 100-91',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 91 and 100");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(0, 0, 255)"
-    },{
-      label: 'nilai 90-81',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 81 and 90");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(51, 153, 255)"
-    },{
-      label: 'nilai 80-71',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 71 and 80");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(0, 255, 255)"
-    },{
-      label: 'nilai 70-61',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 61 and 70");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(51, 204, 51)"
-    },{
-      label: 'nilai 60-51',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 51 and 60");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(204, 255, 51)"
-    },{
-      label: 'nilai 50-41',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 41 and 50");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(255, 255, 0)"
-    },{
-      label: 'nilai 40-31',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 31 and 40");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(255, 153, 0)"
-    },{
-      label: 'nilai 30-21',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 21 and 30");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(255, 102, 0)"
-    },{
-      label: 'nilai 20-11',
-      data: [<?php 
-					$kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 11 and 20");
-					echo mysqli_num_rows($kkm);
-					?>],
-      backgroundColor: "rgb(204, 0, 0)"
-    },{
-      label: 'nilai 10-0',
-      data: [<?php 
-					$kkmbawah = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 0 and 10");
-					echo mysqli_num_rows($kkmbawah);
-					?>],
-      backgroundColor: "rgb(102, 0, 51)"
-    }]
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["NILAI <?php echo $cari;?>"],
+      datasets: [{
+        label: 'nilai 100-91',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 91 and 100");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(0, 0, 255)"
+      },{
+        label: 'nilai 90-81',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 81 and 90");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(51, 153, 255)"
+      },{
+        label: 'nilai 80-71',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 71 and 80");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(0, 255, 255)"
+      },{
+        label: 'nilai 70-61',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 61 and 70");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(51, 204, 51)"
+      },{
+        label: 'nilai 60-51',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 51 and 60");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(204, 255, 51)"
+      },{
+        label: 'nilai 50-41',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 41 and 50");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(255, 255, 0)"
+      },{
+        label: 'nilai 40-31',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 31 and 40");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(255, 153, 0)"
+      },{
+        label: 'nilai 30-21',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 21 and 30");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(255, 102, 0)"
+      },{
+        label: 'nilai 20-11',
+        data: [<?php 
+            $kkm = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 11 and 20");
+            echo mysqli_num_rows($kkm);
+            ?>],
+        backgroundColor: "rgb(204, 0, 0)"
+      },{
+        label: 'nilai 10-0',
+        data: [<?php 
+            $kkmbawah = mysqli_query($konek,"select * from nilaihasil where kodesoal='$cari' and nilai+nilaiurai BETWEEN 0 and 10");
+            echo mysqli_num_rows($kkmbawah);
+            ?>],
+        backgroundColor: "rgb(102, 0, 51)"
+      }]
+    }
+  });
+
+  function koreksi_ulang(nis, kodesoal){
+    $.ajax({
+      url: "koreksi_ulang.php",
+      type: "GET",
+      data : {
+        nis: nis,
+        kodesoal: kodesoal, 
+      },
+      success: function (data){
+        console.log(data);
+        if(data){
+          alert(`Sukses koreksi nis: ${nis}`);
+        }else{
+          alert('Gagal koreksi soal');
+        }
+      }
+		});
   }
-});
+
 </script>
 </body>
 </html>

@@ -70,7 +70,7 @@ function printDiv(divName) {
 				$.ajax({
 					url: "page/soal_modal_edit.php",
 					type: "GET",
-					data : {id: m,},
+					data : {id: m},
 					success: function (ajaxData){
 					$("#ModalEditDosen").html(ajaxData);
 					$("#ModalEditDosen").modal('show',{backdrop: 'true'});

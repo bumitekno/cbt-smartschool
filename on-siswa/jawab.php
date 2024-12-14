@@ -11,7 +11,7 @@ $sisawaktu = $_POST['sisawaktu'];
 $mulaiujian = $_POST['mulaiujian'];
 $waktuselesai = $_POST['waktuselesai'];
 
-$sql_mode = mysqli_query($konek, "SET sql_mode = '';");
+// $sql_mode = mysqli_query($konek, "SET sql_mode = '';");
 mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
 
 $querydosen = mysqli_query($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' and mapel='$kom'");
@@ -39,38 +39,26 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 
 		$checkrow = mysqli_num_rows($queryhistory);
 
+		$jmlh_jwb = 0;
 		while ($jawaban = mysqli_fetch_array($queryhistory)) {
-			$jawaban_sementara = $jawaban['jawaban'];
-			$kunci = strtolower(str_replace(' ','', $soal['kunci']));
-			$jawaban = strtolower(str_replace(' ','',$jawaban_sementara));
-
-			$dataJawaban[] = [
-				$soal['nomersoal'] => $jawaban_sementara
-			];
-
-			if ($kunci == $jawaban) {
-				$benar++;
-			} else {
-				$salah++;
+			if($jmlh_jwb < 1){
+				$jawaban_sementara = $jawaban['jawaban'];
+				$kunci = strtolower(str_replace(' ','', $soal['kunci']));
+				$jawaban = strtolower(str_replace(' ','',$jawaban_sementara));
+	
+				$dataJawaban[] = [
+					$soal['nomersoal'] => $jawaban_sementara
+				];
+	
+				if ($kunci == $jawaban) {
+					$benar++;
+				} else {
+					$salah++;
+				}
 			}
-
-			//jawaban soal pg komplek
-			// if ($jawaban['tipe'] == 4) {
-			// 	$remove_coma = str_replace(',', '', $jawaban['jawaban']);
-			// 	if ($kunci == strtolower($remove_coma)) {
-			// 		$benar++;
-			// 	} else {
-			// 		$salah++;
-			// 	}
-			// } else {
-			// 	$jawaban_siswa = strtolower(str_replace(' ', '-', $jawaban['jawaban']));
-			// 	if ($kunci == strtolower($jawaban_siswa)) {
-			// 		$benar++;
-			// 	} else {
-			// 		$salah++;
-			// 	}
-			// }
+			$jmlh_jwb++;
 		}
+
 	}
 
 	$score = $nilaipg / $jumlah * $benar;

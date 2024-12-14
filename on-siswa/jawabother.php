@@ -27,14 +27,5 @@ if(in_array($unik,$data)){
 }
 
 $_SESSION["unix"] = $data;
-// var_dump($_SESSION["unix"]);
-// unset($_SESSION["unix"]);
-
-// if(!in_array($unik,$_SESSION["unix"])){
-//     $_SESSION["unix"][] = $unix;
-//     $sql_create = mysqli_query($konek, "INSERT into jawabother(id,jawaban,nomersoal,nis,nama,kodesoal,tipe,tanggal,waktu) VALUES ('$unik','$tokenx','$nomersoal','$nis','$nama','$kodemapel','$tipe','$tanggal','$jam')");
-// }else{
-//     $sql_update = mysqli_query($konek, "UPDATE jawabother SET jawaban='$tokenx',tanggal='$tanggal',waktu='$jam' WHERE nis='$nis' AND id='$unik'");
-// }
 
 ?>

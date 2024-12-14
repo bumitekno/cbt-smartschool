@@ -73,7 +73,8 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 			// }
 		}
 
-		// var_dump($dataJawaban);
+		var_dump($dataJawaban);
+		die();
 	}
 
 	$score = $nilaipg / $jumlah * $benar;
