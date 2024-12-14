@@ -44,7 +44,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		}
 
 
-		$query = mysqli_query($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$username' AND soal.status != 5 ORDER by nomersoal ASC, $acak");
+		$query = mysqli_query($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$username' AND soal.status != 5 GROUP BY `nomersoal` ORDER by nomersoal ASC, $acak");
 
 		//uraian 
 		$queryuraian = mysqli_query($konek, "SELECT * FROM jawaburaian WHERE nis='$username' AND kodesoal='$ar[kodesoal]'");
@@ -63,6 +63,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		}
 
 		$_SESSION["unix"] = $dataJawabOther;
+		var_dump($_SESSION["unix"]);
 		
 		if ($query == false) {
 			die("Terjadi Kesalahan : " . mysqli_error($konek));
@@ -70,9 +71,6 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 		}
 
 		while ($ar = mysqli_fetch_array($query)) {
-			// $ar berisi soal yang akan ditampilkan
-			//var_dump($ar["soal"], $dataJawaban[$ar['nomersoal']]['jawaban']);
-
 			$ks = $ar["kodesoal"];
 			$km = $ar["kodemapel"];
 			$ip = $ar["kunci"];

@@ -33,7 +33,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 		$i = 1;
 		while ($sr = mysqli_fetch_array($querydosen)) {
-			$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3','4','5') ORDER BY nomersoal ");
+			$result = mysqli_query($konek, "SELECT * FROM soal WHERE kodesoal='$cari' AND status IN ('1', '3','4','5') GROUP BY `nomersoal` ORDER BY nomersoal ");
 			$rows = mysqli_num_rows($result);
 			$jumlah = $rows;
 			$nilaipg = $sr['nilai'];
