@@ -125,7 +125,7 @@ if($cari != '' || $cari != null){
 					<th id="garis" width="3%">Total Soal</th>
 					<th id="garis" width="3%">Soal Uraian</th>
 					<th id="garis" width="3%">Benar</th>
-					<th id="garis" width="3%">Benar rechecking</th>
+					<!-- <th id="garis" width="3%">Benar rechecking</th> -->
 					<th id="garis" width="3%">Salah</th>
 					<th id="garis" width="5%">Nilai PG</th>
 					<th id="garis" width="5%">Nilai Rechecking</th>
@@ -145,7 +145,7 @@ if($cari != '' || $cari != null){
 					<th id="foo"></th>
 					<th id="foo"></th>
 					<th id="foo"></th>
-					<th id="foo"></th>
+					<!-- <th id="foo"></th> -->
 					<th id="foo"></th>
 					<th id="foo"></th>
 					<!-- <th id="foo"></th> -->
@@ -225,7 +225,7 @@ if($cari != '' || $cari != null){
 								<td id='garis' align=center>$r[jumlahsoal]</td>
 								<td id='garis' align=center>$rows_uraian</td>
 								<td id='garis' align=center>$r[benar]</td>
-								<td id='garis' align=center>$benar - $soalBenar</td>
+								
 								<td id='garis' align=center>$r[salah]</td>
 								<td id='garis' align=center style='background-color:grey;color:white'><b>$status " .number_format($r['nilai'],1) ."</b></td>
 								<td id='garis' align=center style='background-color:grey;color:white'><b>$score</b></td>
@@ -247,6 +247,8 @@ if($cari != '' || $cari != null){
 				?>
 			</tbody>
 		</table>
+
+		<!-- <td id='garis' align=center>$benar - $soalBenar</td> -->
 
 		<!-- <a class='noprint' href='koreksi_ulang.php?nis=$r[nis]&kodesoal=$r[kodesoal]'><button id='ti' type='button' class='btn btn-warning btn-xs'><i class='fa fa-refresh'></i> Koreksi Ulang</button></a> -->
 
