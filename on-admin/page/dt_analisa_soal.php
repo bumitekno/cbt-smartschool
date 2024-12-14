@@ -220,6 +220,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 							$jawaban_siswa = strtolower(str_replace(' ', '', $jawabans));
 							// clean kunci
 							$kunci = strtolower(str_replace(' ', '', $soal['kunci']));	
+							$kunci = str_replace("\n","",$kunci);
 
 							if ($soal['status'] == 1) {
 
@@ -400,6 +401,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 								$pilihjod = $jawaban_siswa;
 								$list_array = '';
 								$tanda_kunci = '';
+								var_dump($kunci,strtolower($pilihjod));
 								if (count($array_kuncian) > 0) {
 									foreach ($array_kuncian as $index) {
 										if ($soal['kunci'] == $index) {
